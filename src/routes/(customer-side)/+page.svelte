@@ -19,6 +19,14 @@
 	async function logout() {
 		let { error } = await supabase.auth.signOut();
 	}
+
+	async function signInWithGoogle() {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+			provider: 'google',
+			options: { redirectTo: location.href }
+		});
+		// console.log(location.href);
+	}
 </script>
 
 {#if !$page.data.session}
@@ -32,3 +40,4 @@
 <button on:click={register}>register</button>
 <button on:click={login}>login</button>
 <button on:click={logout}>logout</button>
+<button on:click={signInWithGoogle}>signInWithGoogle</button>
