@@ -37,7 +37,7 @@
 {/if}
 
 <hr />
-<button on:click={register}>register</button>
-<button on:click={login}>login</button>
-<button on:click={logout}>logout</button>
-<button on:click={signInWithGoogle}>signInWithGoogle</button>
+<button class="btn btn-primary" on:click={register}>register</button>
+<button class="btn btn-secondary" on:click={login}>login</button>
+<button class="btn btn-accent" on:click={logout}>logout</button>
+<button class="btn btn" on:click={signInWithGoogle}>signInWithGoogle</button>
