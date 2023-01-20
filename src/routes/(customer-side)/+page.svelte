@@ -4,7 +4,7 @@
 
 	async function register() {
 		let { data, error } = await supabase.auth.signUp({
-			email: 'someone@emai.com',
+			email: 'someone@email.com',
 			password: 'HorkWfIsUtUUVqXJEOSw'
 		});
 	}
