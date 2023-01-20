@@ -4,7 +4,7 @@
 
 	async function register() {
 		let { data, error } = await supabase.auth.signUp({
-			email: 'someone@email.com',
+			email: 'someone@emai.com',
 			password: 'HorkWfIsUtUUVqXJEOSw'
 		});
 	}
@@ -25,7 +25,16 @@
 			provider: 'google',
 			options: { redirectTo: location.href }
 		});
-		// console.log(location.href);
+	}
+
+	let loadedData: any[] = [];
+	async function loadData() {
+		const { data } = await supabase.from('roles').select('*').limit(20);
+		loadedData = data ?? [];
+	}
+
+	$: if ($page.data.session) {
+		loadData();
 	}
 </script>
 
@@ -40,4 +49,9 @@
 <button class="btn btn-primary" on:click={register}>register</button>
 <button class="btn btn-secondary" on:click={login}>login</button>
 <button class="btn btn-accent" on:click={logout}>logout</button>
-<button class="btn btn" on:click={signInWithGoogle}>signInWithGoogle</button>
+<button class="btn" on:click={signInWithGoogle}>signInWithGoogle</button>
+
+{#if $page.data.session}
+	<p>client-side data fetching with RLS</p>
+	<pre>{JSON.stringify(loadedData, null, 2)}</pre>
+{/if}
