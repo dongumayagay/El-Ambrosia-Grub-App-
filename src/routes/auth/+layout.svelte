@@ -5,4 +5,6 @@
 	$: if ($page.data.session) goto('/account');
 </script>
 
-<slot />
+<main class=" min-h-screen grid place-items-center">
+	<slot />
+</main>
