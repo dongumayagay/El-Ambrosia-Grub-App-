@@ -1,9 +1,17 @@
 <script lang="ts">
+	import { supabase } from '$lib/db';
+
+	async function signInWithGoogle() {
+		await supabase.auth.signInWithOAuth({
+			provider: 'google',
+			options: { redirectTo: location.origin + '/account' }
+		});
+	}
 </script>
 
 <div class="form-control w-full">
 	<label for="" class="label" />
-	<button class="w-full btn btn-secondary gap-2">
+	<button on:click={signInWithGoogle} class="w-full btn btn-secondary gap-2">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-6"
 			><path
 				fill="#FFC107"
