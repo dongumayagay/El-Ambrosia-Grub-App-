@@ -3,17 +3,40 @@
 	import AuthForm from '../AuthForm.svelte';
 	import { page } from '$app/stores';
 
-	const form_title = 'Login';
-	const button_text = 'Sign me in';
-	const auth_redirect = {
-		name: "Don't have have and account? Create one",
-		path: $page.url.origin + '/auth/register'
-	};
+	let email: string;
+	let password: string;
+
+	let loading: boolean;
+	let error_message: string;
+
+	async function login() {
+		loading = true;
+		try {
+			let { data: _, error: supabase_error } = await supabase.auth.signInWithPassword({
+				email,
+				password
+			});
+			if (supabase_error) {
+				error_message = supabase_error.message;
+				throw supabase_error;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		loading = false;
+	}
 </script>
 
 <AuthForm
-	{form_title}
-	{button_text}
-	submit_function={supabase.auth.signInWithPassword}
-	{auth_redirect}
+	on:submit={login}
+	bind:email
+	bind:password
+	bind:loading
+	bind:error_message
+	form_title={'Login'}
+	button_text={'Sign me in'}
+	auth_redirect={{
+		name: "Don't have have and account? Create one",
+		path: $page.url.origin + '/auth/register'
+	}}
 />
