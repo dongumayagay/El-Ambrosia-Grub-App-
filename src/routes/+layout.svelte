@@ -17,4 +17,10 @@
 	});
 </script>
 
-<slot />
+<svelte:head>
+	<title>El Ambrosia</title>
+</svelte:head>
+
+<main class="min-h-screen">
+	<slot />
+</main>
