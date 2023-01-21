@@ -20,13 +20,6 @@
 		let { error } = await supabase.auth.signOut();
 	}
 
-	async function signInWithGoogle() {
-		const { data, error } = await supabase.auth.signInWithOAuth({
-			provider: 'google',
-			options: { redirectTo: location.href }
-		});
-	}
-
 	let loadedData: any[] = [];
 	async function loadData() {
 		const { data } = await supabase.from('roles').select('*').limit(20);
@@ -49,7 +42,7 @@
 <button class="btn btn-primary" on:click={register}>register</button>
 <button class="btn btn-secondary" on:click={login}>login</button>
 <button class="btn btn-accent" on:click={logout}>logout</button>
-<button class="btn" on:click={signInWithGoogle}>signInWithGoogle</button>
+<!-- <button class="btn" on:click={signInWithGoogle}>signInWithGoogle</button> -->
 
 {#if $page.data.session}
 	<p>client-side data fetching with RLS</p>

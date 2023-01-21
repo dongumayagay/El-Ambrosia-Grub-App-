@@ -2,7 +2,13 @@
 	import { supabase } from '$lib/db';
 	import { page } from '$app/stores';
 
-	let loadedData: any[] = [];
+	let loadedData:
+		| {
+				id: string;
+				role: string | null;
+		  }[]
+		| null;
+
 	async function loadData() {
 		const { data } = await supabase.from('roles').select('*').limit(20);
 		loadedData = data ?? [];
@@ -13,9 +19,15 @@
 	}
 </script>
 
-test
 {$page.data.session}
 {#if $page.data.session}
 	<p>client-side data fetching with RLS</p>
-	<pre>{JSON.stringify(loadedData, null, 2)}</pre>
+	<!-- <pre>{JSON.stringify(loadedData, null, 2)}</pre> -->
+	{#if !loadedData}
+		Loading
+	{:else}
+		{#each loadedData as item}
+			{item.id}
+		{/each}
+	{/if}
 {/if}
