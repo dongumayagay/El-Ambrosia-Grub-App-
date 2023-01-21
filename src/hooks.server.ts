@@ -3,35 +3,29 @@ import { getSupabase } from '@supabase/auth-helpers-sveltekit';
 import { redirect, error, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-    // protect requests to all routes that start with /protected-routes
+
+    const { session, supabaseClient } = await getSupabase(event);
+
+    if (event.url.pathname.startsWith('/account') && !session)
+        throw error(401, 'You are not logged-in');
+
     if (event.url.pathname.startsWith('/admin')) {
-        const { session, supabaseClient } = await getSupabase(event);
+        if (!session) throw error(401, 'You are not logged-in');
 
-        if (!session) throw redirect(303, '/');
-
-        const { data, error } = await supabaseClient
+        const { data, error: supabase_error } = await supabaseClient
             .rpc('is_super_admin', {
                 uid: session.user.id
             })
-
-        if (error) {
-            console.error(error)
-            throw redirect(303, '/');
+        if (supabase_error) {
+            console.error(supabase_error)
+            throw error(Number(supabase_error.code), 'Open console for more detail');
         }
-
-        if (!data) throw redirect(303, '/');
-        console.log(data)
-
+        if (!data) throw error(403, 'FORBIDDEN');
     }
 
-    // protect POST requests to all routes that start with /protected-posts
-    if (event.url.pathname.startsWith('/account')) {
-        const { session, supabaseClient } = await getSupabase(event);
 
-        if (!session) {
-            throw error(303, '/');
-        }
-    }
 
     return resolve(event);
 };
+
+
