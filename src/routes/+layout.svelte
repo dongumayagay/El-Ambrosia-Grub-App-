@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { supabase } from '$lib/db';
-	import { invalidate } from '$app/navigation';
+	import { goto, invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
-	import TopNavigationBar from '$lib/TopNavigationBar.svelte';
+	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
+	import { page } from '$app/stores';
 
 	onMount(() => {
 		const {
@@ -16,6 +17,13 @@
 			subscription.unsubscribe();
 		};
 	});
+
+	$: if (
+		($page.url.pathname.startsWith('/account') || $page.url.pathname.startsWith('/account')) &&
+		!$page.data.session
+	) {
+		goto('/auth/login');
+	}
 </script>
 
 <svelte:head>
