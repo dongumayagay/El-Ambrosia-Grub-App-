@@ -33,8 +33,8 @@
 			</label>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-				<li><a href="/account" class="btn btn-accent btn-active"> Account</a></li>
-				<li><button on:click={logout} class="btn">Logout</button></li>
+				<li><a href="/account" class=""> Account</a></li>
+				<li><button on:click={logout} class="">Logout</button></li>
 			</ul>
 		</section>
 	</main>
@@ -64,8 +64,8 @@
 			</label>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-				<li><a href="/auth/register" class=" btn btn-accent btn-active ">Register</a></li>
-				<li><a href="/auth/login" class=" btn ">Login</a></li>
+				<li><a href="/auth/register" class="">Register</a></li>
+				<li><a href="/auth/login" class="">Login</a></li>
 			</ul>
 		</section>
 	</main>

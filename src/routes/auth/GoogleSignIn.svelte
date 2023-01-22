@@ -11,7 +11,7 @@
 
 <div class="form-control w-full">
 	<label for="" class="label" />
-	<button on:click={signInWithGoogle} class="w-full btn btn-secondary gap-2">
+	<button on:click={signInWithGoogle} class="btn gap-2">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-6"
 			><path
 				fill="#FFC107"

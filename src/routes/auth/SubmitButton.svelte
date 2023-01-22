@@ -5,5 +5,5 @@
 
 <div class="form-control w-full">
 	<label for="" class="label" />
-	<button class="w-full btn btn-primary" disabled={loading}>{button_text}</button>
+	<button class="w-full btn" disabled={loading}>{button_text}</button>
 </div>
