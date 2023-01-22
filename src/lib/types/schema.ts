@@ -12,27 +12,27 @@ export interface Database {
       profiles: {
         Row: {
           avatar_url: string | null
-          full_name: string | null
+          email_address: string | null
+          first_name: string | null
           id: string
-          updated_at: string | null
-          username: string | null
-          website: string | null
+          last_name: string | null
+          phone_number: string | null
         }
         Insert: {
           avatar_url?: string | null
-          full_name?: string | null
+          email_address?: string | null
+          first_name?: string | null
           id: string
-          updated_at?: string | null
-          username?: string | null
-          website?: string | null
+          last_name?: string | null
+          phone_number?: string | null
         }
         Update: {
           avatar_url?: string | null
-          full_name?: string | null
+          email_address?: string | null
+          first_name?: string | null
           id?: string
-          updated_at?: string | null
-          username?: string | null
-          website?: string | null
+          last_name?: string | null
+          phone_number?: string | null
         }
       }
       roles: {
@@ -49,11 +49,38 @@ export interface Database {
           role?: string | null
         }
       }
+      supplies: {
+        Row: {
+          id: number
+          name: string | null
+          threshold: number | null
+          unit: string | null
+          value: number | null
+        }
+        Insert: {
+          id?: number
+          name?: string | null
+          threshold?: number | null
+          unit?: string | null
+          value?: number | null
+        }
+        Update: {
+          id?: number
+          name?: string | null
+          threshold?: number | null
+          unit?: string | null
+          value?: number | null
+        }
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      get_user_role: {
+        Args: { uid: string }
+        Returns: string
+      }
       is_super_admin: {
         Args: { uid: string }
         Returns: boolean
