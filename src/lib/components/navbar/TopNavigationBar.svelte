@@ -2,7 +2,7 @@
 	import AccountButtons from './AccountButtons.svelte';
 </script>
 
-<div class="navbar fixed glass z-10">
+<div class="navbar stickly top-0 glass z-10">
 	<div class="navbar-start">
 		<!--  -->
 	</div>
