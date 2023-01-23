@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { supabase } from '$lib/db';
+	import { page } from '$app/stores';
 
-	async function logout() {
-		await supabase.auth.signOut();
-	}
+	const user = $page.data.session?.user;
+	const user_role = $page.data.role;
 </script>
 
-Account
-<button on:click={logout} class="btn btn-secondary">Logout</button>
+<div class=" pt-16">
+	{JSON.stringify(user, null, 2)}
+
+	<hr />
+	user role: {user_role}
+</div>
