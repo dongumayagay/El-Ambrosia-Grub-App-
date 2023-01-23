@@ -5,7 +5,7 @@
 	const user_role = $page.data.role;
 </script>
 
-<div class=" pt-16">
+<div class="">
 	{JSON.stringify(user, null, 2)}
 
 	<hr />
