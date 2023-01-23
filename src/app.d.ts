@@ -12,6 +12,7 @@ declare namespace App {
 	// interface Locals {}
 	interface PageData {
 		session: import('@supabase/supabase-js').Session | null
+		role: string | null
 	}
 	// interface Error {}
 	// interface Platform {}
