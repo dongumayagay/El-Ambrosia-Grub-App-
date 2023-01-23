@@ -18,19 +18,21 @@
 	export let error_message: string;
 </script>
 
-<main class="flex flex-col w-full border-opacity-50 mx-auto max-w-md">
-	<h1 class="font-bold text-center text-2xl uppercase">{form_title}</h1>
-	<form on:submit|preventDefault>
-		<InputEmail bind:email />
-		<InputPassword bind:password />
-		{#if error_message}
-			<p class=" text-error">{error_message}</p>
-		{/if}
-		<SubmitButton {loading} {button_text} />
-	</form>
-	<div class="divider">OR</div>
-	<GoogleSignIn />
-	<a class="text-center pt-4 font-semibold" href={auth_redirect.path}>
-		{auth_redirect.name}
-	</a>
-</main>
+<div class="px-4 pt-32 grid place-items-center">
+	<main class="flex flex-col w-full border-opacity-50 mx-auto max-w-md">
+		<h1 class="font-bold text-center text-2xl uppercase">{form_title}</h1>
+		<form on:submit|preventDefault>
+			<InputEmail bind:email />
+			<InputPassword bind:password />
+			{#if error_message}
+				<p class=" text-error">{error_message}</p>
+			{/if}
+			<SubmitButton {loading} {button_text} />
+		</form>
+		<div class="divider">OR</div>
+		<GoogleSignIn />
+		<a class="text-center pt-4 font-semibold" href={auth_redirect.path}>
+			{auth_redirect.name}
+		</a>
+	</main>
+</div>

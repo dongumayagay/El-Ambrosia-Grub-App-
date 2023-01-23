@@ -10,6 +10,8 @@
 	
 </div> -->
 <nav data-sveltekit-preload-data="tap">
-	<a href="/account">account</a>
-	<a href="/admin">admin</a>
+	<a class="btn btn-link" href="/account">account</a>
+	<a class="btn btn-link" href="/admin">admin</a>
+	<a class="btn btn-link" href="/auth/login">login</a>
+	<a class="btn btn-link" href="/auth/register">register</a>
 </nav>
