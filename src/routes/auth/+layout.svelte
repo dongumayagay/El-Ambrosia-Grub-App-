@@ -5,6 +5,6 @@
 	$: if ($page.data.session) goto('/account');
 </script>
 
-<main class="px-4 min-h-screen grid place-items-center">
+<main class="px-4 pt-32 grid place-items-center">
 	<slot />
 </main>

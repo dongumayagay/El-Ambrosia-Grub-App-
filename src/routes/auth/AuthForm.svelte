@@ -16,21 +16,6 @@
 
 	export let loading: boolean;
 	export let error_message: string;
-
-	// async function handler() {
-	// 	loading = true;
-
-	// 	const { data: _, error: auth_error } = await submit_function({
-	// 		email,
-	// 		password
-	// 	});
-	// 	if (auth_error) {
-	// 		console.log(auth_error);
-	// 		error_message = auth_error.message;
-	// 	}
-
-	// 	loading = false;
-	// }
 </script>
 
 <main class="flex flex-col w-full border-opacity-50 mx-auto max-w-md">
