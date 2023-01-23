@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
+	import SideDrawerToggle from '$lib/components/navbar/SideDrawerToggle.svelte';
 
 	onMount(() => {
 		const {
@@ -16,13 +17,53 @@
 			subscription.unsubscribe();
 		};
 	});
+
+	let show_side_drawer: boolean;
+	let side_drawer_name = 'side-drawer';
 </script>
 
 <svelte:head>
 	<title>El Ambrosia</title>
 </svelte:head>
 
-<main class="min-h-screen">
-	<TopNavigationBar />
-	<slot />
-</main>
+<div class="drawer drawer-mobile">
+	<input
+		id={side_drawer_name}
+		type="checkbox"
+		class="drawer-toggle"
+		bind:checked={show_side_drawer}
+	/>
+
+	<div class="drawer-content flex flex-col">
+		<!-- Page content here -->
+		<TopNavigationBar>
+			<svelte:fragment slot="navbar-start">
+				<label class="btn btn-square btn-ghost lg:hidden" for={side_drawer_name}>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						class=" w-6 h-6"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M3 9a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 9zm0 6.75a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</label>
+			</svelte:fragment>
+		</TopNavigationBar>
+		<label for={side_drawer_name} class="btn btn-primary drawer-button lg:hidden">Open drawer</label
+		>
+		<slot />
+	</div>
+	<div class="drawer-side">
+		<label for={side_drawer_name} class="drawer-overlay" />
+		<ul class="menu p-4 w-80 bg-base-100 text-base-content">
+			<!-- Sidebar content here -->
+			<li><a class="btn btn-ghost" href="/">Home</a></li>
+			<!-- <li><a>Sidebar Item 2</a></li> -->
+		</ul>
+	</div>
+</div>
