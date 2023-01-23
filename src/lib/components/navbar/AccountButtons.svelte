@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { supabase } from '$lib/db';
+	import { ROLES_ALLOWED_IN_ADMIN, supabase } from '$lib/db';
 
 	let loading: boolean;
 
@@ -34,6 +34,11 @@
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 				<li><a href="/account" class="btn btn-ghost"> Account</a></li>
+				{#if ROLES_ALLOWED_IN_ADMIN.includes($page.data.role)}
+					<li>
+						<a href="/admin" class="btn btn-ghost"> admin</a>
+					</li>
+				{/if}
 				<li>
 					<button on:click={logout} class="btn btn-ghost gap-2"
 						>Logout
