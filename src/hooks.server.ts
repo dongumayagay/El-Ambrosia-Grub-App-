@@ -13,8 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         (event.url.pathname.startsWith('/account') && !session)
         ||
         event.url.pathname.startsWith('/admin') && !session) {
-
-        throw error(401, 'You are not logged-in')
+        throw redirect(303, '/auth/login')
     }
     if (
         event.url.pathname.startsWith("/admin")

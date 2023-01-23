@@ -14,7 +14,7 @@ export const load: LayoutLoad = async (event) => {
         (event.url.pathname.startsWith('/account') && !session)
         ||
         event.url.pathname.startsWith('/admin') && !session) {
-        throw error(401, '/')
+        throw redirect(303, '/auth/login')
     }
     if (
         event.url.pathname.startsWith("/admin")
