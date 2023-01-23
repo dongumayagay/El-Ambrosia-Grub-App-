@@ -1,10 +1,11 @@
 <script lang="ts">
 	import AccountButtons from './AccountButtons.svelte';
+	import AdminSideDrawerToggle from './AdminSideDrawerToggle.svelte';
 </script>
 
 <div class="navbar stickly top-0 glass z-10">
 	<div class="navbar-start">
-		<!--  -->
+		<AdminSideDrawerToggle />
 	</div>
 	<div class="navbar-center">
 		<a href="/" class="btn btn-ghost normal-case text-lg">El Ambrosia</a>
