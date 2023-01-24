@@ -7,8 +7,6 @@ export const supabase = createClient(
     PUBLIC_SUPABASE_ANON_KEY
 )
 
-
-
 export const ROLES_ALLOWED_IN_ADMIN: (string | null)[] = [
     'superadmin', 'admin', 'customer_support'
 ]

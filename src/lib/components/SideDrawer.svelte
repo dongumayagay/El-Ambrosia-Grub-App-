@@ -8,7 +8,7 @@
 			: [];
 </script>
 
-<ul class="menu p-4 w-80 bg-base-100 text-base-content">
+<ul class="menu p-4 w-80 bg-base-100 text-base-content border-2">
 	<!-- Sidebar content here -->
 	{#each links as link}
 		<li><a class="btn btn-ghost" href={link.path}>{link.name}</a></li>

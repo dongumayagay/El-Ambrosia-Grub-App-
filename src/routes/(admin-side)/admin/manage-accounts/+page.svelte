@@ -14,8 +14,8 @@
 					<th>User ID</th>
 					<th>Email</th>
 					<th>Phone</th>
-					<th>Created at</th>
-					<th>Last sign in</th>
+					<th>First name</th>
+					<th>Last name</th>
 					<th />
 				</tr>
 			</thead>
@@ -23,10 +23,10 @@
 				<tr class="hover">
 					{#each users as user}
 						<td>{user.id}</td>
-						<td>{user.email}</td>
-						<td>{user.phone}</td>
-						<td>{datetime_formatter(user.created_at)}</td>
-						<td>{datetime_formatter(user.last_sign_in_at)}</td>
+						<td>{user.email_address}</td>
+						<td>{user.phone_number}</td>
+						<td>{user.first_name}</td>
+						<td>{user.last_name}</td>
 						<td>
 							<a class="btn" href={`/admin/manage-accounts/${user.id}`}>Details</a>
 						</td>
