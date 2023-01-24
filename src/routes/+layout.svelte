@@ -5,6 +5,7 @@
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
 	import { page } from '$app/stores';
+	import SideDrawer from '$lib/components/SideDrawer.svelte';
 
 	onMount(() => {
 		const {
@@ -70,13 +71,6 @@
 	</div>
 	<div class="drawer-side">
 		<label for={side_drawer_name} class="drawer-overlay" />
-		<ul class="menu p-4 w-80 bg-base-100 text-base-content">
-			<!-- Sidebar content here -->
-			<li><a class="btn btn-ghost" href="/">home</a></li>
-			<li><a class="btn btn-ghost" href="/account">account</a></li>
-			<li><a class="btn btn-ghost" href="/admin">admin</a></li>
-			<li><a class="btn btn-ghost" href="/auth/login">login</a></li>
-			<li><a class="btn btn-ghost" href="/auth/register">register</a></li>
-		</ul>
+		<SideDrawer />
 	</div>
 </div>
