@@ -2,4 +2,4 @@
 	import { page } from '$app/stores';
 </script>
 
-Admin Dashboard Role: {$page.data.role}
+Admin Dashboard Role: {$page.data.user_role}

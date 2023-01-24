@@ -9,10 +9,12 @@ declare namespace App {
 		SchemaName: 'public'
 	}
 
-	// interface Locals {}
+	interface Locals {
+		user_role: string | null
+	}
 	interface PageData {
 		session: import('@supabase/supabase-js').Session | null
-		role: string | null
+		user_role: string | null
 	}
 	// interface Error {}
 	// interface Platform {}

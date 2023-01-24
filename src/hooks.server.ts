@@ -7,7 +7,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     console.log('running on hook.server')
     console.log(event.url.pathname)
     const { session, supabaseClient } = await getSupabase(event)
-    const role = session ? await getUserRole(supabaseClient, session.user.id) : null
+    event.locals.user_role = session ? await getUserRole(supabaseClient, session.user.id) : null
 
 
     if (
@@ -20,11 +20,10 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (
         event.url.pathname.startsWith("/admin")
         && session
-        && !ROLES_ALLOWED_IN_ADMIN.includes(role)
+        && !ROLES_ALLOWED_IN_ADMIN.includes(event.locals.user_role)
     ) throw error(403, "You don't have a privelege to continue")
     if (event.url.pathname.startsWith('/auth') && session)
         throw redirect(303, '/account')
-
     return resolve(event);
 };
 

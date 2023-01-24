@@ -1,1 +1,1 @@
-customer account page
+home page

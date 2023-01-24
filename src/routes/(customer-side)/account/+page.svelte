@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	const user = $page.data.session?.user;
-	const user_role = $page.data.role;
+	const user_role = $page.data.user_role;
 </script>
 
 <div class="">
