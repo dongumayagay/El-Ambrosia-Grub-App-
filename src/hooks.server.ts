@@ -4,9 +4,12 @@ import { getSupabase } from '@supabase/auth-helpers-sveltekit';
 import { redirect, error, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-    console.log('running on hook.server')
-    console.log(event.url.pathname)
+
     const { session, supabaseClient } = await getSupabase(event)
+
+
+    event.locals.supabaseClient = supabaseClient
+    event.locals.session = session
     event.locals.user_role = session ? await getUserRole(supabaseClient, session.user.id) : null
 
 
