@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { supabase } from '$lib/db';
-	import { goto, invalidate } from '$app/navigation';
+	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
+	import { page } from '$app/stores';
 
 	onMount(() => {
 		const {
@@ -19,6 +20,7 @@
 
 	let show_side_drawer: boolean;
 	let side_drawer_name = 'side-drawer';
+	$: isOnHomepage = $page.url.pathname === '/';
 </script>
 
 <svelte:head>
@@ -28,7 +30,8 @@
 <div
 	data-sveltekit-preload-data="tap"
 	data-sveltekit-preload-code="eager"
-	class="drawer drawer-mobile"
+	class="drawer"
+	class:drawer-mobile={!isOnHomepage}
 >
 	<input
 		id={side_drawer_name}
@@ -41,7 +44,11 @@
 		<!-- Page content here -->
 		<TopNavigationBar>
 			<svelte:fragment slot="navbar-start">
-				<label class="btn btn-square btn-ghost lg:hidden" for={side_drawer_name}>
+				<label
+					class="btn btn-square btn-ghost lg:hidden"
+					class:hidden={isOnHomepage}
+					for={side_drawer_name}
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
