@@ -4,5 +4,6 @@ import { getServerSession } from '@supabase/auth-helpers-sveltekit'
 export const load: LayoutServerLoad = async (event) => {
     return {
         session: await getServerSession(event),
+        role: null
     }
-}
+} 

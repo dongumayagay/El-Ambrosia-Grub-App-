@@ -4,7 +4,6 @@
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
-	import SideDrawerToggle from '$lib/components/navbar/SideDrawerToggle.svelte';
 
 	onMount(() => {
 		const {
@@ -26,7 +25,11 @@
 	<title>El Ambrosia</title>
 </svelte:head>
 
-<div class="drawer drawer-mobile">
+<div
+	data-sveltekit-preload-data="tap"
+	data-sveltekit-preload-code="eager"
+	class="drawer drawer-mobile"
+>
 	<input
 		id={side_drawer_name}
 		type="checkbox"
@@ -54,16 +57,18 @@
 				</label>
 			</svelte:fragment>
 		</TopNavigationBar>
-		<label for={side_drawer_name} class="btn btn-primary drawer-button lg:hidden">Open drawer</label
-		>
+
 		<slot />
 	</div>
 	<div class="drawer-side">
 		<label for={side_drawer_name} class="drawer-overlay" />
 		<ul class="menu p-4 w-80 bg-base-100 text-base-content">
 			<!-- Sidebar content here -->
-			<li><a class="btn btn-ghost" href="/">Home</a></li>
-			<!-- <li><a>Sidebar Item 2</a></li> -->
+			<li><a class="btn btn-ghost" href="/">home</a></li>
+			<li><a class="btn btn-ghost" href="/account">account</a></li>
+			<li><a class="btn btn-ghost" href="/admin">admin</a></li>
+			<li><a class="btn btn-ghost" href="/auth/login">login</a></li>
+			<li><a class="btn btn-ghost" href="/auth/register">register</a></li>
 		</ul>
 	</div>
 </div>
