@@ -6,7 +6,7 @@
 	let users = data.users;
 </script>
 
-<main class="p-4 min-h-full">
+<main class="min-h-full">
 	<div class="overflow-x-auto">
 		<table class="table">
 			<thead>
