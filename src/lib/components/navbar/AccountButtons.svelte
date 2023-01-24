@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db';
 </script>
