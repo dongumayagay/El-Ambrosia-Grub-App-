@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { supabase } from '$lib/db';
 	import AuthForm from '../AuthForm.svelte';
 	import { page } from '$app/stores';
@@ -39,4 +39,15 @@
 		name: 'Already have an account? Login',
 		path: $page.url.origin + '/auth/login'
 	}}
-/>
+/> -->
+
+<main>
+	<h1>Register</h1>
+	<form action="?/register" method="post">
+		<label for="">email</label>
+		<input type="email" name="email" placeholder="email" />
+		<label for="">password</label>
+		<input type="password" name="password" placeholder="password" />
+		<button>Register</button>
+	</form>
+</main>

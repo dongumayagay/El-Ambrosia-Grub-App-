@@ -1,15 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { ROLES_ALLOWED_IN_ADMIN, supabase } from '$lib/db';
-
-	let loading: boolean;
-
-	async function logout() {
-		loading = true;
-		await supabase.auth.signOut();
-		loading = false;
-	}
 </script>
 
 {#if $page.data.session}
@@ -39,33 +30,10 @@
 						<a href="/admin" class="btn btn-ghost"> admin</a>
 					</li>
 				{/if}
-				<li>
-					<button on:click={logout} class="btn btn-ghost gap-2"
-						>Logout
-						{#if loading}
-							<svg
-								class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-							>
-								<circle
-									class="opacity-25"
-									cx="12"
-									cy="12"
-									r="10"
-									stroke="currentColor"
-									stroke-width="4"
-								/>
-								<path
-									class="opacity-75"
-									fill="currentColor"
-									d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-								/>
-							</svg>
-						{/if}
-					</button>
-				</li>
+
+				<form class="contents" action="/auth/logout" method="POST">
+					<button class="btn btn-ghost gap-2">Logout </button>
+				</form>
 			</ul>
 		</section>
 	</main>
