@@ -20,7 +20,8 @@
 
 	let show_side_drawer: boolean;
 	let side_drawer_name = 'side-drawer';
-	$: isOnHomepage = $page.url.pathname === '/';
+	$: should_have_drawer =
+		$page.url.pathname.startsWith('/account') || $page.url.pathname.startsWith('/admin');
 </script>
 
 <svelte:head>
@@ -31,7 +32,7 @@
 	data-sveltekit-preload-data="tap"
 	data-sveltekit-preload-code="eager"
 	class="drawer"
-	class:drawer-mobile={!isOnHomepage}
+	class:drawer-mobile={should_have_drawer}
 >
 	<input
 		id={side_drawer_name}
@@ -46,7 +47,7 @@
 			<svelte:fragment slot="navbar-start">
 				<label
 					class="btn btn-square btn-ghost lg:hidden"
-					class:hidden={isOnHomepage}
+					class:hidden={!should_have_drawer}
 					for={side_drawer_name}
 				>
 					<svg
