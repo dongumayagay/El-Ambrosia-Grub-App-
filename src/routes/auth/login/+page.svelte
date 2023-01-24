@@ -40,14 +40,27 @@
 		path: $page.url.origin + '/auth/register'
 	}}
 /> -->
+<script lang="ts">
+	import { enhance } from '$app/forms';
+	import type { ActionData, PageData } from './$types';
+
+	export let data: PageData;
+	export let form: ActionData;
+	console.log(data);
+</script>
 
 <main>
 	<h1>Login</h1>
-	<form action="?/login" method="post">
+	<form action="?/login" method="post" use:enhance>
 		<label for="">email</label>
 		<input type="email" name="email" placeholder="email" />
 		<label for="">password</label>
 		<input type="password" name="password" placeholder="password" />
 		<button>Login</button>
+		{#if form?.error}
+			<p class=" text-error">
+				{form.error}
+			</p>
+		{/if}
 	</form>
 </main>

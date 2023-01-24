@@ -11,7 +11,3 @@
 	<hr />
 	user role: {user_role}
 </div>
-
-<form action="/auth/logout" method="POST">
-	<button type="submit" class="btn btn-ghost gap-2">Logout </button>
-</form>

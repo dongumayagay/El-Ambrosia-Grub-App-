@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
-	import { ROLES_ALLOWED_IN_ADMIN, supabase } from '$lib/db';
+	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db';
 </script>
 
 {#if $page.data.session}
@@ -30,10 +31,11 @@
 						<a href="/admin" class="btn btn-ghost"> admin</a>
 					</li>
 				{/if}
-
-				<form class="contents" action="/auth/logout" method="POST">
-					<button class="btn btn-ghost gap-2">Logout </button>
-				</form>
+				<li>
+					<form class="contents" action="/auth/logout" method="POST" use:enhance>
+						<button class="btn btn-ghost gap-2">Logout </button>
+					</form>
+				</li>
 			</ul>
 		</section>
 	</main>
