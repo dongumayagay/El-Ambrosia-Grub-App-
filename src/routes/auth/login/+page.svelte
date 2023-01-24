@@ -38,7 +38,8 @@
 		<br />
 		<button class="btn" class:loading>Sign me in</button>
 		{#if form?.error}
-			<p class=" text-error">
+			<br />
+			<p class=" text-error font-bold text-center">
 				{form.error}
 			</p>
 		{/if}
