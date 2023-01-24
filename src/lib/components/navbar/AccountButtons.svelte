@@ -32,7 +32,7 @@
 					</li>
 				{/if}
 				<li>
-					<form class="contents" action="/auth/logout" method="POST" use:enhance>
+					<form class="contents" action="/auth/logout" method="POST">
 						<button class="btn btn-ghost gap-2">Logout </button>
 					</form>
 				</li>
