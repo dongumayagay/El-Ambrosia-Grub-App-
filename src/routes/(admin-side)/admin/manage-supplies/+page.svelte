@@ -5,9 +5,10 @@
 	let supplies = data.supplies;
 </script>
 
-<main class="min-h-full">
+<main class="h-full">
+	<a href="/admin/manage-supplies/create" class="btn">Add New supply</a>
 	<div class="overflow-x-auto">
-		<table class="table">
+		<table class="table w-full">
 			<thead>
 				<tr>
 					<th>name</th>
@@ -18,8 +19,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="hover">
-					{#each supplies as supply}
+				{#each supplies as supply}
+					<tr class="hover">
 						<td>{supply.name}</td>
 						<td>{supply.value}</td>
 						<td>{supply.unit}</td>
@@ -27,8 +28,8 @@
 						<!-- <td>
 							<a class="btn" href={`/admin/manage-accounts/${user.id}`}>Details</a>
 						</td> -->
-					{/each}
-				</tr>
+					</tr>
+				{/each}
 			</tbody>
 		</table>
 	</div>

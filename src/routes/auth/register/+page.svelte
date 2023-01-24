@@ -36,7 +36,7 @@
 			<input type="password" name="password" placeholder="Password" class="input input-bordered" />
 		</div>
 		<br />
-		<button class="btn" class:loading>create my account</button>
+		<button class="btn" class:loading disabled={loading}>create my account</button>
 		{#if form?.error}
 			<br />
 			<p class=" text-error font-bold text-center">

@@ -6,9 +6,9 @@
 	let users = data.users;
 </script>
 
-<main class="min-h-full">
+<main class="h-full">
 	<div class="overflow-x-auto">
-		<table class="table">
+		<table class="table w-full">
 			<thead>
 				<tr>
 					<th>User ID</th>
@@ -20,8 +20,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="hover">
-					{#each users as user}
+				{#each users as user}
+					<tr class="hover">
 						<td>{user.id}</td>
 						<td>{user.email_address}</td>
 						<td>{user.phone_number}</td>
@@ -30,8 +30,8 @@
 						<td>
 							<a class="btn" href={`/admin/manage-accounts/${user.id}`}>Details</a>
 						</td>
-					{/each}
-				</tr>
+					</tr>
+				{/each}
 			</tbody>
 		</table>
 	</div>
