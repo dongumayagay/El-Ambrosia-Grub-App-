@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { admin_links } from '$lib/constants';
-	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db';
+	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 	$: links =
 		ROLES_ALLOWED_IN_ADMIN.includes($page.data.user_role) && $page.url.pathname.startsWith('/admin')
 			? admin_links

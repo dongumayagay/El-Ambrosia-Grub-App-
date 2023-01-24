@@ -15,6 +15,7 @@ declare global {
 
 		interface Locals {
 			supabaseClient: TypedSupabaseClient
+			supabaseAdmin: TypedSupabaseClient
 			session: Session | null
 			user_role: string | null
 		}

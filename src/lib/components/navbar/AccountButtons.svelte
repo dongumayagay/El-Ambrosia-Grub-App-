@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db';
+	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 </script>
 
 {#if $page.data.session}

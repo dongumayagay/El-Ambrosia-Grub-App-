@@ -1,7 +1,9 @@
-import '$lib/db'
-import { getUserRole, ROLES_ALLOWED_IN_ADMIN } from '$lib/db';
-import { getSupabase } from '@supabase/auth-helpers-sveltekit';
+import '$lib/db/client'
+import '$lib/db/admin.server'
+import { getUserRole, ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
+import { getSupabase, } from '@supabase/auth-helpers-sveltekit';
 import { redirect, error, type Handle } from '@sveltejs/kit';
+import { supabaseAdmin } from '$lib/db/admin.server';
 
 export const handle: Handle = async ({ event, resolve }) => {
 
@@ -10,6 +12,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     event.locals.supabaseClient = supabaseClient
     event.locals.session = session
+    event.locals.supabaseAdmin = supabaseAdmin
     event.locals.user_role = session ? await getUserRole(supabaseClient, session.user.id) : null
 
 
