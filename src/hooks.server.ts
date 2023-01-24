@@ -25,8 +25,8 @@ export const handle: Handle = async ({ event, resolve }) => {
         && session
         && !ROLES_ALLOWED_IN_ADMIN.includes(event.locals.user_role)
     ) throw error(403, "You don't have a privelege to continue")
-    if (event.url.pathname.startsWith('/auth') && session)
-        throw redirect(303, '/account')
+    // if (event.url.pathname.startsWith('/auth') && session)
+    //     throw redirect(303, '/account')
     return resolve(event);
 };
 
