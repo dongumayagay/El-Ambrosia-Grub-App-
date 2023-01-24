@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { datetime_formatter } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -24,8 +25,8 @@
 						<td>{user.id}</td>
 						<td>{user.email}</td>
 						<td>{user.phone}</td>
-						<td>{user.created_at}</td>
-						<td>{user.last_sign_in_at}</td>
+						<td>{datetime_formatter(user.created_at)}</td>
+						<td>{datetime_formatter(user.last_sign_in_at)}</td>
 						<td>
 							<a class="btn" href={`/admin/manage-accounts/${user.id}`}>Details</a>
 						</td>
