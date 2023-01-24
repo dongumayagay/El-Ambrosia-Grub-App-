@@ -1,8 +1,36 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-
+	import { supabaseClient } from '$lib/db/client';
+	import { onMount } from 'svelte';
 	export let data: PageData;
 	let supplies = data.supplies;
+
+	onMount(() => {
+		const supplies_realtime_listener = supabaseClient
+			.channel('custom-all-channel')
+			.on('postgres_changes', { event: '*', schema: 'public', table: 'supplies' }, (payload) => {
+				console.log('Change received!', payload);
+				if (payload.eventType === 'INSERT') {
+					// @ts-ignore
+					supplies = [...supplies, payload.new];
+				}
+				if (payload.eventType === 'UPDATE') {
+					// @ts-ignore
+					supplies = supplies.map((supply) => {
+						if (supply.id === payload.new.id) return payload.new;
+						return supply;
+					});
+				}
+				if (payload.eventType === 'DELETE') {
+					// @ts-ignore
+					supplies = supplies.filter((supply) => supply.id !== payload.old.id);
+				}
+			})
+			.subscribe();
+		return () => {
+			supplies_realtime_listener.unsubscribe();
+		};
+	});
 </script>
 
 <main class="h-full">
@@ -19,7 +47,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each supplies as supply}
+				{#each supplies as supply (supply.id)}
 					<tr class="hover">
 						<td>{supply.name}</td>
 						<td>{supply.value}</td>

@@ -2,7 +2,7 @@ import { createClient, type TypedSupabaseClient } from '@supabase/auth-helpers-s
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 import { error } from '@sveltejs/kit';
 
-export const supabase = createClient(
+export const supabaseClient = createClient(
     PUBLIC_SUPABASE_URL,
     PUBLIC_SUPABASE_ANON_KEY
 )
