@@ -11,21 +11,18 @@ export interface Database {
     Tables: {
       product_variants: {
         Row: {
-          description: string | null
           id: number
           name: string | null
           price: number | null
           variant_of: number
         }
         Insert: {
-          description?: string | null
           id?: number
           name?: string | null
           price?: number | null
           variant_of: number
         }
         Update: {
-          description?: string | null
           id?: number
           name?: string | null
           price?: number | null
