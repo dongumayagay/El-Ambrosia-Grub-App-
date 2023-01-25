@@ -9,6 +9,49 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      product_variants: {
+        Row: {
+          description: string | null
+          id: number
+          name: string | null
+          price: number | null
+          variant_of: number
+        }
+        Insert: {
+          description?: string | null
+          id?: number
+          name?: string | null
+          price?: number | null
+          variant_of: number
+        }
+        Update: {
+          description?: string | null
+          id?: number
+          name?: string | null
+          price?: number | null
+          variant_of?: number
+        }
+      }
+      products: {
+        Row: {
+          description: string | null
+          id: number
+          image_url: string | null
+          name: string
+        }
+        Insert: {
+          description?: string | null
+          id?: number
+          image_url?: string | null
+          name: string
+        }
+        Update: {
+          description?: string | null
+          id?: number
+          image_url?: string | null
+          name?: string
+        }
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -60,9 +103,9 @@ export interface Database {
         Insert: {
           id?: number
           name?: string
-          threshold?: number
+          threshold: number
           unit?: string
-          value?: number
+          value: number
         }
         Update: {
           id?: number
@@ -70,6 +113,26 @@ export interface Database {
           threshold?: number
           unit?: string
           value?: number
+        }
+      }
+      variant_supply: {
+        Row: {
+          amount_use: number
+          id: number
+          supply_id: number
+          variant_id: number
+        }
+        Insert: {
+          amount_use: number
+          id?: number
+          supply_id: number
+          variant_id: number
+        }
+        Update: {
+          amount_use?: number
+          id?: number
+          supply_id?: number
+          variant_id?: number
         }
       }
     }
