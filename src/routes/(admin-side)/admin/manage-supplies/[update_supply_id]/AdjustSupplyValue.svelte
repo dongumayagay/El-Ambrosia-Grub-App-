@@ -32,6 +32,7 @@
 			<span>{supply.unit}</span>
 		</label>
 	</div>
+	<br />
 	<button class="btn btn-block" class:loading disabled={loading}>Adjust</button>
 	<br />
 	{#if form?.error?.form === 'adjust_value'}

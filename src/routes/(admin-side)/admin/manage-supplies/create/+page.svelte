@@ -15,7 +15,7 @@
 	};
 </script>
 
-<main class="h-full flex flex-col items-center justify-center">
+<main class="h-full flex flex-col  p-4">
 	<h1 class="font-bold text-2xl uppercase">Adding new supply</h1>
 
 	<form
