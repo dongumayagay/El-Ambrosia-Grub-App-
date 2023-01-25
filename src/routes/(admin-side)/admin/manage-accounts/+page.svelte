@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { datetime_formatter } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -7,6 +6,7 @@
 </script>
 
 <main class="h-full">
+	<br />
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
