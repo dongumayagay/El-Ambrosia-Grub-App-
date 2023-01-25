@@ -11,12 +11,12 @@
 <h1>User Information</h1>
 <ul>
 	<li>ID: {user.id}</li>
-	<li>Email: {user.email}</li>
-	<li>Phone: {user.phone || 'None'}</li>
+	<li>Email: {user.email_address}</li>
+	<li>Phone: {user.phone_number}</li>
 	<li>Created at: {datetime_formatter(user.created_at)}</li>
 	<li>Last sign in: {datetime_formatter(user.last_sign_in_at)}</li>
 	<li>First name: {user.first_name}</li>
 	<li>Last name: {user.last_name}</li>
-	<li>Role: {user.role}</li>
+	<li>Role: {user.position}</li>
 </ul>
 <ChangeRole {form} user_id={user.id ?? ''} />

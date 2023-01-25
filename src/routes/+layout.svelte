@@ -29,12 +29,9 @@
 	<title>El Ambrosia</title>
 </svelte:head>
 
-<div
-	data-sveltekit-preload-data="tap"
-	data-sveltekit-preload-code="eager"
-	class="drawer"
-	class:drawer-mobile={should_have_drawer}
->
+<!-- data-sveltekit-preload-data="tap"
+data-sveltekit-preload-code="eager" -->
+<div class="drawer" class:drawer-mobile={should_have_drawer}>
 	<input
 		id={side_drawer_name}
 		type="checkbox"

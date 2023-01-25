@@ -13,19 +13,19 @@ export interface Database {
         Row: {
           id: number
           name: string | null
-          price: number | null
+          price: number
           variant_of: number
         }
         Insert: {
           id?: number
           name?: string | null
-          price?: number | null
+          price: number
           variant_of: number
         }
         Update: {
           id?: number
           name?: string | null
-          price?: number | null
+          price?: number
           variant_of?: number
         }
       }
@@ -78,15 +78,15 @@ export interface Database {
       roles: {
         Row: {
           id: string
-          role: string | null
+          position: string | null
         }
         Insert: {
           id: string
-          role?: string | null
+          position?: string | null
         }
         Update: {
           id?: string
-          role?: string | null
+          position?: string | null
         }
       }
       supplies: {
