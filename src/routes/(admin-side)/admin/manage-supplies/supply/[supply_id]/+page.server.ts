@@ -2,8 +2,8 @@ import { error, fail, } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ params, locals }) => {
-    const { update_supply_id } = params
-    const { data: supply } = await locals.supabaseClient.from('supplies').select('*').eq("id", update_supply_id).limit(1).single()
+    const { supply_id } = params
+    const { data: supply } = await locals.supabaseClient.from('supplies').select('*').eq("id", supply_id).limit(1).single()
     if (!supply) throw error(404)
     return { supply };
 }) satisfies PageServerLoad;

@@ -34,9 +34,10 @@
 <div class="h-full flex flex-col  p-4">
 	<main class="w-full max-w-md">
 		<div>
+			<h1 class="text-xl">Supply</h1>
 			<h1 class="text-xl">Name: {supply.name}</h1>
-			<h1 class="text-xl">Current item value: {supply.value} {supply.unit}</h1>
-			<h1 class="text-xl">Item threshold value: {supply.threshold} {supply.unit}</h1>
+			<h1 class="text-xl">Current value: {supply.value} {supply.unit}</h1>
+			<h1 class="text-xl">threshold value: {supply.threshold} {supply.unit}</h1>
 		</div>
 		<br />
 		<AdjustSupplyValue {data} {form} />

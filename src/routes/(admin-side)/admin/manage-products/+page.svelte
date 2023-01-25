@@ -71,7 +71,7 @@
 							{product.description}
 						</td>
 						<td>
-							<a class="btn gap-2" href={`/admin/manage-products`}
+							<a class="btn gap-2" href={`/admin/manage-products/product/${product.id}/variant`}
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 24 24"
