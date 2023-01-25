@@ -18,12 +18,7 @@
 <main class="h-full flex flex-col  p-4">
 	<h1 class="font-bold text-2xl uppercase">Adding new supply</h1>
 
-	<form
-		action="?/add_new_supply"
-		method="post"
-		use:enhance={enhance_function}
-		class="w-full max-w-sm"
-	>
+	<form method="post" use:enhance={enhance_function} class="w-full max-w-sm">
 		<div class="form-control">
 			<label class="label" for="name">
 				<span class="label-text">Supply name</span>

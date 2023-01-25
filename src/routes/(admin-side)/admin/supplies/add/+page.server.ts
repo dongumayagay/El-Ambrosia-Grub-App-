@@ -6,7 +6,7 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    add_new_supply: async ({ request, locals }) => {
+    default: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
         console.log(body)
 
@@ -18,6 +18,6 @@ export const actions: Actions = {
         })
         if (err)
             return fail(400, { error: err?.message ?? 'Something went wrong' })
-        throw redirect(303, '/admin/manage-supplies')
+        throw redirect(303, '/admin/supplies')
     }
 };

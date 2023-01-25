@@ -16,6 +16,6 @@ export const actions: Actions = {
 
         if (err)
             return fail(400, { error: err.message })
-        throw redirect(303, '/admin/manage-products')
+        throw redirect(303, '/admin/products')
     }
 };

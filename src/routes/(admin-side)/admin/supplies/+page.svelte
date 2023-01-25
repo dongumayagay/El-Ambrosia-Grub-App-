@@ -37,7 +37,7 @@
 <main class="h-full">
 	<br />
 	<div class="flex justify-between px-4">
-		<a href="/admin/manage-supplies/supply/add" class="btn  gap-2">
+		<a href="/admin/supplies/add" class="btn  gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
@@ -77,7 +77,7 @@
 							{/if}
 						</td>
 						<td>
-							<a class="btn gap-2" href={`/admin/manage-supplies/supply/${supply.id}`}
+							<a class="btn gap-2" href={`/admin/supplies/${supply.id}`}
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 24 24"

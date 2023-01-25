@@ -28,7 +28,7 @@
 						<td>{user.first_name}</td>
 						<td>{user.last_name}</td>
 						<td>
-							<a class="btn" href={`/admin/manage-accounts/${user.id}`}>Details</a>
+							<a class="btn" href={`/admin/accounts/${user.id}`}>Details</a>
 						</td>
 					</tr>
 				{/each}
