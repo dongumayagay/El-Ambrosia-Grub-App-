@@ -71,6 +71,10 @@
 	</div>
 	<div class="drawer-side">
 		<label for={side_drawer_name} class="drawer-overlay" />
-		<SideDrawer />
+		<SideDrawer
+			on:close_drawer={() => {
+				show_side_drawer = false;
+			}}
+		/>
 	</div>
 </div>
