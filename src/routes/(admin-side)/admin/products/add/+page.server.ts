@@ -1,9 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
-
-export const load = (async () => {
-    return {};
-}) satisfies PageServerLoad;
+import type { Actions } from './$types';
 
 export const actions: Actions = {
     add_product: async ({ request, locals }) => {

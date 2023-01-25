@@ -2,7 +2,7 @@
 	export let id: number;
 </script>
 
-<div class="dropdown dropdown-end">
+<div class="dropdown dropdown-end dropdown-hover">
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<!-- svelte-ignore a11y-label-has-associated-control -->
 	<label tabindex="0" class="btn btn-ghost"

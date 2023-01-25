@@ -1,47 +1,59 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import ActionMenu from './ActionMenu.svelte';
 
 	export let data: PageData;
-	const { product } = data;
+	const { product, variants } = data;
 </script>
 
-<br />
-<div class="px-4">
-	<h1 class="text-xl">{product.name} variants</h1>
+{#if product}
 	<br />
-	<a href={`/admin/products/${product.id}/variants/add`} class="btn gap-2">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-			<path
-				fill-rule="evenodd"
-				d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
-				clip-rule="evenodd"
-			/>
-		</svg>
-		Add product variant</a
-	>
-</div>
-<br />
-<div class="flex-1 overflow-x-auto">
-	<table class="table w-full">
-		<thead>
-			<tr>
-				<th>name</th>
-				<th>description</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!-- {#each products as product (product.id)}
-				<tr class="hover">
-					<td>{product.name}</td>
-					<td>
-						{product.description}
-					</td>
-					<td>
-						<ActionMenu id={product.id} />
-					</td>
+	<div class="px-4">
+		<h1 class="text-xl">{product.name} variants</h1>
+		<br />
+		<a href={`/admin/products/${product.id}/variants/add`} class="btn gap-2">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				class="w-6 h-6"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+					clip-rule="evenodd"
+				/>
+			</svg>
+			Add product variant</a
+		>
+	</div>
+	<br />
+	<div class="flex-1 overflow-x-auto">
+		<table class="table w-full">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>description</th>
+					<th>actions</th>
 				</tr>
-			{/each} -->
-		</tbody>
-	</table>
-</div>
+			</thead>
+			<tbody>
+				{#each variants as variant (variant.id)}
+					<tr class="hover">
+						<td>{variant.name}</td>
+						<td>
+							{variant.price}
+						</td>
+						<td>
+							<ActionMenu product_id={product.id} variant_id={variant.id} />
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
+{:else}
+	<main class="text-error flex-1 grid place-items-center uppercase text-xl font-bold">
+		404: Not found
+	</main>
+{/if}

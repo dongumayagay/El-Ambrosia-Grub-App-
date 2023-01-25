@@ -5,7 +5,7 @@
 
 {#if $page.data.session}
 	<main>
-		<section class="dropdown dropdown-end">
+		<section class="dropdown dropdown-end dropdown-hover">
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label tabindex="0" class="btn btn-square btn-ghost"
@@ -40,7 +40,7 @@
 	</main>
 {:else}
 	<main>
-		<section class="dropdown dropdown-end">
+		<section class="dropdown dropdown-end dropdown-hover">
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label tabindex="0" class="btn btn-square btn-ghost"
