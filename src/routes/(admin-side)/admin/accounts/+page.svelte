@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	let users = data.users ?? [];
+	let users = data.users;
 </script>
 
 <main class="h-full">
