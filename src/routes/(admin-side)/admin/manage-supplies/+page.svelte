@@ -55,8 +55,6 @@
 				<tr>
 					<th>name</th>
 					<th>value</th>
-					<th>unit</th>
-					<th>threshold</th>
 					<th />
 				</tr>
 			</thead>
@@ -64,9 +62,15 @@
 				{#each supplies as supply (supply.id)}
 					<tr class="hover">
 						<td>{supply.name}</td>
-						<td> {supply.value} </td>
-						<td>{supply.unit}</td>
-						<td>{supply.threshold}</td>
+						<td>
+							<div>
+								{supply.value}
+								{supply.unit}
+							</div>
+							{#if supply.value <= supply.threshold}
+								<p class="text-warning">supply is running low</p>
+							{/if}
+						</td>
 						<td>
 							<a class="btn gap-2" href={`/admin/manage-supplies/${supply.id}`}
 								><svg
