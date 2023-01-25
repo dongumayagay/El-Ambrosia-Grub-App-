@@ -81,6 +81,10 @@ export interface Database {
         Args: { uid: string }
         Returns: string
       }
+      increment: {
+        Args: { row_id: number; amount: number }
+        Returns: undefined
+      }
       is_super_admin: {
         Args: { uid: string }
         Returns: boolean
