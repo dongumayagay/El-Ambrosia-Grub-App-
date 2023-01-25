@@ -20,7 +20,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each users as user}
+				{#each users as user (user.id)}
 					<tr class="hover">
 						<td>{user.id}</td>
 						<td>{user.email_address}</td>
