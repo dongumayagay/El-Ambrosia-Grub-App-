@@ -17,12 +17,7 @@
 
 <main class=" h-full flex flex-col justify-center items-center">
 	<h1 class="font-bold text-3xl uppercase">Login</h1>
-	<form
-		action="?/login"
-		method="post"
-		use:enhance={enhance_function}
-		class="flex flex-col w-full max-w-sm"
-	>
+	<form method="post" use:enhance={enhance_function} class="flex flex-col w-full max-w-sm">
 		<div class="form-control">
 			<label class="label" for="email">
 				<span class="label-text">Email Address</span>

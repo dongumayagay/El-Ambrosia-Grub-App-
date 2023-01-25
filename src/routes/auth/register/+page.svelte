@@ -18,7 +18,6 @@
 <main class=" h-full flex flex-col justify-center items-center">
 	<h1 class="font-bold text-3xl uppercase">Register</h1>
 	<form
-		action="?/register"
 		method="post"
 		use:enhance={enhance_function}
 		class="flex flex-col w-full max-w-sm"
