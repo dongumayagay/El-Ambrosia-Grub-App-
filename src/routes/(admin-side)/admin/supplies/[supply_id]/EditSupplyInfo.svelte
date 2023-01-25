@@ -17,7 +17,7 @@
 	};
 </script>
 
-<form action="?/edit_supply_info" method="post" class="" use:enhance={enhance_function}>
+<form method="post" class="" use:enhance={enhance_function}>
 	<h1 class="text-lg">Update supply information</h1>
 
 	<input type="hidden" name="supply_id" value={supply.id} />

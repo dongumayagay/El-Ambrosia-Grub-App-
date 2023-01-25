@@ -32,6 +32,9 @@
 		<li>
 			<a class="btn btn-ghost" href={`/admin/supplies/${supply.id}/adjust-value`}>Adjust value</a>
 		</li>
+		<li>
+			<a class="btn btn-ghost" href={`/admin/supplies/${supply.id}/edit`}>Update Info</a>
+		</li>
 		<!-- <li><a>Item 2</a></li> -->
 	</ul>
 </div>

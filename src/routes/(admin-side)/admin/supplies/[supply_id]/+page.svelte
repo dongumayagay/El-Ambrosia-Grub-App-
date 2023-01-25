@@ -2,11 +2,11 @@
 	import { supabaseClient } from '$lib/db/client';
 	import { onMount } from 'svelte';
 	import type { ActionData, PageData } from './$types';
-	import AdjustSupplyValue from './AdjustSupplyValue.svelte';
-	import EditSupplyInfo from './EditSupplyInfo.svelte';
+	// import AdjustSupplyValue from './AdjustSupplyValue.svelte';
+	// import EditSupplyInfo from './EditSupplyInfo.svelte';
 
 	export let data: PageData;
-	export let form: ActionData;
+	// export let form: ActionData;
 	$: supply = data.supply;
 
 	onMount(() => {
@@ -40,8 +40,8 @@
 			<h1 class="text-xl">threshold value: {supply.threshold} {supply.unit}</h1>
 		</div>
 		<br />
-		<AdjustSupplyValue {data} {form} />
+		<!-- <AdjustSupplyValue {data} {form} />
 		<br />
-		<EditSupplyInfo {data} {form} />
+		<EditSupplyInfo {data} {form} /> -->
 	</main>
 </div>
