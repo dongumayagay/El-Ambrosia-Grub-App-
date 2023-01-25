@@ -55,7 +55,7 @@
 			<tr>
 				<th>name</th>
 				<th>value</th>
-				<th />
+				<th>actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -72,7 +72,7 @@
 						{/if}
 					</td>
 					<td>
-						<ActionMenu {supply} />
+						<ActionMenu id={supply.id} />
 					</td>
 				</tr>
 			{/each}

@@ -16,7 +16,7 @@
 					<th>Phone</th>
 					<th>First name</th>
 					<th>Last name</th>
-					<th />
+					<th>actions</th>
 				</tr>
 			</thead>
 			<tbody>
