@@ -1,10 +1,10 @@
 <script lang="ts">
-	// import type { PageData } from './$types';
+	import type { PageData } from './$types';
 	// import { supabaseClient } from '$lib/db/client';
 	// import { onMount } from 'svelte';
 
-	// export let data: PageData;
-	// let products = data.products;
+	export let data: PageData;
+	let products = data.products;
 
 	// onMount(() => {
 	// 	const products_realtime_listener = supabaseClient
@@ -59,25 +59,19 @@
 			<thead>
 				<tr>
 					<th>name</th>
-					<th>value</th>
+					<th>description</th>
 					<th />
 				</tr>
 			</thead>
 			<tbody>
-				<!-- {#each products as supply (supply.id)}
+				{#each products as product (product.id)}
 					<tr class="hover">
-						<td>{supply.name}</td>
+						<td>{product.name}</td>
 						<td>
-							<div>
-								{supply.value}
-								{supply.unit}
-							</div>
-							{#if supply.value <= supply.threshold}
-								<p class="text-warning">supply is running low</p>
-							{/if}
+							{product.description}
 						</td>
 						<td>
-							<a class="btn gap-2" href={`/admin/manage-products/${supply.id}`}
+							<a class="btn gap-2" href={`/admin/manage-products`}
 								><svg
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 24 24"
@@ -95,7 +89,7 @@
 							>
 						</td>
 					</tr>
-				{/each} -->
+				{/each}
 			</tbody>
 		</table>
 	</div>
