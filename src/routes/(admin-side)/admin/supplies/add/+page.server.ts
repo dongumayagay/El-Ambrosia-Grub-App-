@@ -8,16 +8,19 @@ export const load = (async () => {
 export const actions: Actions = {
     default: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
-        console.log(body)
 
-        const { error: err } = await locals.supabaseClient.from('supplies').insert({
-            name: body.name as string,
-            unit: body.unit as string,
+        const supply = {
+            name: body.name.toString(),
+            unit: body.unit.toString(),
             value: Number(body.value.toString()),
             threshold: Number(body.threshold.toString())
-        })
+        }
+        if (Number.isNaN(supply.value) || Number.isNaN(supply.threshold))
+            return fail(400, { error: "invalid input detected, please try again" })
+
+        const { error: err } = await locals.supabaseClient.from('supplies').insert(supply)
         if (err)
-            return fail(400, { error: err?.message ?? 'Something went wrong' })
+            return fail(Number(err.code), { error: err.message })
         throw redirect(303, '/admin/supplies')
     }
 };
