@@ -52,24 +52,24 @@ export interface Database {
       supplies: {
         Row: {
           id: number
-          name: string | null
-          threshold: number | null
-          unit: string | null
-          value: number | null
+          name: string
+          threshold: number
+          unit: string
+          value: number
         }
         Insert: {
           id?: number
-          name?: string | null
-          threshold?: number | null
-          unit?: string | null
-          value?: number | null
+          name?: string
+          threshold?: number
+          unit?: string
+          value?: number
         }
         Update: {
           id?: number
-          name?: string | null
-          threshold?: number | null
-          unit?: string | null
-          value?: number | null
+          name?: string
+          threshold?: number
+          unit?: string
+          value?: number
         }
       }
     }
@@ -77,13 +77,13 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
+      adjust_supply_value: {
+        Args: { row_id: number; amount: number }
+        Returns: undefined
+      }
       get_user_role: {
         Args: { uid: string }
         Returns: string
-      }
-      increment: {
-        Args: { row_id: number; amount: number }
-        Returns: undefined
       }
       is_super_admin: {
         Args: { uid: string }
