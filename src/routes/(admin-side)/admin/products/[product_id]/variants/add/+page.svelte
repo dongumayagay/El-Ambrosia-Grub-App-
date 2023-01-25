@@ -1,0 +1,49 @@
+<script lang="ts">
+	import { enhance, type SubmitFunction } from '$app/forms';
+	import type { PageData, ActionData } from './$types';
+
+	export let form: ActionData;
+	export let data: PageData;
+	const { product } = data;
+	let loading: boolean;
+
+	const enhance_function: SubmitFunction = () => {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			await update();
+		};
+	};
+</script>
+
+<main class="h-full flex flex-col  p-4">
+	<h1 class="font-bold text-2xl uppercase">Adding variant for {product.name}</h1>
+
+	<form method="post" use:enhance={enhance_function} class="w-full max-w-sm">
+		<input type="hidden" name="product_id" value={product.id} />
+		<div class="form-control">
+			<label class="label" for="name">
+				<span class="label-text">Name</span>
+			</label>
+			<input
+				type="text"
+				name="name"
+				placeholder="regular / chicken / steak / etc"
+				class="input input-bordered "
+				required
+			/>
+		</div>
+		<div class="form-control">
+			<label class="label" for="price">
+				<span class="label-text">Price</span>
+			</label>
+			<input type="number" name="price" placeholder="100" class="input input-bordered " required />
+		</div>
+
+		<br />
+		<button disabled={loading} class="btn btn-block" class:loading>add variant</button>
+		{#if form?.error}
+			<p class="text-center text-error">{form.error}</p>
+		{/if}
+	</form>
+</main>

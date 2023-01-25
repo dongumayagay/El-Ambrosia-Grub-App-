@@ -6,9 +6,6 @@
 </script>
 
 <main class="h-full p-4">
-	<div>
-		<h1 class="text-xl">Product</h1>
-		<h1 class="text-xl">Name: {product.name}</h1>
-		<p class="text-xl">Description: {product.description}</p>
-	</div>
+	<h1>Product variants of {product.name}</h1>
+	<a href={`/admin/products/${product.id}/variants/add`} class="btn">Add product variant</a>
 </main>
