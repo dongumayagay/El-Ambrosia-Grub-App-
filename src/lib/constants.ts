@@ -2,10 +2,10 @@ import type { Link } from "./types/custom";
 
 export let admin_links: Link[] = [
     {
-        name: "manage accounts", path: "/admin/manage-accounts"
+        name: "manage accounts", path: "/admin/accounts"
     }, {
-        name: 'manage supplies', path: "/admin/manage-supplies"
+        name: 'manage supplies', path: "/admin/supplies"
     }, {
-        name: 'manage products', path: "/admin/manage-products"
+        name: 'manage products', path: "/admin/products"
     }
 ]
