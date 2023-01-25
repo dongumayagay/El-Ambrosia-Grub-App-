@@ -37,7 +37,7 @@
 <main class="h-full">
 	<br />
 	<div class="flex justify-between px-4">
-		<a href="/admin/manage-products/add-product" class="btn  gap-2">
+		<a href="/admin/manage-products/product/add" class="btn  gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"

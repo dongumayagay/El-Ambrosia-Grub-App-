@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import type { PageData, ActionData } from './$types';
+	import type { ActionData } from './$types';
 
-	export let data: PageData;
+	// export let data: PageData;
 	export let form: ActionData;
 	let loading: boolean;
 
@@ -72,8 +72,8 @@
 		<input type="search" class="input input-bordered" /> -->
 		<br />
 		<button disabled={loading} class="btn btn-block" class:loading>add product</button>
-		<!-- {#if form?.error}
+		{#if form?.error}
 			<p class="text-center text-error">{form.error}</p>
-		{/if} -->
+		{/if}
 	</form>
 </main>
