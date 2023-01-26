@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^1.0.2",
 		"@sveltejs/kit": "^1.2.0",
+		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.9",
 		"autoprefixer": "^10.4.13",
 		"postcss": "^8.4.21",
