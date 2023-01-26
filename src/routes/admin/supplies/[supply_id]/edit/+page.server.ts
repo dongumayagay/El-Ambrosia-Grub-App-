@@ -1,11 +1,11 @@
-import { error, fail, } from '@sveltejs/kit';
+import { fail, } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ params, locals }) => {
     const { supply_id } = params
-    const { data: supply } = await locals.supabaseClient.from('supplies').select('*').eq("id", supply_id).limit(1).single()
-    if (!supply) throw error(404)
-    return { supply };
+    return {
+        supply: await (await locals.supabaseClient.from('supplies').select('*').eq("id", supply_id).limit(1).single()).data
+    };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {

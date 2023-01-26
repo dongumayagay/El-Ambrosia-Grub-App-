@@ -66,6 +66,7 @@
 			/>
 		</div>
 	</div>
+	<br />
 	<form method="post" class="w-full max-w-md prose" use:enhance={enhance_function}>
 		<h2>Adjust supply value</h2>
 		<p class=" text-info text-center">*will increase or decrease base on value adjusted by</p>
