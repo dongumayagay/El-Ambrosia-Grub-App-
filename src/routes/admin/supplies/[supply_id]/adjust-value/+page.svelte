@@ -38,7 +38,7 @@
 	});
 </script>
 
-<div class="h-full flex flex-col  p-4">
+<div class="h-full flex flex-col p-4">
 	<main class="w-full max-w-md">
 		<div>
 			<h1 class="text-xl">Supply</h1>

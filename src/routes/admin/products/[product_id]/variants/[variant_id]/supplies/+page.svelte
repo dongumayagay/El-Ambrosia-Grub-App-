@@ -6,8 +6,7 @@
 </script>
 
 {#if product && variant}
-	<br />
-	<div class="px-4">
+	<div class="p-4">
 		<h1 class="text-xl">{product.name} {variant.name} supplies will consume</h1>
 		<br />
 		<a href={`/admin/products/${product.id}/variants/${variant.id}/supplies/add`} class="btn gap-2">
@@ -25,5 +24,6 @@
 			</svg>
 			Add supplies will consume</a
 		>
+		<!-- <SearchDropdown /> -->
 	</div>
 {/if}

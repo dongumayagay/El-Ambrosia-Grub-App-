@@ -1,54 +1,20 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import ActionMenu from './ActionMenu.svelte';
-	// import { supabaseClient } from '$lib/db/client';
-	// import { onMount } from 'svelte';
-
 	export let data: PageData;
 	let products = data.products;
-
-	// onMount(() => {
-	// 	const products_realtime_listener = supabaseClient
-	// 		.channel('products-channel')
-	// 		.on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, (payload) => {
-	// 			console.log('Change received!', payload);
-	// 			if (payload.eventType === 'INSERT') {
-	// 				// @ts-ignore
-	// 				products = [...products, payload.new];
-	// 			}
-	// 			if (payload.eventType === 'UPDATE') {
-	// 				// @ts-ignore
-	// 				products = products.map((supply) => {
-	// 					if (supply.id === payload.new.id) return payload.new;
-	// 					return supply;
-	// 				});
-	// 			}
-	// 			if (payload.eventType === 'DELETE') {
-	// 				// @ts-ignore
-	// 				products = products.filter((supply) => supply.id !== payload.old.id);
-	// 			}
-	// 		})
-	// 		.subscribe();
-	// 	return () => {
-	// 		products_realtime_listener.unsubscribe();
-	// 	};
-	// });
 </script>
 
-<br />
-<div class="flex justify-between px-4">
-	<a href="/admin/products/add" class="btn gap-2">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-			<path
-				fill-rule="evenodd"
-				d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
-				clip-rule="evenodd"
-			/>
-		</svg>
-		Add New Product</a
-	>
-</div>
-<br />
+<a href="/admin/products/add" class="btn gap-2">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+		<path
+			fill-rule="evenodd"
+			d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+			clip-rule="evenodd"
+		/>
+	</svg>
+	Add New Product</a
+>
 <div class="flex-1 overflow-x-auto">
 	<table class="table w-full">
 		<thead>
@@ -72,4 +38,8 @@
 			{/each}
 		</tbody>
 	</table>
+</div>
+<div class="btn-group grid grid-cols-2">
+	<button class="btn btn-outline">Previous page</button>
+	<button class="btn btn-outline">Next</button>
 </div>

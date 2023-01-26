@@ -14,9 +14,8 @@
 	};
 </script>
 
-<main class="h-full flex flex-col  p-4">
+<main class="h-full flex flex-col p-4">
 	<h1 class="font-bold text-2xl uppercase">Adding new supply</h1>
-
 	<form method="post" use:enhance={enhance_function} class="w-full max-w-sm">
 		<div class="form-control">
 			<label class="label" for="name">
