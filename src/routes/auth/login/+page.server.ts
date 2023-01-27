@@ -3,9 +3,7 @@ import { AuthApiError, type Provider } from "@supabase/supabase-js";
 import { fail, redirect, type Actions } from "@sveltejs/kit";
 export const actions: Actions = {
     default: async ({ request, locals, url }) => {
-        console.log('login chuchu')
         const provider = url.searchParams.get('provider') as Provider
-        console.log(provider)
         if (provider) {
             console.log('signining in using provider')
             const { data, error: err } = await locals.supabaseClient.auth.signInWithOAuth({ provider, options: { redirectTo: getURL() } })
@@ -13,7 +11,6 @@ export const actions: Actions = {
                 console.log(err)
                 return fail(err.status || 500, { error: err.message })
             }
-            console.log(data)
             throw redirect(303, data.url)
         }
 
