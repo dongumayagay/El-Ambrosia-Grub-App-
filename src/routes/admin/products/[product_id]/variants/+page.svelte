@@ -46,6 +46,10 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="btn-group grid grid-cols-2">
+		<button class="btn btn-outline">Previous page</button>
+		<button class="btn btn-outline">Next</button>
+	</div>
 {:else}
 	<main class="text-error flex-1 grid place-items-center uppercase text-xl font-bold">
 		404: Not found

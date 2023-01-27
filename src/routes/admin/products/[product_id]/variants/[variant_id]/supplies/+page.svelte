@@ -2,7 +2,12 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const { product, variant } = data;
+	const { product, variant, variant_supplies } = data;
+
+	function display_supply_property(variant_supply: any, property: string) {
+		const supply = variant_supply.supplies;
+		return supply[property];
+	}
 </script>
 
 {#if product && variant}
@@ -19,5 +24,34 @@
 		</svg>
 		Add supplies will consume</a
 	>
-	<!-- <SearchDropdown /> -->
+	<div class="flex-1 overflow-x-auto">
+		<table class="table w-full">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>amount use</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each variant_supplies as variant_supply (variant_supply.id)}
+					<tr class="hover">
+						<td>{display_supply_property(variant_supply, 'name')}</td>
+						<td>
+							{variant_supply.amount_use}
+							{display_supply_property(variant_supply, 'unit')}
+						</td>
+						<td>
+							<!-- <ActionMenu product_id={product.id} variant_id={variant.id} /> -->
+							gawin mo to update chuchu
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-group grid grid-cols-2">
+		<button class="btn btn-outline">Previous page</button>
+		<button class="btn btn-outline">Next</button>
+	</div>
 {/if}
