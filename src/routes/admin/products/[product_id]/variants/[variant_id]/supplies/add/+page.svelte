@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance, type SubmitFunction } from '$app/forms';
 	import { supabaseClient } from '$lib/db/client';
 	import type { PageData, ActionData } from './$types';
 
@@ -33,12 +34,22 @@
 			console.log(supply_options);
 		}
 	}
+
+	let loading: boolean;
+
+	const enhance_function: SubmitFunction = () => {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			await update();
+		};
+	};
 </script>
 
 {#if product && variant}
 	<main class="h-full flex flex-col p-4">
 		<h1 class="font-bold text-2xl uppercase">Adding variant for {product.name}</h1>
-		<form method="post" class=" w-full max-w-sm">
+		<form method="post" class=" w-full max-w-sm" use:enhance={enhance_function}>
 			<input type="hidden" name="variant_id" value={variant.id} />
 			<div class="form-control">
 				<label class="label" for="supply_name">
@@ -72,6 +83,7 @@
 					placeholder="100"
 					class="input input-bordered "
 					required
+					min="1"
 				/>
 			</div>
 			<br />
