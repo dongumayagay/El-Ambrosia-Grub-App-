@@ -115,19 +115,19 @@ export interface Database {
       variant_supply: {
         Row: {
           amount_use: number
-          id: number
+          id: string
           supply_id: number
           variant_id: number
         }
         Insert: {
           amount_use: number
-          id?: number
+          id: string
           supply_id: number
           variant_id: number
         }
         Update: {
           amount_use?: number
-          id?: number
+          id?: string
           supply_id?: number
           variant_id?: number
         }
