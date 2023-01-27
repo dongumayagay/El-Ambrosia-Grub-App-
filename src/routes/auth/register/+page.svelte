@@ -2,7 +2,6 @@
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import type { ActionData } from './$types';
 
-	// export let data: PageData;
 	export let form: ActionData;
 	let loading: boolean;
 
@@ -26,15 +25,11 @@
 		</p>
 	{/if}
 	<div class="form-control">
-		<label class="label" for="email">
-			<span class="label-text">Email Address</span>
-		</label>
+		<label class="label" for="email"> <span class="label-text">Email Address</span> </label>
 		<input type="email" name="email" placeholder="Email Address" class="input input-bordered" />
 	</div>
 	<div class="form-control">
-		<label class="label" for="password">
-			<span class="label-text">Password</span>
-		</label>
+		<label class="label" for="password"> <span class="label-text">Password</span> </label>
 		<input type="password" name="password" placeholder="Password" class="input input-bordered" />
 	</div>
 	<br />

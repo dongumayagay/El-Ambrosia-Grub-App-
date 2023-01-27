@@ -26,21 +26,16 @@
 		</p>
 	{/if}
 	<div class="form-control">
-		<label class="label" for="email">
-			<span class="label-text">Email Address</span>
-		</label>
+		<label class="label" for="email"> <span class="label-text">Email Address</span> </label>
 		<input type="email" name="email" placeholder="Email Address" class="input input-bordered" />
 	</div>
 	<div class="form-control">
-		<label class="label" for="password">
-			<span class="label-text">Password</span>
-		</label>
+		<label class="label" for="password"> <span class="label-text">Password</span> </label>
 		<input type="password" name="password" placeholder="Password" class="input input-bordered" />
 	</div>
 	<br />
 	<button class="btn btn-block" class:loading disabled={loading}>Sign me in</button>
 	<br />
-
 	<br />
 	<a class="text-center" href="/auth/register">Don't have an account yet? Create one</a>
 </form>
