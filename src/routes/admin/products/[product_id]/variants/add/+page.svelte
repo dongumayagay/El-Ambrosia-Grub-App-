@@ -42,8 +42,9 @@
 
 		<br />
 		<button disabled={loading} class="btn btn-block" class:loading>add variant</button>
+		<br />
 		{#if form?.error}
-			<p class="text-center text-error">{form.error}</p>
+			<p class="text-center text-error font-bold">{form.error}</p>
 		{/if}
 	</form>
 </main>

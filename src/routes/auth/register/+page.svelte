@@ -17,11 +17,7 @@
 
 <main class=" h-full flex flex-col justify-center items-center">
 	<h1 class="font-bold text-3xl uppercase">Register</h1>
-	<form
-		method="post"
-		use:enhance={enhance_function}
-		class="flex flex-col w-full max-w-sm"
-	>
+	<form method="post" use:enhance={enhance_function} class="flex flex-col w-full max-w-sm">
 		<div class="form-control">
 			<label class="label" for="email">
 				<span class="label-text">Email Address</span>
@@ -36,13 +32,13 @@
 		</div>
 		<br />
 		<button class="btn" class:loading disabled={loading}>create my account</button>
+		<br />
 		{#if form?.error}
-			<br />
-			<p class=" text-error font-bold text-center">
+			<p class="text-center text-error font-bold ">
 				{form.error}
 			</p>
+			<br />
 		{/if}
-		<br />
 		<a class="text-center" href="/auth/login">Already have and account? Login</a>
 	</form>
 </main>

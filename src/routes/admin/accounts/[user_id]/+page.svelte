@@ -9,7 +9,7 @@
 </script>
 
 <div class="prose w-full max-w-md grid sm:grid-cols-2 gap-2">
-	<h1 class="col-span-full">User Information</h1>
+	<h2 class="col-span-full">User Information</h2>
 	<div class=" col-span-full form-control ">
 		<label class="label" for=""> <span class="label-text">UID</span> </label>
 		<input type="text" disabled class="input input-bordered cursor-text" value={user.id} />

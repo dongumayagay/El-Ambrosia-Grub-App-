@@ -32,13 +32,13 @@
 		</div>
 		<br />
 		<button class="btn" class:loading disabled={loading}>Sign me in</button>
+		<br />
 		{#if form?.error}
-			<br />
-			<p class=" text-error font-bold text-center">
+			<p class="text-center text-error font-bold ">
 				{form.error}
 			</p>
+			<br />
 		{/if}
-		<br />
 		<a class="text-center" href="/auth/register">Don't have an account yet? Create one</a>
 	</form>
 </main>

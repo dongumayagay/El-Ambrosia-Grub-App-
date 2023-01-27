@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { supabaseClient } from '$lib/db/client';
-	import type { PageData } from './$types';
+	import type { PageData, ActionData } from './$types';
 
 	export let data: PageData;
+	export let form: ActionData;
 	const { product, variant } = data;
 	let timer: NodeJS.Timeout;
 
@@ -38,22 +39,19 @@
 	<main class="h-full flex flex-col p-4">
 		<h1 class="font-bold text-2xl uppercase">Adding variant for {product.name}</h1>
 		<form method="post" class=" w-full max-w-sm">
+			<input type="hidden" name="variant_id" value={variant.id} />
 			<div class="form-control">
-				<label class="label" for="name">
+				<label class="label" for="supply_name">
 					<span class="label-text">Supply name</span>
 				</label>
 				<datalist id="supply-options">
-					<div class="form-control">
-						<label class="label" for="price">
-							<span class="label-text">Price</span>
-						</label>
-						{#each supply_options as supply}
-							<option class=" btn" value={supply.name} />
-						{/each}
-						<!-- <option>First option</option>
-            <option>Second Option</option> -->
-					</div></datalist
-				>
+					<label class="label" for="price">
+						<span class="label-text">Price</span>
+					</label>
+					{#each supply_options as supply}
+						<option class=" btn" value={supply.name} />
+					{/each}
+				</datalist>
 				<input
 					autoComplete="on"
 					list="supply-options"
@@ -61,6 +59,7 @@
 					placeholder="Search supply..."
 					on:keyup={debounce}
 					required
+					name="supply_name"
 				/>
 			</div>
 			<div class="form-control">
@@ -77,6 +76,12 @@
 			</div>
 			<br />
 			<button class="btn btn-block">Add Supply for product variant</button>
+			<br />
+			{#if form?.error}
+				<p class="text-center text-error font-bold">
+					{form.error}
+				</p>
+			{/if}
 		</form>
 	</main>
 {/if}
