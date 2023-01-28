@@ -25,8 +25,15 @@
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 		<li>
-			<a class="btn btn-ghost" href={`/admin/products/${product_id}/variants/${variant_id}/supplies`}
+			<a
+				class="btn btn-ghost"
+				href={`/admin/products/${product_id}/variants/${variant_id}/supplies`}
 				>view supplies will use
+			</a>
+		</li>
+		<li>
+			<a class="btn btn-ghost" href={`/admin/products/${product_id}/variants/${variant_id}/edit`}
+				>Update Info
 			</a>
 		</li>
 	</ul>

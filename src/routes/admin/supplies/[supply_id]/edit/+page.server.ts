@@ -1,4 +1,4 @@
-import { fail, } from '@sveltejs/kit';
+import { fail, redirect, } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ params, locals }) => {
@@ -27,6 +27,6 @@ export const actions: Actions = {
                 error: err.message
             })
         }
-        return { success: true }
+        throw redirect(303, '/admin/supplies/')
     }
 };

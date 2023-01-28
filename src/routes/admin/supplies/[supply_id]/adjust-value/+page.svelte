@@ -91,8 +91,5 @@
 		{#if form?.error}
 			<p class=" text-center text-error font-bold">{form.error}</p>
 		{/if}
-		{#if form?.success}
-			<p class="text-center text-success font-bold">Supply has been successfully adjusted</p>
-		{/if}
 	</form>
 {/if}

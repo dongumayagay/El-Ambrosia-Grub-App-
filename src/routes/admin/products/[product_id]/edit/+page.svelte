@@ -19,26 +19,8 @@
 </script>
 
 {#if product}
-	<div class="prose w-full max-w-md gap-2">
-		<h2 class="col-span-full">Current product variant supply will consume Information</h2>
-		<div class=" col-span-full form-control ">
-			<label class="label" for=""> <span class="label-text">Name</span> </label>
-			<input type="text" disabled class="input input-bordered cursor-text" value={product.name} />
-		</div>
-		<div class=" col-span-full form-control ">
-			<label class="label" for=""> <span class="label-text">Description</span> </label>
-			<textarea
-				cols="30"
-				rows="5"
-				class="textarea textarea-bordered"
-				disabled
-				value={product.description}
-			/>
-		</div>
-	</div>
-	<br />
 	<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
-		<h2>Adding new product</h2>
+		<h2>Update product</h2>
 		<input type="hidden" name="product_id" value={product.id} />
 		<div class="form-control">
 			<label class="label" for="name">
