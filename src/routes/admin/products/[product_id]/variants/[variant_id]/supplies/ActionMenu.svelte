@@ -32,5 +32,12 @@
 				>update info
 			</a>
 		</li>
+		<li>
+			<a
+				class="btn btn-ghost"
+				href={`/admin/products/${product_id}/variants/${variant_id}/supplies/${variant_supply_id}/delete`}
+				>delete
+			</a>
+		</li>
 	</ul>
 </div>
