@@ -7,7 +7,7 @@ export const load = (async ({ locals, params }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    default: async ({ request, locals }) => {
+    default: async ({ request, locals, params }) => {
         const body = Object.fromEntries(await request.formData())
 
         const product_variant = {
@@ -20,6 +20,6 @@ export const actions: Actions = {
         const { data, error: err } = await locals.supabaseClient.from('product_variants').insert(product_variant).select('id').limit(1).single()
         if (err)
             return fail(400, { error: err.message })
-        throw redirect(303, '/admin/supplies')
+        throw redirect(303, `/admin/products/${params.product_id}/variants/${data.id}/supplies/add`)
     }
 };

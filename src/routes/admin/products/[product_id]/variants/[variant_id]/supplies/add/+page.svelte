@@ -49,7 +49,7 @@
 
 {#if product && variant}
 	<form method="post" class="w-full max-w-md prose" use:enhance={enhance_function}>
-		<h2 class="uppercase">Adding variant for {variant.name}</h2>
+		<h2 class="uppercase">Adding supply for product variant {variant.name}</h2>
 		<input type="hidden" name="variant_id" value={variant.id} />
 		<div class="form-control">
 			<label class="label" for="supply_name">
