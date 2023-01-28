@@ -15,12 +15,7 @@
 	};
 </script>
 
-<form
-	action="?/add_product"
-	method="post"
-	use:enhance={enhance_function}
-	class="w-full max-w-md prose"
->
+<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
 	<h2>Adding new product</h2>
 	<div class="form-control">
 		<label class="label" for="name">

@@ -2,7 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-    add_product: async ({ request, locals }) => {
+    default: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
 
         const { error: err } = await locals.supabaseClient.from('products').insert({

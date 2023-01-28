@@ -8,7 +8,7 @@
 	export let form: ActionData;
 
 	let loading: boolean;
-	// let supply = data.supply;
+	
 	const { variant_supply } = data;
 	const enhance_function: SubmitFunction = () => {
 		loading = true;

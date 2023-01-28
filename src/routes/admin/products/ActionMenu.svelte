@@ -25,6 +25,7 @@
 	<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 		<li>
 			<a class="btn btn-ghost" href={`/admin/products/${id}/variants`}>view variants</a>
+			<a class="btn btn-ghost" href={`/admin/products/${id}/edit`}>Update Info</a>
 		</li>
 	</ul>
 </div>
