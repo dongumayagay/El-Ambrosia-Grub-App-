@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
+	import NotFound from '$lib/components/NotFound.svelte';
 	import type { PageData, ActionData } from './$types';
 
 	export let form: ActionData;
@@ -16,10 +17,9 @@
 	};
 </script>
 
-<main class="h-full flex flex-col  p-4">
-	<h1 class="font-bold text-2xl uppercase">Adding variant for {product.name}</h1>
-
-	<form method="post" use:enhance={enhance_function} class="w-full max-w-sm">
+{#if product}
+	<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
+		<h2 class="uppercase">Adding variant for {product.name}</h2>
 		<input type="hidden" name="product_id" value={product.id} />
 		<div class="form-control">
 			<label class="label" for="name">
@@ -47,4 +47,6 @@
 			<p class="text-center text-error font-bold">{form.error}</p>
 		{/if}
 	</form>
-</main>
+{:else}
+	<NotFound />
+{/if}
