@@ -26,6 +26,7 @@
 		<li>
 			<a class="btn btn-ghost" href={`/admin/products/${id}/variants`}>view variants</a>
 			<a class="btn btn-ghost" href={`/admin/products/${id}/edit`}>Update Info</a>
+			<a class="btn btn-ghost" href={`/admin/products/${id}/delete`}>Delete</a>
 		</li>
 	</ul>
 </div>

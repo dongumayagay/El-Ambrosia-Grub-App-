@@ -12,7 +12,6 @@ export const actions: Actions = {
         const body = Object.fromEntries(await request.formData())
         const { error: err } = await locals.supabaseClient.from('supplies').delete().eq('id', Number(body.supply_id.toString()))
         if (err) {
-            console.log(err)
             if (err.code === '23503')
                 return fail(405, { error: "Not allowed: Product and it's variant rely on this supply" })
             return fail(Number(err.code), {
