@@ -74,12 +74,12 @@
 				/>
 			</div>
 			<div class="form-control">
-				<label class="label" for="amount_will_use">
+				<label class="label" for="amount_use">
 					<span class="label-text">Supply amount will consume</span>
 				</label>
 				<input
 					type="number"
-					name="amount_will_use"
+					name="amount_use"
 					placeholder="100"
 					class="input input-bordered "
 					required

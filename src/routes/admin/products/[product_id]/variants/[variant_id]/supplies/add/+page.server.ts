@@ -19,7 +19,7 @@ export const actions: Actions = {
         if (!supply_id) return fail(404, { error: "supply you entered don't exist" })
 
         const variant_id = Number(body.variant_id.toString())
-        const amount_use = Number(body.amount_will_use.toString())
+        const amount_use = Number(body.amount_use.toString())
         if (Number.isNaN(variant_id) || Number.isNaN(amount_use))
             return fail(400, { error: 'invalid input detected, please try again' })
 

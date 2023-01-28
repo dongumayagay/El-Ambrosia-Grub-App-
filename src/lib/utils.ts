@@ -15,3 +15,8 @@ export const getURL = () => {
     url = url.charAt(url.length - 1) === '/' ? url : `${url}/`;
     return url;
 };
+
+export function display_supply_property(variant_supply: any, property: string) {
+    const supply = variant_supply.supplies;
+    return supply[property];
+}

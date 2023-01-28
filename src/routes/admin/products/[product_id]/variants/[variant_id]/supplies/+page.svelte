@@ -1,13 +1,10 @@
 <script lang="ts">
+	import { display_supply_property } from '$lib/utils';
 	import type { PageData } from './$types';
+	import ActionMenu from './ActionMenu.svelte';
 
 	export let data: PageData;
 	const { product, variant, variant_supplies } = data;
-
-	function display_supply_property(variant_supply: any, property: string) {
-		const supply = variant_supply.supplies;
-		return supply[property];
-	}
 </script>
 
 {#if product && variant}
@@ -42,8 +39,11 @@
 							{display_supply_property(variant_supply, 'unit')}
 						</td>
 						<td>
-							<!-- <ActionMenu product_id={product.id} variant_id={variant.id} /> -->
-							gawin mo to update chuchu
+							<ActionMenu
+								product_id={product.id}
+								variant_id={variant.id}
+								variant_supply_id={variant_supply.id}
+							/>
 						</td>
 					</tr>
 				{/each}

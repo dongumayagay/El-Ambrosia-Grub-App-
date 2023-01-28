@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NotFound from '$lib/components/NotFound.svelte';
 	import type { PageData } from './$types';
 	import ActionMenu from './ActionMenu.svelte';
 
@@ -51,7 +52,5 @@
 		<button class="btn btn-outline">Next</button>
 	</div>
 {:else}
-	<main class="text-error flex-1 grid place-items-center uppercase text-xl font-bold">
-		404: Not found
-	</main>
+	<NotFound />
 {/if}
