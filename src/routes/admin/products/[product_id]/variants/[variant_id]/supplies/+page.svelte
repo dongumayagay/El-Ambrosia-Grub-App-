@@ -1,4 +1,5 @@
 <script lang="ts">
+	import NotFound from '$lib/components/NotFound.svelte';
 	import { display_supply_property } from '$lib/utils';
 	import type { PageData } from './$types';
 	import ActionMenu from './ActionMenu.svelte';
@@ -54,4 +55,6 @@
 		<button class="btn btn-outline">Previous page</button>
 		<button class="btn btn-outline">Next</button>
 	</div>
+{:else}
+	<NotFound />
 {/if}

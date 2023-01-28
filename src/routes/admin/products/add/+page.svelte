@@ -2,7 +2,6 @@
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import type { ActionData } from './$types';
 
-	// export let data: PageData;
 	export let form: ActionData;
 	let loading: boolean;
 

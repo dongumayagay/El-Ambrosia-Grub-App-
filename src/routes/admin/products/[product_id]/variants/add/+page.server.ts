@@ -3,8 +3,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals, params }) => {
-    const { product_id } = params
-    return { product: await (await locals.supabaseClient.from('products').select('id,name').eq('id', Number(product_id)).limit(1).single()).data };
+    return { product: await (await locals.supabaseClient.from('products').select('id,name').eq('id', Number(params.product_id)).limit(1).single()).data };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
@@ -18,9 +17,9 @@ export const actions: Actions = {
         }
 
 
-        const { error: err } = await locals.supabaseClient.from('product_variants').insert(product_variant)
+        const { data, error: err } = await locals.supabaseClient.from('product_variants').insert(product_variant).select('id').limit(1).single()
         if (err)
             return fail(400, { error: err.message })
-        // throw redirect(303, '/admin/supplies')
+        throw redirect(303, '/admin/supplies')
     }
 };

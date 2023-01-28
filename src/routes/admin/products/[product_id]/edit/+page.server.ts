@@ -2,9 +2,8 @@ import { fail, redirect, } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ params, locals }) => {
-    const { product_id } = params
     return {
-        product: await (await locals.supabaseClient.from('products').select('*').eq("id", product_id).limit(1).single()).data
+        product: await (await locals.supabaseClient.from('products').select('*').eq("id", params.product_id).limit(1).single()).data
     };
 }) satisfies PageServerLoad;
 

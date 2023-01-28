@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
+	import NotFound from '$lib/components/NotFound.svelte';
 	import { supabaseClient } from '$lib/db/client';
 	import type { PageData, ActionData } from './$types';
 
@@ -47,53 +48,53 @@
 </script>
 
 {#if product && variant}
-	<main class="h-full flex flex-col p-4">
-		<h1 class="font-bold text-2xl uppercase">Adding variant for {product.name}</h1>
-		<form method="post" class=" w-full max-w-sm" use:enhance={enhance_function}>
-			<input type="hidden" name="variant_id" value={variant.id} />
-			<div class="form-control">
-				<label class="label" for="supply_name">
-					<span class="label-text">Supply name</span>
+	<form method="post" class="w-full max-w-md prose" use:enhance={enhance_function}>
+		<h2 class="uppercase">Adding variant for {variant.name}</h2>
+		<input type="hidden" name="variant_id" value={variant.id} />
+		<div class="form-control">
+			<label class="label" for="supply_name">
+				<span class="label-text">Supply name</span>
+			</label>
+			<datalist id="supply-options">
+				<label class="label" for="price">
+					<span class="label-text">Price</span>
 				</label>
-				<datalist id="supply-options">
-					<label class="label" for="price">
-						<span class="label-text">Price</span>
-					</label>
-					{#each supply_options as supply}
-						<option class=" btn" value={supply.name} />
-					{/each}
-				</datalist>
-				<input
-					autoComplete="on"
-					list="supply-options"
-					class="input input-bordered"
-					placeholder="Search supply..."
-					on:keyup={debounce}
-					required
-					name="supply_name"
-				/>
-			</div>
-			<div class="form-control">
-				<label class="label" for="amount_use">
-					<span class="label-text">Supply amount will consume</span>
-				</label>
-				<input
-					type="number"
-					name="amount_use"
-					placeholder="100"
-					class="input input-bordered "
-					required
-					min="1"
-				/>
-			</div>
-			<br />
-			<button class="btn btn-block">Add Supply for product variant</button>
-			<br />
-			{#if form?.error}
-				<p class="text-center text-error font-bold">
-					{form.error}
-				</p>
-			{/if}
-		</form>
-	</main>
+				{#each supply_options as supply}
+					<option class=" btn" value={supply.name} />
+				{/each}
+			</datalist>
+			<input
+				autoComplete="on"
+				list="supply-options"
+				class="input input-bordered"
+				placeholder="Search supply..."
+				on:keyup={debounce}
+				required
+				name="supply_name"
+			/>
+		</div>
+		<div class="form-control">
+			<label class="label" for="amount_use">
+				<span class="label-text">Supply amount will consume</span>
+			</label>
+			<input
+				type="number"
+				name="amount_use"
+				placeholder="100"
+				class="input input-bordered "
+				required
+				min="1"
+			/>
+		</div>
+		<br />
+		<button class="btn btn-block">Add Supply for product variant</button>
+		<br />
+		{#if form?.error}
+			<p class="text-center text-error font-bold">
+				{form.error}
+			</p>
+		{/if}
+	</form>
+{:else}
+	<NotFound />
 {/if}

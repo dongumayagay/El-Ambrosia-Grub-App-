@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import type { ActionData, PageData } from './$types';
 	import { enhance, type SubmitFunction } from '$app/forms';
+	import NotFound from '$lib/components/NotFound.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -92,4 +93,6 @@
 			<p class=" text-center text-error font-bold">{form.error}</p>
 		{/if}
 	</form>
+{:else}
+	<NotFound />
 {/if}
