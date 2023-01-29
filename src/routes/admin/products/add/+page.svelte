@@ -5,6 +5,8 @@
 	export let form: ActionData;
 	let loading: boolean;
 
+	let product_image: any;
+
 	const enhance_function: SubmitFunction = () => {
 		loading = true;
 		return async ({ update }) => {
@@ -12,6 +14,17 @@
 			await update();
 		};
 	};
+
+	function on_product_image_file_input_change(e: any) {
+		product_image = null;
+		let image = e.target.files[0];
+		console.log(image);
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			if (e.target) product_image = e.target.result;
+		};
+	}
 </script>
 
 <form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
@@ -39,6 +52,22 @@
 			placeholder="super duper very delicious"
 			class="textarea textarea-bordered"
 			required
+		/>
+	</div>
+	<div class="form-control">
+		<label class="label" for="product_image">
+			<span class="label-text">Upload product image</span>
+		</label>
+		{#if product_image}
+			<img src={product_image} alt="" class="m-0" />
+			<br />
+		{/if}
+		<input
+			on:change={on_product_image_file_input_change}
+			type="file"
+			class="file-input file-input-bordered"
+			accept="image/"
+			name="product_image"
 		/>
 	</div>
 
