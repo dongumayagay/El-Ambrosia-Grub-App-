@@ -9,3 +9,8 @@ export let admin_links: Link[] = [
         name: 'manage products', path: "/admin/products"
     }
 ]
+export let account_links: Link[] = [
+    {
+        name: "edit information", path: "/account/edit"
+    }
+]
