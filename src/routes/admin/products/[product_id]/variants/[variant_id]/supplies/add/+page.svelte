@@ -56,9 +56,6 @@
 				<span class="label-text">Supply name</span>
 			</label>
 			<datalist id="supply-options">
-				<label class="label" for="price">
-					<span class="label-text">Price</span>
-				</label>
 				{#each supply_options as supply}
 					<option class=" btn" value={supply.name} />
 				{/each}
@@ -77,17 +74,22 @@
 			<label class="label" for="amount_use">
 				<span class="label-text">Supply amount will consume</span>
 			</label>
-			<input
-				type="number"
-				name="amount_use"
-				placeholder="100"
-				class="input input-bordered "
-				required
-				min="1"
-			/>
+			<label class="input-group">
+				<input
+					type="number"
+					name="amount_use"
+					placeholder="100"
+					class="input input-bordered flex-1"
+					required
+					min="1"
+				/>
+				<span>unit</span>
+			</label>
 		</div>
 		<br />
-		<button class="btn btn-block">Add Supply for product variant</button>
+		<button class="btn btn-block" class:loading disabled={loading}
+			>Add Supply for product variant</button
+		>
 		<br />
 		{#if form?.error}
 			<p class="text-center text-error font-bold">
