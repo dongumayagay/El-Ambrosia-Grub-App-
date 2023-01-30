@@ -7,6 +7,21 @@ module.exports = {
 				'brand-red': '#a90003',
 				'brand-maroon': '#4b200b',
 				'brand-tan': '#f7dd9d'
+			},
+			animation: {
+				side2side: 'side2side 1s infinite'
+			},
+			keyframes: {
+				side2side: {
+					'0%, 100%': {
+						transform: 'translateX(20%)',
+						animationTimingFunction: 'cubic-bezier(0.8,0,1,1)'
+					},
+					'50%': {
+						transform: 'translateX(0%)',
+						animationTimingFunction: 'cubic-bezier(0,0,0.2,1)'
+					}
+				}
 			}
 		}
 	},

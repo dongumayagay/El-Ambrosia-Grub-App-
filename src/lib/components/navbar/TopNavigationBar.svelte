@@ -8,7 +8,7 @@
 	</div>
 	<div class="navbar-center">
 		<a href="/" class="">
-			<img src="/brand-logo.png" alt="" class=" h-12" />
+			<img src="/brand-logo.png" alt="" class=" h-8" />
 		</a>
 	</div>
 	<div class="navbar-end">
