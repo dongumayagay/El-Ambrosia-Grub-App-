@@ -1,16 +1,16 @@
 <div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}>
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">
-		<div class="max-w-md">
-			<h1 class="mb-5 text-5xl font-bold">El Ambrosia</h1>
-			<p class="mb-5">
+		<div class="max-w-md prose">
+			<h1 class="mb-5 text-5xl font-bold text-brand-red">El Ambrosia</h1>
+			<p class="mb-5 text-brand-tan">
 				At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
 				traditional recipes and cooking techniques passed down from generations. Our commitment to
 				quality and flavor is evident in every wrap, making us the perfect choice for anyone looking
 				to satisfy their cravings and experience the true taste of shawarma. So unwrap a world of
 				flavor today and discover the authentic taste of shawarma at El Ambrosia."
 			</p>
-			<button class="btn btn-primary">Get Started</button>
+			<button class="btn bg-brand-red">Get Started</button>
 		</div>
 	</div>
 </div>
@@ -19,8 +19,8 @@
 	<div class="hero-content flex-col lg:flex-row-reverse">
 		<img src="/shawarma.jpg" alt="shawarma" />
 		<div>
-			<h1 class="text-5xl font-bold">Authentic Shawarma!</h1>
-			<p class="py-6">
+			<h1 class="text-5xl font-bold text-brand-red">Authentic Shawarma!</h1>
+			<p class="py-6 text-brand-maroon">
 				"An authentic shawarma is a symphony of flavors, with each ingredient perfectly balanced to
 				create a savory and satisfying taste experience. Tender and juicy meats, crisp vegetables,
 				and tangy sauces are all wrapped up in a soft and fluffy bread, creating a portable and
@@ -28,14 +28,14 @@
 				of flavor that will leave you wanting more. So unwrap an authentic shawarma today and savor
 				the taste of the Middle East!"
 			</p>
-			<button class="btn btn-primary">Get Started</button>
+			<button class="btn bg-brand-red">Get Started</button>
 		</div>
 	</div>
 </div>
 <br />
 <footer class="footer footer-center p-10 bg-primary text-primary-content">
 	<div>
-		<p class="font-bold">El Ambrosia</p>
+		<p class="font-bold"><img src="/brand-logo.png" alt="" class="h-12" /></p>
 		<p>Copyright © 2023 - All right reserved</p>
 	</div>
 	<div>
