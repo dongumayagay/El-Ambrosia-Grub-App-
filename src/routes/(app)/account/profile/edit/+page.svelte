@@ -99,6 +99,7 @@
 			</div>
 		{/if}
 		{#if form?.success}
+			<br />
 			<div class="alert alert-success shadow-lg">
 				<div>
 					<svg
