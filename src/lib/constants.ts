@@ -11,6 +11,6 @@ export let admin_links: Link[] = [
 ]
 export let account_links: Link[] = [
     {
-        name: "edit information", path: "/account/edit"
+        name: "edit information", path: "/account/profile/edit"
     }
 ]
