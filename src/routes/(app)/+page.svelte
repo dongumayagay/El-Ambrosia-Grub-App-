@@ -15,7 +15,7 @@
 	</div>
 </div>
 <br />
-<div class="hero min-h-screen bg-base-200">
+<div class="hero">
 	<div class="hero-content flex-col lg:flex-row-reverse">
 		<img src="/shawarma.jpg" alt="shawarma" />
 		<div>
@@ -32,6 +32,7 @@
 		</div>
 	</div>
 </div>
+<br />
 <footer class="footer footer-center p-10 bg-primary text-primary-content">
 	<div>
 		<p class="font-bold">El Ambrosia</p>
