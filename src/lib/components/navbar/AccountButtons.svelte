@@ -8,12 +8,12 @@
 		<section class="dropdown dropdown-end dropdown-hover ">
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label tabindex="0" class="btn btn-square btn-ghost text-base-100"
+			<label tabindex="0" class="btn btn-square btn-ghost"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
 					fill="currentColor"
-					class="w-6 h-6 fill-current"
+					class="w-6 h-6 fill-accent"
 				>
 					<path
 						fill-rule="evenodd"
@@ -48,7 +48,7 @@
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
 					fill="currentColor"
-					class="w-6 h-6"
+					class="w-6 h-6 fill-accent"
 				>
 					<path
 						fill-rule="evenodd"
