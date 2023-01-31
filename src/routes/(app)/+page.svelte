@@ -1,16 +1,18 @@
 <div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}>
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">
-		<div class="max-w-xl prose">
-			<h1 class="mb-5 text-5xl font-bold text-brand-red">El Ambrosia</h1>
-			<p class="mb-5 text-brand-tan">
-				At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
-				traditional recipes and cooking techniques passed down from generations. Our commitment to
-				quality and flavor is evident in every wrap, making us the perfect choice for anyone looking
-				to satisfy their cravings and experience the true taste of shawarma. So unwrap a world of
-				flavor today and discover the authentic taste of shawarma at El Ambrosia."
-			</p>
-			<button class="btn btn-primary gap-2"
+		<div class="max-w-xl ">
+			<div class="prose">
+				<h1 class="mb-5 text-5xl font-bold  text-brand-red">El Ambrosia</h1>
+				<p class="mb-5 text-brand-tan">
+					At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
+					traditional recipes and cooking techniques passed down from generations. Our commitment to
+					quality and flavor is evident in every wrap, making us the perfect choice for anyone
+					looking to satisfy their cravings and experience the true taste of shawarma. So unwrap a
+					world of flavor today and discover the authentic taste of shawarma at El Ambrosia.
+				</p>
+			</div>
+			<a href="/products" class="btn btn-primary gap-2"
 				>see products <svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -25,7 +27,7 @@
 						d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
 					/>
 				</svg>
-			</button>
+			</a>
 		</div>
 	</div>
 </div>
@@ -43,7 +45,7 @@
 				of flavor that will leave you wanting more. So unwrap an authentic shawarma today and savor
 				the taste of the Middle East!"
 			</p>
-			<button class="btn btn-primary gap-2"
+			<a href="/products" class="btn btn-primary gap-2"
 				>View Products <svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -58,15 +60,17 @@
 						d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
 					/>
 				</svg>
-			</button>
+			</a>
 		</div>
 	</div>
 </div>
 <br />
 <footer class="footer footer-center p-10 bg-neutral text-neutral-content">
 	<div>
-		<img src="/brand-logo.png" alt="" class="h-12" />
-		<p class="font-bold">Providing Authentic Shawarma since 2019s</p>
+		<p>
+			<img src="/brand-logo.png" alt="" class="h-14" />
+		</p>
+		<p class="font-bold">Providing Authentic Shawarma since 2019</p>
 	</div>
 	<div class="grid grid-flow-col gap-4">
 		<a class="link link-hover">About us</a>
