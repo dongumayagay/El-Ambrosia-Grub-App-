@@ -18,6 +18,19 @@
 				<p class="py-6">
 					{product.description}
 				</p>
+				<form method="post">
+					<div class="flex flex-col gap-4">
+						{#each variants as variant}
+							<div>
+								<input id={variant.name} class="peer hidden" type="radio" name="variant" />
+								<label
+									for={variant.name}
+									class="btn btn-outline btn-block peer-checked:text-sky-500">{variant.name}</label
+								>
+							</div>
+						{/each}
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
