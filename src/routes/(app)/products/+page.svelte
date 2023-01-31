@@ -7,14 +7,15 @@
 
 <div class="hero">
 	<div class="hero-content text-center prose">
-		<div class="max-w-md prose">
-			<h1 class="text-5xl font-bold text-secondary">Products</h1>
-			<p class="py-6">Savor the flavor in every bite!</p>
+		<div class="max-w-md">
+			<h2 class="text-5xl font-bold text-secondary">Products</h2>
+			<p class="">Savor the flavor in every bite!</p>
+			<br />
 		</div>
 	</div>
 </div>
 
-<div class="px-8 grid lg:grid-cols-2 gap-8 mx-auto">
+<div class="px-4 grid lg:grid-cols-2 gap-8 mx-auto w-full max-w-7xl">
 	{#each products as product}<div class="card sm:card-side bg-base-100 shadow-xl">
 			<figure class="aspect-square w-full sm:max-w-xs">
 				<img class="object-cover h-full" src={product.image_url} alt={product.name} />
@@ -24,7 +25,9 @@
 				<p>{product.description}</p>
 				<br />
 				<div class="card-actions justify-end">
-					<a href={`/products/${product.id}/variants`} class="btn btn-primary btn-wide">buy</a>
+					<a href={`/products/${product.id}/variants`} class="btn btn-primary btn-block sm:btn-wide"
+						>buy</a
+					>
 				</div>
 			</div>
 		</div>{/each}
