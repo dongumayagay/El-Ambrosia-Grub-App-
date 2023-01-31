@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@supabase/auth-helpers-sveltekit': ^0.8.7
-  '@supabase/supabase-js': 2.4.1
+  '@supabase/supabase-js': 2.5.0
   '@sveltejs/adapter-auto': ^1.0.2
   '@sveltejs/adapter-vercel': ^1.0.6
   '@sveltejs/kit': ^1.3.6
@@ -22,8 +22,8 @@ specifiers:
   vite: ^4.0.4
 
 dependencies:
-  '@supabase/auth-helpers-sveltekit': 0.8.7_l3gewy5tlkgvrrn24rowenxrli
-  '@supabase/supabase-js': 2.4.1
+  '@supabase/auth-helpers-sveltekit': 0.8.7_sycdk7p4bm6ahiipdl6thijlm4
+  '@supabase/supabase-js': 2.5.0
   daisyui: 2.49.0_gbtt6ss3tbiz4yjtvdr6fbrj44
 
 devDependencies:
@@ -267,7 +267,7 @@ packages:
       detect-libc: 2.0.1
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
-      node-fetch: 2.6.7
+      node-fetch: 2.6.9
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
@@ -308,21 +308,21 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@supabase/auth-helpers-shared/0.2.4_l3gewy5tlkgvrrn24rowenxrli:
+  /@supabase/auth-helpers-shared/0.2.4_sycdk7p4bm6ahiipdl6thijlm4:
     resolution: {integrity: sha512-c+hi3N6DhjPTzjXGOokre4gmMZOqt0f1ORrwZwi2s07pk3cbkmn77DwwVtlYMNi3oZNYRQqAfxJu83UzpJrrmg==}
     peerDependencies:
       '@supabase/supabase-js': ^2.0.4
     dependencies:
-      '@supabase/supabase-js': 2.4.1
+      '@supabase/supabase-js': 2.5.0
     dev: false
 
-  /@supabase/auth-helpers-sveltekit/0.8.7_l3gewy5tlkgvrrn24rowenxrli:
+  /@supabase/auth-helpers-sveltekit/0.8.7_sycdk7p4bm6ahiipdl6thijlm4:
     resolution: {integrity: sha512-sFXWaeyTVWK70Aekw+plqN+f8si2MqV4PbcEunqZ1H/QfujxxnDfG26j+O+eQ/ue84UFrJutNY+iB3DsTlXlCg==}
     peerDependencies:
       '@supabase/supabase-js': ^2.0.4
     dependencies:
-      '@supabase/auth-helpers-shared': 0.2.4_l3gewy5tlkgvrrn24rowenxrli
-      '@supabase/supabase-js': 2.4.1
+      '@supabase/auth-helpers-shared': 0.2.4_sycdk7p4bm6ahiipdl6thijlm4
+      '@supabase/supabase-js': 2.5.0
     dev: false
 
   /@supabase/functions-js/2.0.0:
@@ -366,8 +366,8 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/supabase-js/2.4.1:
-    resolution: {integrity: sha512-nFePO2yKVip3VI+OyfUOxhv0IyMmZDeieFJS39y84evPOM9zuZomEmkhwnmEWrLFI7hSr+o2QvY4P+q3c2MbGQ==}
+  /@supabase/supabase-js/2.5.0:
+    resolution: {integrity: sha512-8GwMdtx1pOBtNfFryZ/3zZ5erfhz1eA133q4IyvXqXvqxp4uHyjZuJDEhA6HTpdIH0nMAdWZpny1APx7Vrrchw==}
     dependencies:
       '@supabase/functions-js': 2.0.0
       '@supabase/gotrue-js': 2.10.1
@@ -1292,6 +1292,19 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+    dev: false
+
+  /node-fetch/2.6.9:
+    resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: true
 
   /node-fetch/3.3.0:
     resolution: {integrity: sha512-BKwRP/O0UvoMKp7GNdwPlObhYGB5DQqwhEDQlNKuoqwVYSxkSZCSbHjnFFmUEtwSKRPU4kNK8PbDYYitwaE3QA==}
