@@ -6,9 +6,6 @@ export const actions: Actions = {
         const body = Object.fromEntries(await request.formData())
 
 
-
-
-
         const { data: product, error: err } = await locals.supabaseClient.from('products').insert({
             name: body.name as string,
             description: body.description as string,
