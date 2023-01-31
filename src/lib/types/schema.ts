@@ -9,6 +9,75 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      cart_items: {
+        Row: {
+          id: number
+          owner_id: string
+          product_id: number
+          product_variant_id: number
+          quantity: number
+        }
+        Insert: {
+          id?: number
+          owner_id: string
+          product_id: number
+          product_variant_id: number
+          quantity: number
+        }
+        Update: {
+          id?: number
+          owner_id?: string
+          product_id?: number
+          product_variant_id?: number
+          quantity?: number
+        }
+      }
+      order_items: {
+        Row: {
+          created_at: string
+          id: number
+          product_id: number
+          quantity: number
+          total: number
+          variant_id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          product_id: number
+          quantity: number
+          total: number
+          variant_id: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          product_id?: number
+          quantity?: number
+          total?: number
+          variant_id?: number
+        }
+      }
+      orders: {
+        Row: {
+          created_at: string
+          id: number
+          owner_id: string | null
+          total: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          owner_id?: string | null
+          total: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          owner_id?: string | null
+          total?: number
+        }
+      }
       product_variants: {
         Row: {
           id: number
