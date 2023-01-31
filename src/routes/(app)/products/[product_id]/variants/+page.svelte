@@ -6,8 +6,8 @@
 </script>
 
 {#if product && variants}
-	<div class="hero min-h-screen bg-base-200">
-		<div class="hero-content flex-col lg:flex-row gap-8">
+	<div class="hero min-h-screen">
+		<div class="hero-content flex-col lg:flex-row gap-8npm">
 			<img
 				src={product.image_url}
 				class="w-full max-w-xl rounded-lg shadow-2xl"
