@@ -65,8 +65,14 @@
 <br />
 <footer class="footer footer-center p-10 bg-neutral text-neutral-content">
 	<div>
-		<p class="font-bold"><img src="/brand-logo.png" alt="" class="h-12" /></p>
-		<p>Copyright © 2023 - All right reserved</p>
+		<img src="/brand-logo.png" alt="" class="h-12" />
+		<p class="font-bold">Providing Authentic Shawarma since 2019s</p>
+	</div>
+	<div class="grid grid-flow-col gap-4">
+		<a class="link link-hover">About us</a>
+		<a class="link link-hover">Contact</a>
+		<a class="link link-hover">Privacy policy</a>
+		<a class="link link-hover">Terms use</a>
 	</div>
 	<div>
 		<div class="grid grid-flow-col gap-4">
@@ -95,5 +101,8 @@
 				>
 			</a>
 		</div>
+	</div>
+	<div>
+		<p>Copyright © 2023 - All right reserved</p>
 	</div>
 </footer>
