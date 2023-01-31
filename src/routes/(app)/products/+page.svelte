@@ -15,7 +15,7 @@
 	</div>
 </div>
 
-<main class="min-h-screen pb-40">
+<main class="pb-24">
 	<div class="px-4 grid  lg:grid-cols-2 gap-8 mx-auto w-full max-w-7xl">
 		{#each products as product}<div class="card sm:card-side bg-base-100 shadow-xl">
 				<figure class="aspect-square w-full sm:max-w-xs">
@@ -36,6 +36,7 @@
 						>
 					</div>
 				</div>
-			</div>{/each}
+			</div>
+		{/each}
 	</div>
 </main>
