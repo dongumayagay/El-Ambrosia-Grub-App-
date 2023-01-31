@@ -7,7 +7,7 @@
 
 {#if product && variants}
 	<div class="hero min-h-screen bg-base-200">
-		<div class="hero-content flex-col lg:flex-row">
+		<div class="hero-content flex-col lg:flex-row gap-8">
 			<img
 				src={product.image_url}
 				class="w-full max-w-xl rounded-lg shadow-2xl"
@@ -25,8 +25,9 @@
 								<input id={variant.name} class="peer hidden" type="radio" name="variant" />
 								<label
 									for={variant.name}
-									class="btn btn-outline btn-block peer-checked:text-sky-500">{variant.name}</label
-								>
+									class="btn btn-outline btn-block peer-checked:outline outline-brand-red"
+									>{variant.name} - ₱{variant.price}
+								</label>
 							</div>
 						{/each}
 					</div>
