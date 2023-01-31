@@ -19,12 +19,12 @@
 			<figure class="aspect-square w-full sm:max-w-xs">
 				<img class="object-cover h-full" src={product.image_url} alt={product.name} />
 			</figure>
-			<div class="card-body prose">
+			<div class="card-body">
 				<h2 class="card-title text-primary">{product.name}</h2>
 				<p>{product.description}</p>
 				<br />
 				<div class="card-actions justify-end">
-					<button class="btn btn-primary btn-wide">buy</button>
+					<a href={`/products/${product.id}/variants`} class="btn btn-primary btn-wide">buy</a>
 				</div>
 			</div>
 		</div>{/each}
