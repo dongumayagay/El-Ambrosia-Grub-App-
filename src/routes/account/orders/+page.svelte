@@ -1,37 +1,14 @@
 <script lang="ts">
-	import { enhance, type SubmitFunction } from '$app/forms';
-	import { invalidate } from '$app/navigation';
-
-	import { display_property } from '$lib/utils';
+	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	let loading: boolean;
-
-	async function on_blur_change_quantity(cart_item_id: number, quantity: number) {
-		const form_data = new FormData();
-		form_data.append('cart_item_id', cart_item_id.toString());
-		form_data.append('quantity', quantity.toString());
-
-		invalidate('cart:load');
-		await fetch('?/change_quantity', {
-			method: 'post',
-			body: form_data
-		});
-	}
-	const enhance_function: SubmitFunction = () => {
-		loading = true;
-		return async ({ update }) => {
-			loading = false;
-			await update();
-		};
-	};
 </script>
 
-{#if data.cart_items}
+{#if data.orders}
 	<header>
 		<div class="prose mx-auto text-center">
-			<h2>Your cart</h2>
+			<h2>Your orders</h2>
 		</div>
 	</header>
 	<div class="overflow-x-auto">
@@ -50,12 +27,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each data.cart_items as item (item.id)}
+				{#each data.orders as item (item.id)}
 					<!-- small screen -->
 					<tr class="sm:hidden">
 						<td class="">
 							<div class="flex gap-2">
-								<figure class="avatar">
+								<!-- <figure class="avatar">
 									<div class=" w-28 h-28 rounded">
 										<img
 											src={display_property(item.products, 'image_url')}
@@ -66,17 +43,17 @@
 											class="object-cover"
 										/>
 									</div>
-								</figure>
+								</figure> -->
 								<div class="w-full">
-									<article class="prose ">
+									<!-- <article class="prose ">
 										<h4>
 											{display_property(item.product_variants, 'name')}
 											{display_property(item.products, 'name')}
 										</h4>
 										<h5>₱ {display_property(item.product_variants, 'price')}</h5>
-									</article>
+									</article> -->
 									<div class="flex justify-between">
-										<form use:enhance action="?/change_quantity" method="post" class="contents">
+										<!-- <form use:enhance action="?/change_quantity" method="post" class="contents">
 											<input type="hidden" name="cart_item_id" value={item.id} />
 											<input
 												type="number"
@@ -88,8 +65,8 @@
 												class="input input-bordered w-32 text-center"
 											/>
 											<button class="hidden" />
-										</form>
-										<form action="?/remove_cart_item" method="post" class="contents" use:enhance>
+										</form> -->
+										<!-- <form action="?/remove_cart_item" method="post" class="contents" use:enhance>
 											<input type="hidden" name="cart_item_id" value={item.id} />
 											<button class="btn btn-ghost btn-square"
 												><svg
@@ -107,7 +84,7 @@
 													/>
 												</svg></button
 											>
-										</form>
+										</form> -->
 									</div>
 								</div>
 							</div>
@@ -117,7 +94,7 @@
 					<tr class="hidden sm:table-row">
 						<td class="w-full max-w-sm">
 							<div class="flex gap-4">
-								<figure class="avatar">
+								<!-- <figure class="avatar">
 									<div class=" w-32 rounded">
 										<img
 											src={display_property(item.products, 'image_url')}
@@ -125,20 +102,20 @@
 											class="object-cover"
 										/>
 									</div>
-								</figure>
+								</figure> -->
 								<article class="prose">
-									<h2>
+									<!-- <h2>
 										{display_property(item.product_variants, 'name')}
 										{display_property(item.products, 'name')}
-									</h2>
-									<p class=" break-all whitespace-normal ">
+									</h2> -->
+									<!-- <p class=" break-all whitespace-normal ">
 										{display_property(item.products, 'description')}
-									</p>
+									</p> -->
 								</article>
 							</div>
 						</td>
-						<td
-							><form use:enhance action="?/change_quantity" method="post" class="contents">
+						<td>
+							<!-- <form use:enhance action="?/change_quantity" method="post" class="contents">
 								<input type="hidden" name="cart_item_id" value={item.id} />
 								<input
 									type="number"
@@ -150,9 +127,9 @@
 									class="input input-bordered w-32 text-center"
 								/>
 								<button class="hidden" />
-							</form></td
-						>
-						<td>₱ {display_property(item.product_variants, 'price')}</td>
+							</form> -->
+						</td>
+						<!-- <td>₱ {display_property(item.product_variants, 'price')}</td> -->
 						<td>
 							<form action="?/remove_cart_item" method="post" class="contents" use:enhance>
 								<input type="hidden" name="cart_item_id" value={item.id} />
@@ -184,24 +161,5 @@
 				{/each}
 			</tbody>
 		</table>
-		{#if data.cart_items.length !== 0}
-			<div class=" font-bold grid grid-cols-2 px-6 py-8 max-w-md sm:ml-auto">
-				<span> Subtotal </span> <span class="text-right">₱{data.subtotal}</span>
-
-				<span> Delivery </span> <span class="text-right">₱50</span>
-
-				<div class="divider col-span-2" />
-
-				<span> Total </span> <span class="text-right">₱{data.subtotal + 50}</span>
-			</div>
-			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
-				<form action="?/place_order" method="post" class="contents" use:enhance={enhance_function}>
-					<button class="btn btn-primary sm:btn-wide" class:loading disabled={loading}
-						>Place Order</button
-					>
-				</form>
-				<a href="/products" class="btn sm:btn-wide">Back to products</a>
-			</div>
-		{/if}
 	</div>
 {/if}
