@@ -35,8 +35,7 @@
 							</span>
 						</td>
 						<td
-							><a href={`/accounts/orders/${order.id}`} class="btn btn-outline"
-								>View order details</a
+							><a href={`/account/orders/${order.id}`} class="btn btn-outline">View order details</a
 							></td
 						>
 					</tr>
