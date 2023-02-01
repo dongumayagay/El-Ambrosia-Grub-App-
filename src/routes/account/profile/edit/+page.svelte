@@ -46,7 +46,7 @@
 				value={profile.last_name}
 			/>
 		</div>
-		<div class="form-control">
+		<!-- <div class="form-control">
 			<label class="label" for="email_address">
 				<span class="label-text">Email address</span>
 			</label>
@@ -73,7 +73,7 @@
 				pattern={String.raw`^(09|\+639)\d{9}$`}
 				title="enter proper phone number"
 			/>
-		</div>
+		</div> -->
 
 		<br />
 		<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
