@@ -140,11 +140,25 @@
 					</tr>
 				{:else}
 					<tr>
-						<td colspan="4" class="text-center font-bold"> No item on cart </td>
+						<td colspan="4" class="text-center font-bold">
+							<div class="prose text-center mx-auto">
+								<h2>No item on cart</h2>
+							</div>
+							<br />
+							<a href="/products" class="btn">Go to products</a>
+						</td>
 					</tr>
 				{/each}
 			</tbody>
 		</table>
+		{#if cart_items.length !== 0}
+			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
+				<form action="?/checkout" method="post" class="contents">
+					<button class="btn btn-primary sm:btn-wide">Checkout</button>
+				</form>
+				<a href="/products" class="btn sm:btn-wide">Back to products</a>
+			</div>
+		{/if}
 	</div>
 {:else}
 	e
