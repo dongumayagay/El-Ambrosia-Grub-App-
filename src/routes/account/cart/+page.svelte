@@ -1,9 +1,21 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+
 	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	async function on_blur_change_quantity(cart_item_id: number, quantity: number) {
+		const form_data = new FormData();
+		form_data.append('cart_item_id', cart_item_id.toString());
+		form_data.append('quantity', quantity.toString());
+
+		await fetch('?/change_quantity', {
+			method: 'post',
+			body: form_data
+		});
+	}
 </script>
 
 {#if data.cart_items}
@@ -54,6 +66,7 @@
 											<input
 												type="number"
 												name="quantity"
+												on:blur={() => on_blur_change_quantity(item.id, item.quantity)}
 												min="1"
 												max="99"
 												bind:value={item.quantity}
@@ -115,6 +128,7 @@
 								<input
 									type="number"
 									name="quantity"
+									on:blur={() => on_blur_change_quantity(item.id, item.quantity)}
 									min="1"
 									max="99"
 									bind:value={item.quantity}

@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals }) => {
@@ -17,9 +17,12 @@ export const actions: Actions = {
     },
     change_quantity: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
-        console.log(body)
-        await locals.supabaseClient.from('cart_items').update({ quantity: Number(body.quantity.toString()) }).eq('id', Number(body.cart_item_id.toString()))
-        return { success: true }
+
+        const quantity = Number(body.quantity.toString())
+        if (!quantity || quantity < 1 || quantity > 99) return fail(400)
+
+        await locals.supabaseClient.from('cart_items').update({ quantity }).eq('id', Number(body.cart_item_id.toString()))
+
     }
 
 };
