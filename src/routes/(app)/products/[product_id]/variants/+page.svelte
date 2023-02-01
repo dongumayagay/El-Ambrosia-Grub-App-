@@ -1,8 +1,20 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
+	import { enhance, type SubmitFunction } from '$app/forms';
 
 	export let data: PageData;
+	export let form: ActionData;
+
+	let loading: boolean;
+
 	const { product, variants, session } = data;
+	const enhance_function: SubmitFunction = () => {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			await update();
+		};
+	};
 </script>
 
 {#if product && variants}
@@ -14,11 +26,19 @@
 				<p class="py-6">
 					{product.description}
 				</p>
-				<form method="post">
+				<form method="post" use:enhance={enhance_function}>
 					<div class="flex flex-col gap-4">
+						<input type="hidden" name="product_id" value={product.id} />
 						{#each variants as variant}
 							<div>
-								<input id={variant.name} class="peer hidden" type="radio" name="variant" />
+								<input
+									id={variant.name}
+									value={variant.id}
+									class="peer hidden"
+									type="radio"
+									name="product_variant_id"
+									required
+								/>
 								<label
 									for={variant.name}
 									class="btn btn-outline btn-block peer-checked:outline outline-brand-red"
@@ -27,10 +47,33 @@
 							</div>
 						{/each}
 					</div>
+
 					<br />
-					<button class="btn btn-primary btn-block" disabled={!session}>Add to cart</button>
+					<button class="btn btn-primary btn-block" disabled={!session || loading} class:loading
+						>Add to cart</button
+					>
 				</form>
 				<br />
+				{#if form?.error}
+					<br />
+					<div class="alert alert-error shadow-lg">
+						<div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="stroke-current flex-shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/></svg
+							>
+							<span>{form.error}</span>
+						</div>
+					</div>
+				{/if}
 				{#if !session}
 					<div class="alert shadow-lg">
 						<div>
