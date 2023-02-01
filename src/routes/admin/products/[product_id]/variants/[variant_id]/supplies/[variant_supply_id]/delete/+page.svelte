@@ -2,7 +2,7 @@
 	import type { ActionData, PageData } from './$types';
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import NotFound from '$lib/components/NotFound.svelte';
-	import { display_supply_property } from '$lib/utils';
+	import { display_property } from '$lib/utils';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -29,7 +29,7 @@
 				type="text"
 				disabled
 				class="input input-bordered cursor-text"
-				value={display_supply_property(variant_supply, 'name')}
+				value={display_property(variant_supply.supplies, 'name')}
 			/>
 		</div>
 		<br />

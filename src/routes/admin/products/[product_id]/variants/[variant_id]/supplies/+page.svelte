@@ -1,6 +1,6 @@
 <script lang="ts">
 	import NotFound from '$lib/components/NotFound.svelte';
-	import { display_supply_property } from '$lib/utils';
+	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
 	import ActionMenu from './ActionMenu.svelte';
 
@@ -34,10 +34,10 @@
 			<tbody>
 				{#each variant_supplies as variant_supply (variant_supply.id)}
 					<tr class="hover">
-						<td>{display_supply_property(variant_supply, 'name')}</td>
+						<td>{display_property(variant_supply.supplies, 'name')}</td>
 						<td>
 							{variant_supply.amount_use}
-							{display_supply_property(variant_supply, 'unit')}
+							{display_property(variant_supply.supplies, 'unit')}
 						</td>
 						<td>
 							<ActionMenu

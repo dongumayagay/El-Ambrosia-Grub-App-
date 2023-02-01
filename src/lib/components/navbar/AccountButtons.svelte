@@ -25,6 +25,8 @@
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 				<li><a href="/account" class="btn btn-ghost"> Account</a></li>
+				<li><a href="/account/cart" class="btn btn-ghost"> Cart</a></li>
+
 				{#if ROLES_ALLOWED_IN_ADMIN.includes($page.data.user_role)}
 					<li>
 						<a href="/admin" class="btn btn-ghost"> admin</a>

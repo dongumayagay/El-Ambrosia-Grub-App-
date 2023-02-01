@@ -1,4 +1,4 @@
-import { error, fail } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 
@@ -41,6 +41,6 @@ export const actions: Actions = {
                 return fail(500, { error: err.message })
             }
         }
-        return { success: true }
+        throw redirect(303, '/account/cart')
     }
 };

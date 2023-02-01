@@ -16,7 +16,6 @@ export const getURL = () => {
     return url;
 };
 
-export function display_supply_property(variant_supply: any, property: string) {
-    const supply = variant_supply.supplies;
-    return supply[property];
+export function display_property(object: any, property: string) {
+    return object[property];
 }
