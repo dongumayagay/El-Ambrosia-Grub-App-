@@ -18,7 +18,7 @@ export let account_links: Link[] = [
     }
 ]
 
-enum Order_States {
+export enum Order_States {
     'to pay',
     'order received',
     'in progress',

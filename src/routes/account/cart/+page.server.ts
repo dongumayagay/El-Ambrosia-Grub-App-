@@ -1,3 +1,4 @@
+import { Order_States } from '$lib/constants';
 import { error, fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -40,9 +41,27 @@ export const actions: Actions = {
     place_order: async ({ locals }) => {
 
         if (!locals.session) throw error(401)
-        const cart_items = await (await locals.supabaseClient.from('cart_items').select('*').eq('owner_id', locals.session.user.id)).data
+
+        const cart_items = await (await locals.supabaseClient.from('cart_items').select('*,products(*),product_variants(*)').eq('owner_id', locals.session.user.id)).data
+
         if (!cart_items) throw error(400)
-        console.log(cart_items)
+
+        const subtotal = calculate_cart_total(cart_items)
+
+
+
+        const { data: order } = await locals.supabaseClient.from('orders').insert({ owner_id: locals.session.user.id, total: subtotal + 50, status: Order_States['to pay'] }).select('id').limit(1).single()
+
+        if (!order) throw error(500)
+
+        await locals.supabaseClient.from('order_items').insert(cart_items.map(item => ({
+            order_id: order.id,
+            product_id: item.product_id,
+            variant_id: item.product_variant_id,
+            quantity: item.quantity,
+        })))
+
+        await locals.supabaseClient.from('cart_items').delete().eq('owner_id', locals.session.user.id)
 
     }
 

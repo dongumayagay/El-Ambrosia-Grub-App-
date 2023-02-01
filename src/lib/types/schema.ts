@@ -34,27 +34,24 @@ export interface Database {
       }
       order_items: {
         Row: {
-          created_at: string
           id: number
+          order_id: number
           product_id: number
           quantity: number
-          total: number
           variant_id: number
         }
         Insert: {
-          created_at?: string
           id?: number
+          order_id: number
           product_id: number
           quantity: number
-          total: number
           variant_id: number
         }
         Update: {
-          created_at?: string
           id?: number
+          order_id?: number
           product_id?: number
           quantity?: number
-          total?: number
           variant_id?: number
         }
       }
@@ -62,19 +59,22 @@ export interface Database {
         Row: {
           created_at: string
           id: number
-          owner_id: string | null
+          owner_id: string
+          status: number
           total: number
         }
         Insert: {
           created_at?: string
           id?: number
-          owner_id?: string | null
+          owner_id: string
+          status?: number
           total: number
         }
         Update: {
           created_at?: string
           id?: number
-          owner_id?: string | null
+          owner_id?: string
+          status?: number
           total?: number
         }
       }
