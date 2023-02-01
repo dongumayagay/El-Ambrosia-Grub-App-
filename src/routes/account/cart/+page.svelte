@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { invalidate } from '$app/navigation';
 
 	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
@@ -11,30 +12,20 @@
 		form_data.append('cart_item_id', cart_item_id.toString());
 		form_data.append('quantity', quantity.toString());
 
+		invalidate('cart:load');
 		await fetch('?/change_quantity', {
 			method: 'post',
 			body: form_data
 		});
 	}
-
-	function calculateTotal(cart_items: any) {
-		return (
-			data.cart_items?.reduce(
-				// @ts-ignore
-				(acc, item) => acc + item.product_variants.price * item.quantity,
-				0
-			) || 0
-		);
-	}
-	$: subtotal = calculateTotal(data.cart_items);
 </script>
 
 {#if data.cart_items}
-	<!-- <header>
+	<header>
 		<div class="prose mx-auto text-center">
 			<h2>Your cart</h2>
 		</div>
-	</header> -->
+	</header>
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
@@ -187,13 +178,13 @@
 		</table>
 		{#if data.cart_items.length !== 0}
 			<div class=" font-bold grid grid-cols-2 px-6 py-8 max-w-md sm:ml-auto">
-				<span> Subtotal </span> <span class="text-right">₱{subtotal}</span>
+				<span> Subtotal </span> <span class="text-right">₱{data.subtotal}</span>
 
 				<span> Delivery </span> <span class="text-right">₱50</span>
 
 				<div class="divider col-span-2" />
 
-				<span> Total </span> <span class="text-right">₱{subtotal + 50}</span>
+				<span> Total </span> <span class="text-right">₱{data.subtotal + 50}</span>
 			</div>
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
 				<form action="?/place_order" method="post" class="contents">
