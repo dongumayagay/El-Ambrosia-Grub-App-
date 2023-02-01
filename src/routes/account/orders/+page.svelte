@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { Order_States } from '$lib/constants';
+	import { datetime_formatter } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -8,151 +9,42 @@
 {#if data.orders}
 	<header>
 		<div class="prose mx-auto text-center">
-			<h2>Your orders</h2>
+			<h2>Your Orders</h2>
 		</div>
 	</header>
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
-				<!-- small screen -->
-				<tr class="sticky top-0 sm:hidden">
-					<th>Item</th>
-				</tr>
-				<!-- medium to large screen -->
-				<tr class="sticky top-0 hidden sm:table-row">
-					<th>Item</th>
-					<th>Quantity</th>
-					<th>Price</th>
+				<tr class="sticky top-0 	">
+					<th>ID</th>
+					<th>Date Ordered</th>
+					<th>Total Price</th>
+					<th>Status</th>
 					<th />
 				</tr>
 			</thead>
 			<tbody>
-				{#each data.orders as item (item.id)}
-					<!-- small screen -->
-					<tr class="sm:hidden">
-						<td class="">
-							<div class="flex gap-2">
-								<!-- <figure class="avatar">
-									<div class=" w-28 h-28 rounded">
-										<img
-											src={display_property(item.products, 'image_url')}
-											alt={`${display_property(item.product_variants, 'name')} ${display_property(
-												item.products,
-												'name'
-											)}`}
-											class="object-cover"
-										/>
-									</div>
-								</figure> -->
-								<div class="w-full">
-									<!-- <article class="prose ">
-										<h4>
-											{display_property(item.product_variants, 'name')}
-											{display_property(item.products, 'name')}
-										</h4>
-										<h5>₱ {display_property(item.product_variants, 'price')}</h5>
-									</article> -->
-									<div class="flex justify-between">
-										<!-- <form use:enhance action="?/change_quantity" method="post" class="contents">
-											<input type="hidden" name="cart_item_id" value={item.id} />
-											<input
-												type="number"
-												name="quantity"
-												on:blur={() => on_blur_change_quantity(item.id, item.quantity)}
-												min="1"
-												max="99"
-												bind:value={item.quantity}
-												class="input input-bordered w-32 text-center"
-											/>
-											<button class="hidden" />
-										</form> -->
-										<!-- <form action="?/remove_cart_item" method="post" class="contents" use:enhance>
-											<input type="hidden" name="cart_item_id" value={item.id} />
-											<button class="btn btn-ghost btn-square"
-												><svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="1.5"
-													stroke="currentColor"
-													class="w-6 h-6"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="M6 18L18 6M6 6l12 12"
-													/>
-												</svg></button
-											>
-										</form> -->
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<!-- medium to large screen -->
-					<tr class="hidden sm:table-row">
-						<td class="w-full max-w-sm">
-							<div class="flex gap-4">
-								<!-- <figure class="avatar">
-									<div class=" w-32 rounded">
-										<img
-											src={display_property(item.products, 'image_url')}
-											alt=""
-											class="object-cover"
-										/>
-									</div>
-								</figure> -->
-								<article class="prose">
-									<!-- <h2>
-										{display_property(item.product_variants, 'name')}
-										{display_property(item.products, 'name')}
-									</h2> -->
-									<!-- <p class=" break-all whitespace-normal ">
-										{display_property(item.products, 'description')}
-									</p> -->
-								</article>
-							</div>
-						</td>
+				{#each data.orders as order (order.id)}
+					<tr>
+						<td>{order.id} </td>
+						<td>{datetime_formatter(order.created_at)}</td>
+						<td>₱{order.total}</td>
 						<td>
-							<!-- <form use:enhance action="?/change_quantity" method="post" class="contents">
-								<input type="hidden" name="cart_item_id" value={item.id} />
-								<input
-									type="number"
-									name="quantity"
-									on:blur={() => on_blur_change_quantity(item.id, item.quantity)}
-									min="1"
-									max="99"
-									bind:value={item.quantity}
-									class="input input-bordered w-32 text-center"
-								/>
-								<button class="hidden" />
-							</form> -->
+							<span class="badge badge-lg uppercase">
+								{Order_States[order.status]}
+							</span>
 						</td>
-						<!-- <td>₱ {display_property(item.product_variants, 'price')}</td> -->
-						<td>
-							<form action="?/remove_cart_item" method="post" class="contents" use:enhance>
-								<input type="hidden" name="cart_item_id" value={item.id} />
-								<button class="btn btn-ghost btn-square"
-									><svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										class="w-6 h-6"
-									>
-										<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-									</svg></button
-								>
-							</form>
-						</td>
+						<td
+							><a href={`/accounts/orders/${order.id}`} class="btn btn-outline"
+								>View order details</a
+							></td
+						>
 					</tr>
 				{:else}
 					<tr>
-						<td colspan="4" class="text-center font-bold">
+						<td colspan="41" class="text-center font-bold">
 							<div class="prose text-center mx-auto">
-								<h2>No item on cart</h2>
+								<h2>No Orders Yet</h2>
 							</div>
 							<br />
 							<a href="/products" class="btn">Go to products</a>

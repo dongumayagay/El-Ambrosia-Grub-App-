@@ -15,6 +15,9 @@ export let account_links: Link[] = [
     },
     {
         name: "cart", path: "/account/cart"
+    },
+    {
+        name: "orders", path: "/account/orders"
     }
 ]
 
