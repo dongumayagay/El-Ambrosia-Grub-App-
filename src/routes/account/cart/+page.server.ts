@@ -3,9 +3,9 @@ import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals }) => {
     if (!locals.session) throw error(401)
-    console.log('cart load triggered')
+
     return {
-        cart_items: await (await locals.supabaseClient.from('cart_items').select('*,products(*),product_variants(*)').eq('owner_id', locals.session.user.id)).data
+        cart_items: await (await locals.supabaseClient.from('cart_items').select('*,products(*),product_variants(*)').eq('owner_id', locals.session.user.id)).data,
     };
 }) satisfies PageServerLoad;
 
@@ -22,6 +22,13 @@ export const actions: Actions = {
         if (!quantity || quantity < 1 || quantity > 99) return fail(400)
 
         await locals.supabaseClient.from('cart_items').update({ quantity }).eq('id', Number(body.cart_item_id.toString()))
+    },
+    place_order: async ({ locals }) => {
+
+        if (!locals.session) throw error(401)
+        const cart_items = await (await locals.supabaseClient.from('cart_items').select('*').eq('owner_id', locals.session.user.id)).data
+        if (!cart_items) throw error(400)
+        console.log(cart_items)
 
     }
 

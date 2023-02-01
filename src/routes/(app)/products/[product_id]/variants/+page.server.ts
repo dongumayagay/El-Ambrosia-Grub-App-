@@ -12,7 +12,6 @@ export const actions: Actions = {
         const body = Object.fromEntries(await request.formData())
 
         if (!locals.session) throw error(401)
-        console.log(body)
 
         const incomming_cart_item = {
             owner_id: locals.session.user.id,

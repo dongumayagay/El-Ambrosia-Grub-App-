@@ -16,6 +16,17 @@
 			body: form_data
 		});
 	}
+
+	function calculateTotal(cart_items: any) {
+		return (
+			data.cart_items?.reduce(
+				// @ts-ignore
+				(acc, item) => acc + item.product_variants.price * item.quantity,
+				0
+			) || 0
+		);
+	}
+	$: subtotal = calculateTotal(data.cart_items);
 </script>
 
 {#if data.cart_items}
@@ -175,8 +186,17 @@
 			</tbody>
 		</table>
 		{#if data.cart_items.length !== 0}
+			<div class=" font-bold grid grid-cols-2 px-6 py-8 max-w-md sm:ml-auto">
+				<span> Subtotal </span> <span class="text-right">₱{subtotal}</span>
+
+				<span> Delivery </span> <span class="text-right">₱50</span>
+
+				<div class="divider col-span-2" />
+
+				<span> Total </span> <span class="text-right">₱{subtotal + 50}</span>
+			</div>
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
-				<form action="?/place-order" method="post" class="contents">
+				<form action="?/place_order" method="post" class="contents">
 					<button class="btn btn-primary sm:btn-wide">Place Order</button>
 				</form>
 				<a href="/products" class="btn sm:btn-wide">Back to products</a>
