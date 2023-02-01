@@ -8,7 +8,7 @@
 <div class="flex-1 overflow-x-auto">
 	<table class="table w-full">
 		<thead>
-			<tr>
+			<tr class="sticky top-0">
 				<th>User ID</th>
 				<th>Email</th>
 				<th>Phone</th>

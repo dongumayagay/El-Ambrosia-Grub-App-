@@ -23,7 +23,7 @@
 				</svg>
 			</label>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50	">
 				<li><a href="/account" class="btn btn-ghost"> Account</a></li>
 				<li><a href="/account/cart" class="btn btn-ghost"> Cart</a></li>
 
@@ -60,7 +60,7 @@
 				</svg>
 			</label>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50	">
 				<li><a href="/auth/register" class="btn btn-ghost">Register</a></li>
 				<li><a href="/auth/login" class="btn btn-ghost">Login</a></li>
 			</ul>

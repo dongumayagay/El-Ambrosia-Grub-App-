@@ -5,7 +5,7 @@
 		<p>
 			<img src="/brand-logo.png" alt="" class="h-14" />
 		</p>
-		<p class="font-bold">Providing Authentic Shawarma since 2019</p>
+		<p class="font-bold">Serving Authentic Shawarma since 2019</p>
 	</div>
 	<div class="grid grid-flow-col gap-4">
 		<a href="/" class="link link-hover">About us</a>

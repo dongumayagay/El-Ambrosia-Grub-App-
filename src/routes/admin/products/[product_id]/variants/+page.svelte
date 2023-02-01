@@ -26,7 +26,7 @@
 	<div class="flex-1 overflow-x-auto">
 		<table class="table w-full">
 			<thead>
-				<tr>
+				<tr class="sticky top-0">
 					<th>name</th>
 					<th>price</th>
 					<th>actions</th>

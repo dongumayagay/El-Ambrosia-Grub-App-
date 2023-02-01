@@ -19,15 +19,20 @@
 </script>
 
 {#if data.cart_items}
+	<!-- <header>
+		<div class="prose mx-auto text-center">
+			<h2>Your cart</h2>
+		</div>
+	</header> -->
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
 				<!-- small screen -->
-				<tr class="sm:hidden">
+				<tr class="sticky top-0 sm:hidden">
 					<th>Item</th>
 				</tr>
 				<!-- medium to large screen -->
-				<tr class="hidden sm:table-row">
+				<tr class="sticky top-0 hidden sm:table-row">
 					<th>Item</th>
 					<th>Quantity</th>
 					<th>Price</th>
