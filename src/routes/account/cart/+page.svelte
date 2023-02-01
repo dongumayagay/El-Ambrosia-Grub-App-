@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	let { cart_items } = data;
 </script>
 
-{#if cart_items}
+{#if data.cart_items}
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
@@ -23,7 +23,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each cart_items as item}
+				{#each data.cart_items as item}
 					<!-- small screen -->
 					<tr class="sm:hidden">
 						<td class="">
@@ -59,7 +59,7 @@
 											/>
 											<button class="hidden" />
 										</form>
-										<form action="?/remove_cart_item" method="post" class="contents">
+										<form action="?/remove_cart_item" method="post" class="contents" use:enhance>
 											<input type="hidden" name="cart_item_id" value={item.id} />
 											<button class="btn btn-ghost btn-square"
 												><svg
@@ -121,7 +121,7 @@
 						>
 						<td>₱ {display_property(item.product_variants, 'price')}</td>
 						<td>
-							<form action="?/remove_cart_item" method="post" class="contents">
+							<form action="?/remove_cart_item" method="post" class="contents" use:enhance>
 								<input type="hidden" name="cart_item_id" value={item.id} />
 								<button class="btn btn-ghost btn-square"
 									><svg
@@ -151,7 +151,7 @@
 				{/each}
 			</tbody>
 		</table>
-		{#if cart_items.length !== 0}
+		{#if data.cart_items.length !== 0}
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
 				<form action="?/checkout" method="post" class="contents">
 					<button class="btn btn-primary sm:btn-wide">Checkout</button>
