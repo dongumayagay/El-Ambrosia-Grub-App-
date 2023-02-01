@@ -23,7 +23,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each data.cart_items as item}
+				{#each data.cart_items as item (item.id)}
 					<!-- small screen -->
 					<tr class="sm:hidden">
 						<td class="">
@@ -49,12 +49,14 @@
 										<h5>₱ {display_property(item.product_variants, 'price')}</h5>
 									</article>
 									<div class="flex justify-between">
-										<form action="?/change_quantity" method="post" class="contents">
+										<form use:enhance action="?/change_quantity" method="post" class="contents">
 											<input type="hidden" name="cart_item_id" value={item.id} />
 											<input
 												type="number"
 												name="quantity"
-												value={item.quantity}
+												min="1"
+												max="99"
+												bind:value={item.quantity}
 												class="input input-bordered w-32 text-center"
 											/>
 											<button class="hidden" />
@@ -108,12 +110,14 @@
 							</div>
 						</td>
 						<td
-							><form action="?/change_quantity" method="post" class="contents">
+							><form use:enhance action="?/change_quantity" method="post" class="contents">
 								<input type="hidden" name="cart_item_id" value={item.id} />
 								<input
 									type="number"
 									name="quantity"
-									value={item.quantity}
+									min="1"
+									max="99"
+									bind:value={item.quantity}
 									class="input input-bordered w-32 text-center"
 								/>
 								<button class="hidden" />

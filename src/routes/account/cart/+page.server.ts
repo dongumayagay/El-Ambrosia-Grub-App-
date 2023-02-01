@@ -14,5 +14,12 @@ export const actions: Actions = {
         const body = Object.fromEntries(await request.formData())
         await locals.supabaseClient.from('cart_items').delete().eq('id', Number(body.cart_item_id.toString()))
         return { success: true }
+    },
+    change_quantity: async ({ request, locals }) => {
+        const body = Object.fromEntries(await request.formData())
+        console.log(body)
+        await locals.supabaseClient.from('cart_items').update({ quantity: Number(body.quantity.toString()) }).eq('id', Number(body.cart_item_id.toString()))
+        return { success: true }
     }
+
 };
