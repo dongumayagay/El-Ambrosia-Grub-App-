@@ -17,3 +17,12 @@ export let account_links: Link[] = [
         name: "cart", path: "/account/cart"
     }
 ]
+
+enum Order_States {
+    'to pay',
+    'order received',
+    'in progress',
+    'out for delivery',
+    'delivered',
+    'completed',
+}

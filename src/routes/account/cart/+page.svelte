@@ -176,13 +176,11 @@
 		</table>
 		{#if data.cart_items.length !== 0}
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
-				<form action="?/checkout" method="post" class="contents">
-					<button class="btn btn-primary sm:btn-wide">Checkout</button>
+				<form action="?/place-order" method="post" class="contents">
+					<button class="btn btn-primary sm:btn-wide">Place Order</button>
 				</form>
 				<a href="/products" class="btn sm:btn-wide">Back to products</a>
 			</div>
 		{/if}
 	</div>
-{:else}
-	e
 {/if}
