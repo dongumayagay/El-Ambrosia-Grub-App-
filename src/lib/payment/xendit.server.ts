@@ -1,6 +1,6 @@
+import Xendit from "xendit-node";
 import { XENDIT_SECRET_API_KEY } from "$env/static/private";
 
-const Xendit = require('xendit-node');
 const x = new Xendit({
     secretKey: XENDIT_SECRET_API_KEY,
 });

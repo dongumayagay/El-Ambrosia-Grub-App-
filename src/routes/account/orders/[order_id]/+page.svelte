@@ -36,7 +36,7 @@
 			</div>
 			<br />
 			{#if data.order.status === 0}
-				<form class="form-control" method="get">
+				<form class="form-control" method="post">
 					<button class="btn">PAY</button>
 				</form>
 			{/if}
@@ -49,14 +49,6 @@
 			</ul>
 		</section>
 	</main>
-
-	<!-- <pre class=" prose">
-{JSON.stringify(data.order, null, 2)}
-</pre>
-
-	<pre class=" prose">
-{JSON.stringify(data.order_items, null, 2)}
-</pre> -->
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
