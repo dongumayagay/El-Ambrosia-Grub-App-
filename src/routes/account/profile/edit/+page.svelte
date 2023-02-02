@@ -58,7 +58,7 @@
 				required
 				value={profile.email_address}
 			/>
-		</div>
+		</div> -->
 		<div class="form-control">
 			<label class="label" for="phone_number">
 				<span class="label-text">Phone number</span>
@@ -73,7 +73,7 @@
 				pattern={String.raw`^(09|\+639)\d{9}$`}
 				title="enter proper phone number"
 			/>
-		</div> -->
+		</div>
 
 		<br />
 		<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
