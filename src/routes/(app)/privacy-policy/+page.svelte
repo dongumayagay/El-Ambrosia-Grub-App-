@@ -1,4 +1,4 @@
-<article class="prose mx-auto py-32 w-full max-w-7xl">
+<article class="prose mx-auto py-32 w-full max-w-7xl px-4">
 	<h1>Privacy Policy for El Ambrosia</h1>
 
 	<p>
