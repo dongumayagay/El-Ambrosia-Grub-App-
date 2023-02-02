@@ -1,3 +1,8 @@
+<script>
+	import ChatFB from './ChatFB.svelte';
+</script>
+
+<ChatFB />
 <slot />
 <br />
 <footer class="footer footer-center p-10 bg-neutral text-neutral-content">
