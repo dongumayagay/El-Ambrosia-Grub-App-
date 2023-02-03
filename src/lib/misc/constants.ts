@@ -17,9 +17,6 @@ export let account_links: Link[] = [
         name: "edit information", path: "/account/profile/edit"
     },
     {
-        name: "cart", path: "/account/cart"
-    },
-    {
         name: "orders", path: "/account/orders"
     }
 ]

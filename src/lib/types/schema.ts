@@ -9,29 +9,6 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      cart_items: {
-        Row: {
-          id: number
-          owner_id: string
-          product_id: number
-          product_variant_id: number
-          quantity: number
-        }
-        Insert: {
-          id?: number
-          owner_id: string
-          product_id: number
-          product_variant_id: number
-          quantity: number
-        }
-        Update: {
-          id?: number
-          owner_id?: string
-          product_id?: number
-          product_variant_id?: number
-          quantity?: number
-        }
-      }
       "delivery-locations": {
         Row: {
           city: string
