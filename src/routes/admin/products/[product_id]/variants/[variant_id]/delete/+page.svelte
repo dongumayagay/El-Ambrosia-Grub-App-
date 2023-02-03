@@ -32,7 +32,7 @@
 				class="input input-bordered "
 				value={variant.name}
 				required
-				disabled
+				readonly
 			/>
 		</div>
 

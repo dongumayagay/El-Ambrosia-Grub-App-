@@ -27,7 +27,7 @@
 			<label class="label" for=""> <span class="label-text">Name</span> </label>
 			<input
 				type="text"
-				disabled
+				readonly
 				class="input input-bordered cursor-text"
 				value={display_property(variant_supply.supplies, 'name')}
 			/>

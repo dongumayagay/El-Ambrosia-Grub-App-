@@ -32,7 +32,7 @@
 				placeholder={`Underdog 6\"`}
 				value={product.name}
 				class="input input-bordered "
-				disabled
+				readonly
 				required
 			/>
 		</div>
