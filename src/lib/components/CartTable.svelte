@@ -19,7 +19,7 @@
 	<tbody>
 		{#each $cart as item (item.variant_id)}
 			<!-- small screen -->
-			<tr class="sm:hidden">
+			<tr class="sm:hidden hover">
 				<td class="">
 					<div class="flex gap-2">
 						<figure class="avatar">
@@ -61,7 +61,7 @@
 				</td>
 			</tr>
 			<!-- medium to large screen -->
-			<tr class="hidden sm:table-row">
+			<tr class="hidden sm:table-row hover">
 				<td class="w-full max-w-sm">
 					<div class="flex gap-4">
 						<figure class="avatar">

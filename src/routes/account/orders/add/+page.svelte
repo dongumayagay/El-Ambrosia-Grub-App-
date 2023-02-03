@@ -1,22 +1,18 @@
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
-	import { enhance, type SubmitFunction } from '$app/forms';
+	import type { PageData } from './$types';
+
 	import CartTable from '$lib/components/CartTable.svelte';
 
 	export let data: PageData;
-	export let form: ActionData;
-	let loading: boolean;
 
-	const enhance_function: SubmitFunction = () => {
-		loading = true;
-		return async ({ update }) => {
-			loading = false;
-			await update({ reset: false });
-		};
-	};
+	let loading: boolean;
 </script>
 
-<form method="post" use:enhance={enhance_function}>
+<form
+	on:submit|preventDefault={() => {
+		console.log('test');
+	}}
+>
 	<div class="w-full grid sm:grid-cols-2 gap-4">
 		<div class="prose text-center col-span-full mx-auto">
 			<h2>Placing order</h2>
@@ -109,46 +105,21 @@
 		<CartTable />
 	</div>
 	<br />
-	<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
+	<!--  -->
+	<ul>
+		<li class="flex justify-between">
+			<span>
+				delivery fee
+				{#if data.address != null}
+					to
+					{data.delivery_locations.find((items) => items.postal_code === data.address?.postal_code)
+						?.postal_code}
+				{/if}
+			</span>
+			<span> 50 </span>
+		</li>
+	</ul>
 	<br />
-	{#if form?.error}
-		<br />
-		<div class="alert alert-error shadow-lg">
-			<div>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="stroke-current flex-shrink-0 h-6 w-6"
-					fill="none"
-					viewBox="0 0 24 24"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-					/></svg
-				>
-				<span>{form.error}</span>
-			</div>
-		</div>
-	{/if}
-	{#if form?.success}
-		<br />
-		<div class="alert alert-success shadow-lg">
-			<div>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="stroke-current flex-shrink-0 h-6 w-6"
-					fill="none"
-					viewBox="0 0 24 24"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-					/></svg
-				>
-				<span>Profile information updated successfully!</span>
-			</div>
-		</div>
-	{/if}
+	<button class="btn btn-block" class:loading disabled={loading}>Checkout</button>
+	<br />
 </form>
