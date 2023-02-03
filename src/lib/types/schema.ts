@@ -32,6 +32,35 @@ export interface Database {
           quantity?: number
         }
       }
+      "delivery-locations": {
+        Row: {
+          city: string
+          enable: boolean
+          fee: number
+          id: number
+          name: string
+          postal_code: string
+          state: string
+        }
+        Insert: {
+          city: string
+          enable?: boolean
+          fee?: number
+          id?: number
+          name: string
+          postal_code: string
+          state: string
+        }
+        Update: {
+          city?: string
+          enable?: boolean
+          fee?: number
+          id?: number
+          name?: string
+          postal_code?: string
+          state?: string
+        }
+      }
       order_items: {
         Row: {
           id: number

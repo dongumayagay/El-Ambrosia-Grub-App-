@@ -7,7 +7,10 @@ export let admin_links: Link[] = [
         name: 'manage supplies', path: "/admin/supplies"
     }, {
         name: 'manage products', path: "/admin/products"
+    }, {
+        name: 'manage delivery locations', path: "/admin/delivery-locations"
     }
+
 ]
 export let account_links: Link[] = [
     {

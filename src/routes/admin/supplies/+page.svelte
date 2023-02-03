@@ -71,6 +71,14 @@
 						<ActionMenu id={supply.id} />
 					</td>
 				</tr>
+			{:else}
+				<tr>
+					<td colspan="3" class="text-center font-bold">
+						<div class="prose text-center mx-auto">
+							<h2>No supplies</h2>
+						</div>
+					</td>
+				</tr>
 			{/each}
 		</tbody>
 	</table>
