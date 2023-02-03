@@ -120,6 +120,7 @@ export interface Database {
       }
       profiles: {
         Row: {
+          address: Json | null
           avatar_url: string | null
           email_address: string | null
           first_name: string | null
@@ -128,6 +129,7 @@ export interface Database {
           phone_number: string | null
         }
         Insert: {
+          address?: Json | null
           avatar_url?: string | null
           email_address?: string | null
           first_name?: string | null
@@ -136,6 +138,7 @@ export interface Database {
           phone_number?: string | null
         }
         Update: {
+          address?: Json | null
           avatar_url?: string | null
           email_address?: string | null
           first_name?: string | null
