@@ -47,12 +47,24 @@ const create_cart = () => {
             return items;
         });
     }
-    function updateItemQuantity(variant_id: number, quantity: number) {
+
+    // function updateItemQuantity(variant_id: number, quantity: number) {
+    //     update(items => {
+    //         const existingItem = items.find(i => i.variant_id === variant_id);
+    //         if (existingItem && quantity > 0) {
+    //             console.log(quantity)
+    //             existingItem.quantity = quantity;
+    //         }
+    //         return items;
+    //     });
+    // }
+
+    function validatetemQuantity(variant_id: number) {
         update(items => {
             const existingItem = items.find(i => i.variant_id === variant_id);
-            if (existingItem) {
-                existingItem.quantity = quantity;
-            }
+            if (existingItem && !!existingItem.quantity)
+                existingItem.quantity = 1;
+
             return items;
         });
     }
@@ -71,11 +83,13 @@ const create_cart = () => {
         set([])
     }
 
-
     return {
+        set,
+        update,
         subscribe,
         add,
-        updateItemQuantity,
+        // updateItemQuantity,
+        validatetemQuantity,
         removeItem,
         save,
         clear,

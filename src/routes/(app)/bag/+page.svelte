@@ -58,7 +58,7 @@
 										<input
 											type="number"
 											bind:value={item.quantity}
-											on:change={cart.save}
+											on:blur={() => cart.validatetemQuantity(item.variant_id)}
 											class="text-center input input-bordered w-32"
 										/>
 										<button
@@ -102,7 +102,7 @@
 							<input
 								type="number"
 								bind:value={item.quantity}
-								on:change={cart.save}
+								on:blur={() => cart.validatetemQuantity(item.variant_id)}
 								class="text-center input input-bordered"
 							/>
 						</td>
@@ -137,7 +137,7 @@
 				{/each}
 			</tbody>
 		</table>
-		{#if $subtotal !== 0}
+		{#if $subtotal > 0}
 			<div class=" font-bold grid grid-cols-2 px-6 py-8 max-w-md sm:ml-auto">
 				<span> Subtotal </span> <span class="text-right">₱{$subtotal}</span>
 			</div>
