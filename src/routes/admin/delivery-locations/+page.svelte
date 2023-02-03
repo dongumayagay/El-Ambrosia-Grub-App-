@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import Table from '$lib/components/Table.svelte';
 	import type { PageData } from './$types';
 
@@ -15,15 +16,23 @@
 	</svg>
 	Add Delivery Location</a
 >
-<Table table_headers={[ 'city', 'province', 'postal code', 'fee', 'status', '']}>
+<Table table_headers={['city', 'province', 'postal code', 'fee', 'status', '']}>
 	{#each data.delivery_locations as delivery_location (delivery_location.id)}
 		<tr class="hover">
 			<td> {delivery_location.city} </td>
 			<td> {delivery_location.state} </td>
 			<td> {delivery_location.postal_code} </td>
 			<td> {delivery_location.fee} </td>
-			<td> {delivery_location.enable} </td>
-			<td>adlskjfl;dskjf</td>
+			<td>
+				<div class={`badge ${delivery_location.enable ? 'badge-success' : 'badge-error'}`}>
+					{delivery_location.enable ? 'Enabled' : 'Disabled'}
+				</div>
+			</td>
+			<td
+				><ActionMenuDropdownLinks
+					links={[{ name: 'Edit', path: `/admin/delivery-locations/${delivery_location.id}/edit` }]}
+				/></td
+			>
 		</tr>
 	{:else}
 		<tr>

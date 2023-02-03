@@ -61,6 +61,7 @@
 	<div class="form-control">
 		<label class="label cursor-pointer">
 			<span class="label-text">Enable</span>
+			<input type="hidden" name="enable" value="off" />
 			<input type="checkbox" name="enable" class="toggle" checked />
 		</label>
 	</div>
