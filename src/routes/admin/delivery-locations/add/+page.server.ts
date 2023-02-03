@@ -5,7 +5,6 @@ export const actions: Actions = {
     default: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
 
-        console.log(body)
         const address = {
             city: body.city.toString(),
             state: body.state.toString(),

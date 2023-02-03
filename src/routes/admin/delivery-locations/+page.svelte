@@ -30,7 +30,13 @@
 			</td>
 			<td
 				><ActionMenuDropdownLinks
-					links={[{ name: 'Edit', path: `/admin/delivery-locations/${delivery_location.id}/edit` }]}
+					links={[
+						{ name: 'Edit', path: `/admin/delivery-locations/${delivery_location.id}/edit` },
+						{
+							name: 'remove',
+							path: `/admin/delivery-locations/${delivery_location.id}/delete`
+						}
+					]}
 				/></td
 			>
 		</tr>
