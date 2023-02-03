@@ -32,7 +32,7 @@
 					<div class="card-actions justify-end">
 						<a
 							href={`/products/${product.id}/variants`}
-							class="btn btn-primary btn-block sm:btn-wide">buy</a
+							class="btn btn-primary btn-block sm:btn-wide">select</a
 						>
 					</div>
 				</div>
