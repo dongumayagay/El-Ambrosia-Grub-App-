@@ -85,13 +85,13 @@
 		/>
 	</div>
 	<div class="form-control">
-		<label for="location" class="label">
+		<label for="location_id" class="label">
 			<span class="label-text">Select location</span>
 		</label>
-		<select name="location" class="select select-bordered" required>
+		<select name="location_id" class="select select-bordered" required>
 			<option value="">Select location</option>
 			{#each data.delivery_locations as loc (loc.id)}
-				<option value={loc.id}>
+				<option value={loc.id} selected={loc.postal_code === data.address?.postal_code}>
 					{loc.city},
 					{loc.state},
 					{loc.postal_code}

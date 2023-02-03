@@ -41,7 +41,7 @@ export interface Database {
           country: string
           id: number
           owner_id: string
-          postal_code: string
+          postal_code: number
           state: string
           street_line1: string
           street_line2: string
@@ -51,7 +51,7 @@ export interface Database {
           country?: string
           id?: number
           owner_id: string
-          postal_code: string
+          postal_code: number
           state: string
           street_line1: string
           street_line2: string
@@ -61,7 +61,7 @@ export interface Database {
           country?: string
           id?: number
           owner_id?: string
-          postal_code?: string
+          postal_code?: number
           state?: string
           street_line1?: string
           street_line2?: string
@@ -160,26 +160,26 @@ export interface Database {
         Row: {
           avatar_url: string | null
           email_address: string | null
-          first_name: string | null
+          first_name: string
           id: string
-          last_name: string | null
-          phone_number: string | null
+          last_name: string
+          phone_number: string
         }
         Insert: {
           avatar_url?: string | null
           email_address?: string | null
-          first_name?: string | null
+          first_name: string
           id: string
-          last_name?: string | null
-          phone_number?: string | null
+          last_name: string
+          phone_number: string
         }
         Update: {
           avatar_url?: string | null
           email_address?: string | null
-          first_name?: string | null
+          first_name?: string
           id?: string
-          last_name?: string | null
-          phone_number?: string | null
+          last_name?: string
+          phone_number?: string
         }
       }
       roles: {
@@ -225,7 +225,7 @@ export interface Database {
           country: string
           id: number
           owner_id: string
-          postal_code: string
+          postal_code: number
           state: string
           street_line1: string
           street_line2: string
@@ -235,7 +235,7 @@ export interface Database {
           country?: string
           id?: number
           owner_id: string
-          postal_code: string
+          postal_code: number
           state: string
           street_line1: string
           street_line2: string
@@ -245,7 +245,7 @@ export interface Database {
           country?: string
           id?: number
           owner_id?: string
-          postal_code?: string
+          postal_code?: number
           state?: string
           street_line1?: string
           street_line2?: string
