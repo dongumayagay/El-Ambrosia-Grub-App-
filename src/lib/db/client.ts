@@ -14,6 +14,10 @@ export const ROLES_ALLOWED_IN_ADMIN: (string | null)[] = [
 
 export async function getUserRole(supabaseClient: TypedSupabaseClient, uid: string) {
     const { data, error: supabase_error } = await supabaseClient.from('roles').select('position').limit(1).single()
-    if (supabase_error) throw error(Number(supabase_error.code), supabase_error)
+    if (supabase_error) {
+        if (supabase_error.code = "PGRST116")
+            return null
+        throw error(500, JSON.stringify(supabase_error, null, 2))
+    }
     return data?.position ?? null
 }

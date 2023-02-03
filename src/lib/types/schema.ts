@@ -21,7 +21,7 @@ export interface Database {
         Insert: {
           city: string
           enable?: boolean
-          fee?: number
+          fee: number
           id?: number
           postal_code: number
           state: string
@@ -33,6 +33,38 @@ export interface Database {
           id?: number
           postal_code?: number
           state?: string
+        }
+      }
+      order_addreses: {
+        Row: {
+          city: string
+          country: string
+          id: number
+          owner_id: string
+          postal_code: string
+          state: string
+          street_line1: string
+          street_line2: string
+        }
+        Insert: {
+          city: string
+          country?: string
+          id?: number
+          owner_id: string
+          postal_code: string
+          state: string
+          street_line1: string
+          street_line2: string
+        }
+        Update: {
+          city?: string
+          country?: string
+          id?: number
+          owner_id?: string
+          postal_code?: string
+          state?: string
+          street_line1?: string
+          street_line2?: string
         }
       }
       order_items: {
@@ -61,6 +93,7 @@ export interface Database {
       orders: {
         Row: {
           created_at: string
+          fees: Json
           id: number
           owner_id: string
           status: number
@@ -68,6 +101,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string
+          fees?: Json
           id?: number
           owner_id: string
           status?: number
@@ -75,6 +109,7 @@ export interface Database {
         }
         Update: {
           created_at?: string
+          fees?: Json
           id?: number
           owner_id?: string
           status?: number
@@ -123,7 +158,6 @@ export interface Database {
       }
       profiles: {
         Row: {
-          address: Json | null
           avatar_url: string | null
           email_address: string | null
           first_name: string | null
@@ -132,7 +166,6 @@ export interface Database {
           phone_number: string | null
         }
         Insert: {
-          address?: Json | null
           avatar_url?: string | null
           email_address?: string | null
           first_name?: string | null
@@ -141,7 +174,6 @@ export interface Database {
           phone_number?: string | null
         }
         Update: {
-          address?: Json | null
           avatar_url?: string | null
           email_address?: string | null
           first_name?: string | null
@@ -185,6 +217,38 @@ export interface Database {
           threshold?: number
           unit?: string
           value?: number
+        }
+      }
+      user_addresses: {
+        Row: {
+          city: string
+          country: string
+          id: number
+          owner_id: string
+          postal_code: string
+          state: string
+          street_line1: string
+          street_line2: string
+        }
+        Insert: {
+          city: string
+          country?: string
+          id?: number
+          owner_id: string
+          postal_code: string
+          state: string
+          street_line1: string
+          street_line2: string
+        }
+        Update: {
+          city?: string
+          country?: string
+          id?: number
+          owner_id?: string
+          postal_code?: string
+          state?: string
+          street_line1?: string
+          street_line2?: string
         }
       }
       variant_supply: {
