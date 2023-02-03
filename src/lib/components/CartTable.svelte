@@ -38,7 +38,10 @@
 								<input
 									type="number"
 									bind:value={item.quantity}
-									on:blur={() => cart.validatetemQuantity(item.variant_id)}
+									min="1"
+									on:change={() => {
+										if (item.quantity < 1 || item.quantity === null) item.quantity = 1;
+									}}
 									class="text-center input input-bordered w-32"
 								/>
 								<button
@@ -78,7 +81,10 @@
 					<input
 						type="number"
 						bind:value={item.quantity}
-						on:blur={() => cart.validatetemQuantity(item.variant_id)}
+						min="1"
+						on:change={() => {
+							if (item.quantity < 1 || item.quantity === null) item.quantity = 1;
+						}}
 						class="text-center input input-bordered"
 					/>
 				</td>
