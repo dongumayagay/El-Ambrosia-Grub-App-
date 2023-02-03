@@ -3,7 +3,7 @@
 	import { supabaseClient } from '$lib/db/client';
 	import { onMount } from 'svelte';
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
-	import PaginationControl from '$lib/components/PaginationControl.svelte';
+	import Table from '$lib/components/Table.svelte';
 
 	export let data: PageData;
 	let supplies = data.supplies;
@@ -46,58 +46,45 @@
 	</svg>
 	Add New supply</a
 >
-<div class="flex-1 overflow-x-auto">
-	<table class="table w-full">
-		<thead>
-			<tr class="sticky top-0">
-				<th>name</th>
-				<th>value</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each supplies as supply (supply.id)}
-				<tr class="hover">
-					<td>{supply.name}</td>
-					<td>
-						<div>
-							{supply.value}
-							{supply.unit}
-						</div>
-						{#if supply.value <= supply.threshold}
-							<p class="text-warning">supply is running low</p>
-						{/if}
-					</td>
-					<td>
-						<!-- <ActionMenu id={supply.id} /> -->
-						<ActionMenuDropdownLinks
-							links={[
-								{
-									name: 'Adjust Value',
-									path: `/admin/supplies/${supply.id}/adjust-value`
-								},
-								{
-									name: 'Update Info',
-									path: `/admin/supplies/${supply.id}/edit`
-								},
-								{
-									name: 'Delete',
-									path: `/admin/supplies/${supply.id}/delete`
-								}
-							]}
-						/>
-					</td>
-				</tr>
-			{:else}
-				<tr>
-					<td colspan="3" class="text-center font-bold">
-						<div class="prose text-center mx-auto">
-							<h2>No supplies</h2>
-						</div>
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
-<PaginationControl />
+<Table table_headers={['name', 'value', '']}>
+	{#each supplies as supply (supply.id)}
+		<tr class="hover">
+			<td>{supply.name}</td>
+			<td>
+				<div>
+					{supply.value}
+					{supply.unit}
+				</div>
+				{#if supply.value <= supply.threshold}
+					<p class="text-warning">supply is running low</p>
+				{/if}
+			</td>
+			<td>
+				<ActionMenuDropdownLinks
+					links={[
+						{
+							name: 'Adjust Value',
+							path: `/admin/supplies/${supply.id}/adjust-value`
+						},
+						{
+							name: 'Update Info',
+							path: `/admin/supplies/${supply.id}/edit`
+						},
+						{
+							name: 'Delete',
+							path: `/admin/supplies/${supply.id}/delete`
+						}
+					]}
+				/>
+			</td>
+		</tr>
+	{:else}
+		<tr>
+			<td colspan="3" class="text-center font-bold">
+				<div class="prose text-center mx-auto">
+					<h2>No supplies</h2>
+				</div>
+			</td>
+		</tr>
+	{/each}
+</Table>

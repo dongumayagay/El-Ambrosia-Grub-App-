@@ -2,7 +2,7 @@
 	import NotFound from '$lib/components/NotFound.svelte';
 	import type { PageData } from './$types';
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
-	import PaginationControl from '$lib/components/PaginationControl.svelte';
+	import Table from '$lib/components/Table.svelte';
 
 	export let data: PageData;
 	const { product, variants } = data;
@@ -23,47 +23,34 @@
 		</svg>
 		Add product variant</a
 	>
-
-	<div class="flex-1 overflow-x-auto">
-		<table class="table w-full">
-			<thead>
-				<tr class="sticky top-0">
-					<th>name</th>
-					<th>price</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#each variants as variant (variant.id)}
-					<tr class="hover">
-						<td>{variant.name}</td>
-						<td>
-							{variant.price}
-						</td>
-						<td>
-							<ActionMenuDropdownLinks
-								links={[
-									{
-										name: 'view supplies will use',
-										path: `/admin/products/${product.id}/variants/${variant.id}/supplies`
-									},
-									{
-										name: 'Update Info',
-										path: `/admin/products/${product.id}/variants/${variant.id}/edit`
-									},
-									{
-										name: 'Delete',
-										path: `/admin/products/${product.id}/variants/${variant.id}/delete`
-									}
-								]}
-							/>
-						</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</div>
-	<PaginationControl />
+	<Table table_headers={['name', 'price', 'actions']}>
+		{#each variants as variant (variant.id)}
+			<tr class="hover">
+				<td>{variant.name}</td>
+				<td>
+					{variant.price}
+				</td>
+				<td>
+					<ActionMenuDropdownLinks
+						links={[
+							{
+								name: 'view supplies will use',
+								path: `/admin/products/${product.id}/variants/${variant.id}/supplies`
+							},
+							{
+								name: 'Update Info',
+								path: `/admin/products/${product.id}/variants/${variant.id}/edit`
+							},
+							{
+								name: 'Delete',
+								path: `/admin/products/${product.id}/variants/${variant.id}/delete`
+							}
+						]}
+					/>
+				</td>
+			</tr>
+		{/each}
+	</Table>
 {:else}
 	<NotFound />
 {/if}

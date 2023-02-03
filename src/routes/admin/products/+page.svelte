@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
-	import PaginationControl from '$lib/components/PaginationControl.svelte';
+	import Table from '$lib/components/Table.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -17,44 +17,32 @@
 	</svg>
 	Add New Product</a
 >
-<div class="flex-1 overflow-x-auto">
-	<table class="table w-full">
-		<thead>
-			<tr class="sticky top-0">
-				<th>name</th>
-				<th>description</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each products as product (product.id)}
-				<tr class="hover">
-					<td>{product.name}</td>
-					<td>
-						{product.description}
-					</td>
-					<td>
-						<!-- <ActionMenu id={product.id} /> -->
-						<ActionMenuDropdownLinks
-							links={[
-								{
-									name: 'view variants',
-									path: `/admin/products/${product.id}/variants`
-								},
-								{
-									name: 'Update Info',
-									path: `/admin/products/${product.id}/edit`
-								},
-								{
-									name: 'Delete',
-									path: `/admin/products/${product.id}/delete`
-								}
-							]}
-						/>
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
-<PaginationControl />
+
+<Table table_headers={['name', 'description', '']}>
+	{#each products as product (product.id)}
+		<tr class="hover">
+			<td>{product.name}</td>
+			<td>
+				{product.description}
+			</td>
+			<td>
+				<ActionMenuDropdownLinks
+					links={[
+						{
+							name: 'view variants',
+							path: `/admin/products/${product.id}/variants`
+						},
+						{
+							name: 'Update Info',
+							path: `/admin/products/${product.id}/edit`
+						},
+						{
+							name: 'Delete',
+							path: `/admin/products/${product.id}/delete`
+						}
+					]}
+				/>
+			</td>
+		</tr>
+	{/each}
+</Table>

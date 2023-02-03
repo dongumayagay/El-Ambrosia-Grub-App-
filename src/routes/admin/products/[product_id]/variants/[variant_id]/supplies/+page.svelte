@@ -2,6 +2,7 @@
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import NotFound from '$lib/components/NotFound.svelte';
 	import PaginationControl from '$lib/components/PaginationControl.svelte';
+	import Table from '$lib/components/Table.svelte';
 	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
 
@@ -23,43 +24,31 @@
 		</svg>
 		Add supplies will consume</a
 	>
-	<div class="flex-1 overflow-x-auto">
-		<table class="table w-full">
-			<thead>
-				<tr class="sticky top-0">
-					<th>name</th>
-					<th>amount use</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#each variant_supplies as variant_supply (variant_supply.id)}
-					<tr class="hover">
-						<td>{display_property(variant_supply.supplies, 'name')}</td>
-						<td>
-							{variant_supply.amount_use}
-							{display_property(variant_supply.supplies, 'unit')}
-						</td>
-						<td>
-							<ActionMenuDropdownLinks
-								links={[
-									{
-										name: 'Update Info',
-										path: `/admin/products/${product.id}/variants/${variant.id}/supplies/${variant_supply.id}/edit`
-									},
-									{
-										name: 'Delete',
-										path: `/admin/products/${product.id}/variants/${variant.id}/supplies/${variant_supply.id}/delete`
-									}
-								]}
-							/>
-						</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</div>
-	<PaginationControl />
+	<Table table_headers={['name', 'amount use', 'actions']}>
+		{#each variant_supplies as variant_supply (variant_supply.id)}
+			<tr class="hover">
+				<td>{display_property(variant_supply.supplies, 'name')}</td>
+				<td>
+					{variant_supply.amount_use}
+					{display_property(variant_supply.supplies, 'unit')}
+				</td>
+				<td>
+					<ActionMenuDropdownLinks
+						links={[
+							{
+								name: 'Update Info',
+								path: `/admin/products/${product.id}/variants/${variant.id}/supplies/${variant_supply.id}/edit`
+							},
+							{
+								name: 'Delete',
+								path: `/admin/products/${product.id}/variants/${variant.id}/supplies/${variant_supply.id}/delete`
+							}
+						]}
+					/>
+				</td>
+			</tr>
+		{/each}
+	</Table>
 {:else}
 	<NotFound />
 {/if}

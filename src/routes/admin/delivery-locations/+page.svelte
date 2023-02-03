@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PaginationControl from '$lib/components/PaginationControl.svelte';
+	import Table from '$lib/components/Table.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -15,40 +15,24 @@
 	</svg>
 	Add Delivery Location</a
 >
-<div class="flex-1 overflow-x-auto">
-	<table class="table w-full">
-		<thead>
-			<tr class="sticky top-0">
-				<th>name</th>
-				<th>city</th>
-				<th>province</th>
-				<th>postal code</th>
-				<th>fee</th>
-				<th>status</th>
-				<th>action</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each data.delivery_locations as delivery_location (delivery_location.id)}
-				<tr class="hover">
-					<td>{delivery_location.name}</td>
-					<td> {delivery_location.city} </td>
-					<td> {delivery_location.state} </td>
-					<td> {delivery_location.postal_code} </td>
-					<td> {delivery_location.fee} </td>
-					<td> {delivery_location.enable} </td>
-					<td>Action</td>
-				</tr>
-			{:else}
-				<tr>
-					<td colspan="7" class="text-center font-bold">
-						<div class="prose text-center mx-auto">
-							<h2>No delivery locations</h2>
-						</div>
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
-<PaginationControl />
+<Table table_headers={['name', 'city', 'province', 'postal code', 'fee', 'status', 'action']}>
+	{#each data.delivery_locations as delivery_location (delivery_location.id)}
+		<tr class="hover">
+			<td>{delivery_location.name}</td>
+			<td> {delivery_location.city} </td>
+			<td> {delivery_location.state} </td>
+			<td> {delivery_location.postal_code} </td>
+			<td> {delivery_location.fee} </td>
+			<td> {delivery_location.enable} </td>
+			<td>Action</td>
+		</tr>
+	{:else}
+		<tr>
+			<td colspan="7" class="text-center font-bold">
+				<div class="prose text-center mx-auto">
+					<h2>No delivery locations</h2>
+				</div>
+			</td>
+		</tr>
+	{/each}
+</Table>
