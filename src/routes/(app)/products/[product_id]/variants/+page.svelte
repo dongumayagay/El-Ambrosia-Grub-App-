@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import cart from '$lib/stores/cart';
 	import type { PageData } from './$types';
 
@@ -22,6 +23,7 @@
 				price: variant.price,
 				quantity: 1
 			});
+			goto('/bag');
 		} catch (error) {
 			alert('something when wrong');
 		}
@@ -64,7 +66,7 @@
 					</div>
 
 					<br />
-					<button class="btn btn-primary btn-block">Add to cart</button>
+					<button class="btn btn-primary btn-block">Add to bag</button>
 				</form>
 				<br />
 			</div>

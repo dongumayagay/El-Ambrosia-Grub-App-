@@ -13,19 +13,23 @@ type CartItem = {
 
 const create_cart = () => {
     const localStorageKey = 'cart'
-    const cart = writable<CartItem[]>(get_cart_from_localStorage())
+    const cart = writable<CartItem[]>(init_cart())
     const subtotal = derived(cart, ($cart) =>
         $cart.reduce((total, item) =>
             total + item.quantity * item.price, 0)
     );
+    const totalQuantity = derived(cart, ($cart) =>
+        $cart.reduce((total, item) =>
+            total + item.quantity, 0)
+    )
 
     const { set, subscribe, update } = cart
 
     subscribe((items) =>
-        localStorage.setItem(localStorageKey, JSON.stringify(items))
+        browser && localStorage.setItem(localStorageKey, JSON.stringify(items))
     )
 
-    function get_cart_from_localStorage() {
+    function init_cart() {
         if (!browser) return []
         const cart = localStorage.getItem(localStorageKey)
         if (!cart) return []
@@ -59,17 +63,24 @@ const create_cart = () => {
         )
     }
 
+    function save() {
+        update(items => items)
+    }
+
     function clear() {
         set([])
     }
+
 
     return {
         subscribe,
         add,
         updateItemQuantity,
         removeItem,
+        save,
         clear,
-        subtotal
+        subtotal,
+        totalQuantity
     }
 }
 
