@@ -1,6 +1,7 @@
 <script lang="ts">
+	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import type { PageData } from './$types';
-	import ActionMenu from './ActionMenu.svelte';
+
 	export let data: PageData;
 	let products = data.products;
 </script>
@@ -32,7 +33,23 @@
 						{product.description}
 					</td>
 					<td>
-						<ActionMenu id={product.id} />
+						<!-- <ActionMenu id={product.id} /> -->
+						<ActionMenuDropdownLinks
+							links={[
+								{
+									name: 'view variants',
+									path: `/admin/products/${product.id}/variants`
+								},
+								{
+									name: 'Update Info',
+									path: `/admin/products/${product.id}/edit`
+								},
+								{
+									name: 'Delete',
+									path: `/admin/products/${product.id}/delete`
+								}
+							]}
+						/>
 					</td>
 				</tr>
 			{/each}

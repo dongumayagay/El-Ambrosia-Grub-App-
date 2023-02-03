@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import { supabaseClient } from '$lib/db/client';
 	import { onMount } from 'svelte';
-	import ActionMenu from './ActionMenu.svelte';
+	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 
 	export let data: PageData;
 	let supplies = data.supplies;
@@ -68,7 +68,23 @@
 						{/if}
 					</td>
 					<td>
-						<ActionMenu id={supply.id} />
+						<!-- <ActionMenu id={supply.id} /> -->
+						<ActionMenuDropdownLinks
+							links={[
+								{
+									name: 'Adjust Value',
+									path: `/admin/supplies/${supply.id}/adjust-value`
+								},
+								{
+									name: 'Update Info',
+									path: `/admin/supplies/${supply.id}/edit`
+								},
+								{
+									name: 'Delete',
+									path: `/admin/supplies/${supply.id}/delete`
+								}
+							]}
+						/>
 					</td>
 				</tr>
 			{:else}
