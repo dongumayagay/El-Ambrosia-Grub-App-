@@ -1,17 +1,14 @@
 <script lang="ts">
-	import { enhance, type SubmitFunction } from '$app/forms';
 	import cart from '$lib/stores/cart';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
 	const { subtotal } = cart;
 
 	let loading: boolean;
 
-	const enhance_function: SubmitFunction = () => {
-		loading = true;
-		return async ({ update }) => {
-			loading = false;
-			await update();
-		};
-	};
+	async function place_order() {}
 </script>
 
 <main class="flex-1 flex flex-col p-4 gap-4">
@@ -142,10 +139,23 @@
 				<span> Subtotal </span> <span class="text-right">₱{$subtotal}</span>
 			</div>
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
-				<form action="?/place_order" method="post" class="contents" use:enhance={enhance_function}>
-					<button class="btn btn-primary sm:btn-wide" class:loading disabled={loading}
-						>Place Order</button
-					>
+				<form method="post" class="contents" on:submit|preventDefault={place_order}>
+					<div class="form-control">
+						<button
+							class="btn btn-primary sm:btn-wide"
+							class:loading
+							disabled={loading || !data.session}>Place Order</button
+						>
+						{#if !data.session}
+							<br />
+							<div class="alert shadow-lg">
+								<h3 class="font-bold">You must be logged in</h3>
+								<div class="flex-none">
+									<a href="/auth/login" class="btn btn-sm">Login</a>
+								</div>
+							</div>
+						{/if}
+					</div>
 				</form>
 				<a href="/products" class="btn sm:btn-wide">Back to products</a>
 			</div>
