@@ -5,7 +5,7 @@
 	export let data: PageData;
 </script>
 
-<a href="/admin/supplies/add" class="btn gap-2">
+<a href="/admin/delivery-locations/add" class="btn gap-2">
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
 		<path
 			fill-rule="evenodd"
@@ -15,16 +15,15 @@
 	</svg>
 	Add Delivery Location</a
 >
-<Table table_headers={['name', 'city', 'province', 'postal code', 'fee', 'status', 'action']}>
+<Table table_headers={[ 'city', 'province', 'postal code', 'fee', 'status', '']}>
 	{#each data.delivery_locations as delivery_location (delivery_location.id)}
 		<tr class="hover">
-			<td>{delivery_location.name}</td>
 			<td> {delivery_location.city} </td>
 			<td> {delivery_location.state} </td>
 			<td> {delivery_location.postal_code} </td>
 			<td> {delivery_location.fee} </td>
 			<td> {delivery_location.enable} </td>
-			<td>Action</td>
+			<td>adlskjfl;dskjf</td>
 		</tr>
 	{:else}
 		<tr>

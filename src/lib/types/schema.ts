@@ -38,8 +38,7 @@ export interface Database {
           enable: boolean
           fee: number
           id: number
-          name: string
-          postal_code: string
+          postal_code: number
           state: string
         }
         Insert: {
@@ -47,8 +46,7 @@ export interface Database {
           enable?: boolean
           fee?: number
           id?: number
-          name: string
-          postal_code: string
+          postal_code: number
           state: string
         }
         Update: {
@@ -56,8 +54,7 @@ export interface Database {
           enable?: boolean
           fee?: number
           id?: number
-          name?: string
-          postal_code?: string
+          postal_code?: number
           state?: string
         }
       }
