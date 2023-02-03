@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Table from '$lib/components/Table.svelte';
-	import { Order_States } from '$lib/constants';
-	import { datetime_formatter } from '$lib/utils';
+	import { Order_States } from '$lib/misc/constants';
+	import { datetime_formatter } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Order_States } from '$lib/constants';
-	import { datetime_formatter, display_property } from '$lib/utils';
+	import { Order_States } from '$lib/misc/constants';
+	import { datetime_formatter, display_property } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

@@ -2,7 +2,7 @@
 	import type { ActionData, PageData } from './$types';
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import NotFound from '$lib/components/NotFound.svelte';
-	import { display_property } from '$lib/utils';
+	import { display_property } from '$lib/misc/utils';
 
 	export let data: PageData;
 	export let form: ActionData;

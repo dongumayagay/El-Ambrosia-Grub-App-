@@ -3,7 +3,7 @@
 	import NotFound from '$lib/components/NotFound.svelte';
 	import PaginationControl from '$lib/components/PaginationControl.svelte';
 	import Table from '$lib/components/Table.svelte';
-	import { display_property } from '$lib/utils';
+	import { display_property } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

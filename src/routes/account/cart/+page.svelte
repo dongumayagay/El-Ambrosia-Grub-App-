@@ -2,7 +2,7 @@
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import { invalidate } from '$app/navigation';
 
-	import { display_property } from '$lib/utils';
+	import { display_property } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

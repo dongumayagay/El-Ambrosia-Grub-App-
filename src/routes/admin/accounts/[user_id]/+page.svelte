@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { datetime_formatter } from '$lib/utils';
+	import { datetime_formatter } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 	import ChangeRole from './ChangeRole.svelte';
 	import type { ActionData } from './$types';

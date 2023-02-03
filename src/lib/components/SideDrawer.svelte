@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { admin_links, account_links } from '$lib/constants';
+	import { admin_links, account_links } from '$lib/misc/constants';
 	// import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 	import { createEventDispatcher } from 'svelte';
 	$: links = get_drawer_links($page.url.pathname);

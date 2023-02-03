@@ -1,4 +1,4 @@
-import type { Link } from "./types/custom";
+import type { Link } from "$lib/types/custom";
 
 export let admin_links: Link[] = [
     {
