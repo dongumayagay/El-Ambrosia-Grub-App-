@@ -27,7 +27,7 @@
 					fjs.parentNode.insertBefore(js, fjs);
 				})(document, 'script', 'facebook-jssdk');
 			} catch (error) {
-				console.log(error);
+				console.error(error);
 			}
 		}
 	});
