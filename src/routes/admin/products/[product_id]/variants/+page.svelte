@@ -2,6 +2,7 @@
 	import NotFound from '$lib/components/NotFound.svelte';
 	import type { PageData } from './$types';
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
+	import PaginationControl from '$lib/components/PaginationControl.svelte';
 
 	export let data: PageData;
 	const { product, variants } = data;
@@ -62,10 +63,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="btn-group grid grid-cols-2">
-		<button class="btn btn-outline">Previous page</button>
-		<button class="btn btn-outline">Next</button>
-	</div>
+	<PaginationControl />
 {:else}
 	<NotFound />
 {/if}

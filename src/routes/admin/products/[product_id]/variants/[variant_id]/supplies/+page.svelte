@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import NotFound from '$lib/components/NotFound.svelte';
+	import PaginationControl from '$lib/components/PaginationControl.svelte';
 	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
 
@@ -58,10 +59,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="btn-group grid grid-cols-2">
-		<button class="btn btn-outline">Previous page</button>
-		<button class="btn btn-outline">Next</button>
-	</div>
+	<PaginationControl />
 {:else}
 	<NotFound />
 {/if}

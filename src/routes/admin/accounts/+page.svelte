@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PaginationControl from '$lib/components/PaginationControl.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -33,7 +34,4 @@
 		</tbody>
 	</table>
 </div>
-<div class="btn-group grid grid-cols-2">
-	<button class="btn btn-outline">Previous page</button>
-	<button class="btn btn-outline">Next</button>
-</div>
+<PaginationControl />
