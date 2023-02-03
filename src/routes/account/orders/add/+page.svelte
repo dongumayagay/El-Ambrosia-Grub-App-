@@ -17,8 +17,10 @@
 </script>
 
 <form method="post" use:enhance={enhance_function}>
-	<div class="w-full max-w-md prose">
-		<h2>Placing order</h2>
+	<div class="w-full grid sm:grid-cols-2 gap-4">
+		<div class="prose text-center col-span-full mx-auto">
+			<h2>Placing order</h2>
+		</div>
 		<div class="form-control">
 			<label class="label" for="first_name">
 				<span class="label-text">First name</span>
@@ -45,7 +47,7 @@
 				value={data.profile?.last_name ?? ''}
 			/>
 		</div>
-		<div class="form-control">
+		<div class="form-control col-span-full">
 			<label class="label" for="phone_number">
 				<span class="label-text">Phone number</span>
 			</label>
@@ -60,7 +62,7 @@
 				title="enter proper phone number"
 			/>
 		</div>
-		<div class="form-control">
+		<div class="form-control col-span-full">
 			<label class="label" for="street_line1">
 				<span class="label-text">Street line 1</span>
 			</label>
@@ -73,7 +75,7 @@
 				value={data.address?.street_line1 ?? ''}
 			/>
 		</div>
-		<div class="form-control">
+		<div class="form-control col-span-full">
 			<label class="label" for="street_line2">
 				<span class="label-text">Street line 2</span>
 			</label>
@@ -86,7 +88,7 @@
 				value={data.address?.street_line2 ?? ''}
 			/>
 		</div>
-		<div class="form-control">
+		<div class="form-control col-span-full">
 			<label for="location_id" class="label">
 				<span class="label-text">Select location</span>
 			</label>
@@ -101,52 +103,52 @@
 				{/each}
 			</select>
 		</div>
-		<br />
-		<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
-		<br />
-		{#if form?.error}
-			<br />
-			<div class="alert alert-error shadow-lg">
-				<div>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="stroke-current flex-shrink-0 h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/></svg
-					>
-					<span>{form.error}</span>
-				</div>
-			</div>
-		{/if}
-		{#if form?.success}
-			<br />
-			<div class="alert alert-success shadow-lg">
-				<div>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="stroke-current flex-shrink-0 h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/></svg
-					>
-					<span>Profile information updated successfully!</span>
-				</div>
-			</div>
-		{/if}
 	</div>
 	<br />
 	<div class="overflow-x-auto flex-1 ">
 		<CartTable />
 	</div>
+	<br />
+	<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
+	<br />
+	{#if form?.error}
+		<br />
+		<div class="alert alert-error shadow-lg">
+			<div>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="stroke-current flex-shrink-0 h-6 w-6"
+					fill="none"
+					viewBox="0 0 24 24"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
+				<span>{form.error}</span>
+			</div>
+		</div>
+	{/if}
+	{#if form?.success}
+		<br />
+		<div class="alert alert-success shadow-lg">
+			<div>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="stroke-current flex-shrink-0 h-6 w-6"
+					fill="none"
+					viewBox="0 0 24 24"
+					><path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+					/></svg
+				>
+				<span>Profile information updated successfully!</span>
+			</div>
+		</div>
+	{/if}
 </form>

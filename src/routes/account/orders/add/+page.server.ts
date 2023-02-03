@@ -4,7 +4,7 @@ import type { PageServerLoad, Actions } from './$types';
 export const load = (async ({ locals }) => {
     return {
         profile: await (await locals.supabaseClient.from('profiles').select('*').eq('id', locals.session?.user.id).limit(1).single()).data,
-        address: await (await locals.supabaseClient.from('user_addresses').select('*').eq('owner_id', locals.session?.user.id).limit(1).single()).data,
+        address: await (await locals.supabaseClient.from('user_address').select('*').eq('id', locals.session?.user.id).limit(1).single()).data,
         delivery_locations: await (await locals.supabaseClient.from('delivery-locations').select('*').eq('enable', true)).data ?? []
     };
 }) satisfies PageServerLoad;
@@ -27,14 +27,14 @@ export const actions: Actions = {
             if (err2) throw err2
             if (!location) throw '404'
 
-            const { error: err3 } = await locals.supabaseClient.from('user_addresses').upsert({
-                owner_id: locals.session.user.id,
+            const { error: err3 } = await locals.supabaseClient.from('user_address').upsert({
+                id: locals.session.user.id,
                 street_line1: body.street_line1.toString(),
                 street_line2: body.street_line2.toString(),
                 city: location.city,
                 state: location.state,
                 postal_code: location.postal_code
-            }).eq('owner_id', locals.session.user.id)
+            })
 
             if (err3) throw err3
 

@@ -219,12 +219,11 @@ export interface Database {
           value?: number
         }
       }
-      user_addresses: {
+      user_address: {
         Row: {
           city: string
           country: string
-          id: number
-          owner_id: string
+          id: string
           postal_code: number
           state: string
           street_line1: string
@@ -233,8 +232,7 @@ export interface Database {
         Insert: {
           city: string
           country?: string
-          id?: number
-          owner_id: string
+          id: string
           postal_code: number
           state: string
           street_line1: string
@@ -243,8 +241,7 @@ export interface Database {
         Update: {
           city?: string
           country?: string
-          id?: number
-          owner_id?: string
+          id?: string
           postal_code?: number
           state?: string
           street_line1?: string
