@@ -1,14 +1,11 @@
 <script lang="ts">
+	import CartTable from '$lib/components/CartTable.svelte';
 	import cart from '$lib/stores/cart';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 
 	const { subtotal } = cart;
-
-	let loading: boolean;
-
-	async function place_order() {}
 </script>
 
 <main class="flex-1 flex flex-col p-4 gap-4">
@@ -19,144 +16,17 @@
 	</header>
 
 	<div class="overflow-x-auto flex-1 mx-auto w-full max-w-7xl">
-		<table class="table w-full">
-			<thead>
-				<!-- small screen -->
-				<tr class="sticky top-0 sm:hidden">
-					<th>Item</th>
-				</tr>
-				<!-- medium to large screen -->
-				<tr class="sticky top-0 hidden sm:table-row">
-					<th>Item</th>
-					<th>Quantity</th>
-					<th>Price</th>
-					<th />
-				</tr>
-			</thead>
-			<tbody>
-				{#each $cart as item (item.variant_id)}
-					<!-- small screen -->
-					<tr class="sm:hidden">
-						<td class="">
-							<div class="flex gap-2">
-								<figure class="avatar">
-									<div class=" w-28 h-28 rounded">
-										<img src={item.image_url} alt={item.name} class="object-cover" />
-									</div>
-								</figure>
-								<div class="w-full">
-									<article class="prose ">
-										<h4>
-											{item.name}
-										</h4>
-										<h5>₱ {item.price}</h5>
-									</article>
-									<div class="flex justify-between">
-										<input
-											type="number"
-											bind:value={item.quantity}
-											on:blur={() => cart.validatetemQuantity(item.variant_id)}
-											class="text-center input input-bordered w-32"
-										/>
-										<button
-											on:click={() => cart.removeItem(item.variant_id)}
-											class="btn btn-ghost btn-square"
-											><svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												class="w-6 h-6"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M6 18L18 6M6 6l12 12"
-												/>
-											</svg>
-										</button>
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<!-- medium to large screen -->
-					<tr class="hidden sm:table-row">
-						<td class="w-full max-w-sm">
-							<div class="flex gap-4">
-								<figure class="avatar">
-									<div class=" w-32 rounded">
-										<img src={item.image_url} alt="" class="object-cover" />
-									</div>
-								</figure>
-								<article class="prose">
-									<h2>{item.name}</h2>
-								</article>
-							</div>
-						</td>
-						<td>
-							<input
-								type="number"
-								bind:value={item.quantity}
-								on:blur={() => cart.validatetemQuantity(item.variant_id)}
-								class="text-center input input-bordered"
-							/>
-						</td>
-						<td>₱ {item.price}</td>
-						<td>
-							<button
-								on:click={() => cart.removeItem(item.variant_id)}
-								class="btn btn-ghost btn-square"
-								><svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-									class="w-6 h-6"
-								>
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</button>
-						</td>
-					</tr>
-				{:else}
-					<tr>
-						<td colspan="4" class="text-center font-bold">
-							<div class="prose text-center mx-auto">
-								<h2>No item on cart</h2>
-							</div>
-							<br />
-							<a href="/products" class="btn">Go to products</a>
-						</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
+		<CartTable />
 		{#if $subtotal > 0}
 			<div class=" font-bold grid grid-cols-2 px-6 py-8 max-w-md sm:ml-auto">
 				<span> Subtotal </span> <span class="text-right">₱{$subtotal}</span>
 			</div>
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
-				<form method="post" class="contents" on:submit|preventDefault={place_order}>
-					<div class="form-control">
-						<button
-							class="btn btn-primary sm:btn-wide"
-							class:loading
-							disabled={loading || !data.session}>Place Order</button
-						>
-						{#if !data.session}
-							<br />
-							<div class="alert shadow-lg">
-								<h3 class="font-bold">You must be logged in</h3>
-								<div class="flex-none">
-									<a href="/auth/login" class="btn btn-sm">Login</a>
-								</div>
-							</div>
-						{/if}
-					</div>
-				</form>
+				{#if data.session}
+					<a href="/account/orders/add" class="btn btn-primary sm:btn-wide"> Place order </a>
+				{:else}
+					<a href="/auth/login" class="btn btn-primary sm:btn-wide"> Login to place order </a>
+				{/if}
 				<a href="/products" class="btn sm:btn-wide">Back to products</a>
 			</div>
 		{/if}

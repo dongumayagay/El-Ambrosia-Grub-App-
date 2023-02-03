@@ -1,5 +1,4 @@
-import { type PostgrestError } from '@supabase/supabase-js';
-import { error, fail, redirect, } from '@sveltejs/kit';
+import { error, fail, } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals }) => {
@@ -13,12 +12,7 @@ export const load = (async ({ locals }) => {
 export const actions: Actions = {
     default: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData())
-
-        console.log(body)
-
         if (!locals.session) throw error(401)
-
-
         try {
             const { error: err1 } = await locals.supabaseClient.from('profiles').upsert({
                 id: locals.session.user.id,
