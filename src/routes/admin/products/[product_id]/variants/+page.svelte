@@ -40,7 +40,6 @@
 							{variant.price}
 						</td>
 						<td>
-							<!--  -->
 							<ActionMenuDropdownLinks
 								links={[
 									{

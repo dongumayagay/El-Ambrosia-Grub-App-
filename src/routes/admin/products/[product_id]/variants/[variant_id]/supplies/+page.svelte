@@ -1,8 +1,8 @@
 <script lang="ts">
+	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import NotFound from '$lib/components/NotFound.svelte';
 	import { display_property } from '$lib/utils';
 	import type { PageData } from './$types';
-	import ActionMenu from './ActionMenu.svelte';
 
 	export let data: PageData;
 	const { product, variant, variant_supplies } = data;
@@ -40,10 +40,17 @@
 							{display_property(variant_supply.supplies, 'unit')}
 						</td>
 						<td>
-							<ActionMenu
-								product_id={product.id}
-								variant_id={variant.id}
-								variant_supply_id={variant_supply.id}
+							<ActionMenuDropdownLinks
+								links={[
+									{
+										name: 'Update Info',
+										path: `/admin/products/${product.id}/variants/${variant.id}/supplies/${variant_supply.id}/edit`
+									},
+									{
+										name: 'Delete',
+										path: `/admin/products/${product.id}/variants/${variant.id}/supplies/${variant_supply.id}/delete`
+									}
+								]}
 							/>
 						</td>
 					</tr>
