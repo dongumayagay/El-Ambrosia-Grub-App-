@@ -3,7 +3,7 @@ import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ params, locals }) => {
     return {
-        supply: await (await locals.supabaseClient.from('supplies').select('id,name').eq("id", params.supply_id).limit(1).single()).data
+        supply: await (await locals.supabaseClient.from('supplies').select('*').eq("id", params.supply_id).limit(1).single()).data
     };
 }) satisfies PageServerLoad;
 

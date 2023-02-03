@@ -75,6 +75,7 @@
 				class="file-input file-input-bordered"
 				accept="image/"
 				name="product_image"
+				required
 			/>
 		</div>
 

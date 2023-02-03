@@ -46,13 +46,13 @@
 		<h2 class="col-span-full">Supply Information</h2>
 		<div class=" col-span-full form-control ">
 			<label class="label" for=""> <span class="label-text">Name</span> </label>
-			<input type="text" disabled class="input input-bordered cursor-text" value={supply.name} />
+			<input type="text" readonly class="input input-bordered cursor-text" value={supply.name} />
 		</div>
 		<div class=" col-span-full form-control ">
 			<label class="label" for=""> <span class="label-text">Current value</span> </label>
 			<input
 				type="text"
-				disabled
+				readonly
 				class="input input-bordered cursor-text"
 				value={`${supply.value} ${supply.unit}`}
 			/>
@@ -61,7 +61,7 @@
 			<label class="label" for=""> <span class="label-text">Threshold</span> </label>
 			<input
 				type="text"
-				disabled
+				readonly
 				class="input input-bordered cursor-text"
 				value={`${supply.threshold} ${supply.unit}`}
 			/>

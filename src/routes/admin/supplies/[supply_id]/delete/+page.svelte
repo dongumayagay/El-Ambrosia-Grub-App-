@@ -22,18 +22,26 @@
 	<form method="post" class="w-full max-w-md prose" use:enhance={enhance_function}>
 		<h2>Delete supply</h2>
 		<input type="hidden" name="supply_id" value={supply.id} />
-		<div class="form-control">
-			<label class="label" for="name">
-				<span class="label-text">Supply name</span>
-			</label>
+		<div class=" col-span-full form-control ">
+			<label class="label" for=""> <span class="label-text">Name</span> </label>
+			<input type="text" readonly class="input input-bordered cursor-text" value={supply.name} />
+		</div>
+		<div class=" col-span-full form-control ">
+			<label class="label" for=""> <span class="label-text">Current value</span> </label>
 			<input
 				type="text"
-				name="name"
-				placeholder="Supply name"
-				class="input input-bordered "
-				required
-				disabled
-				value={supply.name}
+				readonly
+				class="input input-bordered cursor-text"
+				value={`${supply.value} ${supply.unit}`}
+			/>
+		</div>
+		<div class=" col-span-full form-control ">
+			<label class="label" for=""> <span class="label-text">Threshold</span> </label>
+			<input
+				type="text"
+				readonly
+				class="input input-bordered cursor-text"
+				value={`${supply.threshold} ${supply.unit}`}
 			/>
 		</div>
 		<br />

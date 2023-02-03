@@ -126,21 +126,21 @@ export interface Database {
       }
       products: {
         Row: {
-          description: string | null
+          description: string
           id: number
-          image_url: string | null
+          image_url: string
           name: string
         }
         Insert: {
-          description?: string | null
+          description: string
           id?: number
-          image_url?: string | null
+          image_url: string
           name: string
         }
         Update: {
-          description?: string | null
+          description?: string
           id?: number
-          image_url?: string | null
+          image_url?: string
           name?: string
         }
       }
