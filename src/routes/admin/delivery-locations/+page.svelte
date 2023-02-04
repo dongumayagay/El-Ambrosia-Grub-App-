@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import Table from '$lib/components/Table.svelte';
+	import { currency_formatter } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -22,7 +23,7 @@
 			<td> {delivery_location.city} </td>
 			<td> {delivery_location.state} </td>
 			<td> {delivery_location.postal_code} </td>
-			<td> {delivery_location.fee} </td>
+			<td> {currency_formatter(delivery_location.fee)} </td>
 			<td>
 				<div class={`badge ${delivery_location.enable ? 'badge-success' : 'badge-error'}`}>
 					{delivery_location.enable ? 'Enabled' : 'Disabled'}

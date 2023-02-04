@@ -3,6 +3,7 @@
 	import type { PageData } from './$types';
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import Table from '$lib/components/Table.svelte';
+	import { currency_formatter } from '$lib/misc/utils';
 
 	export let data: PageData;
 	const { product, variants } = data;
@@ -28,7 +29,7 @@
 			<tr class="hover">
 				<td>{variant.name}</td>
 				<td>
-					{variant.price}
+					{currency_formatter(variant.price)}
 				</td>
 				<td>
 					<ActionMenuDropdownLinks
