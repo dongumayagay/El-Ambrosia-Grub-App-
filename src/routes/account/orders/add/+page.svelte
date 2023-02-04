@@ -3,6 +3,7 @@
 	import ContactFields from '$lib/components/ContactFields.svelte';
 	import CartTable from '$lib/components/CartTable.svelte';
 	import cart from '$lib/stores/cart';
+	import { currency_formatter } from '$lib/misc/utils';
 
 	export let data: PageData;
 
@@ -47,11 +48,11 @@
 	<ul class="flex flex-col gap-4 px-4">
 		<li class="flex justify-between">
 			<span>{fees[0].type} </span>
-			<span>₱ {fees[0].value}</span>
+			<span>{currency_formatter(fees[0].value)}</span>
 		</li>
 		<li class="flex justify-between">
 			<span>{fees[1].type}</span>
-			<span>₱ {fees[1].value}</span>
+			<span>{currency_formatter(fees[1].value)}</span>
 		</li>
 
 		<li class="flex justify-between">
@@ -75,7 +76,7 @@
 		</li>
 		<li class="flex justify-between font-bold text-lg">
 			<span>Total</span>
-			<span>₱ {total}</span>
+			<span>{currency_formatter(total)}</span>
 		</li>
 	</ul>
 	<br />

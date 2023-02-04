@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CartTable from '$lib/components/CartTable.svelte';
+	import { currency_formatter } from '$lib/misc/utils';
 	import cart from '$lib/stores/cart';
 	import type { PageData } from './$types';
 
@@ -19,7 +20,7 @@
 		<CartTable />
 		{#if $subtotal > 0}
 			<div class=" font-bold grid grid-cols-2 px-6 py-8 max-w-md sm:ml-auto">
-				<span> Subtotal </span> <span class="text-right">₱{$subtotal}</span>
+				<span> Subtotal </span> <span class="text-right">{currency_formatter($subtotal)}</span>
 			</div>
 			<div class=" px-4 flex flex-col justify-between gap-4 sm:flex-row-reverse">
 				{#if data.session}

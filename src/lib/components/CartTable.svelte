@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { currency_formatter } from '$lib/misc/utils';
 	import cart from '$lib/stores/cart';
 </script>
 
@@ -32,7 +33,7 @@
 								<h4>
 									{item.name}
 								</h4>
-								<h5>₱ {item.price}</h5>
+								<h5>{currency_formatter(item.price)}</h5>
 							</article>
 							<div class="flex justify-between">
 								<input
@@ -88,7 +89,7 @@
 						class="text-center input input-bordered"
 					/>
 				</td>
-				<td>₱ {item.price}</td>
+				<td>{currency_formatter(item.price)}</td>
 				<td>
 					<button on:click={() => cart.removeItem(item.variant_id)} class="btn btn-ghost btn-square"
 						><svg

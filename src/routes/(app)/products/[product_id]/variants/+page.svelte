@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { currency_formatter } from '$lib/misc/utils';
 	import cart from '$lib/stores/cart';
 	import type { PageData } from './$types';
 
@@ -59,7 +60,7 @@
 								<label
 									for={variant.name}
 									class="btn btn-outline btn-block peer-checked:outline outline-brand-red"
-									>{variant.name} - ₱{variant.price}
+									>{variant.name} - {currency_formatter(variant.price)}
 								</label>
 							</div>
 						{/each}
