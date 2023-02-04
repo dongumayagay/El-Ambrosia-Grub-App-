@@ -43,42 +43,38 @@
 		<CartTable />
 	</div>
 	<br />
-	<table class="table w-full">
-		<tr>
-			<td>{fees[0].type}</td>
-			<td>₱ {fees[0].value}</td>
-		</tr>
-		<tr>
-			<td>{fees[1].type}</td>
-			<td>₱ {fees[1].value}</td>
-		</tr>
 
-		<tr>
-			<td>{fees[2].type}</td>
-			<td>
+	<ul class="flex flex-col gap-4 px-4">
+		<li class="flex justify-between">
+			<span>{fees[0].type} </span>
+			<span>₱ {fees[0].value}</span>
+		</li>
+		<li class="flex justify-between">
+			<span>{fees[1].type}</span>
+			<span>₱ {fees[1].value}</span>
+		</li>
+
+		<li class="flex justify-between">
+			<span>{fees[2].type} <a href="/charity" class="link link-info">more info</a></span>
+			<span>
 				<input
 					type="number"
 					bind:value={donation}
-					class="input input-bordered text-center w-32"
+					class="input input-bordered text-center input-sm w-32"
 					on:change={() => {
 						if (fees[2].value < 0 || fees[2].value === null) fees[2].value = 0;
 					}}
 					min="0"
 					step="10"
 				/>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<div class="divider" />
-			</td>
-		</tr>
-		<tr>
-			<td>Total</td>
-			<td>₱ {total}</td>
-		</tr>
-	</table>
-
+			</span>
+		</li>
+		<li class="flex justify-between font-bold text-lg">
+			<span>Total</span>
+			<span>₱ {total}</span>
+		</li>
+	</ul>
+	<br />
 	<button class="btn btn-block" class:loading disabled={loading}>Checkout</button>
 	<br />
 </form>
