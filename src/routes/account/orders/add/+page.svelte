@@ -56,18 +56,22 @@
 
 		<li class="flex justify-between">
 			<span>{fees[2].type} <a href="/charity" class="link link-info">more info</a></span>
-			<span>
-				<input
-					type="number"
-					bind:value={donation}
-					class="input input-bordered text-center input-sm w-32"
-					on:change={() => {
-						if (fees[2].value < 0 || fees[2].value === null) fees[2].value = 0;
-					}}
-					min="0"
-					step="10"
-				/>
-			</span>
+
+			<div class="form-control">
+				<label class="input-group input-group-sm">
+					<span>₱</span>
+					<input
+						type="number"
+						bind:value={donation}
+						class="input input-bordered text-center input-sm w-32"
+						on:change={() => {
+							if (fees[2].value < 0 || fees[2].value === null) fees[2].value = 0;
+						}}
+						min="0"
+						step="10"
+					/>
+				</label>
+			</div>
 		</li>
 		<li class="flex justify-between font-bold text-lg">
 			<span>Total</span>
