@@ -8,6 +8,7 @@
 	import { browser } from '$app/environment';
 	import { supabaseClient } from '$lib/db/client';
 	import { Order_States } from '$lib/misc/constants';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
@@ -16,11 +17,27 @@
 
 	const { subtotal } = cart;
 
-	async function place_order() {
-		if ($cart.length < 1 || total < 1 || fees[1].value < 1 || !data.session) {
+	async function place_order(event: Event) {
+		const formData = new FormData(event.target as HTMLFormElement);
+		const body = Object.fromEntries(formData);
+
+		const delivery_location = data.delivery_locations.find(
+			(item) => item.id === Number(body.location_id)
+		);
+
+		if ($cart.length < 1 || total < 1 || fees[1].value < 1 || !data.session || !delivery_location) {
 			alert('Error');
 			return;
 		}
+
+		const order_address = {
+			street_line1: body.street_line1.toString(),
+			street_line2: body.street_line2.toString(),
+			city: delivery_location.city,
+			state: delivery_location.state,
+			postal_code: delivery_location.postal_code
+		};
+
 		const { data: order, error } = await supabaseClient
 			.from('orders')
 			.insert({
@@ -44,6 +61,7 @@
 				variant_id: item.variant_id
 			}))
 		);
+		await supabaseClient.from('order_addreses').insert({ id: order.id, ...order_address });
 	}
 
 	$: fees = [

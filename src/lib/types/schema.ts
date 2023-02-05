@@ -40,7 +40,6 @@ export interface Database {
           city: string
           country: string
           id: number
-          owner_id: string
           postal_code: number
           state: string
           street_line1: string
@@ -50,7 +49,6 @@ export interface Database {
           city: string
           country?: string
           id?: number
-          owner_id: string
           postal_code: number
           state: string
           street_line1: string
@@ -60,7 +58,6 @@ export interface Database {
           city?: string
           country?: string
           id?: number
-          owner_id?: string
           postal_code?: number
           state?: string
           street_line1?: string
