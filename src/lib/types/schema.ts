@@ -71,21 +71,18 @@ export interface Database {
         Row: {
           id: number
           order_id: number
-          product_id: number
           quantity: number
           variant_id: number
         }
         Insert: {
           id?: number
           order_id: number
-          product_id: number
           quantity: number
           variant_id: number
         }
         Update: {
           id?: number
           order_id?: number
-          product_id?: number
           quantity?: number
           variant_id?: number
         }
@@ -101,7 +98,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string
-          fees?: Json
+          fees: Json
           id?: number
           owner_id: string
           status?: number
