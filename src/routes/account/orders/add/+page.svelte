@@ -8,60 +8,82 @@
 	import { browser } from '$app/environment';
 	import { supabaseClient } from '$lib/db/client';
 	import { Order_States } from '$lib/misc/constants';
-	import { page } from '$app/stores';
 
 	export let data: PageData;
 
 	let loading: boolean;
 	let donation = 0;
 
-	const { subtotal } = cart;
+	const { subtotal, total_quantity } = cart;
 
 	async function place_order(event: Event) {
-		const formData = new FormData(event.target as HTMLFormElement);
-		const body = Object.fromEntries(formData);
+		loading = true;
+		try {
+			const formData = new FormData(event.target as HTMLFormElement);
+			const body = Object.fromEntries(formData);
 
-		const delivery_location = data.delivery_locations.find(
-			(item) => item.id === Number(body.location_id)
-		);
+			const delivery_location = data.delivery_locations.find(
+				(item) => item.id === Number(body.location_id)
+			);
 
-		if ($cart.length < 1 || total < 1 || fees[1].value < 1 || !data.session || !delivery_location) {
-			alert('Error');
-			return;
-		}
+			if (
+				$cart.length < 1 ||
+				total < 1 ||
+				fees[1].value < 1 ||
+				!data.session ||
+				!delivery_location
+			) {
+				throw 'error';
+			}
 
-		const order_address = {
-			street_line1: body.street_line1.toString(),
-			street_line2: body.street_line2.toString(),
-			city: delivery_location.city,
-			state: delivery_location.state,
-			postal_code: delivery_location.postal_code
-		};
+			const order_address = {
+				street_line1: body.street_line1.toString(),
+				street_line2: body.street_line2.toString(),
+				city: delivery_location.city,
+				state: delivery_location.state,
+				postal_code: delivery_location.postal_code
+			};
 
-		const { data: order, error } = await supabaseClient
-			.from('orders')
-			.insert({
-				owner_id: data.session.user.id,
-				fees: JSON.stringify(fees),
-				total,
-				status: Order_States['to pay']
-			})
-			.select('id')
-			.limit(1)
-			.single();
-		if (order === null) {
+			const { data: order, error } = await supabaseClient
+				.from('orders')
+				.insert({
+					owner_id: data.session.user.id,
+					fees: JSON.stringify(fees),
+					total,
+					status: Order_States['to pay'],
+					total_quantity: $total_quantity
+				})
+				.select('*')
+				.limit(1)
+				.single();
+
+			if (order === null || error) {
+				throw error;
+			}
+
+			const [order_items_result, order_address_result] = await Promise.all([
+				supabaseClient.from('order_items').insert(
+					$cart.map((item) => ({
+						order_id: order.id,
+						quantity: item.quantity,
+						variant_id: item.variant_id
+					}))
+				),
+				supabaseClient.from('order_address').insert({ id: order.id, ...order_address })
+			]);
+			if (order_items_result.error) {
+				throw order_items_result.error;
+			}
+			if (order_address_result.error) {
+				throw order_address_result.error;
+			}
+			cart.clear();
+		} catch (error) {
+			alert('Error: something went wrong');
 			console.log(error);
-			alert('somethng went wrong');
-			return;
 		}
-		await supabaseClient.from('order_items').insert(
-			$cart.map((item) => ({
-				order_id: order.id,
-				quantity: item.quantity,
-				variant_id: item.variant_id
-			}))
-		);
-		await supabaseClient.from('order_addreses').insert({ id: order.id, ...order_address });
+		loading = false;
+		return;
 	}
 
 	$: fees = [

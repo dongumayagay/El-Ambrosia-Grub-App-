@@ -35,7 +35,7 @@ export interface Database {
           state?: string
         }
       }
-      order_addreses: {
+      order_address: {
         Row: {
           city: string
           country: string
@@ -43,7 +43,7 @@ export interface Database {
           postal_code: number
           state: string
           street_line1: string
-          street_line2: string
+          street_line2: string | null
         }
         Insert: {
           city: string
@@ -52,7 +52,7 @@ export interface Database {
           postal_code: number
           state: string
           street_line1: string
-          street_line2: string
+          street_line2?: string | null
         }
         Update: {
           city?: string
@@ -61,7 +61,7 @@ export interface Database {
           postal_code?: number
           state?: string
           street_line1?: string
-          street_line2?: string
+          street_line2?: string | null
         }
       }
       order_items: {
@@ -92,14 +92,16 @@ export interface Database {
           owner_id: string
           status: number
           total: number
+          total_quantity: number
         }
         Insert: {
           created_at?: string
-          fees: Json
+          fees?: Json
           id?: number
           owner_id: string
-          status?: number
+          status: number
           total: number
+          total_quantity: number
         }
         Update: {
           created_at?: string
@@ -108,6 +110,7 @@ export interface Database {
           owner_id?: string
           status?: number
           total?: number
+          total_quantity?: number
         }
       }
       product_variants: {

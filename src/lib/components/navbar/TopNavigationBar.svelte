@@ -2,7 +2,7 @@
 	import cart from '$lib/stores/cart';
 	import AccountButtons from './AccountButtons.svelte';
 
-	const { totalQuantity } = cart;
+	const { total_quantity } = cart;
 </script>
 
 <div class="navbar stickly top-0 z-10 bg-brand-red">
@@ -19,9 +19,9 @@
 			<div class="indicator">
 				<span
 					class="indicator-item indicator-bottom badge badge-ghost"
-					class:hidden={$totalQuantity === 0}
+					class:hidden={$total_quantity === 0}
 				>
-					{$totalQuantity}
+					{$total_quantity}
 				</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

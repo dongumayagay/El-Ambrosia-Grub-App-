@@ -18,7 +18,7 @@ const create_cart = () => {
         $cart.reduce((total, item) =>
             total + item.quantity * item.price, 0)
     );
-    const totalQuantity = derived(cart, ($cart) =>
+    const total_quantity = derived(cart, ($cart) =>
         $cart.reduce((total, item) =>
             total + item.quantity, 0)
     )
@@ -94,7 +94,7 @@ const create_cart = () => {
         save,
         clear,
         subtotal,
-        totalQuantity
+        total_quantity
     }
 }
 
