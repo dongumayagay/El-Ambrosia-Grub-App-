@@ -1,5 +1,5 @@
 import { i } from '$lib/payment/xendit.server';
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals, params }) => {
@@ -33,14 +33,15 @@ export const load = (async ({ locals, params }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    // default: async ({ locals, params }) => {
-    //     const order = await (await locals.supabaseClient.from('orders').select('*').eq('id', params.order_id).limit(1).single()).data
-    //     const order_items = await (await locals.supabaseClient.from('order_items').select('*,products(*),product_variants(*)').eq('order_id', params.order_id)).data
-    // }
+
     pay: async ({ locals, params }) => {
 
     },
     cancel: async ({ locals, params }) => {
-
+        const { error: err } = await locals.supabaseClient.from('orders').delete().eq('id', params.order_id)
+        if (err) {
+            throw error(500, JSON.stringify(err, null, 2))
+        }
+        throw redirect(303, '/account/orders')
     }
 };

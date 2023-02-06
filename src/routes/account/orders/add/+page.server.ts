@@ -29,17 +29,18 @@ export const actions: Actions = {
 
             const total_quantity = order_items.reduce((total, item) =>
                 total + item.quantity, 0)
-            const fees = JSON.parse(body.fees.toString()).slice(1) as { type: string, value: number }[]
+            const fees = JSON.parse(body.fees.toString()) as { type: string, value: number }[]
             const subtotal = order_items.reduce((total, item) =>
                 total + item.quantity * item.price, 0)
             const total = subtotal + fees.reduce((accumulator, curValue) => accumulator + curValue.value, 0);
 
             const { data: order, error: err_order } = await locals.supabaseClient.from('orders').insert({
                 owner_id: locals.session.user.id,
-                total_quantity,
-                total,
                 status: Order_States.payment,
-                fees
+                total_quantity,
+                fees,
+                subtotal,
+                total,
             }).select('id').limit(1).single()
 
             if (err_order || order === null)

@@ -107,6 +107,7 @@ export interface Database {
           invoice_id: string | null
           owner_id: string
           status: number
+          subtotal: number
           total: number
           total_quantity: number
         }
@@ -117,6 +118,7 @@ export interface Database {
           invoice_id?: string | null
           owner_id: string
           status: number
+          subtotal: number
           total: number
           total_quantity: number
         }
@@ -127,6 +129,7 @@ export interface Database {
           invoice_id?: string | null
           owner_id?: string
           status?: number
+          subtotal?: number
           total?: number
           total_quantity?: number
         }
