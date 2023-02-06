@@ -68,18 +68,21 @@ export interface Database {
         Row: {
           id: number
           order_id: number
+          product_id: number
           quantity: number
           variant_id: number
         }
         Insert: {
           id?: number
           order_id: number
+          product_id: number
           quantity: number
           variant_id: number
         }
         Update: {
           id?: number
           order_id?: number
+          product_id?: number
           quantity?: number
           variant_id?: number
         }

@@ -15,9 +15,10 @@
 			if (Number.isNaN(variant_id) && !product) throw Error;
 
 			const variant = data.variants.find((item) => item.id === variant_id);
-			if (!variant) throw Error;
+			if (!variant || !product) throw Error;
 
 			cart.add({
+				product_id: product.id,
 				variant_id,
 				image_url: product?.image_url ?? '',
 				name: variant.name + ' ' + product?.name ?? '',

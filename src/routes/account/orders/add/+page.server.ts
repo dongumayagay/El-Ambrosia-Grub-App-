@@ -22,14 +22,13 @@ export const actions: Actions = {
             const body = Object.fromEntries(data)
 
             const order_items = JSON.parse(body.order_items.toString()) as {
+                product_id: number,
                 variant_id: number,
                 quantity: number,
                 price: number,
                 name: string
             }[]
             const fees = JSON.parse(body.fees.toString()).slice(1)
-
-
 
             const { data: order, error: err_order } = await locals.supabaseClient.from('orders').insert({
                 owner_id: locals.session.user.id,
@@ -48,6 +47,7 @@ export const actions: Actions = {
                     locals.supabaseClient.from('order_items').insert(order_items.map(
                         item => ({
                             order_id: order.id,
+                            product_id: item.product_id,
                             variant_id: item.variant_id,
                             quantity: item.quantity
                         }))),

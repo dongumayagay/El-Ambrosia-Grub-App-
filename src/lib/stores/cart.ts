@@ -3,6 +3,7 @@ import { writable, derived } from 'svelte/store';
 
 
 type CartItem = {
+    product_id: number,
     variant_id: number,
     quantity: number,
     name: string,

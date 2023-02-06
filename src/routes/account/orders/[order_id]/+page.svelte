@@ -6,10 +6,9 @@
 	export let data: PageData;
 
 	const states = Object.keys(Order_States).filter((v) => isNaN(Number(v)));
-	$: order_items = data.order_items ?? [];
 </script>
 
-{#if data.order}
+{#if data.order && data.order_items}
 	<main class="flex flex-col sm:flex-col-reverse py-8">
 		<section>
 			<div class="form-control w-full">
@@ -65,7 +64,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each order_items as item (item.id)}
+				{#each data.order_items as item (item.id)}
 					<!-- small screen -->
 					<tr class="sm:hidden">
 						<td class="">
