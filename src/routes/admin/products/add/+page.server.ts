@@ -7,8 +7,8 @@ export const actions: Actions = {
 
 
         const { data: product, error: err } = await locals.supabaseClient.from('products').insert({
-            name: body.name as string,
-            description: body.description as string,
+            name: body.name.toString(),
+            description: body.description.toString(),
         }).select('id').limit(1).single()
 
         const product_image = body.product_image as Blob

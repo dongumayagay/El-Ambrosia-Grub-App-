@@ -1,5 +1,4 @@
 import { Order_States } from '$lib/misc/constants';
-// import { i } from '$lib/payment/xendit.server';
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -12,7 +11,7 @@ export const load = (async ({ locals }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    default: async ({ request, locals, url }) => {
+    default: async ({ request, locals }) => {
         if (!locals.session) throw error(401)
         let redirect_url = '/account/orders'
         try {
@@ -79,56 +78,7 @@ export const actions: Actions = {
 
             if (err_profile || profile === null) throw err_profile
 
-            // const resp = await i.createInvoice({
-            //     amount: Number(body.total),
-            //     externalID: order.id.toString(),
-            //     customer: {
-            //         given_names: body.first_name.toString(),
-            //         surname: body.last_name.toString(),
-            //         email: locals.session.user.email,
-            //         mobile_number: body.phone_number.toString(),
-            //         addresses: [
-            //             {
-            //                 street_line1: body.street_line1.toString(),
-            //                 street_line2: body.street_line2.toString(),
-            //                 city: body.city.toString(),
-            //                 state: body.state.toString(),
-            //                 postal_code: body.postal_code.toString(),
-            //                 country: 'Philippines',
-            //             }
-            //         ]
-            //     },
-            //     customerNotificationPreference: {
-            //         'invoice_paid': [
-            //             'whatsapp',
-            //             'sms',
-            //             'email',
-            //             'viber'
-            //         ]
-            //     },
-            //     description: 'El Ambrosia Order payment',
-            //     fees,
-            //     invoiceDuration: 60 * 5,
-            //     items: order_items.map(
-            //         item => ({
-            //             name: item.name,
-            //             quantity: item.quantity,
-            //             price: item.price
-            //         })
-            //     ),
-            //     payerEmail: locals.session.user.email,
-            //     locale: 'en',
-            //     shouldSendEmail: true,
-            //     failureRedirectURL: url.origin + '/bag',
-            //     successRedirectURL: url.origin + '/account/orders/' + order.id
-            // })
 
-            // // @ts-ignore
-            // const { error: err_invoice_update } = await locals.supabaseClient.from('orders').update({ invoice_id: resp.id }).eq('id', order.id)
-            // if (err_invoice_update) throw err_invoice_update
-
-            // // @ts-ignore
-            // invoice_url = resp.invoice_url
             redirect_url = '/account/orders/' + order.id
         } catch (err) {
             console.log(err)

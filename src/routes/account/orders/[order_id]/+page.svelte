@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Order_States } from '$lib/misc/constants';
-	import { datetime_formatter, display_property } from '$lib/misc/utils';
+	import { currency_formatter, datetime_formatter, display_property } from '$lib/misc/utils';
 	import ContactInfo from './ContactInfo.svelte';
 	import type { PageData } from './$types';
 	import Computation from './Computation.svelte';
@@ -105,7 +105,7 @@
 							</div>
 						</td>
 						<td>{item.quantity}</td>
-						<td>₱ {display_property(item.product_variants, 'price')}</td>
+						<td>{currency_formatter(display_property(item.product_variants, 'price'))}</td>
 					</tr>
 				{/each}
 			</tbody>
@@ -113,10 +113,12 @@
 		<br />
 		<Computation {data} />
 		<br />
-		<form action="?/pay" method="post" class="gap-4 flex flex-col" use:enhance>
-			<button class="btn btn-block">Pay</button>
-			<button formaction="?/cancel" class="btn btn-block btn-outline">Cancel</button>
-		</form>
+		{#if data.order.status === 0}
+			<form action="?/pay" method="post" class="gap-4 flex flex-col" use:enhance>
+				<button class="btn btn-block">Pay</button>
+				<button formaction="?/cancel" class="btn btn-block btn-outline">Cancel</button>
+			</form>
+		{/if}
 		<br />
 	</div>
 {/if}

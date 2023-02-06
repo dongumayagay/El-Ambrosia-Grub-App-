@@ -158,19 +158,19 @@ export interface Database {
         Row: {
           description: string
           id: number
-          image_url: string
+          image_url: string | null
           name: string
         }
         Insert: {
           description: string
           id?: number
-          image_url: string
+          image_url?: string | null
           name: string
         }
         Update: {
           description?: string
           id?: number
-          image_url?: string
+          image_url?: string | null
           name?: string
         }
       }
