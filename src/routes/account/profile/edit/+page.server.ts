@@ -15,29 +15,26 @@ export const actions: Actions = {
         const body = Object.fromEntries(await request.formData())
         if (!locals.session) throw error(401)
         try {
-            const { error: err1 } = await locals.supabaseClient.from('profiles').upsert({
+            console.log(body)
+            const { error: err_profile } = await locals.supabaseClient.from('profiles').upsert({
                 id: locals.session.user.id,
                 first_name: body.first_name.toString(),
                 last_name: body.last_name.toString(),
                 phone_number: body.phone_number.toString(),
             })
-            if (err1) throw err1
+            if (err_profile) throw err_profile
 
-            const { data: location, error: err2 } = await locals.supabaseClient.from('delivery-locations').select('*').eq('id', Number(body.location_id)).limit(1).single()
 
-            if (err2) throw err2
-            if (!location) throw '404'
-
-            const { error: err3 } = await locals.supabaseClient.from('user_address').upsert({
+            const { error: err_user_address } = await locals.supabaseClient.from('user_address').upsert({
                 id: locals.session.user.id,
                 street_line1: body.street_line1.toString(),
                 street_line2: body.street_line2.toString(),
-                city: location.city,
-                state: location.state,
-                postal_code: location.postal_code
+                city: body.city.toString(),
+                state: body.state.toString(),
+                postal_code: Number(body.postal_code.toString())
             })
 
-            if (err3) throw err3
+            if (err_user_address) throw err_user_address
 
         } catch (error) {
             return fail(500, { error: JSON.stringify(error) })

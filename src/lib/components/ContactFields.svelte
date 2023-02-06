@@ -68,23 +68,34 @@
 			name="street_line2"
 			placeholder="Street line 2"
 			class="input input-bordered "
-			required
 			value={data.address?.street_line2 ?? ''}
 		/>
 	</div>
 	<div class="form-control col-span-full">
-		<label for="location_id" class="label">
+		<label for="" class="label">
 			<span class="label-text">Select location</span>
 		</label>
-		<select name="location_id" class="select select-bordered" required>
+		<select
+			name=""
+			class="select select-bordered"
+			required
+			on:change={(event) => {
+				data.address = data.delivery_locations[event.currentTarget.value];
+			}}
+		>
 			<option value="">Select location</option>
-			{#each data.delivery_locations as loc (loc.id)}
-				<option value={loc.id} selected={loc.postal_code === data.address?.postal_code}>
+			{#each data.delivery_locations as loc, index (loc.id)}
+				<option value={index} selected={loc.postal_code === data.address.postal_code}>
 					{loc.city},
 					{loc.state},
 					{loc.postal_code}
 				</option>
 			{/each}
 		</select>
+	</div>
+	<div>
+		<input type="hidden" name="city" value={data.address.city} />
+		<input type="hidden" name="state" value={data.address.state} />
+		<input type="hidden" name="postal_code" value={data.address.postal_code} />
 	</div>
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import ContactFields from "$lib/components/ContactFields.svelte"
+	import ContactFields from '$lib/components/ContactFields.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -23,7 +23,7 @@
 	</div>
 	<br />
 	<!--  -->
-<ContactFields {data} />
+	<ContactFields {data} />
 	<br />
 	<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
 	<br />
