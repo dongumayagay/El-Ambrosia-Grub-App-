@@ -27,11 +27,13 @@
 
 <svelte:head>
 	<title>El Ambrosia</title>
+	<meta name="description" content="Experience the authentic taste of shawarma" />
+	<meta name="author" content="Don Gumayagay" />
 </svelte:head>
 
 <!-- data-sveltekit-preload-data="tap"
 data-sveltekit-preload-code="eager" -->
-<div class="drawer" class:drawer-mobile={should_have_drawer}>
+<div class="drawer h-auto min-h-screen" class:drawer-mobile={should_have_drawer}>
 	<input
 		id={side_drawer_name}
 		type="checkbox"
