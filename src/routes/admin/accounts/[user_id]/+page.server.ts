@@ -8,8 +8,8 @@ export const load = (async ({ locals, params }) => {
     return {
         user_info: {
             ...await (await locals.supabaseAdmin.auth.admin.getUserById(user_id)).data.user,
+            ...await (await supabaseAdmin.from("roles").select(`*`).eq('id', user_id).limit(1).single()).data,
             ...await (await supabaseAdmin.from("profiles").select(`*`).eq('.id', user_id).limit(1).single()).data,
-            ...await (await supabaseAdmin.from("roles").select(`*`).eq('id', user_id).limit(1).single()).data
         }
     };
 }) satisfies PageServerLoad;

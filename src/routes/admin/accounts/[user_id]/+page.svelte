@@ -16,7 +16,7 @@
 	</div>
 	<div class="form-control ">
 		<label class="label" for=""> <span class="label-text">Email address</span> </label>
-		<input type="text" class="input input-bordered" readonly value={user.email_address} />
+		<input type="text" class="input input-bordered" readonly value={user.email} />
 	</div>
 	<div class="form-control ">
 		<label class="label" for=""> <span class="label-text">Phone number</span> </label>
