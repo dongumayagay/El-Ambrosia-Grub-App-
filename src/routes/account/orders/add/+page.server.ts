@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals }) => {
     return {
@@ -8,3 +8,11 @@ export const load = (async ({ locals }) => {
     };
 }) satisfies PageServerLoad;
 
+export const actions: Actions = {
+    default: async ({ request, locals }) => {
+        const data = await request.formData()
+        const body = Object.fromEntries(data)
+        console.log(body)
+        console.log(JSON.parse(body.order_items.toString()))
+    }
+};
