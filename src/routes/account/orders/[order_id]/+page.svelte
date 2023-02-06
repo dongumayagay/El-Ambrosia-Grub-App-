@@ -9,7 +9,7 @@
 </script>
 
 {#if data.order && data.order_items}
-	<main class="flex flex-col sm:flex-col-reverse py-8">
+	<main class="flex flex-col sm:flex-col-reverse">
 		<section>
 			<div class="form-control w-full">
 				<label for="" class="label">
@@ -34,11 +34,6 @@
 				/>
 			</div>
 			<br />
-			{#if data.order.status === 0}
-				<form class="form-control" method="post">
-					<button class="btn">PAY</button>
-				</form>
-			{/if}
 		</section>
 		<section class="flex sm:justify-center">
 			<ul class="steps steps-vertical sm:steps-horizontal">

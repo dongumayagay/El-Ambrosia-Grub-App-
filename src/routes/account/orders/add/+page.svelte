@@ -8,6 +8,7 @@
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import FeesAndTotal from './FeesAndTotal.svelte';
 	import OrderItems from './OrderItems.svelte';
+	import { Order_States } from '$lib/misc/constants';
 
 	export let data: PageData;
 
@@ -22,20 +23,26 @@
 				cart.clear();
 				window.location.replace(result.location);
 			}
-			// await update({ reset: false });
 			loading = false;
 		};
 	};
 
-	$: if ($cart.length === 0 && browser) goto('/account/orders', { replaceState: true });
+	$: if ($cart.length === 0 && browser) goto('/bag', { replaceState: true });
 </script>
 
 {#if $cart}
 	<form method="post" use:enhance={enhance_function}>
 		<br />
-		<div class="prose text-center mx-auto">
-			<h2>Placing Order</h2>
-		</div>
+		<main class="">
+			<!-- <section class="flex sm:justify-center">
+				<ul class="steps steps-vertical sm:steps-horizontal">
+					{#each Object.keys(Order_States).filter((v) => isNaN(Number(v))) as state, index}
+						<li class="step uppercase" class:step-primary={0 >= index}>{state}</li>
+					{/each}
+				</ul>
+			</section> -->
+			<h1 class="text-4xl text-center font-bold">Order confirmation</h1>
+		</main>
 		<br />
 		<ContactFields {data} />
 		<br />
@@ -49,7 +56,7 @@
 		<button
 			class="btn btn-block"
 			class:loading
-			disabled={loading || $subtotal < 1 || $total_quantity < 1}>Checkout</button
+			disabled={loading || $subtotal < 1 || $total_quantity < 1}>Confirm</button
 		>
 		<br />
 	</form>
