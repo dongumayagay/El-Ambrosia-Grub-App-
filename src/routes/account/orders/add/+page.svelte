@@ -8,7 +8,7 @@
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import FeesAndTotal from './FeesAndTotal.svelte';
 	import OrderItems from './OrderItems.svelte';
-	import { Order_States } from '$lib/misc/constants';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
 
@@ -20,27 +20,21 @@
 		loading = true;
 		return async ({ result }) => {
 			if (result.type === 'redirect') {
+				goto(result.location);
 				cart.clear();
-				window.location.replace(result.location);
 			}
 			loading = false;
 		};
 	};
-
-	$: if ($cart.length === 0 && browser) goto('/bag', { replaceState: true });
+	onMount(() => {
+		if ($cart.length === 0 && browser) goto('/bag', { replaceState: true });
+	});
 </script>
 
-{#if $cart}
+{#if $cart.length !== 0}
 	<form method="post" use:enhance={enhance_function}>
 		<br />
 		<main class="">
-			<!-- <section class="flex sm:justify-center">
-				<ul class="steps steps-vertical sm:steps-horizontal">
-					{#each Object.keys(Order_States).filter((v) => isNaN(Number(v))) as state, index}
-						<li class="step uppercase" class:step-primary={0 >= index}>{state}</li>
-					{/each}
-				</ul>
-			</section> -->
 			<h1 class="text-4xl text-center font-bold">Order confirmation</h1>
 		</main>
 		<br />

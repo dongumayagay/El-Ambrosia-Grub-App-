@@ -14,7 +14,7 @@ export const load = (async ({ locals }) => {
 export const actions: Actions = {
     default: async ({ request, locals, url }) => {
         if (!locals.session) throw error(401)
-        let redirect_url = url.origin + '/account/orders'
+        let redirect_url = '/account/orders'
         try {
             const data = await request.formData()
             const body = Object.fromEntries(data)
@@ -124,7 +124,7 @@ export const actions: Actions = {
 
             // // @ts-ignore
             // invoice_url = resp.invoice_url
-            redirect_url = url.origin + '/account/orders/' + order.id
+            redirect_url = '/account/orders/' + order.id
         } catch (err) {
             console.log(err)
             throw error(500, JSON.stringify(err, null, 2))

@@ -24,7 +24,7 @@ export const load = (async ({ locals, params }) => {
         throw error(500, JSON.stringify(err_order_items))
     }
 
-    console.log(order_items)
+    // console.log(order_items)
     return {
         order,
         order_items
