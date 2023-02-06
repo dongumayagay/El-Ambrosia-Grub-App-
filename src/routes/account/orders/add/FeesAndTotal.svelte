@@ -29,7 +29,6 @@
 	<li class="flex justify-between">
 		<span>{fees[0].type} </span>
 		<span>{currency_formatter(fees[0].value)}</span>
-		<input type="hidden" name="subtotal" value={$subtotal} />
 	</li>
 	<li class="flex justify-between">
 		<span>{fees[1].type}</span>
@@ -42,7 +41,6 @@
 				<span>₱</span>
 				<input
 					type="number"
-					name="donation"
 					bind:value={donation}
 					class="input input-bordered text-center input-sm w-32"
 					on:change={() => {
@@ -54,10 +52,11 @@
 			</label>
 		</div>
 	</li>
-	<input type="hidden" name="total_quantity" value={$total_quantity} />
 	<li class="flex justify-between font-bold text-lg">
 		<span>Total</span>
 		<span>{currency_formatter(total)}</span>
 		<input type="hidden" name="total" value={total} />
 	</li>
 </ul>
+
+<input type="hidden" name="fees" value={JSON.stringify(fees)} />
