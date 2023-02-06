@@ -8,7 +8,9 @@
 	value={JSON.stringify(
 		$cart.map((item) => ({
 			variant_id: item.variant_id,
-			quantity: item.quantity
+			quantity: item.quantity,
+			price: item.price,
+			name: item.name
 		}))
 	)}
 />

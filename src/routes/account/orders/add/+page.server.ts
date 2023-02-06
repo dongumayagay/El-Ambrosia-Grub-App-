@@ -1,5 +1,6 @@
 import { Order_States } from '$lib/misc/constants';
-import { error } from '@sveltejs/kit';
+import { i } from '$lib/payment/xendit.server';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals }) => {
@@ -11,15 +12,23 @@ export const load = (async ({ locals }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    default: async ({ request, locals }) => {
+    default: async ({ request, locals, url }) => {
         if (!locals.session) throw error(401)
+        let invoice_url: string
         try {
 
 
             const data = await request.formData()
             const body = Object.fromEntries(data)
-            console.log(body)
-            const order_items = JSON.parse(body.order_items.toString()) as { variant_id: number, quantity: number }[]
+
+            const order_items = JSON.parse(body.order_items.toString()) as {
+                variant_id: number,
+                quantity: number,
+                price: number,
+                name: string
+            }[]
+            const fees = JSON.parse(body.fees.toString()).slice(1)
+
 
 
             const { data: order, error: err_order } = await locals.supabaseClient.from('orders').insert({
@@ -27,31 +36,110 @@ export const actions: Actions = {
                 total_quantity: Number(body.total_quantity),
                 total: Number(body.total),
                 status: Order_States['to pay'],
-                fees: JSON.parse(body.fees.toString())
+                fees
             }).select('id').limit(1).single()
 
             if (err_order || order === null)
                 throw err_order
 
 
-            const [order_items_result, order_address_result] = await Promise.all([
-                locals.supabaseClient.from('order_items').insert(order_items.map(item => ({ order_id: order.id, ...item }))),
-                locals.supabaseClient.from('order_address').insert({
-                    street_line1: body.street_line1.toString(),
-                    street_line2: body.street_line2.toString(),
-                    city: body.city.toString(),
-                    state: body.state.toString(),
-                    postal_code: Number(body.postal_code),
-                })
-            ])
+            const [order_items_result, order_address_result] = await Promise.all(
+                [
+                    locals.supabaseClient.from('order_items').insert(order_items.map(
+                        item => ({
+                            order_id: order.id,
+                            variant_id: item.variant_id,
+                            quantity: item.quantity
+                        }))),
+                    locals.supabaseClient.from('order_address').insert({
+                        id: order.id,
+                        street_line1: body.street_line1.toString(),
+                        street_line2: body.street_line2.toString(),
+                        city: body.city.toString(),
+                        state: body.state.toString(),
+                        postal_code: Number(body.postal_code),
+                    })
+                ])
 
             if (order_items_result.error ||
                 order_address_result.error
             ) throw order_items_result.error ||
             order_address_result.error
 
+            const { data: profile, error: err_profile } = await locals.supabaseClient.from('profiles').select('email_address').eq('id', locals.session.user.id).limit(1).single()
+
+            if (err_profile || profile === null) throw err_profile
+
+            const resp = await i.createInvoice({
+                amount: Number(body.total),
+                externalID: order.id.toString(),
+                // currency: 'PHP',
+                customer: {
+                    // given_names: body.first_name.toString(),
+                    // surname: body.last_name.toString(),
+                    // email: profile.email_address ?? '',
+                    // mobile_number: body.last_name.toString(),
+                    // addresses: [
+                    //     {
+                    //         street_line1: body.street_line1.toString(),
+                    //         street_line2: body.street_line2.toString(),
+                    //         city: body.city.toString(),
+                    //         state: body.state.toString(),
+                    //         postal_code: Number(body.postal_code),
+                    //         country: 'Philippines',
+                    //     }
+                    // ]
+                    given_names: body.first_name.toString(),
+                    surname: body.last_name.toString(),
+                    email: locals.session.user.email,
+                    mobile_number: body.phone_number.toString(),
+                    addresses: [
+                        {
+                            street_line1: body.street_line1.toString(),
+                            street_line2: body.street_line2.toString(),
+                            city: body.city.toString(),
+                            state: body.state.toString(),
+                            postal_code: body.postal_code.toString(),
+                            country: 'Philippines',
+                        }
+                    ]
+                },
+                customerNotificationPreference: {
+                    'invoice_created': [
+                        'whatsapp',
+                        'sms',
+                        'email',
+                        'viber'
+                    ],
+                    'invoice_paid': [
+                        'whatsapp',
+                        'sms',
+                        'email',
+                        'viber'
+                    ]
+                },
+                description: 'El Ambrosia Order payment',
+                fees,
+                invoiceDuration: 60 * 5,
+                items: order_items.map(
+                    item => ({
+                        name: item.name,
+                        quantity: item.quantity,
+                        price: item.price
+                    })
+                ),
+                payerEmail: locals.session.user.email,
+                locale: 'en',
+                shouldSendEmail: true,
+                failureRedirectURL: url.origin + '/bag',
+                successRedirectURL: url.origin + '/account/orders/' + order.id
+            })
+            // @ts-ignore
+            invoice_url = resp.invoice_url
         } catch (err) {
-            throw error(500, JSON.stringify(err))
+            console.log(err)
+            throw error(500, JSON.stringify(err, null, 2))
         }
+        throw redirect(303, invoice_url)
     }
 };

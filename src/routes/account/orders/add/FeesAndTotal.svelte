@@ -55,6 +55,7 @@
 	<li class="flex justify-between font-bold text-lg">
 		<span>Total</span>
 		<span>{currency_formatter(total)}</span>
+		<input type="hidden" name="total_quantity" value={$total_quantity} />
 		<input type="hidden" name="total" value={total} />
 	</li>
 </ul>
