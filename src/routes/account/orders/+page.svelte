@@ -14,11 +14,12 @@
 		</div>
 	</header>
 
-	<Table table_headers={['ID', 'Date Ordered', 'Total Price', 'Status', '']}>
+	<Table table_headers={['ID', 'Date Ordered', 'Total Quantity', 'Total Price', 'Status', '']}>
 		{#each data.orders as order (order.id)}
 			<tr>
 				<td>{order.id} </td>
 				<td>{datetime_formatter(order.created_at)}</td>
+				<td>{order.total_quantity}</td>
 				<td>₱{order.total}</td>
 				<td>
 					<span class="badge badge-lg uppercase">

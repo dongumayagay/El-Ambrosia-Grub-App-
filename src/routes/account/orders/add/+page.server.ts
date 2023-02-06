@@ -62,6 +62,10 @@ export const actions: Actions = {
                         city: body.city.toString(),
                         state: body.state.toString(),
                         postal_code: Number(body.postal_code),
+                        first_name: body.first_name.toString(),
+                        last_name: body.last_name.toString(),
+                        email_address: locals.session.user.email ?? '',
+                        phone_number: body.phone_number.toString(),
                     })
                 ])
 

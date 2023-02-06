@@ -39,7 +39,11 @@ export interface Database {
         Row: {
           city: string
           country: string
+          email_address: string
+          first_name: string
           id: number
+          last_name: string
+          phone_number: string
           postal_code: number
           state: string
           street_line1: string
@@ -48,7 +52,11 @@ export interface Database {
         Insert: {
           city: string
           country?: string
+          email_address: string
+          first_name: string
           id?: number
+          last_name: string
+          phone_number: string
           postal_code: number
           state: string
           street_line1: string
@@ -57,7 +65,11 @@ export interface Database {
         Update: {
           city?: string
           country?: string
+          email_address?: string
+          first_name?: string
           id?: number
+          last_name?: string
+          phone_number?: string
           postal_code?: number
           state?: string
           street_line1?: string
