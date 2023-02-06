@@ -17,10 +17,9 @@
 
 	const enhance_function: SubmitFunction = () => {
 		loading = true;
-		return async ({ update, result }) => {
+		return async ({ result }) => {
 			if (result.type === 'redirect') {
-				// cart.clear();
-				// goto(result.location);
+				cart.clear();
 				window.location.replace(result.location);
 			}
 			// await update({ reset: false });
@@ -28,7 +27,7 @@
 		};
 	};
 
-	$: if ($cart.length === 0 && browser) goto('/bag', { replaceState: true });
+	$: if ($cart.length === 0 && browser) goto('/account/orders', { replaceState: true });
 </script>
 
 {#if $cart}

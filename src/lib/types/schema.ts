@@ -89,6 +89,7 @@ export interface Database {
           created_at: string
           fees: Json
           id: number
+          invoice_id: string | null
           owner_id: string
           status: number
           total: number
@@ -98,6 +99,7 @@ export interface Database {
           created_at?: string
           fees?: Json
           id?: number
+          invoice_id?: string | null
           owner_id: string
           status: number
           total: number
@@ -107,6 +109,7 @@ export interface Database {
           created_at?: string
           fees?: Json
           id?: number
+          invoice_id?: string | null
           owner_id?: string
           status?: number
           total?: number

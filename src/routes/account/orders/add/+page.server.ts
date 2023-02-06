@@ -35,7 +35,7 @@ export const actions: Actions = {
                 owner_id: locals.session.user.id,
                 total_quantity: Number(body.total_quantity),
                 total: Number(body.total),
-                status: Order_States['to pay'],
+                status: Order_States.payment,
                 fees
             }).select('id').limit(1).single()
 
@@ -73,22 +73,7 @@ export const actions: Actions = {
             const resp = await i.createInvoice({
                 amount: Number(body.total),
                 externalID: order.id.toString(),
-                // currency: 'PHP',
                 customer: {
-                    // given_names: body.first_name.toString(),
-                    // surname: body.last_name.toString(),
-                    // email: profile.email_address ?? '',
-                    // mobile_number: body.last_name.toString(),
-                    // addresses: [
-                    //     {
-                    //         street_line1: body.street_line1.toString(),
-                    //         street_line2: body.street_line2.toString(),
-                    //         city: body.city.toString(),
-                    //         state: body.state.toString(),
-                    //         postal_code: Number(body.postal_code),
-                    //         country: 'Philippines',
-                    //     }
-                    // ]
                     given_names: body.first_name.toString(),
                     surname: body.last_name.toString(),
                     email: locals.session.user.email,
@@ -105,12 +90,6 @@ export const actions: Actions = {
                     ]
                 },
                 customerNotificationPreference: {
-                    'invoice_created': [
-                        'whatsapp',
-                        'sms',
-                        'email',
-                        'viber'
-                    ],
                     'invoice_paid': [
                         'whatsapp',
                         'sms',
@@ -134,8 +113,14 @@ export const actions: Actions = {
                 failureRedirectURL: url.origin + '/bag',
                 successRedirectURL: url.origin + '/account/orders/' + order.id
             })
+
+            // @ts-ignore
+            const { error: err_invoice_update } = await locals.supabaseClient.from('orders').update({ invoice_id: resp.id }).eq('id', order.id)
+            if (err_invoice_update) throw err_invoice_update
+
             // @ts-ignore
             invoice_url = resp.invoice_url
+
         } catch (err) {
             console.log(err)
             throw error(500, JSON.stringify(err, null, 2))

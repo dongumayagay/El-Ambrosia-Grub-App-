@@ -22,7 +22,7 @@ export let account_links: Link[] = [
 ]
 
 export enum Order_States {
-    'to pay',
+    'payment',
     'order received',
     'in progress',
     'out for delivery',
