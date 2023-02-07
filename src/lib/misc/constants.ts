@@ -10,6 +10,9 @@ export let admin_links: Link[] = [
     }, {
         name: 'manage delivery locations', path: "/admin/delivery-locations"
     }
+    , {
+        name: 'manage orders', path: "/admin/orders"
+    }
 
 ]
 export let account_links: Link[] = [
@@ -29,3 +32,5 @@ export enum Order_States {
     'delivered',
     'completed',
 }
+
+export const states = Object.keys(Order_States).filter((v) => isNaN(Number(v)));

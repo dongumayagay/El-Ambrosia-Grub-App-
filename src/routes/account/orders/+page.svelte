@@ -14,18 +14,18 @@
 		</div>
 	</header>
 
-	<Table table_headers={['ID', 'Date Ordered', 'Total Quantity', 'Total Price', 'Status', '']}>
+	<Table table_headers={['ID', 'Status', 'Date Ordered', 'Total Price', 'Total Quantity', '']}>
 		{#each data.orders as order (order.id)}
 			<tr>
 				<td>{order.id} </td>
-				<td>{datetime_formatter(order.created_at)}</td>
-				<td>{order.total_quantity}</td>
-				<td>₱{order.total}</td>
 				<td>
 					<span class="badge badge-lg uppercase">
 						{Order_States[order.status]}
 					</span>
 				</td>
+				<td>{datetime_formatter(order.created_at)}</td>
+				<td>₱{order.total}</td>
+				<td>{order.total_quantity}</td>
 				<td
 					><a href={`/account/orders/${order.id}`} class="btn btn-outline">View order details</a
 					></td
