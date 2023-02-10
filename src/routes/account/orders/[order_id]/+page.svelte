@@ -1,9 +1,9 @@
 <script lang="ts">
 	// import { Order_States } from '$lib/misc/constants';
 	import { currency_formatter, datetime_formatter, display_property } from '$lib/misc/utils';
-	import ContactInfo from './ContactInfo.svelte';
+	import ContactInfo from '$lib/components/ContactInfo.svelte';
 	import type { PageData } from './$types';
-	import Computation from './Computation.svelte';
+	import Computation from '$lib/components/Computation.svelte';
 	import { enhance } from '$app/forms';
 	import { states } from '$lib/misc/constants';
 

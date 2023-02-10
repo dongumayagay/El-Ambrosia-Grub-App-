@@ -8,6 +8,8 @@
 	import SideDrawer from '$lib/components/SideDrawer.svelte';
 
 	onMount(() => {
+		window.scrollTo(0, 0);
+
 		const {
 			data: { subscription }
 		} = supabaseClient.auth.onAuthStateChange(() => {
