@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { supabaseClient } from '$lib/db/client';
-	import { invalidate } from '$app/navigation';
+	import { invalidate, invalidateAll } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
@@ -11,7 +11,8 @@
 		const {
 			data: { subscription }
 		} = supabaseClient.auth.onAuthStateChange(() => {
-			invalidate('supabase:auth');
+			// invalidate('supabase:auth');
+			invalidateAll();
 		});
 
 		return () => {

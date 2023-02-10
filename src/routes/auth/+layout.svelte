@@ -1,14 +1,15 @@
 <script lang="ts">
-	import { enhance, type SubmitFunction } from '$app/forms';
+	// import { enhance, type SubmitFunction } from '$app/forms';
 
-	let loading: boolean;
-	const enhance_function: SubmitFunction = () => {
-		loading = true;
-		return async ({ update }) => {
-			loading = false;
-			await update();
-		};
-	};
+	// let loading: boolean;
+	// const enhance_function: SubmitFunction = () => {
+	// 	loading = true;
+	// 	return async ({ update, result }) => {
+	// 		loading = false;
+	// 		console.log(result);
+	// 		await update();
+	// 	};
+	// };
 </script>
 
 <div class=" h-full flex flex-col justify-center items-center px-4">
@@ -16,7 +17,7 @@
 		<slot />
 		<div class="divider">or</div>
 
-		<form class=" flex flex-col gap-4" method="post" use:enhance={enhance_function}>
+		<form class=" flex flex-col gap-4" method="post">
 			<button formaction="/auth/login?provider=google" class="btn btn-outline gap-2">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-6"
 					><path
