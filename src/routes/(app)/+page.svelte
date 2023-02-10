@@ -1,4 +1,4 @@
-<div class="hero h-screen" style={`background-image: url(${'./banner.jpg'});`}>
+<div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}>
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">
 		<div class="max-w-xl ">

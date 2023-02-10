@@ -5,7 +5,7 @@
 	const { total_quantity } = cart;
 </script>
 
-<div class="navbar stickly top-0 z-10 bg-brand-red">
+<div class="navbar sticky top-0 z-10 bg-brand-red">
 	<div class="navbar-start">
 		<slot name="navbar-start" />
 	</div>

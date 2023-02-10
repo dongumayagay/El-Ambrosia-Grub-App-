@@ -18,8 +18,11 @@
 	<!-- Sidebar content here -->
 	{#each links as link}
 		<li>
-			<a on:click={() => dispatch('close_drawer')} class="btn btn-ghost" href={link.path}
-				>{link.name}</a
+			<a
+				on:click={() => dispatch('close_drawer')}
+				class="capitalize "
+				class:active={link.path === $page.url.pathname}
+				href={link.path}>{link.name}</a
 			>
 		</li>
 	{/each}

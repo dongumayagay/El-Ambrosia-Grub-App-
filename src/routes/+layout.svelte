@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { supabaseClient } from '$lib/db/client';
-	import { invalidate, invalidateAll } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
 	import { page } from '$app/stores';
 	import SideDrawer from '$lib/components/SideDrawer.svelte';
+	import { afterNavigate } from '$app/navigation';
 
 	onMount(() => {
 		window.scrollTo(0, 0);
@@ -13,7 +14,6 @@
 		const {
 			data: { subscription }
 		} = supabaseClient.auth.onAuthStateChange(() => {
-			// invalidate('supabase:auth');
 			invalidateAll();
 		});
 
@@ -26,26 +26,19 @@
 	let side_drawer_name = 'side-drawer';
 	$: should_have_drawer =
 		$page.url.pathname.startsWith('/account') || $page.url.pathname.startsWith('/admin');
+	let top: HTMLElement;
+	afterNavigate(() => {
+		if (top) {
+			top.scrollIntoView();
+		}
+	});
 </script>
 
-<svelte:head>
-	<title>El Ambrosia</title>
-	<meta name="description" content="Experience the authentic taste of shawarma" />
-	<meta name="author" content="Don Gumayagay" />
-</svelte:head>
-
-<!-- data-sveltekit-preload-data="tap"
-data-sveltekit-preload-code="eager" -->
-<div class="drawer h-auto min-h-screen" class:drawer-mobile={should_have_drawer}>
-	<input
-		id={side_drawer_name}
-		type="checkbox"
-		class="drawer-toggle"
-		bind:checked={show_side_drawer}
-	/>
-
+<div class="drawer" class:drawer-mobile={should_have_drawer}>
+	<input id={side_drawer_name} type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
 		<!-- Page content here -->
+		<div id="top" bind:this={top} />
 		<TopNavigationBar>
 			<svelte:fragment slot="navbar-start">
 				<label
