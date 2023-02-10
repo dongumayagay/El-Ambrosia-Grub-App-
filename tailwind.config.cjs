@@ -41,7 +41,8 @@ module.exports = {
 
 					'--rounded-box': '0rem', // border radius rounded-box utility class, used in card and other large boxes
 					'--rounded-btn': '0rem', // border radius rounded-btn utility class, used in buttons and similar element
-					'--rounded-badge': '0rem'
+					'--rounded-badge': '0rem',
+					'--tab-radius': '0rem'
 				}
 			}
 		]
