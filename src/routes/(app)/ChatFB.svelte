@@ -33,7 +33,7 @@
 	<div
 		id="fb-customer-chat"
 		class="fb-customerchat"
-		page_id={'116061764725071'}
+		page_id={'107347208351582'}
 		attribution={'biz_inbox'}
 	/>
 

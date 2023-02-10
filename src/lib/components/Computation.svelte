@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { currency_formatter } from '$lib/misc/utils';
+	// @ts-ignore
 	import type { PageData } from './$types';
 
 	export let data: PageData;
