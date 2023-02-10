@@ -37,7 +37,11 @@ module.exports = {
 					info: '#0070F3',
 					success: '#21CC51',
 					warning: '#FF6154',
-					error: '#DE1C8D'
+					error: '#DE1C8D',
+
+					'--rounded-box': '0rem', // border radius rounded-box utility class, used in card and other large boxes
+					'--rounded-btn': '0rem', // border radius rounded-btn utility class, used in buttons and similar element
+					'--rounded-badge': '0rem'
 				}
 			}
 		]

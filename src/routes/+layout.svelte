@@ -9,8 +9,6 @@
 	import { afterNavigate } from '$app/navigation';
 
 	onMount(() => {
-		window.scrollTo(0, 0);
-
 		const {
 			data: { subscription }
 		} = supabaseClient.auth.onAuthStateChange(() => {
@@ -26,11 +24,10 @@
 	let side_drawer_name = 'side-drawer';
 	$: should_have_drawer =
 		$page.url.pathname.startsWith('/account') || $page.url.pathname.startsWith('/admin');
+
 	let top: HTMLElement;
 	afterNavigate(() => {
-		if (top) {
-			top.scrollIntoView();
-		}
+		if (top) top.scrollIntoView();
 	});
 </script>
 
