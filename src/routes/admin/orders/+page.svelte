@@ -47,7 +47,8 @@
 			<td>{datetime_formatter(order.created_at)}</td>
 			<td>{currency_formatter(order.total)}</td>
 			<td>{order.owner_id}</td>
-			<td><button class="btn btn-outline"> gawin mo to </button></td>
+			<td><a href={`/admin/orders/${order.id}`} class="btn btn-outline"> View order details </a></td
+			>
 		</tr>
 	{:else}
 		<tr class="hover">
