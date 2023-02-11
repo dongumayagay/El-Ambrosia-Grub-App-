@@ -22,6 +22,42 @@
 				>
 				Sign in with Google
 			</button>
+			<button formaction="/auth/login?provider=facebook" class="btn btn-outline gap-2">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					viewBox="0,0,256,256"
+					width="48px"
+					height="48px"
+					fill-rule="nonzero"
+					><g
+						fill="none"
+						fill-rule="nonzero"
+						stroke="none"
+						stroke-width="1"
+						stroke-linecap="butt"
+						stroke-linejoin="miter"
+						stroke-miterlimit="10"
+						stroke-dasharray=""
+						stroke-dashoffset="0"
+						font-family="none"
+						font-weight="none"
+						font-size="none"
+						text-anchor="none"
+						style="mix-blend-mode: normal"
+						><g transform="scale(5.33333,5.33333)"
+							><path
+								d="M42,37c0,2.762 -2.238,5 -5,5h-26c-2.761,0 -5,-2.238 -5,-5v-26c0,-2.762 2.239,-5 5,-5h26c2.762,0 5,2.238 5,5z"
+								fill="#ffffff"
+							/><path
+								d="M34.368,25h-3.368v13h-5v-13h-3v-4h3v-2.41c0.002,-3.508 1.459,-5.59 5.592,-5.59h3.408v4h-2.287c-1.609,0 -1.713,0.6 -1.713,1.723v2.277h4z"
+								fill="#3f51b5"
+							/></g
+						></g
+					></svg
+				>
+				Sign in with Facebook
+			</button>
 		</form>
 	</main>
 </div>
