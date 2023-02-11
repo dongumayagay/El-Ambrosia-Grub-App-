@@ -33,10 +33,12 @@
 
 <svelte:head>
 	<title>El Ambrosia</title>
+	<meta name="description" content="El Ambrosia Authentic Shawarma" />
+	<meta name="author" content="Don Gumayagay" />
 </svelte:head>
 
 <div class="drawer" class:drawer-mobile={should_have_drawer}>
-	<input id={side_drawer_name} type="checkbox" class="drawer-toggle" />
+	<input id={side_drawer_name} type="checkbox" class="drawer-toggle" aria-label="drawer toggle" />
 	<div class="drawer-content flex flex-col">
 		<!-- Page content here -->
 		<div id="top" bind:this={top} />
