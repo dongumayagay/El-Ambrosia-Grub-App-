@@ -31,6 +31,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>El Ambrosia</title>
+</svelte:head>
+
 <div class="drawer" class:drawer-mobile={should_have_drawer}>
 	<input id={side_drawer_name} type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
