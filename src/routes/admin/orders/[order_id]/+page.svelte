@@ -36,11 +36,10 @@
 	<div class="overflow-x-auto">
 		<table class="table w-full">
 			<thead>
-				<!-- small screen -->
 				<tr class="sticky top-0 sm:hidden">
 					<th>Item</th>
 				</tr>
-				<!-- medium to large screen -->
+
 				<tr class="sticky top-0 hidden sm:table-row">
 					<th>Item</th>
 					<th>Quantity</th>
@@ -50,7 +49,6 @@
 			</thead>
 			<tbody>
 				{#each data.order_items as item (item.id)}
-					<!-- small screen -->
 					<tr class="sm:hidden">
 						<td class="">
 							<div class="flex gap-2">
@@ -79,7 +77,7 @@
 							</div>
 						</td>
 					</tr>
-					<!-- medium to large screen -->
+
 					<tr class="hidden sm:table-row">
 						<td class="w-full max-w-sm">
 							<div class="flex gap-4">

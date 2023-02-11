@@ -23,16 +23,19 @@
 				</svg>
 			</label>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50	">
-				<li><a href="/account" class="btn btn-ghost"> Account</a></li>
+			<ul
+				tabindex="0"
+				class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52 z-50	"
+			>
+				<li><a href="/account" class=""> Account</a></li>
 				{#if ROLES_ALLOWED_IN_ADMIN.includes($page.data.user_role)}
 					<li>
-						<a href="/admin" class="btn btn-ghost"> admin</a>
+						<a href="/admin" class="">Admin</a>
 					</li>
 				{/if}
 				<li>
-					<form class="contents" action="/auth/logout" method="POST">
-						<button class="btn btn-ghost gap-2">Logout </button>
+					<form class="flex" action="/auth/logout" method="POST">
+						<button class="">Logout </button>
 					</form>
 				</li>
 			</ul>
@@ -58,9 +61,12 @@
 				</svg>
 			</label>
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50	">
-				<li><a href="/auth/register" class="btn btn-ghost">Register</a></li>
-				<li><a href="/auth/login" class="btn btn-ghost">Login</a></li>
+			<ul
+				tabindex="0"
+				class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52 z-50	"
+			>
+				<li><a href="/auth/register" class="">Register</a></li>
+				<li><a href="/auth/login" class="">Login</a></li>
 			</ul>
 		</section>
 	</main>

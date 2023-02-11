@@ -27,7 +27,8 @@
 				<td>₱{order.total}</td>
 				<td>{order.total_quantity}</td>
 				<td
-					><a href={`/account/orders/${order.id}`} class="btn btn-outline">View order details</a
+					><a href={`/account/orders/${order.id}`} class="btn btn-outline btn-sm"
+						>View order details</a
 					></td
 				>
 			</tr>

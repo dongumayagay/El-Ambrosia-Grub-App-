@@ -16,9 +16,9 @@
 	</div>
 	<div class="navbar-end">
 		<a href="/bag" class="btn btn-ghost btn-square text-brand-tan">
-			<div class="indicator">
+			<div class="indicator ">
 				<span
-					class="indicator-item indicator-bottom badge badge-ghost"
+					class="indicator-item indicator-bottom badge badge-sm badge-ghost rounded-full"
 					class:hidden={$total_quantity === 0}
 				>
 					{$total_quantity}

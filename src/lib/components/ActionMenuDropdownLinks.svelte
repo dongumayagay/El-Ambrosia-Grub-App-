@@ -5,7 +5,7 @@
 <div class="dropdown dropdown-end dropdown-hover">
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<!-- svelte-ignore a11y-label-has-associated-control -->
-	<label tabindex="0" class="btn btn-ghost"
+	<label tabindex="0" class="btn btn-ghost btn-sm"
 		><svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -22,10 +22,13 @@
 		</svg>
 	</label>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-	<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+	<ul
+		tabindex="0"
+		class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52"
+	>
 		{#each links as link}
 			<li>
-				<a class="btn btn-ghost" href={link.path}>{link.name}</a>
+				<a href={link.path}>{link.name}</a>
 			</li>
 		{/each}
 	</ul>
