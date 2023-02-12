@@ -25,7 +25,6 @@
 		total = completed_orders_today.reduce((acc, order) => (acc += order.total), 0);
 	}
 	getData();
-	$: console.log(total);
 </script>
 
 <div class="stats shadow">
@@ -33,7 +32,7 @@
 		<div class="stat-title">Sales today</div>
 		<div class="stat-value">{total !== undefined ? currency_formatter(total) : 'Computing...'}</div>
 		<div class="stat-actions">
-			<button class="btn btn-sm">Add funds</button>
+			<a href="/admin/orders?status=5" class="btn btn-sm">View completed orders</a>
 		</div>
 	</div>
 </div>

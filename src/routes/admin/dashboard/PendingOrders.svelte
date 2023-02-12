@@ -17,7 +17,7 @@
 		<div class="stat-title">Pending Orders</div>
 		<div class="stat-value">{count ?? 'Checking...'}</div>
 		<div class="stat-actions">
-			<a href="/admin/orders" class="btn btn-sm">View orders</a>
+			<a href="/admin/orders?status=1" class="btn btn-sm">View pending orders</a>
 		</div>
 	</div>
 </div>
