@@ -15,7 +15,7 @@
 		</a>
 	</div>
 	<div class="navbar-end">
-		<a href="/bag" class="btn btn-ghost btn-square text-brand-tan">
+		<a href="/bag" aria-label="your bag" class="btn btn-ghost btn-square text-brand-tan">
 			<div class="indicator ">
 				<span
 					class="indicator-item indicator-bottom badge badge-sm badge-ghost rounded-full"
