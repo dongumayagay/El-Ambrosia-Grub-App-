@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { datetime_formatter } from '$lib/misc/utils';
-	import type { PageData } from './$types';
+	import type { PageData } from '../$types';
 	import ChangeRole from './ChangeRole.svelte';
-	import type { ActionData } from './$types';
+	import type { ActionData } from '../$types';
 	export let form: ActionData;
 	export let data: PageData;
 	const user = data.user_info;

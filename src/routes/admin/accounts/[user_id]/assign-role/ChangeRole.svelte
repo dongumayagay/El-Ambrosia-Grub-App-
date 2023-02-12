@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
-	import type { ActionData } from './$types';
+	import type { ActionData } from '../$types';
 	export let form: ActionData;
 	export let user_id: string;
 </script>
