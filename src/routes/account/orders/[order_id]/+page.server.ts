@@ -27,8 +27,6 @@ export const load = (async ({ locals, params }) => {
         throw error(500, JSON.stringify(err_order_items))
     }
 
-
-
     return {
         order,
         order_items
@@ -77,14 +75,15 @@ export const actions: Actions = {
                     }
                 ]
             },
-            customerNotificationPreference: {
-                'invoice_paid': [
-                    'whatsapp',
-                    'sms',
-                    'email',
-                    'viber'
-                ]
-            },
+            // customerNotificationPreference: {
+            //     'invoice_paid': [
+            //         'whatsapp',
+            //         'sms',
+            //         'email',
+            //         'viber'
+            //     ]
+            // },
+
             description: 'El Ambrosia Order payment',
             fees: JSON.parse(JSON.stringify(order.fees)),
             invoiceDuration: 60 * 5,
