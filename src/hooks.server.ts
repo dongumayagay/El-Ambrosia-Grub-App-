@@ -32,6 +32,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     //     throw redirect(303, '/account')
     const response = await resolve(event);
     response.headers.set('Access-Control-Allow-Origin', 'https://web.facebook.com/plugins/customer_chat/SDK/*')
+    return response
 };
 
 
