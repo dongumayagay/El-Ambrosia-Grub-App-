@@ -134,6 +134,26 @@ export interface Database {
           total_quantity?: number
         }
       }
+      payments: {
+        Row: {
+          created_at: string
+          id: number
+          order_id: number
+          payload: Json
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          order_id: number
+          payload: Json
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          order_id?: number
+          payload?: Json
+        }
+      }
       product_variants: {
         Row: {
           id: number
