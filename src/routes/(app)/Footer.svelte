@@ -8,7 +8,6 @@
 	</div>
 	<div class="grid grid-flow-col gap-4">
 		<a href="/about" class="link link-hover">About us</a>
-		<!-- <a href="/" class="link link-hover">Contact</a> -->
 		<a href="/privacy-policy" class="link link-hover">Privacy policy</a>
 		<a href="/term-of-use" class="link link-hover">Terms of use</a>
 	</div>
