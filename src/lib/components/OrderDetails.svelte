@@ -12,17 +12,23 @@
 <br />
 <header class="flex flex-col sm:flex-col-reverse">
 	<section>
-		<div class="form-control">
-			<label for="" class="label">
-				<span class="label-text">Ordered at</span>
-			</label>
-			<input
-				class="input input-bordered"
-				readonly
-				value={datetime_formatter(data.order.created_at)}
-			/>
-		</div>
 		<div class=" grid sm:grid-cols-2 gap-4">
+			<div class="form-control">
+				<label for="" class="label">
+					<span class="label-text">Order ID</span>
+				</label>
+				<input class="input input-bordered" readonly value={data.order.id} />
+			</div>
+			<div class="form-control">
+				<label for="" class="label">
+					<span class="label-text">Ordered at</span>
+				</label>
+				<input
+					class="input input-bordered"
+					readonly
+					value={datetime_formatter(data.order.created_at)}
+				/>
+			</div>
 			<div class="form-control">
 				<label for="" class="label">
 					<span class="label-text">First name</span>
@@ -119,7 +125,7 @@
 	<section class="flex sm:justify-center">
 		<ul class="steps steps-vertical sm:steps-horizontal">
 			{#each states as state, index}
-				<li class="step uppercase" class:step-primary={data.order.status >= index}>{state}</li>
+				<li class="step capitalize" class:step-primary={data.order.status >= index}>{state}</li>
 			{/each}
 		</ul>
 	</section>
