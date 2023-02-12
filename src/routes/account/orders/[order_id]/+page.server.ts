@@ -75,15 +75,12 @@ export const actions: Actions = {
                     }
                 ]
             },
-            // customerNotificationPreference: {
-            //     'invoice_paid': [
-            //         'whatsapp',
-            //         'sms',
-            //         'email',
-            //         'viber'
-            //     ]
-            // },
-
+            customerNotificationPreference: {
+                "invoice_created": [],
+                "invoice_reminder": [],
+                'invoice_paid': ['sms', 'email'],
+                "invoice_expired": []
+            },
             description: 'El Ambrosia Order payment',
             fees: JSON.parse(JSON.stringify(order.fees)),
             invoiceDuration: 60 * 5,
