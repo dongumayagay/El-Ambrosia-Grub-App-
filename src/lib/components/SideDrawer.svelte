@@ -14,7 +14,7 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<ul class="menu menu-compact p-4 w-64 bg-base-200 text-base-content border-2">
+<ul class="menu menu-compact p-4 gap-2 w-64 bg-base-100 text-base-content border-2">
 	<!-- Sidebar content here -->
 	{#each links as link}
 		<li>

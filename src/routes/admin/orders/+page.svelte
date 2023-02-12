@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import Table from '$lib/components/Table.svelte';
 	import { Order_States, states } from '$lib/misc/constants';
-	import { currency_formatter, datetime_formatter } from '$lib/misc/utils';
+	import { currency_formatter, datetime_formatter, display_property } from '$lib/misc/utils';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -27,14 +27,14 @@
 		<button bind:this={order_status_filter} class="hidden"> filter</button>
 	</form>
 </nav>
-<Table table_headers={['order id', 'status', 'date ordered', 'total', 'owner id', '']}>
+<Table table_headers={['order id', 'status', 'date ordered', 'total', 'owner email', '']}>
 	{#each data.orders as order (order.id)}
 		<tr class="hover">
 			<td>{order.id}</td>
 			<td> <span class="badge badge-lg uppercase"> {Order_States[order.status]} </span> </td>
 			<td>{datetime_formatter(order.created_at)}</td>
 			<td>{currency_formatter(order.total)}</td>
-			<td>{order.owner_id}</td>
+			<td>{display_property(order.profiles, 'email_address')}</td>
 			<td
 				><a href={`/admin/orders/${order.id}`} class="btn btn-outline btn-sm">
 					View order details

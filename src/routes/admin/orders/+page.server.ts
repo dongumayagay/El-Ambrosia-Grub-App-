@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ locals, url }) => {
-    let order_query = locals.supabaseClient.from('orders').select('*').order('created_at')
+    let order_query = locals.supabaseClient.from('orders').select('*,profiles(email_address)').order('created_at')
 
 
     const status = url.searchParams.get('status')
