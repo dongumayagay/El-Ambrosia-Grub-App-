@@ -11,3 +11,15 @@ export function display_property(object: any, property: string) {
     return object[property];
 }
 
+export function generateBreadcrumbs(path: string): Array<{ name: string, url: string }> {
+    const parts = path.split('/').filter(part => part);
+    const breadcrumbs: Array<{ name: string, url: string }> = [];
+    let breadcrumbUrl = '';
+
+    for (const part of parts) {
+        breadcrumbUrl += '/' + part;
+        breadcrumbs.push({ name: part, url: breadcrumbUrl });
+    }
+
+    return breadcrumbs;
+}

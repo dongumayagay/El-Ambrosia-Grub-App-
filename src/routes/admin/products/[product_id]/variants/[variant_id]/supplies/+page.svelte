@@ -10,10 +10,7 @@
 	const { product, variant, variant_supplies } = data;
 </script>
 
-{#if product && variant}
-	<div class="prose">
-		<h2>{product.name} {variant.name} supplies will consume</h2>
-	</div>
+{#if product && variant}	
 	<nav class="p-2">
 		<a
 			href={`/admin/products/${product.id}/variants/${variant.id}/supplies/add`}

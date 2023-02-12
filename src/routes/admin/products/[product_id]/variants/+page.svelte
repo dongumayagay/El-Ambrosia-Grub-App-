@@ -10,9 +10,6 @@
 </script>
 
 {#if product}
-	<div class="prose">
-		<h2>{product.name} Variants</h2>
-	</div>
 	<nav class="p-2">
 		<a href={`/admin/products/${product.id}/variants/add`} class="btn btn-sm gap-2">
 			<svg
