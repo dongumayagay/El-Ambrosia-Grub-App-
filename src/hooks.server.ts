@@ -30,7 +30,8 @@ export const handle: Handle = async ({ event, resolve }) => {
     ) throw error(403, "You don't have a privelege to continue")
     // if (event.url.pathname.startsWith('/auth') && session)
     //     throw redirect(303, '/account')
-    return resolve(event);
+    const response = await resolve(event);
+    response.headers.set('Access-Control-Allow-Origin', 'https://web.facebook.com/plugins/customer_chat/SDK/*')
 };
 
 
