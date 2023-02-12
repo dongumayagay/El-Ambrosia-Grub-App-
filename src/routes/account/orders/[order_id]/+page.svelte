@@ -3,14 +3,19 @@
 	import { enhance, type SubmitFunction } from '$app/forms';
 
 	import OrderDetails from '$lib/components/OrderDetails.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	let loading: boolean;
 
 	const enhance_function: SubmitFunction = () => {
 		loading = true;
-		return async ({ update }) => {
-			await update();
+		return async ({ result, action }) => {
+			console.log(action.search);
+			if (result.type === 'redirect') {
+				if (action.search === '?/pay') location.assign(result.location);
+				else goto(result.location);
+			}
 			loading = false;
 		};
 	};
