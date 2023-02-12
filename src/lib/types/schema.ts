@@ -83,7 +83,6 @@ export interface Database {
           product_id: number
           quantity: number
           variant_id: number
-          variant_supply_id: string
         }
         Insert: {
           id?: number
@@ -91,7 +90,6 @@ export interface Database {
           product_id: number
           quantity: number
           variant_id: number
-          variant_supply_id: string
         }
         Update: {
           id?: number
@@ -99,7 +97,6 @@ export interface Database {
           product_id?: number
           quantity?: number
           variant_id?: number
-          variant_supply_id?: string
         }
       }
       orders: {
