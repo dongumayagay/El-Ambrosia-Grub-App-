@@ -34,7 +34,13 @@
 <br />
 <div class="hero py-24">
 	<div class="hero-content flex-col lg:flex-row-reverse">
-		<img src="/shawarma.jpg" class="w-full max-w-xl rounded-lg shadow-2xl" alt="shawarma" />
+		<img
+			src="/shawarma.jpg"
+			height="751"
+			width="576"
+			class="w-full max-w-xl rounded-lg shadow-2xl"
+			alt="shawarma"
+		/>
 		<div>
 			<h1 class="text-5xl font-bold text-brand-red">Authentic Shawarma!</h1>
 			<p class="py-6 text-brand-maroon">

@@ -2,7 +2,7 @@
 <footer class="footer footer-center p-10 bg-neutral text-neutral-content">
 	<div>
 		<p>
-			<img src="/brand-logo.png" alt="" class="h-14" />
+			<img src="/brand-logo.png" alt="brand logo" width="274" height="56" class="h-14" />
 		</p>
 		<p class="font-bold">Serving Authentic Shawarma since 2019</p>
 	</div>
