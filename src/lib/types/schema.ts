@@ -83,6 +83,7 @@ export interface Database {
           product_id: number
           quantity: number
           variant_id: number
+          variant_supply_id: string
         }
         Insert: {
           id?: number
@@ -90,6 +91,7 @@ export interface Database {
           product_id: number
           quantity: number
           variant_id: number
+          variant_supply_id: string
         }
         Update: {
           id?: number
@@ -97,6 +99,7 @@ export interface Database {
           product_id?: number
           quantity?: number
           variant_id?: number
+          variant_supply_id?: string
         }
       }
       orders: {
@@ -178,26 +181,26 @@ export interface Database {
         Row: {
           avatar_url: string | null
           email_address: string | null
-          first_name: string
+          first_name: string | null
           id: string
-          last_name: string
-          phone_number: string
+          last_name: string | null
+          phone_number: string | null
         }
         Insert: {
           avatar_url?: string | null
           email_address?: string | null
-          first_name: string
+          first_name?: string | null
           id: string
-          last_name: string
-          phone_number: string
+          last_name?: string | null
+          phone_number?: string | null
         }
         Update: {
           avatar_url?: string | null
           email_address?: string | null
-          first_name?: string
+          first_name?: string | null
           id?: string
-          last_name?: string
-          phone_number?: string
+          last_name?: string | null
+          phone_number?: string | null
         }
       }
       roles: {
@@ -292,19 +295,35 @@ export interface Database {
     }
     Functions: {
       adjust_supply_value: {
-        Args: { row_id: number; amount: number }
+        Args: {
+          row_id: number
+          amount: number
+        }
         Returns: undefined
       }
       get_user_role: {
-        Args: { uid: string }
+        Args: {
+          uid: string
+        }
         Returns: string
       }
       is_super_admin: {
-        Args: { uid: string }
+        Args: {
+          uid: string
+        }
         Returns: boolean
+      }
+      order_next_status: {
+        Args: {
+          order_id: number
+        }
+        Returns: undefined
       }
     }
     Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
       [_ in never]: never
     }
   }
