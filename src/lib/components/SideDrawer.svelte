@@ -21,7 +21,7 @@
 			<a
 				on:click={() => dispatch('close_drawer')}
 				class="capitalize "
-				class:active={link.path === $page.url.pathname}
+				class:active={$page.url.pathname.startsWith(link.path)}
 				href={link.path}>{link.name}</a
 			>
 		</li>

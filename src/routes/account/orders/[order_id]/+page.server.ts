@@ -14,7 +14,7 @@ export const load = (async ({ locals, params }) => {
         const resp = await i.getInvoice({ invoiceID: order.invoice_id })
         // @ts-ignore
         if (resp.status === 'PAID' || resp.status === 'SETTLED') {
-            const { data: updated_order, error: err_update_order_status } = await locals.supabaseClient.from('orders').update({ status: 1 }).eq('id', order.id).select('*,order_address(*)').order('created_at').limit(1).single()
+            const { data: updated_order, error: err_update_order_status } = await locals.supabaseClient.from('orders').update({ status: 1 }).eq('id', params.order_id).select('*,order_address(*)').order('created_at').limit(1).single()
             order = updated_order
             console.log(err_update_order_status)
             throw error(500, JSON.stringify(err_update_order_status))
