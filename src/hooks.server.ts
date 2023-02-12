@@ -31,7 +31,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     // if (event.url.pathname.startsWith('/auth') && session)
     //     throw redirect(303, '/account')
     const response = await resolve(event);
-    response.headers.set('Access-Control-Allow-Origin', 'https://web.facebook.com/plugins/customer_chat/SDK/*')
+    response.headers.set('Access-Control-Allow-Origin', '*')
     return response
 };
 
