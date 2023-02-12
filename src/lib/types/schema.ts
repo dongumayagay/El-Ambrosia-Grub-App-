@@ -324,6 +324,10 @@ export interface Database {
         }
         Returns: string
       }
+      getLowSupplyItemCount: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
       is_super_admin: {
         Args: {
           uid: string

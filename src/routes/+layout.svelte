@@ -39,7 +39,7 @@
 
 <div class="drawer" class:drawer-mobile={should_have_drawer}>
 	<input id={side_drawer_name} type="checkbox" class="drawer-toggle" aria-label="drawer toggle" />
-	<div class="drawer-content flex flex-col">
+	<div class="drawer-content flex flex-col " class:bg-base-200={should_have_drawer}>
 		<!-- Page content here -->
 		<div id="top" bind:this={top} />
 		<TopNavigationBar>

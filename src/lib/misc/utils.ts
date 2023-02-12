@@ -23,3 +23,10 @@ export function generateBreadcrumbs(path: string): Array<{ name: string, url: st
 
     return breadcrumbs;
 }
+
+export function getTodayDatetimeRange(): { start: string, end: string } {
+    const today = new Date();
+    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString();
+    const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59, 999).toISOString();
+    return { start: startOfToday, end: endOfToday };
+}
