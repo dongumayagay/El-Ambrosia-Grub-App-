@@ -1,5 +1,6 @@
+import { Order_States } from '$lib/misc/constants';
 import { i } from '$lib/payment/xendit.server';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (async ({ locals, params }) => {
@@ -37,86 +38,70 @@ export const load = (async ({ locals, params }) => {
 
 export const actions: Actions = {
 
-    pay: async ({ locals, params, url }) => {
-        if (!locals.session) throw error(401)
+    default: async ({ locals, params, request }) => {
+        const data = await request.formData()
+        const next_status = Number(data.get('status'))
+        if (isNaN(next_status)) return fail(404)
 
-        let { data: order, error: err_order } = await locals.supabaseClient.from('orders').select('*,order_address(*)').eq('id', params.order_id).limit(1).single()
-        if (!order || err_order) {
-            console.log(err_order)
-            throw error(404, JSON.stringify(err_order, null, 2))
-        }
+        if (next_status === 2) {
+            console.log('reduce supply related to the order items')
 
-        const { data: order_items, error: err_order_items } = await locals.supabaseClient.from('order_items').select('*,products(*),product_variants(*)').eq('order_id', params.order_id)
-        if (order_items === null || err_order_items) {
-            console.log(err_order_items)
-            throw error(500, JSON.stringify(err_order_items))
-        }
-
-
-        const order_address = order.order_address as any
-        if (order_address === null) throw error(500)
+            const { data: order_items, error: err_order_items } = await locals.supabaseClient.from('order_items').select('*').eq('order_id', params.order_id)
+            if (!order_items || order_items.length === 0 || err_order_items) {
+                console.log(err_order_items)
+                return fail(500, { error: JSON.stringify(err_order_items, null, 2) })
+            }
 
 
+            const order_items_supplies = (await Promise.all(order_items.map(async (order_item) => {
+                const { data: order_item_supplies, error: err_order_item_supplies } = await locals.supabaseClient.from('variant_supply').select('*').eq('variant_id', order_item.variant_id)
+                if (!order_item_supplies || order_item_supplies.length === 0 || err_order_item_supplies) {
+                    console.log(err_order_item_supplies)
+                    throw error(500, JSON.stringify(err_order_item_supplies, null, 2))
+                }
+                return order_item_supplies.map(item => ({ ...item, quantity: order_item.quantity }))
+            }))).flat()
 
-        const resp = await i.createInvoice({
-            amount: order.total,
-            externalID: params.order_id,
-            customer: {
-                given_names: order_address.first_name,
-                surname: order_address.last_name,
-                email: locals.session.user.email || '',
-                mobile_number: order_address.phone_number,
-                addresses: [
-                    {
-                        street_line1: order_address.street_line1,
-                        street_line2: order_address.street_line2 || '',
-                        city: order_address.city,
-                        state: order_address.state,
-                        postal_code: order_address.postal_code.toString(),
-                        country: order_address.country,
-                    }
-                ]
-            },
-            customerNotificationPreference: {
-                'invoice_paid': [
-                    'whatsapp',
-                    'sms',
-                    'email',
-                    'viber'
-                ]
-            },
-            description: 'El Ambrosia Order payment',
-            fees: JSON.parse(JSON.stringify(order.fees)),
-            invoiceDuration: 60 * 5,
-            items: order_items.map(
-                item => ({
-                    // @ts-ignore
-                    name: item.product_variants.name + ' ' + item.products.name,
-                    quantity: item.quantity,
-                    // @ts-ignore
-                    price: item.product_variants.price
+            const suppliesToReduce = new SuppliesToReduce();
+
+            order_items_supplies.forEach(item => {
+                suppliesToReduce.insert(item.supply_id, item.amount_use * item.quantity)
+            })
+
+            await Promise.all(suppliesToReduce.toArray().map(async (item) =>
+                await locals.supabaseClient.rpc('adjust_supply_value', {
+                    row_id: item.id
+                    , amount: Math.abs(item.value) * -1
                 })
-            ),
-            payerEmail: locals.session.user.email,
-            locale: 'en',
-            shouldSendEmail: true,
-            failureRedirectURL: `${url.origin}/account/orders/${params.order_id}`,
-            successRedirectURL: `${url.origin}/account/orders/${params.order_id}`
-        })
-
-        // @ts-ignore
-        const { error: err_invoice_update } = await locals.supabaseClient.from('orders').update({ invoice_id: resp.id }).eq('id', params.order_id)
-        if (err_invoice_update) throw error(500, err_invoice_update)
-
-        // @ts-ignore
-        throw redirect(303, resp.invoice_url)
-    },
-
-    cancel: async ({ locals, params }) => {
-        const { error: err } = await locals.supabaseClient.from('orders').delete().eq('id', params.order_id)
-        if (err) {
-            throw error(500, JSON.stringify(err, null, 2))
+            ))
         }
-        throw redirect(303, '/account/orders')
+
+        const { error: err_order_update } = await locals.supabaseClient.from('orders').update({ status: next_status }).eq('id', params.order_id)
+        if (err_order_update) {
+            console.log(err_order_update)
+            return fail(500, { error: JSON.stringify(err_order_update, null, 2) })
+        }
+
+        return { success: true }
     }
 };
+
+class SuppliesToReduce {
+    data: { [key: number]: number };
+
+    constructor() {
+        this.data = {};
+    }
+
+    insert(id: number, value: number) {
+        if (this.data[id]) {
+            this.data[id] += value;
+        } else {
+            this.data[id] = value;
+        }
+    }
+
+    toArray(): Array<{ id: number, value: number }> {
+        return Object.entries(this.data).map(([id, value]) => ({ id: +id, value }));
+    }
+}
