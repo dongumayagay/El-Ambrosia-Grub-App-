@@ -6,7 +6,7 @@
 	async function getData() {
 		count =
 			(await (
-				await supabaseClient.from('orders').select('id', { count: 'exact' }).eq('status', 2)
+				await supabaseClient.from('orders').select('id', { count: 'exact' }).eq('status', 1)
 			).count) ?? 0;
 	}
 	getData();
