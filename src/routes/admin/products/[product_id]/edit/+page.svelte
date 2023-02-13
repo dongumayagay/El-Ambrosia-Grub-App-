@@ -21,7 +21,6 @@
 	function on_product_image_file_input_change(e: any) {
 		product_image = null;
 		let image = e.target.files[0];
-		console.log(image);
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
@@ -31,9 +30,8 @@
 </script>
 
 {#if product}
-	<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
-		<h2>Update product</h2>
-		<input type="hidden" name="product_id" value={product.id} />
+	<form method="post" use:enhance={enhance_function} class="grid">
+		<input type="hidden" name="current_image_url" value={data.product?.image_url} />
 		<div class="form-control">
 			<label class="label" for="name">
 				<span class="label-text">Product name</span>

@@ -34,7 +34,15 @@
 		<span>{currency_formatter(fees.delivery.value)}</span>
 	</li>
 	<li class="flex justify-between">
-		<span>{fees.donation.type} <a href="/charity" class="link link-info">more info</a></span>
+		<span
+			>{fees.donation.type}
+			<a
+				href="https://www.facebook.com/profile.php?id=100076200275780"
+				target="_blank"
+				rel="noreferrer"
+				class="link link-info">more info</a
+			></span
+		>
 		<div class="form-control">
 			<label class="input-group input-group-sm">
 				<span>₱</span>
