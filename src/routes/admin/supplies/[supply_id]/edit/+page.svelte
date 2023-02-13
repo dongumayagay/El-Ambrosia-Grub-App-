@@ -13,15 +13,13 @@
 		loading = true;
 		return async ({ update }) => {
 			loading = false;
-			await update();
+			await update({ reset: false });
 		};
 	};
 </script>
 
 {#if supply}
-	<form method="post" class="w-full max-w-md prose" use:enhance={enhance_function}>
-		<h2>Update supply information</h2>
-		<input type="hidden" name="supply_id" value={supply.id} />
+	<form method="post" class="grid" use:enhance={enhance_function}>
 		<div class="form-control">
 			<label class="label" for="name">
 				<span class="label-text">Supply name</span>
@@ -62,7 +60,7 @@
 			/>
 		</div>
 		<br />
-		<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
+		<button class="btn btn-block" class:loading disabled={loading}>update</button>
 		<br />
 		{#if form?.error}
 			<br />
@@ -81,6 +79,25 @@
 						/></svg
 					>
 					<span>{form.error}</span>
+				</div>
+			</div>
+		{/if}
+		{#if form?.sucess}
+			<div class="alert alert-success shadow-lg">
+				<div>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="stroke-current flex-shrink-0 h-6 w-6"
+						fill="none"
+						viewBox="0 0 24 24"
+						><path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+						/></svg
+					>
+					<span>Updated</span>
 				</div>
 			</div>
 		{/if}

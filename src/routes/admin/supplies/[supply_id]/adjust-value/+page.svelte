@@ -4,12 +4,12 @@
 	import type { ActionData, PageData } from './$types';
 	import { enhance, type SubmitFunction } from '$app/forms';
 	import NotFound from '$lib/components/NotFound.svelte';
+	import SupplyInfo from '../SupplyInfo.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
 
 	let loading: boolean;
-	let supply = data.supply;
 
 	const enhance_function: SubmitFunction = () => {
 		loading = true;
@@ -19,17 +19,22 @@
 		};
 	};
 	onMount(() => {
-		if (supply) {
+		if (data.supply) {
 			const supply_realtime_listener = supabaseClient
 				.channel('supply-channel')
 				.on(
 					'postgres_changes',
-					{ event: 'UPDATE', schema: 'public', table: 'supplies', filter: `id=eq.${supply.id}` },
+					{
+						event: 'UPDATE',
+						schema: 'public',
+						table: 'supplies',
+						filter: `id=eq.${data.supply.id}`
+					},
 					(payload) => {
 						console.log('Change received!', payload);
 						if (payload.eventType === 'UPDATE') {
 							// @ts-ignore
-							supply = payload.new;
+							data.supply = payload.new;
 						}
 					}
 				)
@@ -41,35 +46,8 @@
 	});
 </script>
 
-{#if supply}
-	<div class="grid sm:grid-cols-2 gap-4">
-		<div class="form-control ">
-			<label class="label" for=""> <span class="label-text">Name</span> </label>
-			<input type="text" readonly class="input input-bordered cursor-text" value={supply.name} />
-		</div>
-		<div class="form-control ">
-			<label class="label" for=""> <span class="label-text">Current value</span> </label>
-			<input
-				type="text"
-				readonly
-				class="input input-bordered cursor-text"
-				value={`${supply.value} ${supply.unit}`}
-			/>
-		</div>
-		<div class="form-control ">
-			<label class="label" for=""> <span class="label-text">Threshold</span> </label>
-			<input
-				type="text"
-				readonly
-				class="input input-bordered cursor-text"
-				value={`${supply.threshold} ${supply.unit}`}
-			/>
-		</div>
-		<div class="form-control ">
-			<label class="label" for=""> <span class="label-text">Unit of measurement</span> </label>
-			<input type="text" readonly class="input input-bordered cursor-text" value={supply.unit} />
-		</div>
-	</div>
+{#if data.supply}
+	<SupplyInfo {data} />
 	<form method="post" class="grid" use:enhance={enhance_function}>
 		<div class="form-control">
 			<label class="label" for="">
