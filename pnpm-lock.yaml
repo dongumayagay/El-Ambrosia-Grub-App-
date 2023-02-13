@@ -5,7 +5,7 @@ specifiers:
   '@supabase/supabase-js': 2.7.1
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/adapter-vercel': ^2.0.2
-  '@sveltejs/kit': ^1.5.5
+  '@sveltejs/kit': ^1.5.6
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.9
   autoprefixer: ^10.4.13
@@ -13,7 +13,7 @@ specifiers:
   postcss: ^8.4.21
   prettier: ^2.8.4
   prettier-plugin-svelte: ^2.9.0
-  supabase: ^1.37.1
+  supabase: ^1.38.0
   svelte: ^3.55.1
   svelte-check: ^3.0.3
   tailwindcss: ^3.2.6
@@ -29,16 +29,16 @@ dependencies:
   xendit-node: 1.21.10
 
 devDependencies:
-  '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.5.5
-  '@sveltejs/adapter-vercel': 2.0.2_@sveltejs+kit@1.5.5
-  '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
+  '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.5.6
+  '@sveltejs/adapter-vercel': 2.0.2_@sveltejs+kit@1.5.6
+  '@sveltejs/kit': 1.5.6_svelte@3.55.1+vite@4.1.1
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.6
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.6
   autoprefixer: 10.4.13_postcss@8.4.21
   postcss: 8.4.21
   prettier: 2.8.4
   prettier-plugin-svelte: 2.9.0_jrsxveqmsx2uadbqiuq74wlc4u
-  supabase: 1.37.1
+  supabase: 1.38.0
   svelte: 3.55.1
   svelte-check: 3.0.3_pehl75e5jsy22vp33udjja4soi
   tailwindcss: 3.2.6_postcss@8.4.21
@@ -382,21 +382,21 @@ packages:
       - supports-color
     dev: false
 
-  /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.5.5:
+  /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.5.6:
     resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
+      '@sveltejs/kit': 1.5.6_svelte@3.55.1+vite@4.1.1
       import-meta-resolve: 2.2.1
     dev: true
 
-  /@sveltejs/adapter-vercel/2.0.2_@sveltejs+kit@1.5.5:
+  /@sveltejs/adapter-vercel/2.0.2_@sveltejs+kit@1.5.6:
     resolution: {integrity: sha512-Mn80jy3rPNWB9iBp93MHXWwOh1qyxNzMNal0Dd80rD3As5Qi5L3lGhr1cIZ3T3Y3giwAVxzjMiHEflaUb8sjqg==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
+      '@sveltejs/kit': 1.5.6_svelte@3.55.1+vite@4.1.1
       '@vercel/nft': 0.22.6
       esbuild: 0.16.17
     transitivePeerDependencies:
@@ -404,8 +404,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.5.5_svelte@3.55.1+vite@4.1.1:
-    resolution: {integrity: sha512-NJry1mvcIBITVe9WyAGu39Cf33z8wRKzut/Oug4zqMVUpX+i7fG17+GyvLCh9GXdmIkqwSeSMROHDKRODvd6BA==}
+  /@sveltejs/kit/1.5.6_svelte@3.55.1+vite@4.1.1:
+    resolution: {integrity: sha512-CHVeQpbcwSIUekF6WwevmExKXyfHnzM5nlCEUv13lGgfJ0zKA0ny5YwIe40vccrm5w5Caec7jMTt9Ih3McJr5g==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -1670,8 +1670,8 @@ packages:
       min-indent: 1.0.1
     dev: true
 
-  /supabase/1.37.1:
-    resolution: {integrity: sha512-wUq5RvObqWG602OyrcQxF76AS1di2cT72yVAQHObHIKwBpVDjvK0s0FHPP2v+9qyhtC/FkerqfncHRVNNwxzxw==}
+  /supabase/1.38.0:
+    resolution: {integrity: sha512-wyggwgXGMDwY01eTPSktHEIPLT0JipQ2VHT2QrJT/UabeSlEQ+o6yPQq0GZsRvTYFlIYxt+Lv57BPoihy0arDw==}
     hasBin: true
     requiresBuild: true
     dependencies:
