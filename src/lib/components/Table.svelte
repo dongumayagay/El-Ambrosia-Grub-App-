@@ -9,7 +9,7 @@
 		<thead>
 			<tr class="sticky top-0 ">
 				{#each table_headers as table_header}
-					<th class=" bg-brand-tan ">{table_header}</th>
+					<td class=" bg-brand-tan">{table_header}</td>
 				{/each}
 			</tr>
 		</thead>
