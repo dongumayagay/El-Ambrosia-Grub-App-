@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 </script>
@@ -33,11 +34,12 @@
 						<a href="/admin" class="">Admin</a>
 					</li>
 				{/if}
-				<li>
-					<form class="flex" action="/logout" method="POST">
+
+				<form class="contents" action="/logout" method="POST">
+					<li>
 						<button class="">Logout </button>
-					</form>
-				</li>
+					</li>
+				</form>
 			</ul>
 		</section>
 	</main>
