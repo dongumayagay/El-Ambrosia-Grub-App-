@@ -8,32 +8,20 @@ export const load = (async ({ params, locals }) => {
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-    default: async ({ request, locals }) => {
-        const body = Object.fromEntries(await request.formData())
-        console.log(body)
-
-        const row_id = Number(body.supply_id.toString())
-        const amount = Number(body.adjust_value_input.toString())
-
-        if (Number.isNaN(row_id) || Number.isNaN(amount)) {
-            return fail(400, {
-                error: "Invalid input detected, please try again"
-            })
-        }
+    default: async ({ request, locals, params }) => {
+        const amount = Number(await (await request.formData()).get('amount'))
+        if (isNaN(amount)) return fail(400, { error: 'enter valid amount' })
 
         const { error: err } = await locals.supabaseClient.rpc(
             "adjust_supply_value",
             {
-                row_id,
+                row_id: Number(params.supply_id),
                 amount
             })
 
-        if (err) {
-            return fail(Number(err.code), {
-                error: err.message
-            })
-        }
-        throw redirect(303, '/admin/supplies/')
-
+        if (err) return fail(500, {
+            error: JSON.stringify(err)
+        })
+        return { success: true }
     }
 };

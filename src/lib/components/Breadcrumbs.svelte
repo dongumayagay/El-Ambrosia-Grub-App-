@@ -9,7 +9,7 @@
 	<ul>
 		{#each breadcrumbs as crumb}
 			<li>
-				<a href={crumb.url} class="capitalize">
+				<a href={crumb.url}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

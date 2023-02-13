@@ -14,8 +14,7 @@
 	};
 </script>
 
-<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
-	<h2>Adding new supply</h2>
+<form method="post" use:enhance={enhance_function} class="grid">
 	<div class="form-control">
 		<label class="label" for="name">
 			<span class="label-text">Supply name</span>
