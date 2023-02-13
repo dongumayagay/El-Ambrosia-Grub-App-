@@ -4,7 +4,6 @@ export const actions: Actions = {
     default: async ({ request, locals, url }) => {
         const provider = url.searchParams.get('provider') as Provider
         if (provider) {
-            console.log('signining in using provider')
             const { data, error: err } = await locals.supabaseClient.auth.signInWithOAuth({ provider, options: { redirectTo: url.origin } })
             if (err) {
                 console.log(err)

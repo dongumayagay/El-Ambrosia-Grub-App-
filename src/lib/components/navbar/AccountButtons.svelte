@@ -34,7 +34,7 @@
 					</li>
 				{/if}
 				<li>
-					<form class="flex" action="/auth/logout" method="POST">
+					<form class="flex" action="/logout" method="POST">
 						<button class="">Logout </button>
 					</form>
 				</li>
@@ -65,8 +65,8 @@
 				tabindex="0"
 				class="dropdown-content menu menu-compact p-2 shadow bg-base-100 rounded-box w-52 z-50	"
 			>
-				<li><a href="/auth/register" class="">Register</a></li>
-				<li><a href="/auth/login" class="">Login</a></li>
+				<li><a href="/register" class="">Register</a></li>
+				<li><a href="/login" class="">Login</a></li>
 			</ul>
 		</section>
 	</main>

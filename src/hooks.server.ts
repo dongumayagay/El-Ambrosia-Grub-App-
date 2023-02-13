@@ -20,7 +20,6 @@ export const handle: Handle = async ({ event, resolve }) => {
         (event.url.pathname.startsWith('/account') && !session)
         ||
         event.url.pathname.startsWith('/admin') && !session) {
-        // throw redirect(303, '/auth/login')
         throw error(401, 'Please logged-in to continue')
     }
     if (
@@ -28,8 +27,6 @@ export const handle: Handle = async ({ event, resolve }) => {
         && session
         && !ROLES_ALLOWED_IN_ADMIN.includes(event.locals.user_role)
     ) throw error(403, "You don't have a privelege to continue")
-    // if (event.url.pathname.startsWith('/auth') && session)
-    //     throw redirect(303, '/account')
     const response = await resolve(event);
     response.headers.set('Access-Control-Allow-Origin', '*')
     return response

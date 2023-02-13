@@ -51,5 +51,5 @@
 	<button class="btn btn-block" class:loading disabled={loading}>create my account</button>
 	<br />
 	<br />
-	<a class="text-center" href="/auth/login">Already have and account? Login</a>
+	<a class="text-center" href="/login">Already have and account? Login</a>
 </form>

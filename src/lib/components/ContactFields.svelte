@@ -85,7 +85,7 @@
 		>
 			<option value="">Select location</option>
 			{#each data.delivery_locations as loc, index (loc.id)}
-				<option value={index} selected={loc.postal_code === data.address.postal_code}>
+				<option value={index} selected={loc.postal_code === data.address?.postal_code}>
 					{loc.city},
 					{loc.state},
 					{loc.postal_code}
@@ -94,8 +94,8 @@
 		</select>
 	</div>
 	<div>
-		<input type="hidden" name="city" value={data.address.city} />
-		<input type="hidden" name="state" value={data.address.state} />
-		<input type="hidden" name="postal_code" value={data.address.postal_code} />
+		<input type="hidden" name="city" value={data.address?.city} />
+		<input type="hidden" name="state" value={data.address?.state} />
+		<input type="hidden" name="postal_code" value={data.address?.postal_code} />
 	</div>
 </div>

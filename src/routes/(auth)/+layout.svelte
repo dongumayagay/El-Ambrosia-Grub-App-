@@ -4,7 +4,7 @@
 		<div class="divider">or</div>
 
 		<form class=" flex flex-col gap-4" method="post">
-			<button formaction="/auth/login?provider=google" class="btn btn-outline gap-2">
+			<button formaction="/login?provider=google" class="btn btn-outline gap-2">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-6"
 					><path
 						fill="#FFC107"
@@ -22,7 +22,7 @@
 				>
 				Sign in with Google
 			</button>
-			<button formaction="/auth/login?provider=facebook" class="btn btn-outline gap-2">
+			<button formaction="/login?provider=facebook" class="btn btn-outline gap-2">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink"

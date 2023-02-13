@@ -26,7 +26,7 @@
 				{#if data.session}
 					<a href="/account/orders/add" class="btn btn-primary sm:btn-wide"> Place order </a>
 				{:else}
-					<a href="/auth/login" class="btn btn-primary sm:btn-wide"> Login to place order </a>
+					<a href="/login" class="btn btn-primary sm:btn-wide"> Login to place order </a>
 				{/if}
 				<a href="/products" class="btn sm:btn-wide">Back to products</a>
 			</div>

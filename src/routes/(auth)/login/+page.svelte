@@ -52,5 +52,5 @@
 	<button class="btn btn-block" class:loading disabled={loading}>Sign me in</button>
 	<br />
 	<br />
-	<a class="text-center" href="/auth/register">Don't have an account yet? Create one</a>
+	<a class="text-center" href="/register">Don't have an account yet? Create one</a>
 </form>
