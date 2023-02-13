@@ -18,6 +18,10 @@
 				<ActionMenuDropdownLinks
 					links={[
 						{
+							name: 'View',
+							path: `/admin/accounts/${user.id}`
+						},
+						{
 							name: 'Assign Role',
 							path: `/admin/accounts/${user.id}/assign-role`
 						}
