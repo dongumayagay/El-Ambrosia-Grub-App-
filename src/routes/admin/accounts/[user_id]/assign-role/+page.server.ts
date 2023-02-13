@@ -6,7 +6,7 @@ export const actions: Actions = {
         const data = await request.formData()
         const new_role = data.get('role')?.toString()
         console.log(new_role)
-        const { error: err } = await locals.supabaseClient.from('roles').update({ position: new_role }).eq('id', params.user_id)
+        const { error: err } = await locals.supabaseClient.from('roles').upsert({ id: params.user_id, position: new_role })
         if (err) return fail(500, { error: JSON.stringify(err) })
         return { success: true }
     }

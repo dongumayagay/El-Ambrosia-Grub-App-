@@ -1,11 +1,22 @@
 <script lang="ts">
 	import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 	import type { PageData, ActionData } from './$types';
+	import { enhance, type SubmitFunction } from '$app/forms';
 
 	export let data: PageData;
 	export let form: ActionData;
 
 	let submit_button: HTMLButtonElement;
+
+	let loading: boolean;
+
+	const enhance_function: SubmitFunction = () => {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			await update({ reset: false });
+		};
+	};
 </script>
 
 <div class=" grid sm:grid-cols-2 gap-4">
@@ -22,27 +33,28 @@
 		</label>
 		<input class="input input-bordered " readonly value={data.profile?.email_address} />
 	</div>
-	<form method="post" class="contents">
+	<form method="post" class="contents" use:enhance={enhance_function}>
 		<div class="form-control col-span-full">
 			<label class="label" for="">
 				<span class="label-text">Role</span>
 			</label>
 			<select
 				name="role"
-				class="select select-bordered"
+				class="select select-bordered capitalize"
 				on:change={() => {
 					submit_button.click();
 				}}
+				disabled={loading}
 			>
 				<option value={null}>None</option>
 				{#each ROLES_ALLOWED_IN_ADMIN as role}
-					<option value={role} selected={role === data.roles?.position}
+					<option value={role} selected={role === data.roles?.position} class="capitalize"
 						>{role?.replaceAll('_', ' ')}</option
 					>
 				{/each}
 			</select>
 		</div>
-		<button bind:this={submit_button} class="hidden" />
+		<button bind:this={submit_button} class="hidden" disabled={loading} />
 	</form>
 </div>
 {#if form?.success}
