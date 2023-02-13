@@ -2,12 +2,9 @@ import { fail, redirect, } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const actions: Actions = {
-    default: async ({ request, locals }) => {
-        const body = Object.fromEntries(await request.formData())
+    default: async ({ locals, params }) => {
 
-        const product_id = Number(body.product_id.toString())
-
-        const { error: err } = await locals.supabaseClient.from('products').delete().eq('id', product_id)
+        const { error: err } = await locals.supabaseClient.from('products').delete().eq('id', Number(params.product_id))
 
         if (err) {
             if (err.code === '23503')
