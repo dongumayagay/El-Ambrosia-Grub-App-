@@ -14,7 +14,6 @@
 			.lte('created_at', range.end)
 			.eq('status', Order_States['completed']);
 		if (err || completed_orders_today.length === 0) {
-			console.log(err);
 			total = 0;
 			return;
 		}
