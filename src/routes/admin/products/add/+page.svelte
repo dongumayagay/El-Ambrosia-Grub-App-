@@ -58,7 +58,7 @@
 			<span class="label-text">Upload product image</span>
 		</label>
 		{#if product_image}
-			<img src={product_image} alt="" class="m-0" />
+			<img src={product_image} alt="" class="m-0 w-full sm:max-w-lg" />
 			<br />
 		{/if}
 		<input
