@@ -5,11 +5,11 @@
 </script>
 
 <div class="flex-1 overflow-x-auto">
-	<table class="table w-full table-compact">
+	<table class="table w-full table-compact ">
 		<thead>
-			<tr class="sticky top-0">
+			<tr class="sticky top-0 ">
 				{#each table_headers as table_header}
-					<th>{table_header}</th>
+					<th class=" bg-brand-tan ">{table_header}</th>
 				{/each}
 			</tr>
 		</thead>

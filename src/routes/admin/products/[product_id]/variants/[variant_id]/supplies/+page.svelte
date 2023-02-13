@@ -10,8 +10,8 @@
 	const { product, variant, variant_supplies } = data;
 </script>
 
-{#if product && variant}	
-	<nav class="p-2">
+{#if product && variant}
+	<nav>
 		<a
 			href={`/admin/products/${product.id}/variants/${variant.id}/supplies/add`}
 			class="btn btn-sm gap-2"

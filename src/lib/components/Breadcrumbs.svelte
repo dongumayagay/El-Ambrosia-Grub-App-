@@ -5,7 +5,7 @@
 	$: breadcrumbs = generateBreadcrumbs($page.url.pathname);
 </script>
 
-<div class="text-sm breadcrumbs px-4 max-w-full">
+<div class="text-sm breadcrumbs max-w-full">
 	<ul>
 		{#each breadcrumbs as crumb}
 			<li>

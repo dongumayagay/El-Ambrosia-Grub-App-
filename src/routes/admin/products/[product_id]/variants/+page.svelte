@@ -10,7 +10,7 @@
 </script>
 
 {#if product}
-	<nav class="p-2">
+	<nav>
 		<a href={`/admin/products/${product.id}/variants/add`} class="btn btn-sm gap-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

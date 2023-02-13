@@ -10,7 +10,7 @@
 	let order_status_filter: HTMLButtonElement;
 </script>
 
-<nav class="p-2">
+<nav>
 	<form method="get">
 		<select
 			class="select select-bordered select-sm text-sm	py-0 capitalize"

@@ -64,8 +64,12 @@
 				</label>
 			</svelte:fragment>
 		</TopNavigationBar>
-
-		<slot />
+		<main
+			class={`flex flex-col flex-1 gap-3
+			${should_have_drawer ? 'px-4 py-3' : ''}`}
+		>
+			<slot />
+		</main>
 	</div>
 	<div class="drawer-side">
 		<label for={side_drawer_name} class="drawer-overlay" />

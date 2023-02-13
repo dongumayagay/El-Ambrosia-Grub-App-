@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	table {
+		@apply rounded-none !important;
+	}
+	th,
+	td {
+		@apply rounded-none !important;
+	}
+}

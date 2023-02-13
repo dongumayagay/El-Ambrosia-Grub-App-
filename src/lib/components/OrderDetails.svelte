@@ -135,14 +135,14 @@
 	<table class="table w-full">
 		<thead>
 			<tr class="sticky top-0 sm:hidden">
-				<th>Item</th>
+				<th class=" bg-brand-tan">Item</th>
 			</tr>
 
 			<tr class="sticky top-0 hidden sm:table-row">
-				<th>Item</th>
-				<th>Quantity</th>
-				<th>Price</th>
-				<th />
+				<th class=" bg-brand-tan">Item</th>
+				<th class=" bg-brand-tan">Quantity</th>
+				<th class=" bg-brand-tan">Price</th>
+				<th class=" bg-brand-tan" />
 			</tr>
 		</thead>
 		<tbody>

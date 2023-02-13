@@ -3,18 +3,18 @@
 	import cart from '$lib/stores/cart';
 </script>
 
-<table class="table w-full">
+<table class="table  w-full">
 	<thead>
 		<!-- small screen -->
 		<tr class="sticky top-0 sm:hidden">
-			<th>Item</th>
+			<th class=" bg-brand-tan">Item</th>
 		</tr>
 		<!-- medium to large screen -->
-		<tr class="sticky top-0 hidden sm:table-row">
-			<th>Item</th>
-			<th>Quantity</th>
-			<th>Price</th>
-			<th />
+		<tr class="sticky top-0 hidden sm:table-row ">
+			<th class=" bg-brand-tan">Item</th>
+			<th class=" bg-brand-tan">Quantity</th>
+			<th class=" bg-brand-tan">Price</th>
+			<th class=" bg-brand-tan" />
 		</tr>
 	</thead>
 	<tbody>
