@@ -94,9 +94,3 @@
 		<input class="input input-bordered " readonly value={data.address?.country} />
 	</div>
 </div>
-
-<!-- <style>
-	main {
-		grid-template-columns: repeat(6, minmax(0, 1fr));
-	}
-</style> -->

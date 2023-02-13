@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import Table from '$lib/components/Table.svelte';
 	import { Order_States, states } from '$lib/misc/constants';
 	import { currency_formatter, datetime_formatter, display_property } from '$lib/misc/utils';
@@ -24,7 +23,7 @@
 				<option value={index}>{state}</option>
 			{/each}
 		</select>
-		<button bind:this={order_status_filter} class="hidden"> filter</button>
+		<button bind:this={order_status_filter} class="hidden" />
 	</form>
 </nav>
 <Table table_headers={['order id', 'status', 'date ordered', 'total', 'owner email', '']}>
