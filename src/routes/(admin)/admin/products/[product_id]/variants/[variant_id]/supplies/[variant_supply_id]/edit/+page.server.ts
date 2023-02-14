@@ -3,17 +3,11 @@ import type { Actions } from './$types';
 
 export const actions: Actions = {
     default: async ({ request, locals, params }) => {
-        const body = Object.fromEntries(await request.formData())
 
-        const variant_supply_id = body.variant_supply_id.toString()
-        const amount_use = Number(body.amount_use.toString())
-
-        if (Number.isNaN(amount_use)) {
-            return fail(400, {
-                error: "Invalid input detected please try again"
-            })
-        }
-        const { error: err } = await locals.supabaseClient.from('variant_supply').update({ amount_use }).eq("id", variant_supply_id)
+        const amount_use = Number(await (await request.formData()).get('amount_use'))
+        if (isNaN(amount_use)) return fail(400, { error: 'invalid amount' })
+        console.log(amount_use)
+        const { error: err } = await locals.supabaseClient.from('variant_supply').update({ amount_use: amount_use }).eq("id", params.variant_supply_id)
         if (err) {
             return fail(Number(err.code), {
                 error: err.message
