@@ -2,12 +2,9 @@ import { fail, redirect, } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-    default: async ({ request, locals, params }) => {
-        const body = Object.fromEntries(await request.formData())
+    default: async ({ locals, params }) => {
 
-        const variant_supply_id = body.variant_supply_id.toString()
-
-        const { error: err } = await locals.supabaseClient.from('variant_supply').delete().eq("id", variant_supply_id)
+        const { error: err } = await locals.supabaseClient.from('variant_supply').delete().eq("id", params.variant_supply_id)
         if (err) {
             return fail(Number(err.code), {
                 error: err.message
