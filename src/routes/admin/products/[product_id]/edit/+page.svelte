@@ -36,14 +36,7 @@
 			<label class="label" for="name">
 				<span class="label-text">Product name</span>
 			</label>
-			<input
-				type="text"
-				name="name"
-				placeholder={`Underdog 6\"`}
-				class="input input-bordered "
-				required
-				value={product.name}
-			/>
+			<input type="text" name="name" class="input input-bordered " required value={product.name} />
 		</div>
 		<div class="form-control">
 			<label class="label" for="description">
@@ -53,7 +46,6 @@
 				cols="30"
 				rows="5"
 				name="description"
-				placeholder="super duper very delicious"
 				class="textarea textarea-bordered"
 				required
 				value={product.description}
@@ -64,7 +56,7 @@
 				<span class="label-text">Upload product image</span>
 			</label>
 			{#if product_image}
-				<img src={product_image} alt="" class="m-0" />
+				<img src={product_image} alt="" class="m-0 w-full sm:max-w-lg" />
 				<br />
 			{/if}
 			<input

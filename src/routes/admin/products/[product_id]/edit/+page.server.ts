@@ -1,49 +1,49 @@
 import { fail, redirect, } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
+import type { Actions } from './$types';
 
 export const actions: Actions = {
     default: async ({ request, locals, params }) => {
+
+        // data parsing
         const data = await request.formData()
         const body = Object.fromEntries(data)
 
-        const product_image = body.product_image as Blob
-        if (!product_image) return fail(400)
 
+
+        // deleting previous image
         const current_image_path = data.get('current_image_url')?.toString().split('/').pop()
-        if (!current_image_path) return fail(400)
+        if (!current_image_path) return fail(400, { error: 'something wrong with current product image' })
 
+        const { error: err_image_delete } = await locals.supabaseClient.storage.from('product-images').remove([current_image_path])
+        if (err_image_delete) {
+            console.log(err_image_delete)
+            return fail(500, { error: err_image_delete.message })
+        }
 
+        // uploading new image
+        const product_image = body.product_image as Blob
+        if (!product_image) return fail(400, { error: 'something wrong with product image' })
 
+        const file_extension = product_image.name.split('.')[1]
+        const new_image_path = `${params.product_id}.${file_extension}`
 
-        // const product_id = Number(params.product_id)
-        // locals.supabaseClient.storage.from('product-images')
-        // if (product_image) {
-        //     const file_extension = product_image.name.split('.')[1]
+        const { data: upload_data, error: err_upload } = await locals.supabaseClient.storage.from('product-images').upload(new_image_path, product_image, { upsert: true })
+        if (err_upload || !upload_data) {
+            console.log(err_upload)
+            return fail(500, { error: err_upload.message })
+        }
+        // get url of the upload data
+        const image_url = await locals.supabaseClient.storage.from('product-images').getPublicUrl(upload_data.path).data.publicUrl
 
-        //     const { data: product_image_upload_data, error: err } = await
-        //         locals.supabaseClient.storage.from('product-images').update(`public/product-images/${product_id}.${file_extension}`, product_image)
-        //     if (err)
-        //         return fail(400, { error: err.message })
-        //     if (product_image_upload_data.path) {
-        //         const { data: { publicUrl } } = await locals.supabaseClient.storage.from('product-images').getPublicUrl(product_image_upload_data.path)
-        //         const { error: err } = await locals.supabaseClient.from('products').update({
-        //             name: body.name as string,
-        //             description: body.description as string,
-        //             image_url: publicUrl
-        //         }).eq('id', product_id)
-        //         if (err)
-        //             return fail(400, { error: err.message })
-        //     }
-        //     throw redirect(303, '/admin/products')
-        // }
+        //update product info
+        const { error: err_product_update } = await locals.supabaseClient.from('products').update({
+            name: body.name.toString(),
+            description: body.description.toString(),
+            image_url
+        }).eq('id', params.product_id)
+        if (err_product_update) return fail(400, { error: err_product_update })
 
-        // const { error: err } = await locals.supabaseClient.from('products').update({
-        //     name: body.name as string,
-        //     description: body.description as string,
-        // }).eq('id', product_id)
-
-        // if (err)
-        //     return fail(400, { error: err.message })
-        // throw redirect(303, '/admin/products')
+        throw redirect(303, '/admin/products')
     }
-};
+
+}

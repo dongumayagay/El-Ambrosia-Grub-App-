@@ -22,7 +22,7 @@ export const actions: Actions = {
             const file_extension = product_image.name.split('.')[1]
 
             const { data: product_image_upload_data, error: err } = await
-                locals.supabaseClient.storage.from('product-images').upload(`${product.id.toString()}.${file_extension}`, product_image)
+                locals.supabaseClient.storage.from('product-images').upload(`${product.id}.${file_extension}`, product_image)
             if (err)
                 return fail(400, { error: err.message })
             if (product_image_upload_data.path) {
