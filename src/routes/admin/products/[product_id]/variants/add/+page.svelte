@@ -15,7 +15,6 @@
 	};
 </script>
 
-<h1>Add variant for {data.product?.name}</h1>
 <form method="post" use:enhance={enhance_function} class="grid">
 	<div class="form-control">
 		<label class="label" for="name">

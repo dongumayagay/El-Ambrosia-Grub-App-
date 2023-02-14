@@ -12,7 +12,7 @@ export const actions: Actions = {
         }
 
 
-        const { error: err } = await locals.supabaseClient.from('product_variants').update(product_variant).eq('id', Number(body.variant_id.toString()))
+        const { error: err } = await locals.supabaseClient.from('product_variants').update(product_variant).eq('id', Number(params.variant_id))
         if (err)
             return fail(400, { error: err.message })
         throw redirect(303, `/admin/products/${params.product_id}/variants`)
