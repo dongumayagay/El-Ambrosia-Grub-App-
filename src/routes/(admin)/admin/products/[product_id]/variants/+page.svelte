@@ -4,7 +4,7 @@
 	import ActionMenuDropdownLinks from '$lib/components/ActionMenuDropdownLinks.svelte';
 	import Table from '$lib/components/Table.svelte';
 	import { currency_formatter } from '$lib/misc/utils';
-	import ProductName from './ProductName.svelte';
+	import ProductName from '../ProductName.svelte';
 
 	export let data: PageData;
 </script>

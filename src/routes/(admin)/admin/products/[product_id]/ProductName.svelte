@@ -5,4 +5,4 @@
 	export let data: PageData;
 </script>
 
-<h1>Product name: {data.product?.name}</h1>
+<h1>Product: {data.product?.name}</h1>
