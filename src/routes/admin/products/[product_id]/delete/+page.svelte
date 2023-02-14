@@ -22,6 +22,7 @@
 {#if product}
 	<ProductInfo {data} />
 	<form method="post" use:enhance={enhance_function} class="grid">
+		<input type="hidden" name="current_image_url" value={data.product?.image_url} />
 		<button disabled={loading} class="btn btn-block btn-error" class:loading>Delete product</button>
 	</form>
 	{#if form?.error}
