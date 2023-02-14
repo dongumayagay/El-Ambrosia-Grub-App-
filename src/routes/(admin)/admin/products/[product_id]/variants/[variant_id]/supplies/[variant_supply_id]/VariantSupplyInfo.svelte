@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { display_property } from '$lib/misc/utils';
+
 	// @ts-ignore
 	import type { PageData } from './$types';
 
@@ -8,14 +10,25 @@
 <div class="grid">
 	<div class="form-control">
 		<label class="label" for="">
-			<span class="label-text">Variant name</span>
+			<span class="label-text">Supply name</span>
 		</label>
-		<input class="input input-bordered" readonly value={data.variant?.name} />
+		<input
+			class="input input-bordered"
+			readonly
+			value={display_property(data.variant_supply?.supplies, 'name')}
+		/>
 	</div>
 	<div class="form-control">
 		<label class="label" for="">
-			<span class="label-text">Price</span>
+			<span class="label-text">Amount will use</span>
 		</label>
-		<input class="input input-bordered" readonly value={data.variant?.price} />
+		<input
+			class="input input-bordered"
+			readonly
+			value={`${data.variant_supply?.amount_use} ${display_property(
+				data.variant_supply?.supplies,
+				'unit'
+			)}`}
+		/>
 	</div>
 </div>

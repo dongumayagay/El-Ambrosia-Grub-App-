@@ -35,6 +35,10 @@
 				<ActionMenuDropdownLinks
 					links={[
 						{
+							name: 'View',
+							path: `/admin/products/${data.product?.id}/variants/${data.variant?.id}/supplies/${variant_supply.id}`
+						},
+						{
 							name: 'Update Info',
 							path: `/admin/products/${data.product?.id}/variants/${data.variant?.id}/supplies/${variant_supply.id}/edit`
 						},
