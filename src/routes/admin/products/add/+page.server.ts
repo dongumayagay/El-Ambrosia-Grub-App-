@@ -1,5 +1,4 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { insert } from 'svelte/internal';
 import type { Actions } from './$types';
 
 export const actions: Actions = {

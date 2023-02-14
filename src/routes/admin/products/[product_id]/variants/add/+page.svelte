@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import NotFound from '$lib/components/NotFound.svelte';
 	import type { PageData, ActionData } from './$types';
 
 	export let form: ActionData;
 	export let data: PageData;
-	const { product } = data;
 	let loading: boolean;
 
 	const enhance_function: SubmitFunction = () => {
@@ -17,53 +15,46 @@
 	};
 </script>
 
-{#if product}
-	<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
-		<h2 class="uppercase">Adding variant for {product.name}</h2>
-		<input type="hidden" name="product_id" value={product.id} />
-		<div class="form-control">
-			<label class="label" for="name">
-				<span class="label-text">Name</span>
-			</label>
-			<input
-				type="text"
-				name="name"
-				placeholder="regular / chicken / steak / etc"
-				class="input input-bordered "
-				required
-			/>
-		</div>
-		<div class="form-control">
-			<label class="label" for="price">
-				<span class="label-text">Price</span>
-			</label>
-			<input type="number" name="price" placeholder="100" class="input input-bordered " required />
-		</div>
+<h1>Add variant for {data.product?.name}</h1>
+<form method="post" use:enhance={enhance_function} class="grid">
+	<div class="form-control">
+		<label class="label" for="name">
+			<span class="label-text">Name</span>
+		</label>
+		<input
+			type="text"
+			name="name"
+			placeholder="regular / chicken / steak / etc"
+			class="input input-bordered "
+			required
+		/>
+	</div>
+	<div class="form-control">
+		<label class="label" for="price">
+			<span class="label-text">Price</span>
+		</label>
+		<input type="number" name="price" placeholder="100" class="input input-bordered " required />
+	</div>
 
-		<br />
-		<button disabled={loading} class="btn btn-block" class:loading>add variant</button>
-		<br />
-		{#if form?.error}
-			<br />
-			<div class="alert alert-error shadow-lg">
-				<div>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="stroke-current flex-shrink-0 h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/></svg
-					>
-					<span>{form.error}</span>
-				</div>
-			</div>
-		{/if}
-	</form>
-{:else}
-	<NotFound />
+	<br />
+	<button disabled={loading} class="btn btn-block" class:loading>add variant</button>
+</form>
+{#if form?.error}
+	<div class="alert alert-error shadow-lg">
+		<div>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="stroke-current flex-shrink-0 h-6 w-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				><path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+				/></svg
+			>
+			<span>{form.error}</span>
+		</div>
+	</div>
 {/if}
