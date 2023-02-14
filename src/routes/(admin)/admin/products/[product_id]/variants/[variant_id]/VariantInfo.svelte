@@ -1,10 +1,12 @@
 <script lang="ts">
 	// @ts-ignore
+	import ProductName from '../../ProductName.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
 
+<ProductName {data} />
 <div class="grid">
 	<div class="form-control">
 		<label class="label" for="">

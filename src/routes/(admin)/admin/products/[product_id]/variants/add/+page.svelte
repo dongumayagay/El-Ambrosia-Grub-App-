@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
+	import ProductName from '../../ProductName.svelte';
+
 	import type { PageData, ActionData } from './$types';
 
 	export let form: ActionData;
@@ -15,10 +17,11 @@
 	};
 </script>
 
+<ProductName {data} />
 <form method="post" use:enhance={enhance_function} class="grid">
 	<div class="form-control">
 		<label class="label" for="name">
-			<span class="label-text">Name</span>
+			<span class="label-text">Variant name</span>
 		</label>
 		<input
 			type="text"
@@ -32,7 +35,16 @@
 		<label class="label" for="price">
 			<span class="label-text">Price</span>
 		</label>
-		<input type="number" name="price" placeholder="100" class="input input-bordered " required />
+		<label class="input-group">
+			<span>₱</span>
+			<input
+				type="number"
+				name="price"
+				placeholder="100"
+				class="input input-bordered w-full "
+				required
+			/>
+		</label>
 	</div>
 
 	<br />

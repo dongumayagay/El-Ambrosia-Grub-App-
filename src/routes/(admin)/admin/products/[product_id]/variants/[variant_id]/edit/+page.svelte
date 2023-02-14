@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import NotFound from '$lib/components/NotFound.svelte';
+	import ProductName from '../../../ProductName.svelte';
 	import type { PageData, ActionData } from './$types';
 
 	export let form: ActionData;
@@ -17,6 +17,7 @@
 	};
 </script>
 
+<ProductName {data} />
 <form method="post" use:enhance={enhance_function} class="grid">
 	<div class="form-control">
 		<label class="label" for="name">
