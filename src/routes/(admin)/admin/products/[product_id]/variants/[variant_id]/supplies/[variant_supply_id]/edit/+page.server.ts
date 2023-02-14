@@ -1,12 +1,5 @@
 import { fail, redirect, } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
-
-export const load = (async ({ params, locals }) => {
-
-    return {
-        variant_supply: await (await locals.supabaseClient.from('variant_supply').select('*,supplies(name,unit)').eq("id", params.variant_supply_id).limit(1).single()).data
-    };
-}) satisfies PageServerLoad;
+import type { Actions } from './$types';
 
 export const actions: Actions = {
     default: async ({ request, locals, params }) => {
