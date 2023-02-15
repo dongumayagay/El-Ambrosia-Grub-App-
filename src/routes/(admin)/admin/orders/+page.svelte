@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Controls from '$lib/components/Controls.svelte';
 	import Table from '$lib/components/Table.svelte';
 	import { Order_States, states } from '$lib/misc/constants';
 	import { currency_formatter, datetime_formatter, display_property } from '$lib/misc/utils';
@@ -9,7 +10,7 @@
 	let order_status_filter: HTMLButtonElement;
 </script>
 
-<nav>
+<Controls>
 	<form method="get">
 		<select
 			class="select select-bordered select-sm text-sm	py-0 capitalize"
@@ -25,7 +26,7 @@
 		</select>
 		<button bind:this={order_status_filter} class="hidden" />
 	</form>
-</nav>
+</Controls>
 <Table table_headers={['order id', 'status', 'date ordered', 'total', 'owner email', '']}>
 	{#each data.orders as order (order.id)}
 		<tr class="hover">
