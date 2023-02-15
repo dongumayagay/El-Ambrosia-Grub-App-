@@ -142,7 +142,6 @@
 				<th class=" bg-brand-tan">Item</th>
 				<th class=" bg-brand-tan">Quantity</th>
 				<th class=" bg-brand-tan">Price</th>
-				<th class=" bg-brand-tan" />
 			</tr>
 		</thead>
 		<tbody>

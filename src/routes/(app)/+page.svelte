@@ -1,15 +1,18 @@
 <div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}>
-	<div class="hero-overlay bg-opacity-60" />
+	<div class="hero-overlay bg-opacity-50" />
 	<div class="hero-content text-center text-neutral-content">
 		<div class="max-w-xl ">
 			<div class="prose">
-				<h1 class="mb-5 text-5xl font-bold  text-brand-red">El Ambrosia</h1>
-				<p class="mb-5 text-brand-tan">
+				<h1 class="mb-5 text-5xl font-bold text-brand-tan">El Ambrosia</h1>
+				<p class="mb-5 	text-white">
 					At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
-					traditional recipes and cooking techniques passed down from generations. Our commitment to
-					quality and flavor is evident in every wrap, making us the perfect choice for anyone
-					looking to satisfy their cravings and experience the true taste of shawarma. So unwrap a
-					world of flavor today and discover the authentic taste of shawarma at El Ambrosia.
+					traditional recipes and cooking techniques passed down from generations.
+					<!-- Our commitment to
+						quality and flavor is evident in every wrap, making us the perfect choice for anyone
+						looking to satisfy their cravings and experience the true taste of shawarma.  -->
+
+					So unwrap a world of flavor today and discover the authentic taste of shawarma at El
+					Ambrosia.
 				</p>
 			</div>
 			<a href="/products" class="btn btn-primary gap-2"
