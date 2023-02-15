@@ -18,7 +18,7 @@
 	};
 </script>
 
-<form method="post" class="w-full max-w-md prose" use:enhance={enhance_function}>
+<form method="post" class="grid" use:enhance={enhance_function}>
 	<div class="form-control">
 		<label class="label" for="threshold">
 			<span class="label-text">Amount will use</span>
@@ -33,7 +33,7 @@
 		/>
 	</div>
 	<br />
-	<button class="btn btn-block" class:loading disabled={loading}>Save update</button>
+	<button class="btn btn-block" class:loading disabled={loading}>update</button>
 </form>
 
 {#if form?.error}
