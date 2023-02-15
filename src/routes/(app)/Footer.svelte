@@ -13,7 +13,11 @@
 	</div>
 	<div>
 		<div class="grid grid-flow-col gap-4">
-			<a aria-label="El Ambrosia Facebook page" href="https://www.facebook.com/ElAmbrosiaph/"
+			<a
+				target="_blank"
+				rel="noreferrer"
+				aria-label="El Ambrosia Facebook page"
+				href="https://www.facebook.com/ElAmbrosiaph/"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -25,7 +29,12 @@
 					/></svg
 				></a
 			>
-			<a aria-label="El Ambrosia Instagram account" href="https://www.instagram.com/el_ambrosiaph/">
+			<a
+				target="_blank"
+				rel="noreferrer"
+				aria-label="El Ambrosia Instagram account"
+				href="https://www.instagram.com/el_ambrosiaph/"
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
