@@ -9,10 +9,16 @@
 	$: fees = JSON.parse(JSON.stringify(data.order.fees));
 </script>
 
-<br />
-<header class="flex flex-col sm:flex-col-reverse">
+<header class="flex flex-col ">
+	<section class="flex sm:justify-center">
+		<ul class="steps steps-vertical sm:steps-horizontal">
+			{#each states as state, index}
+				<li class="step capitalize" class:step-primary={data.order.status >= index}>{state}</li>
+			{/each}
+		</ul>
+	</section>
 	<section>
-		<div class=" grid sm:grid-cols-2 gap-4">
+		<div class=" grid sm:grid-cols-2 gap-x-4">
 			<div class="form-control">
 				<label for="" class="label">
 					<span class="label-text">Order ID</span>
@@ -29,6 +35,14 @@
 					value={datetime_formatter(data.order.created_at)}
 				/>
 			</div>
+			{#if data.order.status > 0}
+				<div class="form-control col-span-full">
+					<label class="label" for="">
+						<span class="label-text">Mode of Payment</span>
+					</label>
+					<input class="input input-bordered " readonly value={data.order.payment_type} />
+				</div>
+			{/if}
 			<div class="form-control">
 				<label for="" class="label">
 					<span class="label-text">First name</span>
@@ -121,13 +135,6 @@
 				/>
 			</div>
 		</div>
-	</section>
-	<section class="flex sm:justify-center">
-		<ul class="steps steps-vertical sm:steps-horizontal">
-			{#each states as state, index}
-				<li class="step capitalize" class:step-primary={data.order.status >= index}>{state}</li>
-			{/each}
-		</ul>
 	</section>
 </header>
 <br />
@@ -225,3 +232,10 @@
 	</ul>
 	<br />
 </div>
+{#if data.order.pay_on_delivery_id_url}
+	<img
+		src={data.order.pay_on_delivery_id_url}
+		alt="valid id of the order owner for verification"
+		class=" w-full max-w-lg mx-auto"
+	/>
+{/if}

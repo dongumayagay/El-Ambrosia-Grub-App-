@@ -27,7 +27,9 @@
 		<button bind:this={order_status_filter} class="hidden" />
 	</form>
 </Controls>
-<Table table_headers={['order id', 'status', 'date ordered', 'total', 'owner email', '']}>
+<Table
+	table_headers={['order id', 'status', 'date ordered', 'total', 'owner email', 'payment type', '']}
+>
 	{#each data.orders as order (order.id)}
 		<tr class="hover">
 			<td>{order.id}</td>
@@ -35,6 +37,7 @@
 			<td>{datetime_formatter(order.created_at)}</td>
 			<td>{currency_formatter(order.total)}</td>
 			<td>{display_property(order.profiles, 'email_address')}</td>
+			<td>{order?.payment_type ?? '-'}</td>
 			<td
 				><a href={`/admin/orders/${order.id}`} class="btn btn-outline btn-sm">
 					View order details
