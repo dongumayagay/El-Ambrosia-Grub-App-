@@ -238,4 +238,5 @@
 		alt="valid id of the order owner for verification"
 		class=" w-full max-w-lg mx-auto"
 	/>
+	<br />
 {/if}
