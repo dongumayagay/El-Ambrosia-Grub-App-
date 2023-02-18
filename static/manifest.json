@@ -1,0 +1,17 @@
+{
+	"name": "El Ambrosia",
+	"short_name": "El Ambrosia",
+	"description": "Authentic shawarma",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#a90003",
+	"theme_color": "#a90003",
+	"icons": [
+		{
+			"src": "favicon.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}
