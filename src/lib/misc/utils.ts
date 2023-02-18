@@ -30,3 +30,12 @@ export function getTodayDatetimeRange(): { start: string, end: string } {
     const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59, 999).toISOString();
     return { start: startOfToday, end: endOfToday };
 }
+
+export function getImageNameFromLink(link: string): string {
+    const splitLink = link.split('/');
+    const imageNameWithExtension = splitLink[splitLink.length - 1];
+    const splitName = imageNameWithExtension.split('.');
+    const imageName = splitName[0];
+    const imageFormat = splitName[1];
+    return `${imageName}.${imageFormat}`;
+}

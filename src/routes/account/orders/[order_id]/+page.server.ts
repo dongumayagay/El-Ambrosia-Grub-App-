@@ -92,6 +92,7 @@ export const actions: Actions = {
         throw redirect(303, resp.invoice_url)
 
     },
+
     pay_on_delivery: async ({ params, locals, request, url }) => {
         const body = Object.fromEntries(await request.formData())
 

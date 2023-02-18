@@ -1,4 +1,6 @@
 
+import { Order_States } from '$lib/misc/constants';
+import { getImageNameFromLink } from '$lib/misc/utils';
 import { error, fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -20,7 +22,7 @@ export const actions: Actions = {
         const next_status = Number(data.get('status'))
         if (isNaN(next_status)) return fail(404)
 
-        if (next_status === 2) {
+        if (next_status === Order_States['in progress']) {
             console.log('reduce supply related to the order items')
 
             const { data: order_items, error: err_order_items } = await locals.supabaseClient.from('order_items').select('*').eq('order_id', params.order_id)
@@ -28,7 +30,6 @@ export const actions: Actions = {
                 console.log(err_order_items)
                 return fail(500, { error: JSON.stringify(err_order_items, null, 2) })
             }
-
 
             const order_items_supplies = (await Promise.all(order_items.map(async (order_item) => {
                 const { data: order_item_supplies, error: err_order_item_supplies } = await locals.supabaseClient.from('variant_supply').select('*').eq('variant_id', order_item.variant_id)
@@ -51,6 +52,20 @@ export const actions: Actions = {
                     , amount: Math.abs(item.value) * -1
                 })
             ))
+        }
+
+        if (next_status === Order_States.completed) {
+            const pay_on_delivery_id_url = data.get('pay_on_delivery_id_url')?.toString()
+            if (!pay_on_delivery_id_url) throw error(400)
+
+            const image_name = getImageNameFromLink(pay_on_delivery_id_url)
+
+            const remove_image_error = (await locals.supabaseClient.storage.from('pay-on-delivery-ids').remove([image_name])).error
+            if (remove_image_error) throw error(500, remove_image_error)
+
+            const update_order_error = (await locals.supabaseClient.from('orders').update({ pay_on_delivery_id_url: null }).eq('id', params.order_id)).error
+            if (update_order_error) throw error(500, update_order_error)
+
         }
 
         const { error: err_order_update } = await locals.supabaseClient.from('orders').update({ status: next_status }).eq('id', params.order_id)
