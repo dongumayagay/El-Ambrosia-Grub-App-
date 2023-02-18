@@ -1,10 +1,10 @@
 import { i } from '$lib/payment/xendit.server';
 import type { InvoiceResponse } from '$lib/types/custom';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
-export const load = (async ({ locals, params }) => {
-
+export const load = (async ({ locals, params, }) => {
+    console.log('load trigger')
     return {
         order: await (await locals.supabaseClient.from('orders').select('*,order_address(*)').eq('id', params.order_id).limit(1).single()).data,
         order_items: await (await locals.supabaseClient.from('order_items').select('*,products(*),product_variants(*)').eq('order_id', params.order_id)).data
@@ -13,7 +13,7 @@ export const load = (async ({ locals, params }) => {
 
 export const actions: Actions = {
 
-    pay: async ({ locals, params, url }) => {
+    pay_online: async ({ locals, params, url }) => {
         if (!locals.session) throw error(401)
 
         const { data: order, error: err_order } = await locals.supabaseClient.from('orders').select('*,order_address(*)').eq('id', params.order_id).limit(1).single()
@@ -91,6 +91,37 @@ export const actions: Actions = {
 
         throw redirect(303, resp.invoice_url)
 
+    },
+    pay_on_delivery: async ({ params, locals, request, url }) => {
+        const body = Object.fromEntries(await request.formData())
+
+        const order_user_id_image = body.order_user_id_image as Blob
+        if (!order_user_id_image) {
+            console.log('user id image')
+            return fail(400, { error: 'user id image' })
+        }
+
+        const file_extension = order_user_id_image.name.split('.')[1]
+        const new_image_path = `${params.order_id}.${file_extension}`
+        const { data: upload_data, error: upload_error } = await locals.supabaseClient.storage.from('pay-on-delivery-ids').upload(new_image_path, order_user_id_image, { upsert: true })
+        if (upload_error) {
+            console.log(upload_error)
+            return fail(500, { error: JSON.stringify(upload_error) })
+        }
+
+        const { data: { publicUrl } } = locals.supabaseClient.storage.from('pay-on-delivery-ids').getPublicUrl(upload_data.path)
+
+
+        const { error: order_update_error } = await locals.supabaseClient.from('orders').update({ payment_type: 'on delivery', pay_on_delivery_id_url: publicUrl }).eq('id', params.order_id)
+        if (order_update_error) {
+            console.log(order_update_error)
+            return fail(500, { error: JSON.stringify(order_update_error) })
+        }
+
+
+        await locals.supabaseClient.rpc('order_next_status', { order_id: Number(params.order_id) })
+        console.log('done')
+        throw redirect(303, url.pathname)
     },
 
     cancel: async ({ locals, params }) => {

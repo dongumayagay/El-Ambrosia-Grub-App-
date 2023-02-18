@@ -29,7 +29,7 @@ export const actions: Actions = {
         }
 
         // get url of the upload data
-        const image_url = await locals.supabaseClient.storage.from('product-images').getPublicUrl(upload_data.path).data.publicUrl
+        const image_url = locals.supabaseClient.storage.from('product-images').getPublicUrl(upload_data.path).data.publicUrl
 
         //update product info
         const { error: err_product_update } = await locals.supabaseClient.from('products').update({

@@ -13,6 +13,16 @@
 		numbers when customers place an order through our website or app. This information is used to
 		process orders, to provide customer support, and to send updates and promotional offers.
 	</p>
+	<p id="#protect-from-scam">
+		By placing an order on our website, you agree to provide a valid form of identification for the
+		purpose of verifying that the order is legitimate and not fraudulent, a scam, prank, or
+		otherwise malicious in nature. We collect and use this information solely for the protection of
+		our business and to ensure that our customers' orders are legitimate. Once the order has been
+		completed, your identification information will be securely deleted and not retained in our
+		systems or shared with any third parties, except as required by law. By agreeing to these terms,
+		you acknowledge and agree that we may request and use your valid identification solely for the
+		purposes stated herein.
+	</p>
 	<h2>Cookies and Tracking Technologies</h2>
 
 	<p>
