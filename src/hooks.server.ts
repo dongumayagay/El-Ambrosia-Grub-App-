@@ -2,7 +2,7 @@ import '$lib/db/client'
 import '$lib/db/admin.server'
 import { getUserRole, ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 import { getSupabase, } from '@supabase/auth-helpers-sveltekit';
-import { redirect, error, type Handle } from '@sveltejs/kit';
+import { error, type Handle } from '@sveltejs/kit';
 import { supabaseAdmin } from '$lib/db/admin.server';
 
 export const handle: Handle = async ({ event, resolve }) => {

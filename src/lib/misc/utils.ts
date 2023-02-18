@@ -7,6 +7,7 @@ export const datetime_formatter = (date: string | null | undefined) =>
 export const currency_formatter = (value: number) =>
     CURRENCY_FORMAT.format(value)
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function display_property(object: any, property: string) {
     return object[property];
 }
