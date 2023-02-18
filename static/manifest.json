@@ -22,12 +22,12 @@
 	],
 	"shortcuts": [
 		{
-			"name": "My bag",
-			"url": "/bag"
-		},
-		{
 			"name": "View my orders",
 			"url": "/account/orders"
+		},
+		{
+			"name": "My bag",
+			"url": "/bag"
 		}
 	]
 }

@@ -72,8 +72,8 @@
 			</svelte:fragment>
 		</TopNavigationBar>
 		<main
-			class={`flex flex-col flex-1 gap-3
-			${should_have_drawer ? 'px-4 py-3' : ''}`}
+			class={`flex flex-col flex-1
+			${should_have_drawer ? 'gap-3 px-4 py-3' : ''}`}
 		>
 			<slot />
 		</main>
