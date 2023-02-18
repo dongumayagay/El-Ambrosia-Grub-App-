@@ -204,6 +204,7 @@
 			{/each}
 		</tbody>
 	</table>
+	<br />
 	<ul class="flex flex-col gap-4 px-4">
 		<li class="flex justify-between">
 			<span>Subtotal </span>
