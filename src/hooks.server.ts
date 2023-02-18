@@ -2,7 +2,7 @@ import '$lib/db/client'
 import '$lib/db/admin.server'
 import { getUserRole, ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
 import { getSupabase, } from '@supabase/auth-helpers-sveltekit';
-import { error, type Handle } from '@sveltejs/kit';
+import { error, redirect, type Handle } from '@sveltejs/kit';
 import { supabaseAdmin } from '$lib/db/admin.server';
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -15,11 +15,10 @@ export const handle: Handle = async ({ event, resolve }) => {
     event.locals.supabaseAdmin = supabaseAdmin
     event.locals.user_role = session ? await getUserRole(supabaseClient, session.user.id) : null
 
-
-    if (
-        (event.url.pathname.startsWith('/account') && !session)
-        ||
-        event.url.pathname.startsWith('/admin') && !session) {
+    if (event.url.pathname.startsWith('/account') && !session) {
+        throw redirect(303, '/login')
+    }
+    if (event.url.pathname.startsWith('/admin') && !session) {
         throw error(401, 'Please logged-in to continue')
     }
     if (

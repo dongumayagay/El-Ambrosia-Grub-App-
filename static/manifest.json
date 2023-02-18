@@ -19,5 +19,11 @@
 			"type": "image/png",
 			"purpose": "maskable"
 		}
+	],
+	"shortcuts": [
+		{
+			"name": "My bag",
+			"url": "/bag"
+		}
 	]
 }
