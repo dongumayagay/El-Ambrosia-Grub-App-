@@ -107,7 +107,7 @@ export interface Database {
           invoice_id: string | null
           owner_id: string
           pay_on_delivery_id_url: string | null
-          payment_type: string
+          payment_type: string | null
           status: number
           subtotal: number
           total: number
@@ -120,7 +120,7 @@ export interface Database {
           invoice_id?: string | null
           owner_id: string
           pay_on_delivery_id_url?: string | null
-          payment_type?: string
+          payment_type?: string | null
           status: number
           subtotal: number
           total: number
@@ -133,31 +133,11 @@ export interface Database {
           invoice_id?: string | null
           owner_id?: string
           pay_on_delivery_id_url?: string | null
-          payment_type?: string
+          payment_type?: string | null
           status?: number
           subtotal?: number
           total?: number
           total_quantity?: number
-        }
-      }
-      payments: {
-        Row: {
-          created_at: string
-          id: number
-          order_id: number
-          payload: Json
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-          order_id: number
-          payload: Json
-        }
-        Update: {
-          created_at?: string
-          id?: number
-          order_id?: number
-          payload?: Json
         }
       }
       product_variants: {

@@ -12,8 +12,6 @@ export const POST: RequestHandler = async ({ request, locals }) => {
         if (err) throw error(500, err)
         const { error: err2 } = await locals.supabaseClient.from('orders').update({ payment_type: 'online' }).eq('id', Number(data.external_id))
         if (err2) throw error(500, err2)
-        const { error: err3 } = await locals.supabaseClient.from('payments').insert({ 'order_id': Number(data.external_id), payload: data })
-        if (err3) throw error(500, err3)
     }
     return new Response();
 };
