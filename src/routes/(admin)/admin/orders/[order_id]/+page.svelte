@@ -22,6 +22,11 @@
 		<OrderDetails {data} />
 		{#if data.order.status !== 0 && data.order.status < states.length - 1}
 			<form method="post" class="gap-4 flex flex-col" use:enhance={enhance_function}>
+				<input
+					type="hidden"
+					name="pay_on_delivery_id_url"
+					value={data.order.pay_on_delivery_id_url}
+				/>
 				<button
 					class="btn btn-block"
 					name="status"

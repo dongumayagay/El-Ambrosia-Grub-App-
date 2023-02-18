@@ -7,7 +7,7 @@
 <div class=" grid sm:grid-cols-2 gap-4">
 	<div class="form-control">
 		<label class="label" for="first_name">
-			<span class="label-text">First name</span>
+			<span class="label-text">First name*</span>
 		</label>
 		<input
 			type="text"
@@ -20,7 +20,7 @@
 	</div>
 	<div class="form-control">
 		<label class="label" for="last_name">
-			<span class="label-text">Last name</span>
+			<span class="label-text">Last name*</span>
 		</label>
 		<input
 			type="text"
@@ -33,7 +33,7 @@
 	</div>
 	<div class="form-control col-span-full">
 		<label class="label" for="phone_number">
-			<span class="label-text">Phone number</span>
+			<span class="label-text">Phone number*</span>
 		</label>
 		<input
 			type="tel"
@@ -48,12 +48,12 @@
 	</div>
 	<div class="form-control col-span-full">
 		<label class="label" for="street_line1">
-			<span class="label-text">Street line 1</span>
+			<span class="label-text">Street line 1*</span>
 		</label>
 		<input
 			type="text"
 			name="street_line1"
-			placeholder="Street line 1"
+			placeholder="Blk 6 Lot 9, Mabini Street"
 			class="input input-bordered "
 			required
 			value={data.address?.street_line1 ?? ''}
@@ -66,14 +66,14 @@
 		<input
 			type="text"
 			name="street_line2"
-			placeholder="Street line 2"
+			placeholder="Apartment 123"
 			class="input input-bordered "
 			value={data.address?.street_line2 ?? ''}
 		/>
 	</div>
 	<div class="form-control col-span-full">
 		<label for="" class="label">
-			<span class="label-text">Select location</span>
+			<span class="label-text">Select location*</span>
 		</label>
 		<select
 			name=""
