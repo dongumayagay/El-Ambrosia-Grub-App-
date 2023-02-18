@@ -16,100 +16,94 @@
 	};
 </script>
 
-{#if data.delivery_location}
-	<form method="post" use:enhance={enhance_function} class="w-full max-w-md prose">
-		<h2>Remove delivery location</h2>
-		<div class="form-control">
-			<label class="label" for="unit">
-				<span class="label-text">City / Municipality</span>
-			</label>
+<form method="post" use:enhance={enhance_function} class="grid">
+	<h2>Remove delivery location</h2>
+	<div class="form-control">
+		<label class="label" for="unit">
+			<span class="label-text">City / Municipality</span>
+		</label>
+		<input
+			readonly
+			type="text"
+			name="city"
+			placeholder="City / Municipality"
+			class="input input-bordered "
+			required
+			value={data.delivery_location?.city}
+		/>
+	</div>
+	<div class="form-control">
+		<label class="label" for="state">
+			<span class="label-text">Province</span>
+		</label>
+		<input
+			readonly
+			type="text"
+			name="state"
+			placeholder="Province"
+			class="input input-bordered "
+			required
+			value={data.delivery_location?.state}
+		/>
+	</div>
+	<div class="form-control">
+		<label class="label" for="postal_code">
+			<span class="label-text">Postal code</span>
+		</label>
+		<input
+			readonly
+			type="number"
+			name="postal_code"
+			placeholder="Postal code"
+			class="input input-bordered "
+			required
+			value={data.delivery_location?.postal_code}
+		/>
+	</div>
+	<div class="form-control">
+		<label class="label" for="fee">
+			<span class="label-text">Delivery fee</span>
+		</label>
+		<input
+			readonly
+			type="number"
+			name="fee"
+			placeholder="Delivery fee"
+			class="input input-bordered "
+			required
+			value={data.delivery_location?.fee}
+		/>
+	</div>
+	<div class="form-control">
+		<label class="label cursor-pointer">
+			<span class="label-text">Enable</span>
 			<input
-				disabled
-				type="text"
-				name="city"
-				placeholder="City / Municipality"
-				class="input input-bordered "
-				required
-				value={data.delivery_location.city}
+				readonly
+				type="checkbox"
+				name="enable"
+				class="toggle"
+				checked={data.delivery_location?.enable}
 			/>
+		</label>
+	</div>
+	<button disabled={loading} class="btn btn-block" class:loading>remove</button>
+</form>
+{#if form?.error}
+	<div class="alert alert-error shadow-lg">
+		<div>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="stroke-current flex-shrink-0 h-6 w-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				><path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+				/></svg
+			>
+			<span>{form.error}</span>
 		</div>
-		<div class="form-control">
-			<label class="label" for="state">
-				<span class="label-text">Province</span>
-			</label>
-			<input
-				disabled
-				type="text"
-				name="state"
-				placeholder="Province"
-				class="input input-bordered "
-				required
-				value={data.delivery_location.state}
-			/>
-		</div>
-		<div class="form-control">
-			<label class="label" for="postal_code">
-				<span class="label-text">Postal code</span>
-			</label>
-			<input
-				disabled
-				type="number"
-				name="postal_code"
-				placeholder="Postal code"
-				class="input input-bordered "
-				required
-				value={data.delivery_location.postal_code}
-			/>
-		</div>
-		<div class="form-control">
-			<label class="label" for="fee">
-				<span class="label-text">Delivery fee</span>
-			</label>
-			<input
-				disabled
-				type="number"
-				name="fee"
-				placeholder="Delivery fee"
-				class="input input-bordered "
-				required
-				value={data.delivery_location.fee}
-			/>
-		</div>
-		<div class="form-control">
-			<label class="label cursor-pointer">
-				<span class="label-text">Enable</span>
-				<input
-					disabled
-					type="checkbox"
-					name="enable"
-					class="toggle"
-					checked={data.delivery_location.enable}
-				/>
-			</label>
-		</div>
-		<br />
-		<button disabled={loading} class="btn btn-block" class:loading>remove</button>
-		{#if form?.error}
-			<br />
-			<div class="alert alert-error shadow-lg">
-				<div>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="stroke-current flex-shrink-0 h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/></svg
-					>
-					<span>{form.error}</span>
-				</div>
-			</div>
-		{/if}
-	</form>
-{:else}
-	<NotFound />
+	</div>
 {/if}

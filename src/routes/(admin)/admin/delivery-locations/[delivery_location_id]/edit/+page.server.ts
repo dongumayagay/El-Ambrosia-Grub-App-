@@ -1,12 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
+import type { Actions } from './$types';
 
 
-export const load = (async ({ params, locals }) => {
-    return {
-        delivery_location: await (await locals.supabaseClient.from('delivery-locations').select('*').eq('id', params.delivery_location_id).limit(1).single()).data
-    };
-}) satisfies PageServerLoad;
 
 export const actions: Actions = {
     default: async ({ request, locals, params }) => {

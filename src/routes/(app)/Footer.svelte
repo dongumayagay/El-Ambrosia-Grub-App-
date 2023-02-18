@@ -49,6 +49,7 @@
 		</div>
 	</div>
 	<div>
+		<p class=" text-brand-tan">Design and Develop by Software Corps</p>
 		<p>Copyright © 2023 - All right reserved</p>
 	</div>
 </footer>
