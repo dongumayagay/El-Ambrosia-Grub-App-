@@ -106,6 +106,8 @@ export interface Database {
           id: number
           invoice_id: string | null
           owner_id: string
+          pay_on_delivery_id_url: string | null
+          payment_type: string
           status: number
           subtotal: number
           total: number
@@ -117,6 +119,8 @@ export interface Database {
           id?: number
           invoice_id?: string | null
           owner_id: string
+          pay_on_delivery_id_url?: string | null
+          payment_type?: string
           status: number
           subtotal: number
           total: number
@@ -128,6 +132,8 @@ export interface Database {
           id?: number
           invoice_id?: string | null
           owner_id?: string
+          pay_on_delivery_id_url?: string | null
+          payment_type?: string
           status?: number
           subtotal?: number
           total?: number
