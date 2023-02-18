@@ -1,4 +1,5 @@
 import { i } from '$lib/payment/xendit.server';
+import type { InvoiceResponse } from '$lib/types/custom';
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -15,7 +16,7 @@ export const actions: Actions = {
     pay: async ({ locals, params, url }) => {
         if (!locals.session) throw error(401)
 
-        let { data: order, error: err_order } = await locals.supabaseClient.from('orders').select('*,order_address(*)').eq('id', params.order_id).limit(1).single()
+        const { data: order, error: err_order } = await locals.supabaseClient.from('orders').select('*,order_address(*)').eq('id', params.order_id).limit(1).single()
         if (!order || err_order) {
             console.log(err_order)
             throw error(404, JSON.stringify(err_order, null, 2))
@@ -28,8 +29,8 @@ export const actions: Actions = {
         }
 
 
-        const order_address = order.order_address as any
-        if (order_address === null) throw error(500)
+        const order_address = order.order_address
+        if (!order_address || Array.isArray(order_address)) throw error(500)
 
 
 
@@ -62,27 +63,34 @@ export const actions: Actions = {
             fees: JSON.parse(JSON.stringify(order.fees)),
             invoiceDuration: 60 * 5,
             items: order_items.map(
-                item => ({
-                    // @ts-ignore
-                    name: item.product_variants.name + ' ' + item.products.name,
-                    quantity: item.quantity,
-                    // @ts-ignore
-                    price: item.product_variants.price
-                })
+                item => {
+
+                    if (!item.products || Array.isArray(item.products) ||
+                        !item.product_variants || Array.isArray(item.product_variants))
+                        throw error(500)
+
+                    return {
+                        name: item.product_variants.name + ' ' + item.products.name,
+                        quantity: item.quantity,
+                        price: item.product_variants.price
+                    }
+                }
+
             ),
             payerEmail: locals.session.user.email,
             locale: 'en',
             shouldSendEmail: true,
             failureRedirectURL: `${url.origin}/account/orders/${params.order_id}`,
             successRedirectURL: `${url.origin}/account/orders/${params.order_id}`
-        })
+        }) as InvoiceResponse
 
-        // @ts-ignore
-        const { error: err_invoice_update } = await locals.supabaseClient.from('orders').update({ invoice_id: resp.id }).eq('id', params.order_id)
+        const { error: err_invoice_update } = await locals.supabaseClient.from('orders').update({
+            invoice_id: resp.id
+        }).eq('id', params.order_id)
         if (err_invoice_update) throw error(500, err_invoice_update)
 
-        // @ts-ignore
         throw redirect(303, resp.invoice_url)
+
     },
 
     cancel: async ({ locals, params }) => {
