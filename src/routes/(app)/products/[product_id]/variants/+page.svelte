@@ -35,7 +35,7 @@
 {#if data.product && data.variants}
 	<main class="py-32">
 		<nav class=" w-full max-w-6xl mx-auto p-4">
-			<button class="btn btn-sm btn-secondary gap-2">
+			<button on:click={() => goto('/products')} class="btn btn-sm btn-secondary gap-2">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"

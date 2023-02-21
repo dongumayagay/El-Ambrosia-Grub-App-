@@ -166,18 +166,21 @@ export interface Database {
           id: number
           image_url: string | null
           name: string
+          updated_at: string
         }
         Insert: {
           description: string
           id?: number
           image_url?: string | null
           name: string
+          updated_at?: string
         }
         Update: {
           description?: string
           id?: number
           image_url?: string | null
           name?: string
+          updated_at?: string
         }
       }
       profiles: {
