@@ -40,6 +40,7 @@ export const actions: Actions = {
                 fees,
                 subtotal,
                 total,
+                notes: body.notes.toString()
             }).select('id').limit(1).single()
 
             if (err_order || order === null)

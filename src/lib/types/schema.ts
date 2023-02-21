@@ -105,6 +105,7 @@ export interface Database {
           fees: Json
           id: number
           invoice_id: string | null
+          notes: string
           owner_id: string
           pay_on_delivery_id_url: string | null
           payment_type: string | null
@@ -118,6 +119,7 @@ export interface Database {
           fees?: Json
           id?: number
           invoice_id?: string | null
+          notes?: string
           owner_id: string
           pay_on_delivery_id_url?: string | null
           payment_type?: string | null
@@ -131,6 +133,7 @@ export interface Database {
           fees?: Json
           id?: number
           invoice_id?: string | null
+          notes?: string
           owner_id?: string
           pay_on_delivery_id_url?: string | null
           payment_type?: string | null

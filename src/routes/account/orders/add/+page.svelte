@@ -45,6 +45,13 @@
 		</div>
 		<br />
 		<OrderItems />
+		<div class="form-control">
+			<label class="label" for="">
+				<span class="label-text">Notes</span>
+			</label>
+			<textarea class="textarea textarea-bordered h-32" placeholder="Message..." name="notes" />
+		</div>
+		<br />
 		<FeesAndTotal {data} />
 		<br />
 		<button
