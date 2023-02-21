@@ -211,6 +211,18 @@
 			{/each}
 		</tbody>
 	</table>
+	<div class="form-control">
+		<label class="label" for="">
+			<span class="label-text">Notes</span>
+		</label>
+		<textarea
+			class="textarea textarea-bordered h-32"
+			placeholder="Message..."
+			name="notes"
+			readonly
+			value={data.order.notes}
+		/>
+	</div>
 	<br />
 	<ul class="flex flex-col gap-4 px-4">
 		<li class="flex justify-between">
