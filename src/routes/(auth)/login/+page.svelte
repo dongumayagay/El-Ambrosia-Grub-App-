@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
+	import SocialSignin from '../SocialSignin.svelte';
 	import type { ActionData, PageData } from './$types';
 
 	// export let data: PageData;
@@ -47,6 +48,10 @@
 	<div class="form-control">
 		<label class="label" for="password"> <span class="label-text">Password</span> </label>
 		<input type="password" name="password" placeholder="Password" class="input input-bordered" />
+		<label class="label" for="">
+			<span class="label-text-alt" />
+			<span class="label-text-alt"> <a href="/forgot-password"> Forgot password?</a></span>
+		</label>
 	</div>
 	<br />
 	<button class="btn btn-block" class:loading disabled={loading}>Sign me in</button>
@@ -54,3 +59,4 @@
 	<br />
 	<a class="text-center" href="/register">Don't have an account yet? Create one</a>
 </form>
+<SocialSignin />

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
+	import SocialSignin from '../SocialSignin.svelte';
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
@@ -53,3 +54,4 @@
 	<br />
 	<a class="text-center" href="/login">Already have and account? Login</a>
 </form>
+<SocialSignin />
