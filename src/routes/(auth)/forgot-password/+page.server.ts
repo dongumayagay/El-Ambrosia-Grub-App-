@@ -8,11 +8,12 @@ export const load = (async () => {
 
 export const actions: Actions = {
 
-    default: async ({ request, locals }) => {
+    default: async ({ request, locals, url }) => {
         const data = await request.formData()
         const email = data.get('email')?.toString()
         if (!email) return fail(400, { error: 'please provide email' })
-        console.log(email)
+        const { error } = await locals.supabaseClient.auth.resetPasswordForEmail(email, { redirectTo: `${url.origin}` })
+        if (error) return fail(500, { error: error.message })
         return { success: true }
     }
 };

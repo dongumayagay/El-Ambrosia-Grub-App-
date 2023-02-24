@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { supabaseClient } from '$lib/db/client';
-	import { invalidateAll, invalidate } from '$app/navigation';
+	import { invalidateAll, invalidate, goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
 	import TopNavigationBar from '$lib/components/navbar/TopNavigationBar.svelte';
@@ -11,7 +11,10 @@
 	onMount(() => {
 		const {
 			data: { subscription }
-		} = supabaseClient.auth.onAuthStateChange(() => {
+		} = supabaseClient.auth.onAuthStateChange((event) => {
+			if (event === 'PASSWORD_RECOVERY') {
+				goto('/account/change-password');
+			}
 			invalidate('supabase:auth');
 			invalidateAll();
 		});
