@@ -1,9 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
-export const load = (async () => {
-    return {};
-}) satisfies PageServerLoad;
 
 export const actions: Actions = {
     default: async ({ locals, request }) => {

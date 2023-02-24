@@ -12,7 +12,7 @@ export const actions: Actions = {
         const data = await request.formData()
         const email = data.get('email')?.toString()
         if (!email) return fail(400, { error: 'please provide email' })
-        const { error } = await locals.supabaseClient.auth.resetPasswordForEmail(email, { redirectTo: `${url.origin}` })
+        const { error } = await locals.supabaseClient.auth.resetPasswordForEmail(email, { redirectTo: `${url.origin}/change-password` })
         if (error) return fail(500, { error: error.message })
         return { success: true }
     }

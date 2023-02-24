@@ -13,7 +13,7 @@
 			data: { subscription }
 		} = supabaseClient.auth.onAuthStateChange((event) => {
 			if (event === 'PASSWORD_RECOVERY') {
-				goto('/account/change-password');
+				goto('/change-password');
 			}
 			invalidate('supabase:auth');
 			invalidateAll();

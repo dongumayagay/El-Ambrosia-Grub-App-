@@ -50,6 +50,6 @@ export function get_account_links(provider: string): Link[] {
     return [...account_links,
     {
         name: "Change password",
-        path: "/account/change-password",
+        path: "/change-password",
     }]
 }
