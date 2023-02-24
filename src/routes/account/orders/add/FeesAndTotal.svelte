@@ -2,7 +2,6 @@
 	import type { PageData } from './$types';
 	import { currency_formatter } from '$lib/misc/utils';
 	import cart from '$lib/stores/cart';
-
 	export let data: PageData;
 
 	const { subtotal } = cart;

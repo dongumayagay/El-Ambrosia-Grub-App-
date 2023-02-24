@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { admin_links, account_links } from '$lib/misc/constants';
-	// import { ROLES_ALLOWED_IN_ADMIN } from '$lib/db/client';
+	import { admin_links } from '$lib/misc/constants';
+	import { get_account_links } from '$lib/misc/utils';
+
 	import { createEventDispatcher } from 'svelte';
 	$: links = get_drawer_links($page.url.pathname);
 
 	function get_drawer_links(pathname: string) {
 		if (pathname.startsWith('/admin')) return admin_links;
-		if (pathname.startsWith('/account')) return account_links;
+		if (pathname.startsWith('/account'))
+			return get_account_links($page.data.session?.user.app_metadata.provider ?? '');
 		return [];
 	}
 

@@ -115,3 +115,7 @@ export interface FeesEntity {
     type: string;
     value: number;
 }
+
+export interface PathMap {
+    [roleOrProperty: string]: Link[];
+}

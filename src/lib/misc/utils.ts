@@ -1,3 +1,6 @@
+import type { Link } from "$lib/types/custom";
+import { account_links } from "./constants";
+
 const DATE_TIME_FORMAT = new Intl.DateTimeFormat('en-ph', { dateStyle: "full", timeStyle: "short" })
 const CURRENCY_FORMAT = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', minimumFractionDigits: 2, });
 
@@ -39,4 +42,14 @@ export function getImageNameFromLink(link: string): string {
     const imageName = splitName[0];
     const imageFormat = splitName[1];
     return `${imageName}.${imageFormat}`;
+}
+
+
+export function get_account_links(provider: string): Link[] {
+    if (provider !== 'email') return account_links
+    return [...account_links,
+    {
+        name: "Change password",
+        path: "/account/change-password",
+    }]
 }

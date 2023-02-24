@@ -1,6 +1,7 @@
 import type { Link } from "$lib/types/custom";
+// import type { Link, PathMap } from "$lib/types/custom";
 
-export let admin_links: Link[] = [
+export const admin_links: Link[] = [
     {
         name: "admin dashboard", path: "/admin/dashboard"
     },
@@ -18,7 +19,7 @@ export let admin_links: Link[] = [
     }
 
 ]
-export let account_links: Link[] = [
+export const account_links: Link[] = [
     {
         name: "contact info", path: "/account/profile/edit"
     },
@@ -37,3 +38,30 @@ export enum Order_States {
 }
 
 export const states = Object.keys(Order_States).filter((v) => isNaN(Number(v)));
+
+
+
+// const paths: PathMap = {
+//     admin: [
+//         { path: '/dashboard', name: 'Dashboard' },
+//         { path: '/users', name: 'Users' },
+//         { path: '/settings', name: 'Settings' },
+//     ],
+//     superadmin: [
+//         { path: '/dashboard', name: 'Dashboard' },
+//         { path: '/users', name: 'Users' },
+//         { path: '/settings', name: 'Settings' },
+//         { path: '/admin', name: 'Admin' },
+//     ],
+//     google: [
+//         { path: '/profile', name: 'Profile' },
+//         { path: '/settings', name: 'Settings' },
+//     ],
+//     default: [
+//         { path: '/home', name: 'Home' },
+//         { path: '/about', name: 'About' },
+//         { path: '/contact', name: 'Contact' },
+//     ],
+// };
+
+
