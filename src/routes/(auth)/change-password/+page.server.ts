@@ -1,5 +1,5 @@
 import { fail } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
+import type { Actions } from './$types';
 
 
 export const actions: Actions = {
