@@ -45,18 +45,15 @@
 		use:enhance={enhance_function}
 	>
 		<h3 class="font-bold text-lg">Upload ID for order verification</h3>
-		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-		<div tabindex="0" class="collapse collapse-arrow border border-base-300">
-			<div class="collapse-title">Why need this?</div>
-			<div class="collapse-content">
-				<p>
-					For pay on delivery orders, we require a valid form of identification for order
-					verification purposes to ensure the security and legitimacy of our transactions. Your ID
-					will be securely deleted once your order has been completed and will not be retained or
-					shared with any third parties, except as required by law. If you choose to pay online,
-					this requirement will not apply.
-				</p>
-			</div>
+		<div class="">
+			<h2 class="font-semibold text-sm">Why need this?</h2>
+			<p class=" text-xs">
+				For pay on delivery orders, we require a valid form of identification for order verification
+				purposes to ensure the security and legitimacy of our transactions. Your ID will be securely
+				deleted once your order has been completed and will not be retained or shared with any third
+				parties, except as required by law. If you choose to pay online, this requirement will not
+				apply.
+			</p>
 		</div>
 		<br />
 		{#if image_preview}
