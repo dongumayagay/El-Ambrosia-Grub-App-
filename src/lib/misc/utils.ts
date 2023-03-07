@@ -1,4 +1,5 @@
 import type { Link } from "$lib/types/custom";
+import type Mail from "nodemailer/lib/mailer";
 import { account_links } from "./constants";
 
 const DATE_TIME_FORMAT = new Intl.DateTimeFormat('en-ph', { dateStyle: "full", timeStyle: "short" })
@@ -52,4 +53,18 @@ export function get_account_links(provider: string): Link[] {
         name: "Change password",
         path: "/change-password",
     }]
+}
+
+
+export async function send_email(mailOptions: Mail.Options) {
+    try {
+        const response = await fetch('/api/send-email', {
+            method: 'POST',
+            body: JSON.stringify(mailOptions)
+        })
+        return response.json()
+    } catch (error) {
+        console.log(error)
+        throw error
+    }
 }
