@@ -2,8 +2,10 @@
 	import About from './About.svelte';
 </script>
 
-<div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}>
-	<div class="hero-overlay bg-opacity-50" />
+<div class="hero ">
+	<img src={'/new_banner.png'} alt="" class="mx-auto " height="1280" width="800" />
+	<!-- <div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}> -->
+	<!-- <div class="hero-overlay bg-opacity-50" />
 	<div class="hero-content text-center text-neutral-content">
 		<div class="max-w-xl ">
 			<div class="prose">
@@ -11,9 +13,7 @@
 				<p class="mb-5 	text-white">
 					At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
 					traditional recipes and cooking techniques passed down from generations.
-					<!-- Our commitment to
-						quality and flavor is evident in every wrap, making us the perfect choice for anyone
-						looking to satisfy their cravings and experience the true taste of shawarma.  -->
+					
 
 					So unwrap a world of flavor today and discover the authentic taste of shawarma at El
 					Ambrosia.
@@ -36,7 +36,7 @@
 				</svg>
 			</a>
 		</div>
-	</div>
+	</div> -->
 </div>
 <br />
 <div class="hero py-24">
