@@ -1,3 +1,7 @@
+<script>
+	import About from './About.svelte';
+</script>
+
 <div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}>
 	<div class="hero-overlay bg-opacity-50" />
 	<div class="hero-content text-center text-neutral-content">
@@ -73,3 +77,4 @@
 		</div>
 	</div>
 </div>
+<About />
