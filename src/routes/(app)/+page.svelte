@@ -3,7 +3,7 @@
 </script>
 
 <div class="hero ">
-	<img src={'/new_banner.png'} alt="" class="mx-auto " height="1280" width="800" />
+	<img src={'/new_banner.png'} alt="" class="mx-auto " height="1920" width="1080" />
 	<!-- <div class="hero min-h-screen" style={`background-image: url(${'./banner.jpg'});`}> -->
 	<!-- <div class="hero-overlay bg-opacity-50" />
 	<div class="hero-content text-center text-neutral-content">
