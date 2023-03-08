@@ -1,4 +1,4 @@
-<div class="relative h-[95vh] flex flex-col justify-center">
+<div class="relative h-screen flex flex-col justify-center">
 	<div class="custom-shape-divider-bottom-1678233035">
 		<svg
 			data-name="Layer 1"
@@ -32,7 +32,7 @@
 				of flavor today and discover the authentic taste of shawarma at El Ambrosia.
 			</p>
 			<br />
-			<div class="flex justify-between">
+			<div class="flex flex-col sm:flex-row gap-4 justify-between">
 				<a href="/products" class="btn btn-primary gap-2"
 					>See Products <svg
 						xmlns="http://www.w3.org/2000/svg"
