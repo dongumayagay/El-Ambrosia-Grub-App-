@@ -49,7 +49,12 @@
 						/>
 					</svg>
 				</a>
-				<div class="flex gap-2 items-center text-green-600">
+				<a
+					href="https://goo.gl/maps/o9468kN2f6PSeNx28"
+					target="_blank"
+					rel="noreferrer"
+					class="flex gap-2 items-center text-green-600"
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -73,7 +78,7 @@
 						<p>Brgy. Navarro,</p>
 						<p>Gen. Trias, Cavite</p>
 					</div>
-				</div>
+				</a>
 			</div>
 		</div>
 	</div>
