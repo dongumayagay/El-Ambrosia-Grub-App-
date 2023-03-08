@@ -1,4 +1,4 @@
-<div class="relative h-screen flex flex-col justify-center">
+<div class="relative py-4 flex flex-col justify-center">
 	<div class="custom-shape-divider-bottom-1678233035">
 		<svg
 			data-name="Layer 1"
@@ -12,9 +12,7 @@
 			/>
 		</svg>
 	</div>
-	<div
-		class="w-full max-w-7xl flex flex-col px-4 pb-20 sm:flex-row absolute left-1/2 -translate-x-1/2 z-10"
-	>
+	<div class="w-full max-w-7xl flex flex-col mx-auto px-4 pb-20 sm:flex-row">
 		<div class="flex-1">
 			<img
 				src={'./shawarma-destructure.png'}
@@ -92,6 +90,7 @@
 		width: 100%;
 		overflow: hidden;
 		line-height: 0;
+		z-index: -1;
 	}
 
 	.custom-shape-divider-bottom-1678233035 svg {
