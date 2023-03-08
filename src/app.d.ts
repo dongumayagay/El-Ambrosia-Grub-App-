@@ -23,7 +23,9 @@ declare global {
 			session: import('@supabase/supabase-js').Session | null
 			user_role: string | null
 		}
-		// interface Error {}
+		interface Error {
+			error_id?: string
+		}
 		// interface Platform {}
 	}
 }
