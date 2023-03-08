@@ -13,7 +13,7 @@
 		</svg>
 	</div>
 	<div
-		class="w-full max-w-7xl flex flex-col px-4 pb-20 sm:flex-row absolute left-1/2 -translate-x-1/2"
+		class="w-full max-w-7xl flex flex-col px-4 pb-20 sm:flex-row absolute left-1/2 -translate-x-1/2 z-10"
 	>
 		<div class="flex-1">
 			<img
