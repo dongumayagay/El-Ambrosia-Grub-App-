@@ -46,7 +46,7 @@
 				the taste of the Middle East!"
 			</p>
 			<a href="/products" class="btn btn-primary gap-2"
-				>View Products <svg
+				>View Menu <svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
 					viewBox="0 0 24 24"

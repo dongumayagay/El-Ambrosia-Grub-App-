@@ -34,7 +34,7 @@
 			<br />
 			<div class="flex flex-col sm:flex-row gap-4 justify-between">
 				<a href="/products" class="btn btn-primary gap-2"
-					>See Products <svg
+					>See Menu <svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -69,7 +69,7 @@
 							d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
 						/>
 					</svg>
-					<div>
+					<div class="text-sm">
 						<p>Brgy. Navarro,</p>
 						<p>Gen. Trias, Cavite</p>
 					</div>

@@ -8,7 +8,7 @@
 <div class="hero">
 	<div class="hero-content text-center prose">
 		<div class="max-w-md">
-			<h2 class="text-5xl font-bold text-secondary">Products</h2>
+			<h2 class="text-5xl font-bold text-secondary">Menu</h2>
 			<p class="">Savor the flavor in every bite!</p>
 			<br />
 		</div>
