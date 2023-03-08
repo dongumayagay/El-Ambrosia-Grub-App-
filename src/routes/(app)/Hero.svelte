@@ -16,7 +16,11 @@
 		class="w-full max-w-7xl flex flex-col px-4 pb-20 sm:flex-row absolute left-1/2 -translate-x-1/2"
 	>
 		<div class="flex-1">
-			<img src={'./shawarma-destructure.png'} alt="" class="" />
+			<img
+				src={'./shawarma-destructure.png'}
+				alt=""
+				class="w-full max-w-xl drop-shadow-xl shadow-black"
+			/>
 		</div>
 		<div class="flex-1 flex flex-col justify-center">
 			<h1 class="text-5xl font-bold text-brand-red text-center">El Ambrosia</h1>
