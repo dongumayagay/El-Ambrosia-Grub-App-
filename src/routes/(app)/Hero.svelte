@@ -1,45 +1,4 @@
-<div class="relative h-[90vh] flex flex-col justify-center">
-	<div class="mx-auto w-full max-w-7xl grid grid-cols-2">
-		<section>
-			<!--  -->
-			<img src={'./shawarma-destructure.png'} alt="" class="" />
-		</section>
-		<div class="">
-			<div class=" w-fit">
-				<h1 class=" text-5xl font-bold text-brand-red pb-2">El Ambrosia</h1>
-				<h1 class="text-brand-red text-center ">❝Authentic Shawarma❞</h1>
-			</div>
-			<br />
-			<p>
-				At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
-				traditional recipes and cooking techniques passed down from generations. So unwrap a world
-				of flavor today and discover the authentic taste of shawarma at El Ambrosia.
-			</p>
-			<br />
-			<h1 class="flex gap-2">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					class="w-6 h-6"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-					/>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-					/>
-				</svg>
-				Brgy. Navarro, Gen. Trias, Cavite
-			</h1>
-		</div>
-	</div>
+<div class="relative h-[95vh] flex flex-col justify-center">
 	<div class="custom-shape-divider-bottom-1678233035">
 		<svg
 			data-name="Layer 1"
@@ -52,6 +11,49 @@
 				class="shape-fill"
 			/>
 		</svg>
+	</div>
+	<div
+		class="w-full max-w-7xl flex flex-col px-4 pb-20 sm:flex-row absolute left-1/2 -translate-x-1/2"
+	>
+		<div class="flex-1">
+			<img src={'./shawarma-destructure.png'} alt="" class="" />
+		</div>
+		<div class="flex-1 flex flex-col justify-center">
+			<h1 class="text-5xl font-bold text-brand-red text-center">El Ambrosia</h1>
+			<h1 class="text-brand-red text-center py-2">❝Authentic Shawarma❞</h1>
+			<br class="hidden sm:block" />
+			<p class=" text-brand-maroon">
+				At El Ambrosia, we take pride in making each shawarma with care and authenticity, using
+				traditional recipes and cooking techniques passed down from generations. So unwrap a world
+				of flavor today and discover the authentic taste of shawarma at El Ambrosia.
+			</p>
+			<br />
+			<div class="flex gap-2 items-center text-green-600">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-10 h-10"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+					/>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+					/>
+				</svg>
+				<div>
+					<p>Brgy. Navarro,</p>
+					<p>Gen. Trias, Cavite</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
