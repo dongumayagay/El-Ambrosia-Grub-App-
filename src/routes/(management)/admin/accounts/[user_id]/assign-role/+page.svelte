@@ -40,7 +40,7 @@
 			</label>
 			<select
 				name="role"
-				class="select select-bordered capitalize"
+				class="select select-bordered"
 				on:change={() => {
 					submit_button.click();
 				}}
@@ -48,7 +48,7 @@
 			>
 				<option value={null}>None</option>
 				{#each ROLES_ALLOWED_IN_ADMIN as role}
-					<option value={role} selected={role === data.roles?.position} class="capitalize"
+					<option value={role} selected={role === data.roles?.position} class=""
 						>{role?.replaceAll('_', ' ')}</option
 					>
 				{/each}

@@ -31,7 +31,7 @@
 				<li><a href="/account" class=""> Account</a></li>
 				{#if ROLES_ALLOWED_IN_ADMIN.includes($page.data.user_role)}
 					<li>
-						<a href="/admin" class="">Admin</a>
+						<a href="/admin" class="">Admin {`(role: ${$page.data.user_role})`}</a>
 					</li>
 				{/if}
 
