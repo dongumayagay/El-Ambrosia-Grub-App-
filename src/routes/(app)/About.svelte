@@ -18,6 +18,8 @@
 			alt="bazaar"
 			class="max-w-xl rounded-lg shadow-2xl w-full"
 			loading="lazy"
+			height="768"
+			width="576"
 		/>
 		<div class="prose text-secondary">
 			<h1 class="text-primary text-5xl">About El Ambrosia</h1>
