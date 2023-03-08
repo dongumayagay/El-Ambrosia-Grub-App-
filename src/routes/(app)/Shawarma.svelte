@@ -28,11 +28,12 @@
 	<div class="hero-content flex-col lg:flex-row-reverse py-32">
 		<section class="flex-1">
 			<img
-				src="/shawarma.jpg"
+				src="/shawarma.webp"
 				height="751"
 				width="576"
 				class="w-full max-w-xl rounded-lg shadow-2xl"
 				alt="shawarma"
+				loading="lazy"
 			/>
 		</section>
 		<div class="flex-1">

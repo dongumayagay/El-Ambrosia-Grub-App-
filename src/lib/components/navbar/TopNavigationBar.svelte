@@ -11,7 +11,7 @@
 	</div>
 	<div class="navbar-center">
 		<a href="/" aria-label="home page">
-			<img src="/brand-logo.png" alt="" class=" h-7" height="28" width="137" />
+			<img src="/brand-logo.webp" alt="" class=" h-7" height="28" width="137" />
 		</a>
 	</div>
 	<div class="navbar-end">

@@ -15,9 +15,12 @@
 	<div class="w-full max-w-7xl flex flex-col mx-auto px-4 pb-20 sm:flex-row">
 		<div class="flex-1">
 			<img
-				src={'./shawarma-destructure.png'}
-				alt=""
+				src={'./shawarma-destructure.webp'}
+				width="602"
+				height="601"
+				alt="destructure shawarma"
 				class="w-full max-w-xl drop-shadow-xl shadow-black"
+				loading="eager"
 			/>
 		</div>
 		<div class="flex-1 flex flex-col justify-center">
@@ -51,7 +54,7 @@
 					href="https://goo.gl/maps/o9468kN2f6PSeNx28"
 					target="_blank"
 					rel="noreferrer"
-					class="flex gap-2 items-center text-green-600"
+					class="flex gap-2 items-center text-green-700"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

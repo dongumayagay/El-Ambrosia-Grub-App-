@@ -13,7 +13,12 @@
 		</svg>
 	</div>
 	<div class="hero-content flex-col lg:flex-row gap-8 py-32 ">
-		<img src="/bazaar.jpg" alt="bazaar" class="max-w-xl rounded-lg shadow-2xl w-full" />
+		<img
+			src="/bazaar.webp"
+			alt="bazaar"
+			class="max-w-xl rounded-lg shadow-2xl w-full"
+			loading="lazy"
+		/>
 		<div class="prose text-secondary">
 			<h1 class="text-primary text-5xl">About El Ambrosia</h1>
 			<p>
