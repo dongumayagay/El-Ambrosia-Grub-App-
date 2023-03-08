@@ -25,13 +25,13 @@
 			/>
 		</svg>
 	</div>
-	<div class="hero-content flex-col lg:flex-row-reverse py-32">
+	<div class="hero-content flex-col sm:flex-row-reverse py-32">
 		<section class="flex-1">
 			<img
 				src="/shawarma.webp"
-				height="751"
-				width="576"
-				class="w-full max-w-xl rounded-lg shadow-2xl"
+				height="683"
+				width="512"
+				class="w-full rounded-lg shadow-2xl object-cover aspect-square"
 				alt="shawarma"
 				loading="lazy"
 			/>

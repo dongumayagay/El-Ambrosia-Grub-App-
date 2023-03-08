@@ -1,4 +1,4 @@
-<div class="hero relative">
+<div class="hero min-h-screen relative">
 	<div class="custom-shape-divider-top-1678240295">
 		<svg
 			data-name="Layer 1"
@@ -12,18 +12,21 @@
 			/>
 		</svg>
 	</div>
-	<div class="hero-content flex-col lg:flex-row gap-8 py-32 ">
-		<img
-			src="/bazaar.webp"
-			alt="bazaar"
-			class="max-w-xl rounded-lg shadow-2xl w-full"
-			loading="lazy"
-			height="768"
-			width="576"
-		/>
-		<div class="prose text-secondary">
-			<h1 class="text-primary text-5xl">About El Ambrosia</h1>
-			<p>
+
+	<div class="hero-content flex-col sm:flex-row py-40 gap-8">
+		<section class="flex-1">
+			<img
+				src="/bazaar.webp"
+				height="683"
+				width="512"
+				class="rounded-lg shadow-2xl sm:ml-auto w-full object-cover aspect-square"
+				alt="shawarma"
+				loading="lazy"
+			/>
+		</section>
+		<div class="flex-1">
+			<h1 class="text-5xl font-bold text-brand-red">About El Ambrosia!</h1>
+			<p class="py-6 text-brand-maroon">
 				Welcome to El Ambrosia, the authentic Shawarma experience that brings the taste of the
 				Middle East to your table. Our small food business is founded by a former chef who has
 				dedicated years to perfecting the art of shawarma making. We use only the freshest
