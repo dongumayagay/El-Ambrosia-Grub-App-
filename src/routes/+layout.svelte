@@ -7,6 +7,8 @@
 	import { page } from '$app/stores';
 	import SideDrawer from '$lib/components/SideDrawer.svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
 
 	onMount(() => {
 		const {
@@ -33,6 +35,8 @@
 	afterNavigate(() => {
 		if (top) top.scrollIntoView();
 	});
+
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>
