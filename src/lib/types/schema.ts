@@ -143,6 +143,29 @@ export interface Database {
           total_quantity?: number
         }
       }
+      otp_order_pay_on_delivery: {
+        Row: {
+          code: string
+          created_at: string
+          expires_at: string
+          id: number
+          order_id: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          expires_at?: string
+          id?: number
+          order_id: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          expires_at?: string
+          id?: number
+          order_id?: number
+        }
+      }
       product_variants: {
         Row: {
           id: number
