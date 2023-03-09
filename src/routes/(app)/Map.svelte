@@ -8,6 +8,7 @@
 			marginheight="0"
 			marginwidth="0"
 			title="El Ambrosia"
+			loading="lazy"
 			src="https://maps.google.com/maps?width=100%25&amp;height=720&amp;hl=en&amp;q=Peninsula%20Homes,%20General%20Trias,%20Philippines+(El%20Ambrosia)&amp;t=h&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
 		/>
 	</div>
