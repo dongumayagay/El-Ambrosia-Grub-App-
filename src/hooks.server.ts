@@ -5,7 +5,7 @@ import { getSupabase, } from '@supabase/auth-helpers-sveltekit';
 import { error, redirect, type Handle, type HandleServerError } from '@sveltejs/kit';
 import { supabaseAdmin } from '$lib/db/admin.server';
 import * as SentryNode from "@sentry/node"
-// import crypto from "crypto"
+import crypto from "crypto"
 
 SentryNode.init({
     dsn: 'https://a7825f84f03b4c3799bc969ec6db9133@o4504801773486080.ingest.sentry.io/4504801802977280'
@@ -14,6 +14,7 @@ SentryNode.init({
 export const handle: Handle = async ({ event, resolve }) => {
 
     const { session, supabaseClient } = await getSupabase(event)
+
 
     event.locals.supabaseClient = supabaseClient
     event.locals.session = session
