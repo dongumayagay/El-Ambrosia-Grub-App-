@@ -1,5 +1,4 @@
 import type { Link } from "$lib/types/custom";
-import type Mail from "nodemailer/lib/mailer";
 import { account_links } from "./constants";
 
 const DATE_TIME_FORMAT = new Intl.DateTimeFormat('en-ph', { dateStyle: "full", timeStyle: "short" })
