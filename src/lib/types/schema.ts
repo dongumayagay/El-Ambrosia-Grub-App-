@@ -146,24 +146,18 @@ export interface Database {
       otp_order_pay_on_delivery: {
         Row: {
           code: string
-          created_at: string
           expires_at: string
           id: number
-          order_id: number
         }
         Insert: {
           code: string
-          created_at?: string
           expires_at?: string
           id?: number
-          order_id: number
         }
         Update: {
           code?: string
-          created_at?: string
           expires_at?: string
           id?: number
-          order_id?: number
         }
       }
       product_variants: {
@@ -333,21 +327,26 @@ export interface Database {
         }
         Returns: undefined
       }
-      get_user_role: {
+      check_role_position: {
         Args: {
-          uid: string
+          id: string
+          allowed_positions: string[]
         }
-        Returns: string
+        Returns: boolean
+      }
+      delete_expired_otp_codes: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
+      delete_otp_code: {
+        Args: {
+          code: string
+        }
+        Returns: undefined
       }
       getLowSupplyItemCount: {
         Args: Record<PropertyKey, never>
         Returns: number
-      }
-      is_super_admin: {
-        Args: {
-          uid: string
-        }
-        Returns: boolean
       }
       order_next_status: {
         Args: {
