@@ -1,3 +1,5 @@
+import { transporter } from '$lib/misc/nodemailer.server';
+import { generateOTP } from '$lib/misc/utils';
 import { i } from '$lib/payment/xendit.server';
 import type { InvoiceResponse } from '$lib/types/custom';
 import { error, fail, redirect } from '@sveltejs/kit';
@@ -92,36 +94,76 @@ export const actions: Actions = {
 
     },
 
-    pay_on_delivery: async ({ params, locals, request, url }) => {
-        const body = Object.fromEntries(await request.formData())
 
-        const order_user_id_image = body.order_user_id_image as Blob
-        if (!order_user_id_image) {
-            console.log('user id image')
-            return fail(400, { error: 'user id image' })
+    // pay_on_delivery: async ({ params, locals, request, url }) => {
+    //     const body = Object.fromEntries(await request.formData())
+
+    //     const order_user_id_image = body.order_user_id_image as Blob
+    //     if (!order_user_id_image) {
+    //         console.log('user id image')
+    //         return fail(400, { error: 'user id image' })
+    //     }
+
+    //     const file_extension = order_user_id_image.name.split('.')[1]
+    //     const new_image_path = `${params.order_id}.${file_extension}`
+    //     const { data: upload_data, error: upload_error } = await locals.supabaseClient.storage.from('pay-on-delivery-ids').upload(new_image_path, order_user_id_image, { upsert: true })
+    //     if (upload_error) {
+    //         console.log(upload_error)
+    //         return fail(500, { error: JSON.stringify(upload_error) })
+    //     }
+
+    //     const { data: { publicUrl } } = locals.supabaseClient.storage.from('pay-on-delivery-ids').getPublicUrl(upload_data.path)
+
+
+    //     const { error: order_update_error } = await locals.supabaseClient.from('orders').update({ payment_type: 'on delivery', pay_on_delivery_id_url: publicUrl }).eq('id', params.order_id)
+    //     if (order_update_error) {
+    //         console.log(order_update_error)
+    //         return fail(500, { error: JSON.stringify(order_update_error) })
+    //     }
+
+
+    //     await locals.supabaseClient.rpc('order_next_status', { order_id: Number(params.order_id) })
+    //     console.log('done')
+    //     throw redirect(303, url.pathname)
+    // },
+    send_otp: async ({ locals, params }) => {
+        if (locals.session?.user) {
+            throw error(403)
+        }
+        const otp_code = generateOTP()
+        try {
+
+            // const info = await transporter.sendMail(
+            //     {
+            //         to: locals.session?.user.email,
+            //         subject: "OTP Code for Pay on delilvery order",
+            //         html: `here is the code: <b>${otp_code}</b>`
+            //     })
+            // return { success: true, info }
+            locals.supabaseClient.from('otp_order_pay_on_delivery').upsert({ code: otp_code, id: Number(params.order_id) })
+            return { success: true }
+        } catch (err) {
+            console.log(err)
+            throw error(400)
         }
 
-        const file_extension = order_user_id_image.name.split('.')[1]
-        const new_image_path = `${params.order_id}.${file_extension}`
-        const { data: upload_data, error: upload_error } = await locals.supabaseClient.storage.from('pay-on-delivery-ids').upload(new_image_path, order_user_id_image, { upsert: true })
-        if (upload_error) {
-            console.log(upload_error)
-            return fail(500, { error: JSON.stringify(upload_error) })
+    }
+    ,
+    verify_otp: async ({ locals, request }) => {
+        const data = await request.formData()
+        const code = data.get('code')?.toString()
+        if (!code) return fail(400, { error: 'you must supply otp code' })
+
+        const { data: result, error: err } = await locals.supabaseClient.from('otp_order_pay_on_delivery').select('*').eq('code', code).limit(1).single()
+        console.log(result, err)
+        if (err) {
+            if (err.code === 'PGRST116')
+                return fail(400, { error: "Invalid OTP Code" })
+            return fail(500)
         }
+        if (!result) return fail(400, { error: "invalid otp" })
 
-        const { data: { publicUrl } } = locals.supabaseClient.storage.from('pay-on-delivery-ids').getPublicUrl(upload_data.path)
-
-
-        const { error: order_update_error } = await locals.supabaseClient.from('orders').update({ payment_type: 'on delivery', pay_on_delivery_id_url: publicUrl }).eq('id', params.order_id)
-        if (order_update_error) {
-            console.log(order_update_error)
-            return fail(500, { error: JSON.stringify(order_update_error) })
-        }
-
-
-        await locals.supabaseClient.rpc('order_next_status', { order_id: Number(params.order_id) })
-        console.log('done')
-        throw redirect(303, url.pathname)
+        return { success: true }
     },
 
     cancel: async ({ locals, params }) => {
