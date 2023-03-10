@@ -8,10 +8,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({
-			split: true,
-			regions: ['sin1']
-		})
+		adapter: adapter()
 	}
 };
 
