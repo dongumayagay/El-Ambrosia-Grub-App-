@@ -9,6 +9,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
+	import { Toaster } from 'svelte-french-toast';
 
 	onMount(() => {
 		const {
@@ -94,3 +95,4 @@
 		/>
 	</div>
 </div>
+<Toaster />

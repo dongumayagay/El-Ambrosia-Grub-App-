@@ -28,6 +28,7 @@ specifiers:
   supabase: ^1.38.0
   svelte: ^3.55.1
   svelte-check: ^3.0.3
+  svelte-french-toast: ^1.0.3
   tailwindcss: ^3.2.6
   tslib: ^2.5.0
   typescript: ^4.9.5
@@ -44,6 +45,7 @@ dependencies:
   '@vercel/analytics': 0.1.11
   daisyui: 2.50.0_gbtt6ss3tbiz4yjtvdr6fbrj44
   nodemailer: 6.9.1
+  svelte-french-toast: 1.0.3_svelte@3.55.1
   xendit-node: 1.21.10
 
 devDependencies:
@@ -2705,6 +2707,14 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-french-toast/1.0.3_svelte@3.55.1:
+    resolution: {integrity: sha512-HBdutlqUx5FroucvcmMJstmTJDedXayiOSXubBYW6iL5x1PdHp+bOflGx5NxsOa6+EQckJnnVv1vJYgGsg7ngQ==}
+    dependencies:
+      svelte-writable-derived: 2.1.6_svelte@3.55.1
+    transitivePeerDependencies:
+      - svelte
+    dev: false
+
   /svelte-hmr/0.15.1_svelte@3.55.1:
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -2762,6 +2772,14 @@ packages:
       svelte: 3.55.1
       typescript: 4.9.5
     dev: true
+
+  /svelte-writable-derived/2.1.6_svelte@3.55.1:
+    resolution: {integrity: sha512-vqOXuiESMZyP/kt/RD+nOk2RVHNakDm1K1hmfeGAKc4jzcSp5hEkUi43MDbkVlMurkSBlcMVTQwRQy4LcBT2lw==}
+    peerDependencies:
+      svelte: ^3.2.1
+    dependencies:
+      svelte: 3.55.1
+    dev: false
 
   /svelte/3.55.1:
     resolution: {integrity: sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==}
