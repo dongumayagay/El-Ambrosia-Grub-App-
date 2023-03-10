@@ -334,14 +334,14 @@ export interface Database {
         }
         Returns: boolean
       }
-      delete_expired_otp_codes: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
-      delete_otp_code: {
+      delete_consumed_otp_code: {
         Args: {
           code: string
         }
+        Returns: boolean
+      }
+      delete_expired_otp_codes: {
+        Args: Record<PropertyKey, never>
         Returns: undefined
       }
       getLowSupplyItemCount: {
