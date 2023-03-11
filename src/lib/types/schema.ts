@@ -350,6 +350,12 @@ export interface Database {
         }
         Returns: string
       }
+      get_admin_emails: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          email: string
+        }[]
+      }
       getLowSupplyItemCount: {
         Args: Record<PropertyKey, never>
         Returns: number
