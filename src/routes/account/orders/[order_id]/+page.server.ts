@@ -127,28 +127,33 @@ export const actions: Actions = {
     //     throw redirect(303, url.pathname)
     // },
     send_otp: async ({ locals, params }) => {
-        if (locals.session?.user) {
-            throw error(403)
-        }
-        const otp_code = generateOTP()
-        try {
+        console.log('sending otp')
 
-            // const info = await transporter.sendMail(
-            //     {
-            //         to: locals.session?.user.email,
-            //         subject: "OTP Code for Pay on delilvery order",
-            //         html: `here is the code: <b>${otp_code}</b>`
-            //     })
+        // if (locals.session?.user) {
+        //     throw error(403)
+        // }
+        // const otp_code = generateOTP()
+        try {
+            const { data: otp_code, error: err } = await locals.supabaseClient.rpc('generate_otp_code', { id: Number(params.order_id) })
+            if (err) throw err
+            if (!otp_code) throw error(500)
+            const info = await transporter.sendMail(
+                {
+                    to: locals.session?.user.email,
+                    subject: "OTP Code for Pay on delilvery order",
+                    html: `here is your OTP code: <b>${otp_code}</b>`
+                })
+            console.log(info)
             // return { success: true, info }
-            locals.supabaseClient.from('otp_order_pay_on_delivery').upsert({ code: otp_code, id: Number(params.order_id) })
+            // locals.supabaseClient.from('otp_order_pay_on_delivery').upsert({ code: otp_code, id: Number(params.order_id) })
             return { success: true }
         } catch (err) {
             console.log(err)
             throw error(400)
         }
 
-    }
-    ,
+    },
+
     verify_otp: async ({ locals, request }) => {
         const data = await request.formData()
         const code = data.get('code')?.toString()

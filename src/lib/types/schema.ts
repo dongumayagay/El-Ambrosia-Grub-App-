@@ -344,6 +344,12 @@ export interface Database {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
+      generate_otp_code: {
+        Args: {
+          id: number
+        }
+        Returns: string
+      }
       getLowSupplyItemCount: {
         Args: Record<PropertyKey, never>
         Returns: number

@@ -28,17 +28,24 @@
 		target.value = target.value.replace(regex, '');
 	}
 
+	async function send_otp() {
+		try {
+			const response = await fetch('?/send_otp', { method: 'POST', body: new FormData() });
+			const result = await response.json();
+			console.log(result);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
 	$: if (!!$page.form?.error) {
 		toast.error($page.form.error);
 	}
 </script>
 
-<!-- pay on delivery -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<label
-	for="pay-on-delivery-form-modal"
-	on:click|once={() => console.log('testing')}
-	class="btn btn-block">Pay on delivery</label
+<label for="pay-on-delivery-form-modal" class="btn btn-block" on:click={send_otp}
+	>Pay on delivery</label
 >
 <input
 	type="checkbox"
@@ -53,7 +60,7 @@
 		method="POST"
 		use:enhance={enhance_function}
 	>
-		<h3 class="font-bold text-lg">something something</h3>
+		<h3 class="font-bold text-lg">OTP verification</h3>
 		<div class="form-control">
 			<label class="label" for="">
 				<span class="label-text">Enter OTP Code we have sent to your email</span>
@@ -65,14 +72,12 @@
 				maxlength="6"
 				pattern={`[0-9]{6}`}
 				on:input={handleDigitsOnlyInput}
-				required
 				name="code"
 			/>
 			<label class="label">
-				<!-- <span class="label-text" />
-				<span class="label-test"> -->
-				<button class="btn btn-link mx-auto btn-xs">resend OTP code</button>
-				<!-- </span> -->
+				<button type="button" class="btn btn-link mx-auto btn-xs" on:click={send_otp}
+					>resend OTP code</button
+				>
 			</label>
 		</div>
 		{#if form?.error}
