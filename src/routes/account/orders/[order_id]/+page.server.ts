@@ -1,5 +1,5 @@
 import { transporter } from '$lib/misc/nodemailer.server';
-import { generateOTP } from '$lib/misc/utils';
+// import { generateOTP } from '$lib/misc/utils';
 import { i } from '$lib/payment/xendit.server';
 import type { InvoiceResponse } from '$lib/types/custom';
 import { error, fail, redirect } from '@sveltejs/kit';
