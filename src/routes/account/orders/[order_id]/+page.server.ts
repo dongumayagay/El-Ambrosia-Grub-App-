@@ -144,8 +144,6 @@ export const actions: Actions = {
                     html: `here is your OTP code: <b>${otp_code}</b>`
                 })
             console.log(info)
-            // return { success: true, info }
-            // locals.supabaseClient.from('otp_order_pay_on_delivery').upsert({ code: otp_code, id: Number(params.order_id) })
             return { success: true }
         } catch (err) {
             console.log(err)
@@ -154,7 +152,7 @@ export const actions: Actions = {
 
     },
 
-    verify_otp: async ({ locals, request }) => {
+    verify_otp: async ({ locals, request, params, url }) => {
         const data = await request.formData()
         const code = data.get('code')?.toString()
         if (!code) return fail(400, { error: 'you must supply otp code' })
@@ -168,7 +166,11 @@ export const actions: Actions = {
         }
         if (!result) return fail(400, { error: "invalid otp" })
 
-        return { success: true }
+
+        await locals.supabaseClient.rpc('order_next_status', { order_id: Number(params.order_id) })
+        console.log('done')
+        throw redirect(303, url.pathname)
+
     },
 
     cancel: async ({ locals, params }) => {
