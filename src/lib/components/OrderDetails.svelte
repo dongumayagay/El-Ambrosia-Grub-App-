@@ -3,9 +3,10 @@
 	// @ts-ignore
 	import type { PageData } from './$types';
 	import { states } from '$lib/misc/constants';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
-	$: order_address = data.order.order_address;
+	$: order_address = data.order_address;
 	$: fees = JSON.parse(JSON.stringify(data.order.fees));
 </script>
 

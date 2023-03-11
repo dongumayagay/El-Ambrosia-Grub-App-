@@ -9,7 +9,7 @@
 	export let form: ActionData;
 </script>
 
-{#if data.order && data.order_items}
+{#if data.order && data.order_address && data.order_items}
 	<main>
 		<OrderDetails {data} />
 		{#if data.order.status === 0}
@@ -24,4 +24,6 @@
 			</div>
 		{/if}
 	</main>
+{:else}
+	something is wrong
 {/if}
