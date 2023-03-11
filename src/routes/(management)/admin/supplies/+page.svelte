@@ -13,7 +13,6 @@
 		const supplies_realtime_listener = supabaseClient
 			.channel('supplies-channel')
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'supplies' }, (payload) => {
-				console.log('Change received!', payload);
 				if (payload.eventType === 'INSERT') {
 					// @ts-ignore
 					supplies = [...supplies, payload.new];
