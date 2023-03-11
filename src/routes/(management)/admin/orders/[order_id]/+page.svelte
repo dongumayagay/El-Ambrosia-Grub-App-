@@ -15,9 +15,10 @@
 			await update();
 		};
 	};
+	$: console.log(data)
 </script>
 
-{#if data.order && data.order_items}
+{#if data.order && data.order_items && data.order_address}
 	<main>
 		<OrderDetails {data} />
 		{#if data.order.status !== 0 && data.order.status < states.length - 1}
