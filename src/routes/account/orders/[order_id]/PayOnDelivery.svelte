@@ -74,11 +74,11 @@
 				on:input={handleDigitsOnlyInput}
 				name="code"
 			/>
-			<label class="label">
+			<!-- <label class="label">
 				<button type="button" class="btn btn-link mx-auto btn-xs" on:click={send_otp}
 					>resend OTP code</button
 				>
-			</label>
+			</label> -->
 		</div>
 		{#if form?.error}
 			<div class="alert alert-error shadow-lg">

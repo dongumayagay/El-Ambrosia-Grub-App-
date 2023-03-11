@@ -157,20 +157,21 @@ export const actions: Actions = {
         const code = data.get('code')?.toString()
         if (!code) return fail(400, { error: 'you must supply otp code' })
 
-        const { data: result, error: err } = await locals.supabaseClient.from('otp_order_pay_on_delivery').select('*').eq('code', code).limit(1).single()
+        // const { data: result, error: err } = await locals.supabaseClient.from('otp_order_pay_on_delivery').select('*').eq('code', code).limit(1).single()
+        const { data: result, error: err } = await locals.supabaseClient.rpc('delete_consumed_otp_code', { code })
         console.log(result, err)
         if (err) {
             if (err.code === 'PGRST116')
                 return fail(400, { error: "Invalid OTP Code" })
             return fail(500)
         }
-        if (!result) return fail(400, { error: "invalid otp" })
+        if (!result) return fail(400, { error: "Invalid OTP Code" })
+
 
 
         await locals.supabaseClient.rpc('order_next_status', { order_id: Number(params.order_id) })
         console.log('done')
         throw redirect(303, url.pathname)
-
     },
 
     cancel: async ({ locals, params }) => {
