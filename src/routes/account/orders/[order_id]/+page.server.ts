@@ -18,10 +18,15 @@ export const actions: Actions = {
     pay_online: async ({ locals, params, url }) => {
         if (!locals.session) throw error(401)
 
-        const { data: order, error: err_order } = await locals.supabaseClient.from('orders').select('*,order_address(*)').eq('id', params.order_id).limit(1).single()
+        const { data: order, error: err_order } = await locals.supabaseClient.from('orders').select('*').eq('id', params.order_id).limit(1).single()
+        const { data: order_address, error: err_order_address } = await locals.supabaseClient.from('order_address').select('*').eq('id', params.order_id).limit(1).single()
         if (!order || err_order) {
             console.log(err_order)
             throw error(404, JSON.stringify(err_order, null, 2))
+        }
+        if (!order_address || err_order_address) {
+            console.log(err_order_address)
+            throw error(404, JSON.stringify(err_order_address, null, 2))
         }
 
         const { data: order_items, error: err_order_items } = await locals.supabaseClient.from('order_items').select('*,products(*),product_variants(*)').eq('order_id', params.order_id)
@@ -31,7 +36,6 @@ export const actions: Actions = {
         }
 
 
-        const order_address = order.order_address
         if (!order_address || Array.isArray(order_address)) throw error(500)
 
 
