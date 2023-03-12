@@ -182,6 +182,7 @@ export const actions: Actions = {
     cancel: async ({ locals, params }) => {
         const { error: err } = await locals.supabaseClient.from('orders').delete().eq('id', params.order_id)
         if (err) {
+            console.log(err)
             throw error(500, JSON.stringify(err, null, 2))
         }
         throw redirect(303, '/account/orders')

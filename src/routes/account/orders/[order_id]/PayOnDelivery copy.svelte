@@ -41,7 +41,7 @@
 	<form
 		class="modal-box relative"
 		action="?/pay_on_delivery"
-		method="POSt"
+		method="POST"
 		use:enhance={enhance_function}
 	>
 		<h3 class="font-bold text-lg">Upload ID for order verification</h3>

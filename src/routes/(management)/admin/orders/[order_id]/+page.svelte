@@ -15,7 +15,6 @@
 			await update();
 		};
 	};
-	$: console.log(data)
 </script>
 
 {#if data.order && data.order_items && data.order_address}
