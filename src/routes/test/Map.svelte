@@ -3,6 +3,7 @@
 	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 	import markerIcon from 'leaflet/dist/images/marker-icon.png';
 	import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+	import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 	function setup(map_container: HTMLElement) {
 		setup_map(map_container);
@@ -19,6 +20,8 @@
 		let marker: L.Marker | null = null;
 
 		import('leaflet.locatecontrol').then(() => L.control.locate().addTo(map));
+
+		await import('leaflet-routing-machine');
 
 		map.on('click', (e) => set_marker(e.latlng));
 		map.on('locationfound', (e) => set_marker(e.latlng));
