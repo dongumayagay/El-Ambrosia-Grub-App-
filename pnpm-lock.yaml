@@ -12,6 +12,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.9
   '@types/leaflet': ^1.9.1
+  '@types/leaflet.locatecontrol': ^0.74.1
   '@types/nodemailer': ^6.4.7
   '@typescript-eslint/eslint-plugin': ^5.52.0
   '@typescript-eslint/parser': ^5.52.0
@@ -24,6 +25,7 @@ specifiers:
   eslint-plugin-svelte3: ^4.0.0
   leaflet: ^1.9.3
   leaflet-control-geocoder: ^2.4.0
+  leaflet.locatecontrol: ^0.79.0
   nodemailer: ^6.9.1
   postcss: ^8.4.21
   prettier: ^2.8.4
@@ -48,6 +50,7 @@ dependencies:
   daisyui: 2.50.0_gbtt6ss3tbiz4yjtvdr6fbrj44
   leaflet: 1.9.3
   leaflet-control-geocoder: 2.4.0_leaflet@1.9.3
+  leaflet.locatecontrol: 0.79.0
   nodemailer: 6.9.1
   svelte-french-toast: 1.0.3_svelte@3.55.1
   xendit-node: 1.21.10
@@ -60,6 +63,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.6
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.6
   '@types/leaflet': 1.9.1
+  '@types/leaflet.locatecontrol': 0.74.1
   '@types/nodemailer': 6.4.7
   '@typescript-eslint/eslint-plugin': 5.52.0_6cfvjsbua5ptj65675bqcn6oza
   '@typescript-eslint/parser': 5.52.0_7kw3g6rralp5ps6mg3uyzz6azm
@@ -643,6 +647,12 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/leaflet.locatecontrol/0.74.1:
+    resolution: {integrity: sha512-4rqWfKadQ+Rksv4uq7Ab68CdOlaDt8z5bP+EMbXk5Ea82XMV9yLzQpAvVZ2xdARa8fpF2Atk+fheQ04Lik6ziA==}
+    dependencies:
+      '@types/leaflet': 1.9.1
     dev: true
 
   /@types/leaflet/1.9.1:
@@ -1923,6 +1933,10 @@ packages:
       leaflet: 1.9.3
     optionalDependencies:
       open-location-code: 1.0.3
+    dev: false
+
+  /leaflet.locatecontrol/0.79.0:
+    resolution: {integrity: sha512-h64QIHFkypYdr90lkSfjKvPvvk8/b8UnP3m9WuoWdp5p2AaCWC0T1NVwyuj4rd5U4fBW3tQt4ppmZ2LceHMIDg==}
     dev: false
 
   /leaflet/1.9.3:

@@ -55,6 +55,7 @@ export function get_account_links(provider: string): Link[] {
 }
 
 
-export function generateOTP(): string {
-    return Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+export function getMapLinkDirections(longitude: number, latitude: number): string {
+    const link = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
+    return link;
 }
