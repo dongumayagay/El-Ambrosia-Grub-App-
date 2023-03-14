@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import L from 'leaflet';
 	import 'leaflet/dist/leaflet.css';
-	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 	import { browser } from '$app/environment';
 
 	let map_container: HTMLDivElement;
@@ -28,6 +27,8 @@
 	async function addLocateControl() {
 		if (browser) {
 			await import('leaflet.locatecontrol');
+			await import('leaflet.locatecontrol/dist/L.Control.Locate.min.css');
+
 			const lc = L.control.locate({ drawMarker: true }).addTo(map);
 		}
 	}
