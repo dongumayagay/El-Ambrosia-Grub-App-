@@ -1,7 +1,6 @@
 <script lang="ts">
 	import 'leaflet/dist/leaflet.css';
-	import 'leaflet/dist/images/marker-icon.png';
-	import 'leaflet/dist/images/marker-shadow.png';
+	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 
 	function setup(map_container: HTMLElement) {
 		setup_map(map_container);
@@ -15,14 +14,9 @@
 		const map = L.map(map_container)
 			.setView(EL_AMBROSIA_LOC, 19)
 			.addLayer(L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }));
-		let marker: L.Marker | null = null;
+		// let marker: L.Marker | null = null;
 
-		map.on('click', (e) => set_marker(e.latlng));
-
-		function set_marker(latlng: L.LatLng) {
-			if (marker) map.removeLayer(marker);
-			marker = L.marker(latlng).addTo(map);
-		}
+		import('leaflet.locatecontrol').then(() => L.control.locate().addTo(map));
 	}
 </script>
 
