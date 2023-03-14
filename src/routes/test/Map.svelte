@@ -14,9 +14,17 @@
 		const map = L.map(map_container)
 			.setView(EL_AMBROSIA_LOC, 19)
 			.addLayer(L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }));
-		// let marker: L.Marker | null = null;
+		let marker: L.Marker | null = null;
 
 		import('leaflet.locatecontrol').then(() => L.control.locate().addTo(map));
+
+		map.on('click', (e) => set_marker(e.latlng));
+		map.on('locationfound', (e) => set_marker(e.latlng));
+
+		function set_marker(latlng: L.LatLng) {
+			if (marker) marker.setLatLng(latlng);
+			else marker = L.marker(latlng).addTo(map);
+		}
 	}
 </script>
 
