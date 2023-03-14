@@ -1,11 +1,15 @@
 <script lang="ts">
+	import 'leaflet/dist/leaflet.css';
+	import 'leaflet/dist/images/marker-icon.png';
+	import 'leaflet/dist/images/marker-shadow.png';
+
 	function setup(map_container: HTMLElement) {
 		setup_map(map_container);
 	}
 
 	async function setup_map(map_container: HTMLElement) {
 		const L = await import('leaflet');
-		await import('leaflet/dist/leaflet.css');
+
 		const EL_AMBROSIA_LOC = L.latLng([14.386682, 120.889359]);
 
 		const map = L.map(map_container)
