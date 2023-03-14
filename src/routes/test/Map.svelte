@@ -1,31 +1,46 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import L from 'leaflet';
 	import 'leaflet/dist/leaflet.css';
 	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
+	import { browser } from '$app/environment';
 
-	const EL_AMBROSIA_LOC = L.latLng([14.386682, 120.889359]);
+	let map_container: HTMLDivElement;
+	let map: L.Map;
+	let marker: L.Marker;
 
-	function setup_map(map_container: HTMLElement) {
-		// setup map and marker
-		const map = L.map(map_container)
-			.setView(EL_AMBROSIA_LOC, 18)
+	onMount(() => {
+		map = L.map(map_container, {})
+			.setView([14.386682, 120.889359], 18)
 			.addLayer(L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }));
-		let marker: L.Marker | null = null;
 
-		// add location control button
-		import('leaflet.locatecontrol').then(() => L.control.locate().addTo(map));
+		map.on('click', (event) => {
+			if (marker) {
+				marker.setLatLng(event.latlng);
+			} else {
+				marker = L.marker(event.latlng).addTo(map);
+			}
+		});
 
-		// event listeners
-		map.on('click', (e) => set_marker(map, marker, e.latlng));
-		map.on('locationfound', (e) => set_marker(map, marker, e.latlng));
+		return () => map.remove();
+	});
 
-		return { destroy: () => map.remove() };
+	async function addLocateControl() {
+		if (browser) {
+			await import('leaflet.locatecontrol');
+			const lc = L.control.locate({ drawMarker: true }).addTo(map);
+		}
 	}
 
-	function set_marker(map: L.Map, marker: L.Marker | null, latlng: L.LatLng) {
-		if (marker) marker.setLatLng(latlng);
-		else marker = L.marker(latlng).addTo(map);
+	$: if (browser) {
+		addLocateControl();
 	}
 </script>
 
-<div style="height:500px;" id="map" use:setup_map />
+<div style="height:500px;" id="map" bind:this={map_container} />
+
+<style>
+	#map {
+		height: 500px;
+	}
+</style>
