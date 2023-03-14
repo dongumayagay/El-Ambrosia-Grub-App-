@@ -1,12 +1,21 @@
 <script lang="ts">
-	import * as L from 'leaflet';
-	import 'leaflet/dist/leaflet.css';
+	function setup(map_container: HTMLElement) {
+		setup_map(map_container);
+	}
 
-	function set_map(map_container: HTMLElement) {
+	async function setup_map(map_container: HTMLElement) {
+		const L = await import('leaflet');
 		const map = L.map(map_container)
 			.setView([14.386682, 120.889359], 19)
 			.addLayer(L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }));
 	}
 </script>
 
-<div style="height:500px;" use:set_map />
+<main use:setup />
+
+<style>
+	@import 'leaflet/dist/leaflet.css';
+	main {
+		height: 500px;
+	}
+</style>
