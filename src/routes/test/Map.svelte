@@ -1,12 +1,11 @@
 <script lang="ts">
-	import 'leaflet/dist/leaflet.css';
-	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
-
 	function setup(map_container: HTMLElement) {
 		setup_map(map_container);
 	}
 
 	async function setup_map(map_container: HTMLElement) {
+		await import('leaflet/dist/leaflet.css');
+		await import('leaflet.locatecontrol/dist/L.Control.Locate.min.css');
 		const L = await import('leaflet');
 
 		const EL_AMBROSIA_LOC = L.latLng([14.386682, 120.889359]);
