@@ -5,7 +5,6 @@
 
 	async function setup_map(map_container: HTMLElement) {
 		const L = await import('leaflet');
-		await import('leaflet/dist/leaflet.css');
 		const EL_AMBROSIA_LOC = L.latLng([14.386682, 120.889359]);
 
 		const map = L.map(map_container)
@@ -25,6 +24,7 @@
 <main use:setup />
 
 <style>
+	@import 'leaflet/dist/leaflet.css';
 	main {
 		height: 500px;
 	}
