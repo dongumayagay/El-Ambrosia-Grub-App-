@@ -9,8 +9,7 @@
 
 	async function setup_map(map_container: HTMLElement) {
 		const L = await import('leaflet');
-		await import('leaflet-routing-machine');
-		await import('leaflet.locatecontrol');
+		await Promise.all([import('leaflet-routing-machine'), import('leaflet.locatecontrol')]);
 
 		const BUSINESS_LOC = L.latLng([14.386682, 120.889359]);
 		const map = L.map(map_container)
