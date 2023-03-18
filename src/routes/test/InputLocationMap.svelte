@@ -18,10 +18,7 @@
 		L.control
 			.locate({
 				drawCircle: false,
-				flyTo: true,
-				showCompass: true,
-				showPopup: true,
-				keepCurrentZoomLevel: true
+				flyTo: true
 			})
 			.addTo(map);
 
