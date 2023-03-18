@@ -1,7 +1,8 @@
 <script lang="ts">
 	import 'leaflet/dist/leaflet.css';
 	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
-	import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+	import markerIcon from 'leaflet/dist/images/marker-icon.png';
+	import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 	function setup(map_container: HTMLElement) {
 		setup_map(map_container);
@@ -29,7 +30,13 @@
 
 		function set_marker(latlng: L.LatLng) {
 			if (marker) marker.setLatLng(latlng);
-			else marker = L.marker(latlng).addTo(map);
+			else
+				marker = L.marker(latlng, {
+					icon: L.icon({
+						iconUrl: markerIcon,
+						shadowUrl: markerShadow
+					})
+				}).addTo(map);
 		}
 	}
 </script>
