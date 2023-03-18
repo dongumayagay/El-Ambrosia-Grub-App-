@@ -34,8 +34,11 @@
 				marker = L.marker(latlng, {
 					icon: L.icon({
 						iconUrl: markerIcon,
-						shadowUrl: markerShadow
-					})
+						shadowUrl: markerShadow,
+						iconSize: [25, 41],
+						iconAnchor: [13, 41]
+					}),
+					draggable: true
 				}).addTo(map);
 		}
 	}
