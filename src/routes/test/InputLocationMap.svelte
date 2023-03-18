@@ -3,7 +3,10 @@
 	import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
 	import markerIcon from 'leaflet/dist/images/marker-icon.png';
 	import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+	import { createEventDispatcher } from 'svelte';
 
+	const dispatch = createEventDispatcher();
+	let pos: { lat: number; lng: number };
 	function setup(map_container: HTMLElement) {
 		setup_map(map_container);
 	}
@@ -40,15 +43,17 @@
 					}),
 					draggable: true
 				}).addTo(map);
+			const { lat, lng } = latlng;
+			dispatch('set_location', { lat, lng });
 		}
 	}
 </script>
 
-<main use:setup />
+<div use:setup />
 
 <!--  -->
 <style>
-	main {
+	div {
 		height: 500px;
 	}
 </style>
