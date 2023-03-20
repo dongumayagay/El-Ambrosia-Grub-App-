@@ -55,7 +55,12 @@ export function get_account_links(provider: string): Link[] {
 }
 
 
-export function getMapLinkDirections(longitude: number, latitude: number): string {
+export function getGMapLinkDirections(latitude: number, longitude: number,): string {
     const link = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
+    return link;
+}
+
+export function getWazeLinkDirections(latitude: number, longitude: number,): string {
+    const link = `https://www.waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
     return link;
 }

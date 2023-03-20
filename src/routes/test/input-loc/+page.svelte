@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getMapLinkDirections } from '$lib/misc/utils';
+	import { getGMapLinkDirections, getWazeLinkDirections } from '$lib/misc/utils';
 	import InputLocationMap from '../InputLocationMap.svelte';
 	let pos: {
 		lat: number;
@@ -7,7 +7,6 @@
 	};
 </script>
 
-<!-- getMapLinkDirections -->
 <InputLocationMap
 	on:set_location={(e) => {
 		pos = e.detail;
@@ -15,5 +14,8 @@
 />
 
 {#if pos}
-	<a href={getMapLinkDirections(pos.lng, pos.lat)} target="_blank">get directions</a>
+	<a href={getGMapLinkDirections(pos.lat, pos.lng)} target="_blank">
+		get directions using google maps
+	</a>
+	<a href={getWazeLinkDirections(pos.lat, pos.lng)} target="_blank"> get directions using waze </a>
 {/if}
